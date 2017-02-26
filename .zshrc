@@ -36,6 +36,7 @@ zplug "plugins/emacs",   from:oh-my-zsh
 zplug "plugins/z",   from:oh-my-zsh
 zplug "plugins/pip",   from:oh-my-zsh
 zplug "plugins/zsh-completions",   from:oh-my-zsh
+zplug "plugins/common-aliases",   from:oh-my-zsh
 
 
 zplug "djui/alias-tips"
