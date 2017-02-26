@@ -13,7 +13,6 @@ export EDITOR='nvim'
 # Adds aliases to open your current repo & branch on github.
 zplug "peterhurford/git-it-on.zsh"
 
-
 zplug "plugins/pip",   from:oh-my-zsh
 zplug "plugins/python",   from:oh-my-zsh
 zplug "plugins/github",   from:oh-my-zsh
@@ -29,14 +28,10 @@ zplug "plugins/systemadmin",   from:oh-my-zsh
 zplug "plugins/emacs",   from:oh-my-zsh
 zplug "plugins/z",   from:oh-my-zsh
 zplug "plugins/pip",   from:oh-my-zsh
-
+zplug "zsh-users/zsh-completions",   from:oh-my-zsh
 
 zplug "sharat87/pip-app"
-zplug "zsh-users/zsh-completions src"
-
 zplug "zsh-users/zsh-autosuggestions"
-
-
 
 # Make sure to use double quotes
 zplug "zsh-users/zsh-history-substring-search"
@@ -60,7 +55,7 @@ zplug "junegunn/fzf-bin", \
     use:"*darwin*amd64*"
 
 # Supports oh-my-zsh plugins and the like
-zplug "plugins/git",   from:oh-my-zsh
+# zplug "plugins/git",   from:oh-my-zsh
 
 # Also prezto
 # zplug "modules/prompt", from:prezto
