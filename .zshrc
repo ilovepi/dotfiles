@@ -15,9 +15,6 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 
-zplug "djui/alias-tips"
-zplug "unixorn/git-extra-commands"
-zplug "skx/sysadmin-util"
 
 
 # Adds aliases to open your current repo & branch on github.
@@ -38,13 +35,23 @@ zplug "plugins/systemadmin",   from:oh-my-zsh
 zplug "plugins/emacs",   from:oh-my-zsh
 zplug "plugins/z",   from:oh-my-zsh
 zplug "plugins/pip",   from:oh-my-zsh
-zplug "zsh-users/zsh-completions",   from:oh-my-zsh
+zplug "plugins/zsh-completions",   from:oh-my-zsh
+
+
+zplug "djui/alias-tips"
+zplug "unixorn/git-extra-commands"
+zplug "skx/sysadmin-util"
 
 # Also prezto
 # zplug "modules/prompt", from:prezto
 
 zplug "sharat87/pip-app"
+zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "rimraf/k"
+zplug "sharat87/pip-app"
+zplug "sharat87/pip-app"
+zplug "sharat87/pip-app"
 
 # Make sure to use double quotes
 zplug "zsh-users/zsh-history-substring-search"
