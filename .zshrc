@@ -34,7 +34,6 @@ zplug "plugins/npm",   from:oh-my-zsh
 zplug "plugins/systemadmin",   from:oh-my-zsh
 zplug "plugins/emacs",   from:oh-my-zsh
 zplug "plugins/z",   from:oh-my-zsh
-zplug "plugins/pip",   from:oh-my-zsh
 zplug "plugins/zsh-completions",   from:oh-my-zsh
 zplug "plugins/common-aliases",   from:oh-my-zsh
 
@@ -50,9 +49,7 @@ zplug "sharat87/pip-app"
 zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "rimraf/k"
-zplug "sharat87/pip-app"
-zplug "sharat87/pip-app"
-zplug "sharat87/pip-app"
+zplug "unixorn/jpb.zshplugin"
 
 # Make sure to use double quotes
 zplug "zsh-users/zsh-history-substring-search"
@@ -83,6 +80,7 @@ zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
 # ZPLUG_SUDO_PASSWORD="********"
+ZPLUG_SUDO_PASSWORD=""
 zplug "jhawthorn/fzy", \
     as:command, \
     rename-to:fzy, \
