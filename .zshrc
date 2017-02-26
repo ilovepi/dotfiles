@@ -3,16 +3,27 @@ source ~/.zplug/init.zsh
 eval `keychain --eval --agents ssh --inherit any id_rsa`
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
+export EDITOR='nvim'
+
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+
 
 zplug "djui/alias-tips"
 zplug "unixorn/git-extra-commands"
 zplug "skx/sysadmin-util"
 
-export EDITOR='nvim'
 
 # Adds aliases to open your current repo & branch on github.
 zplug "peterhurford/git-it-on.zsh"
 
+# Supports oh-my-zsh plugins and the like
 zplug "plugins/pip",   from:oh-my-zsh
 zplug "plugins/python",   from:oh-my-zsh
 zplug "plugins/github",   from:oh-my-zsh
@@ -22,13 +33,15 @@ zplug "plugins/docker",   from:oh-my-zsh
 zplug "plugins/vagrant",   from:oh-my-zsh
 zplug "plugins/colorize",   from:oh-my-zsh
 zplug "plugins/colored-man-pages",   from:oh-my-zsh
-
 zplug "plugins/npm",   from:oh-my-zsh
 zplug "plugins/systemadmin",   from:oh-my-zsh
 zplug "plugins/emacs",   from:oh-my-zsh
 zplug "plugins/z",   from:oh-my-zsh
 zplug "plugins/pip",   from:oh-my-zsh
 zplug "zsh-users/zsh-completions",   from:oh-my-zsh
+
+# Also prezto
+# zplug "modules/prompt", from:prezto
 
 zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
@@ -54,11 +67,7 @@ zplug "junegunn/fzf-bin", \
     rename-to:fzf, \
     use:"*darwin*amd64*"
 
-# Supports oh-my-zsh plugins and the like
-# zplug "plugins/git",   from:oh-my-zsh
 
-# Also prezto
-# zplug "modules/prompt", from:prezto
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
@@ -93,14 +102,6 @@ zplug "b4b4r07/httpstat", \
     use:'(*).sh', \
     rename-to:'$1'
 
-# Group dependencies
-# Load "emoji-cli" if "jq" is installed in this example
-zplug "stedolan/jq", \
-    from:gh-r, \
-    as:command, \
-    rename-to:jq
-zplug "b4b4r07/emoji-cli", \
-    on:"stedolan/jq"
 # Note: To specify the order in which packages should be loaded, use the defer
 #       tag described in the next section
 
