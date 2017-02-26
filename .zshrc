@@ -62,7 +62,7 @@ zplug "junegunn/fzf-bin", \
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/git",   from:oh-my-zsh
 
- f# Also prezto
+# Also prezto
 # zplug "modules/prompt", from:prezto
 
 # Load if "if" tag returns true
