@@ -72,7 +72,7 @@ zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
     rename-to:fzf, \
-    use:"*darwin*amd64*"
+    use:"*linux*amd64*"
 
 
 
