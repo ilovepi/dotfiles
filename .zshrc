@@ -114,7 +114,7 @@ zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "~/.zsh", from:local
 
 # Load theme file
-zplug 'dracula/zsh', as:theme
+zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
