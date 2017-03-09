@@ -82,7 +82,7 @@ zplug "junegunn/fzf-bin", \
 
 
 # Load if "if" tag returns true
-zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "lib/clipboard", from:oh-my-zsh 
 
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
