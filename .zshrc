@@ -1,3 +1,10 @@
+#check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+	git clone https://github.com/zplug/zplug ~/.zplug
+	source ~/.zplug/init.zsh && zplug update --self
+fi
+
+
 source ~/.zplug/init.zsh
 
 eval `keychain --eval --agents ssh --inherit any id_rsa`
