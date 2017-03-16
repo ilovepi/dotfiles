@@ -6,7 +6,6 @@ fi
 
 source ~/.zplug/init.zsh
 
-eval `keychain --eval --agents ssh --inherit any id_rsa`
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 export EDITOR='nvim'
@@ -43,6 +42,8 @@ zplug "plugins/z",   from:oh-my-zsh
 zplug "plugins/zsh-completions",   from:oh-my-zsh
 zplug "plugins/common-aliases",   from:oh-my-zsh
 zplug "plugins/history",   from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh
+#zplug "plugins/git-extras",   from:oh-my-zsh
 
 
 zplug "djui/alias-tips"
@@ -131,6 +132,7 @@ zplug "b4b4r07/httpstat", \
 # after executing compinit command and sourcing other plugins
 # (If the defer tag is given 2 or above, run after compinit command)
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 
 # Can manage local plugins
 zplug "~/.zsh", from:local
@@ -154,7 +156,7 @@ zstyle ':completion:*:descriptions' format '%d'
 zstyle ':completion:*:options' verbose yes
 zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
-# Use cache completionj
+# Use cache completion
  # apt-get, dpkg (Debian), rpm (Redhat), urpmi (Mandrake), perl -M,
  # bogofilter (zsh 4.2.1 >=), fink, mac_apps...
  zstyle ':completion:*' use-cache true
@@ -195,7 +197,7 @@ zstyle ':completion:*:options' prefix-needed yes
  
   # Enable math functions
   zmodload zsh/mathfunc
-  j
+  
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
