@@ -82,7 +82,7 @@ zplug "k4rthik/git-cal", as:command, frozen:1
 
 # Grab binaries from GitHub Releases
 # and rename with the "rename-to:" tag
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd64*"
+zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux_amd64*"
 
 
 
