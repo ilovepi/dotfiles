@@ -1,6 +1,11 @@
+#check if zplug is installed
+if [[ ! -d ~/.zplug ]]; then
+	git clone https://github.com/zplug/zplug ~/.zplug
+	source ~/.zplug/init.zsh && zplug update --self
+fi
+
 source ~/.zplug/init.zsh
 
-eval `keychain --eval --agents ssh --inherit any id_rsa`
 alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 export EDITOR='nvim'
@@ -36,6 +41,9 @@ zplug "plugins/emacs",   from:oh-my-zsh
 zplug "plugins/z",   from:oh-my-zsh
 zplug "plugins/zsh-completions",   from:oh-my-zsh
 zplug "plugins/common-aliases",   from:oh-my-zsh
+zplug "plugins/history",   from:oh-my-zsh
+zplug "plugins/git",   from:oh-my-zsh
+#zplug "plugins/git-extras",   from:oh-my-zsh
 
 
 zplug "djui/alias-tips"
@@ -51,8 +59,16 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "rimraf/k"
 zplug "unixorn/jpb.zshplugin"
 
+
 # Make sure to use double quotes
 zplug "zsh-users/zsh-history-substring-search"
+
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+
+
 
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
@@ -71,7 +87,7 @@ zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf, use:"*linux*amd6
 
 
 # Load if "if" tag returns true
-zplug "lib/clipboard", from:oh-my-zsh, if:"[[ $OSTYPE == *darwin* ]]"
+zplug "lib/clipboard", from:oh-my-zsh 
 
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
@@ -109,6 +125,7 @@ zplug "b4b4r07/httpstat", \
 # after executing compinit command and sourcing other plugins
 # (If the defer tag is given 2 or above, run after compinit command)
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 
 # Can manage local plugins
 zplug "~/.zsh", from:local
@@ -124,5 +141,58 @@ if ! zplug check --verbose; then
     fi
 fi
 
+
+
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:messages' format '%d'
+zstyle ':completion:*:descriptions' format '%d'
+zstyle ':completion:*:options' verbose yes
+zstyle ':completion:*:values' verbose yes
+zstyle ':completion:*:options' prefix-needed yes
+# Use cache completion
+ # apt-get, dpkg (Debian), rpm (Redhat), urpmi (Mandrake), perl -M,
+ # bogofilter (zsh 4.2.1 >=), fink, mac_apps...
+ zstyle ':completion:*' use-cache true
+ zstyle ':completion:*:default' menu select=1
+ zstyle ':completion:*' matcher-list \
+         '' \
+             'm:{a-z}={A-Z}' \
+                 'l:|=* r:|[.,_-]=* r:|=* m:{a-z}={A-Z}'
+             # sudo completions
+             zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+                     /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+                 zstyle ':completion:*' menu select
+                 zstyle ':completion:*' keep-prefix
+                 zstyle ':completion:*' completer _oldlist _complete _match _ignored \
+                         _approximate _list _history
+
+                     autoload -U compinit; compinit -d ~/.zcompdump
+
+                     # Original complete functions
+                     compdef '_files -g "*.hs"' runhaskell
+                     compdef _man w3mman
+                     compdef _tex platex
+
+
+# cd search path
+ cdpath=($HOME)
+
+ zstyle ':completion:*:processes' command "ps -u $USER -o pid,stat,%cpu,%mem,cputime,command"
+
+
+
+  #Share zsh histories
+  HISTFILE=$HOME/.zsh-history
+  HISTSIZE=10000
+  SAVEHIST=50000
+  setopt inc_append_history
+  setopt share_history
+ 
+  # Enable math functions
+  zmodload zsh/mathfunc
+  
+
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
