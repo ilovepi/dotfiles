@@ -85,8 +85,7 @@ zplug "k4rthik/git-cal", as:command, frozen:1
 zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
-    rename-to:fzf, \
-    use:"*linux*amd64*"
+    rename-to:fzf 
 
 
 # Load if "if" tag returns true
