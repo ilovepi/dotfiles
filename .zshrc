@@ -26,24 +26,24 @@ export LC_ALL="en_US.UTF-8"
 zplug "peterhurford/git-it-on.zsh"
 
 # Supports oh-my-zsh plugins and the like
-zplug "plugins/pip",   from:oh-my-zsh
-zplug "plugins/python",   from:oh-my-zsh
-zplug "plugins/github",   from:oh-my-zsh
-zplug "plugins/rsync",   from:oh-my-zsh
-zplug "plugins/tmux",   from:oh-my-zsh
-zplug "plugins/docker",   from:oh-my-zsh
-zplug "plugins/vagrant",   from:oh-my-zsh
-zplug "plugins/colorize",   from:oh-my-zsh
-zplug "plugins/colored-man-pages",   from:oh-my-zsh
-zplug "plugins/npm",   from:oh-my-zsh
-zplug "plugins/systemadmin",   from:oh-my-zsh
-zplug "plugins/emacs",   from:oh-my-zsh
-zplug "plugins/z",   from:oh-my-zsh
+zplug "plugins/pip",               from:oh-my-zsh
+zplug "plugins/python",            from:oh-my-zsh
+zplug "plugins/github",            from:oh-my-zsh
+zplug "plugins/rsync",             from:oh-my-zsh
+zplug "plugins/tmux",              from:oh-my-zsh
+zplug "plugins/docker",            from:oh-my-zsh
+zplug "plugins/vagrant",           from:oh-my-zsh
+zplug "plugins/colorize",          from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+zplug "plugins/npm",               from:oh-my-zsh
+zplug "plugins/systemadmin",       from:oh-my-zsh
+zplug "plugins/emacs",             from:oh-my-zsh
+zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/zsh-completions",   from:oh-my-zsh
-zplug "plugins/common-aliases",   from:oh-my-zsh
-zplug "plugins/history",   from:oh-my-zsh
-zplug "plugins/git",   from:oh-my-zsh
-#zplug "plugins/git-extras",   from:oh-my-zsh
+zplug "plugins/common-aliases",    from:oh-my-zsh
+zplug "plugins/history",           from:oh-my-zsh
+zplug "plugins/git",               from:oh-my-zsh
+#zplug "plugins/git-extras",       from:oh-my-zsh
 
 
 zplug "djui/alias-tips"
