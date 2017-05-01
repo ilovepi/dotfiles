@@ -94,7 +94,7 @@ zplug "lib/clipboard", from:oh-my-zsh
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
 # ZPLUG_SUDO_PASSWORD="********"
-ZPLUG_SUDO_PASSWORD=""
+ZPLUG_SUDO_PASSWORD="a"
 zplug "jhawthorn/fzy", as:command, rename-to:fzy, hook-build:"make && sudo make install"
 
 # Supports checking out a specific branch/tag/commit
