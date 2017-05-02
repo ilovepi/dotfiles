@@ -43,7 +43,7 @@ zplug "plugins/zsh-completions",   from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
-#zplug "plugins/git-extras",       from:oh-my-zsh
+zplug "plugins/git-extras",       from:oh-my-zsh
 
 
 zplug "djui/alias-tips"
@@ -185,8 +185,8 @@ zstyle ':completion:*:options' prefix-needed yes
 
   #Share zsh histories
   HISTFILE=$HOME/.zsh-history
-  HISTSIZE=10000
-  SAVEHIST=50000
+  HISTSIZE=100000
+  SAVEHIST=500000
   setopt inc_append_history
   setopt share_history
  
