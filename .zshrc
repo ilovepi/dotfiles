@@ -10,14 +10,14 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 export EDITOR='nvim'
 
-export LANG="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+#export LANG="en_US.UTF-8"
+#export LC_COLLATE="en_US.UTF-8"
+#export LC_CTYPE="en_US.UTF-8"
+#export LC_MESSAGES="en_US.UTF-8"
+#export LC_MONETARY="en_US.UTF-8"
+#export LC_NUMERIC="en_US.UTF-8"
+#export LC_TIME="en_US.UTF-8"
+#export LC_ALL="en_US.UTF-8"
 
 
 
@@ -43,7 +43,7 @@ zplug "plugins/zsh-completions",   from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
-#zplug "plugins/git-extras",       from:oh-my-zsh
+zplug "plugins/git-extras",       from:oh-my-zsh
 
 
 zplug "djui/alias-tips"
@@ -94,7 +94,7 @@ zplug "lib/clipboard", from:oh-my-zsh
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
 # ZPLUG_SUDO_PASSWORD="********"
-ZPLUG_SUDO_PASSWORD=""
+ZPLUG_SUDO_PASSWORD="a"
 zplug "jhawthorn/fzy", as:command, rename-to:fzy, hook-build:"make && sudo make install"
 
 # Supports checking out a specific branch/tag/commit
@@ -185,8 +185,8 @@ zstyle ':completion:*:options' prefix-needed yes
 
   #Share zsh histories
   HISTFILE=$HOME/.zsh-history
-  HISTSIZE=10000
-  SAVEHIST=50000
+  HISTSIZE=100000
+  SAVEHIST=500000
   setopt inc_append_history
   setopt share_history
  
