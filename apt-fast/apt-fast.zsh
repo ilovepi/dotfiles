@@ -2,8 +2,6 @@
 
 # superuser operations ######################################################
 
-
-alias af='sudo apt-fast'            # age - but without sudo
 alias afa='sudo apt-fast autoclean' # aac
 alias afb='sudo apt-fast build-dep' # abd
 alias afc='sudo apt-fast clean'     # adc
@@ -17,7 +15,6 @@ alias afug='sudo apt-fast upgrade' # ag
 alias afuu='sudo apt-fast update && sudo apt-fast upgrade'      #adg
 alias afar='sudo apt-fast autoremove'
 
-compdef _af  af='sudo apt-fast'
 compdef _afa afa='sudo apt-fast autoclean'
 compdef _afb afb='sudo apt-fast build-dep'
 compdef _afc afc='sudo apt-fast clean'
