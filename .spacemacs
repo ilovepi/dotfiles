@@ -326,6 +326,9 @@ you should place your code here."
   ;; navigate visual lines properly
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
+
+  (setq magit-repository-directories '("~/"))
+
   )
 
 ;; Do not write anything past this comment. This is where Emacs will

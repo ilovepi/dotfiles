@@ -20,8 +20,6 @@ export EDITOR='nvim'
 #export LC_ALL="en_US.UTF-8"
 
 
-
-
 # Adds aliases to open your current repo & branch on github.
 zplug "peterhurford/git-it-on.zsh"
 
@@ -43,7 +41,8 @@ zplug "plugins/zsh-completions",   from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
-zplug "plugins/git-extras",       from:oh-my-zsh
+zplug "plugins/git-extras",        from:oh-my-zsh
+zplug "plugins/git-flow",          from:oh-my-zsh
 
 
 zplug "djui/alias-tips"
@@ -61,12 +60,23 @@ zplug "unixorn/jpb.zshplugin"
 
 
 # Make sure to use double quotes
-zplug "zsh-users/zsh-history-substring-search"
+#zplug "zsh-users/zsh-history-substring-search"
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+#
+#autoload -U up-line-or-beginning-search
+#autoload -U down-line-or-beginning-search
+#zle -N up-line-or-beginning-search
+#zle -N down-line-or-beginning-search
+#bindkey "^[OA" up-line-or-beginning-search # Up
+#bindkey "^[OB" down-line-or-beginning-search # Down
+
+
+#bindkey '^[OA' history-substring-search-up
+##bindkey '^[OB' history-substring-search-down
+#bindkey '^[OA' down-line-or-history
+#bindkey '^[OB' up-line-or-history
+#bindkey -M emacs '^P' history-substring-search-up
+#bindkey -M emacs '^N' history-substring-search-down
 
 
 
@@ -90,6 +100,7 @@ zplug "junegunn/fzf-bin", \
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
+zplug "lib/keybindings", from:oh-my-zsh 
 
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
@@ -132,7 +143,7 @@ zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 # Can manage local plugins
 zplug "~/.zsh", from:local
 
-# Load theme file
+# Load textrasheme file
 zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
 
 # Install plugins if there are plugins that have not been installed
@@ -152,28 +163,28 @@ zstyle ':completion:*:options' verbose yes
 zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
 # Use cache completion
- # apt-get, dpkg (Debian), rpm (Redhat), urpmi (Mandrake), perl -M,
- # bogofilter (zsh 4.2.1 >=), fink, mac_apps...
- zstyle ':completion:*' use-cache true
- zstyle ':completion:*:default' menu select=1
- zstyle ':completion:*' matcher-list \
-         '' \
-             'm:{a-z}={A-Z}' \
-                 'l:|=* r:|[.,_-]=* r:|=* m:{a-z}={A-Z}'
-             # sudo completions
-             zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                     /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-                 zstyle ':completion:*' menu select
-                 zstyle ':completion:*' keep-prefix
-                 zstyle ':completion:*' completer _oldlist _complete _match _ignored \
-                         _approximate _list _history
+# apt-get, dpkg (Debian), rpm (Redhat), urpmi (Mandrake), perl -M,
+# bogofilter (zsh 4.2.1 >=), fink, mac_apps...
+zstyle ':completion:*' use-cache true
+zstyle ':completion:*:default' menu select=1
+zstyle ':completion:*' matcher-list \
+	'' \
+	'm:{a-z}={A-Z}' \
+	'l:|=* r:|[.,_-]=* r:|=* m:{a-z}={A-Z}'
 
-                     autoload -U compinit; compinit -d ~/.zcompdump
+# sudo completions
+zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
+	/usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
+zstyle ':completion:*' menu select
+zstyle ':completion:*' keep-prefix
+zstyle ':completion:*' completer _oldlist _complete _match _ignored \
+	_approximate _list _history
 
-                     # Original complete functions
-                     compdef '_files -g "*.hs"' runhaskell
-                     compdef _man w3mman
-                     compdef _tex platex
+autoload -U compinit; compinit -d ~/.zcompdump
+# Original complete functions
+ compdef '_files -g "*.hs"' runhaskell
+ compdef _man w3mman
+ compdef _tex platex
 
 
 # cd search path
