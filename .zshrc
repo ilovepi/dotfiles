@@ -21,7 +21,6 @@ export EDITOR='nvim'
 
 
 
-
 # Adds aliases to open your current repo & branch on github.
 zplug "peterhurford/git-it-on.zsh"
 
@@ -61,10 +60,10 @@ zplug "unixorn/jpb.zshplugin"
 
 
 # Make sure to use double quotes
-zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-history-substring-search", defer:3
 
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 
@@ -185,10 +184,11 @@ zstyle ':completion:*:options' prefix-needed yes
 
   #Share zsh histories
   HISTFILE=$HOME/.zsh-history
-  HISTSIZE=100000
-  SAVEHIST=500000
+  HISTSIZE=10000
+  SAVEHIST=50000
   setopt inc_append_history
   setopt share_history
+  setopt hist_ignore_dups
  
   # Enable math functions
   zmodload zsh/mathfunc
