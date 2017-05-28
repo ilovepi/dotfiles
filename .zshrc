@@ -6,9 +6,16 @@ fi
 
 source ~/.zplug/init.zsh
 
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-export EDITOR='nvim'
+if ! type "$nvim" > /dev/null; then
+    export EDITOR='vim'
+else
+    export EDITOR='nvim'
+
+fi
+
+
+alias zshconfig="edit ~/.zshrc"
+alias ohmyzsh="edit ~/.oh-my-zsh"
 
 #export LANG="en_US.UTF-8"
 #export LC_COLLATE="en_US.UTF-8"
