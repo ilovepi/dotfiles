@@ -60,12 +60,12 @@ zplug "unixorn/jpb.zshplugin"
 
 
 # Make sure to use double quotes
-zplug "zsh-users/zsh-history-substring-search", defer:3
+#zplug "zsh-users/zsh-history-substring-search", defer:3
 
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+#bindkey '^[OA' history-substring-search-up
+#bindkey '^[OB' history-substring-search-down
+#bindkey -M emacs '^P' history-substring-search-up
+#bindkey -M emacs '^N' history-substring-search-down
 
 
 
@@ -89,6 +89,10 @@ zplug "junegunn/fzf-bin", \
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
+zplug "lib/key-bindings", from:oh-my-zsh 
+zplug "lib/termsupport", from:oh-my-zsh 
+zplug "lib/completion", from:oh-my-zsh 
+zplug "lib/compfix", from:oh-my-zsh 
 
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
@@ -142,57 +146,27 @@ if ! zplug check --verbose; then
     fi
 fi
 
-
-
 zstyle ':completion:*' group-name ''
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:descriptions' format '%d'
 zstyle ':completion:*:options' verbose yes
 zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
-# Use cache completion
- # apt-get, dpkg (Debian), rpm (Redhat), urpmi (Mandrake), perl -M,
- # bogofilter (zsh 4.2.1 >=), fink, mac_apps...
- zstyle ':completion:*' use-cache true
- zstyle ':completion:*:default' menu select=1
- zstyle ':completion:*' matcher-list \
-         '' \
-             'm:{a-z}={A-Z}' \
-                 'l:|=* r:|[.,_-]=* r:|=* m:{a-z}={A-Z}'
-             # sudo completions
-             zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-                     /usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-                 zstyle ':completion:*' menu select
-                 zstyle ':completion:*' keep-prefix
-                 zstyle ':completion:*' completer _oldlist _complete _match _ignored \
-                         _approximate _list _history
-
-                     autoload -U compinit; compinit -d ~/.zcompdump
-
-                     # Original complete functions
-                     compdef '_files -g "*.hs"' runhaskell
-                     compdef _man w3mman
-                     compdef _tex platex
 
 
 # cd search path
- cdpath=($HOME)
+cdpath=($HOME)
 
- zstyle ':completion:*:processes' command "ps -u $USER -o pid,stat,%cpu,%mem,cputime,command"
+#Share zsh histories
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=10000
+SAVEHIST=50000
+setopt inc_append_history
+setopt share_history
+setopt hist_ignore_dups
 
-
-
-  #Share zsh histories
-  HISTFILE=$HOME/.zsh-history
-  HISTSIZE=10000
-  SAVEHIST=50000
-  setopt inc_append_history
-  setopt share_history
-  setopt hist_ignore_dups
- 
-  # Enable math functions
-  zmodload zsh/mathfunc
-  
+# Enable math functions
+zmodload zsh/mathfunc
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
