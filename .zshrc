@@ -6,9 +6,16 @@ fi
 
 source ~/.zplug/init.zsh
 
-alias zshconfig="nvim ~/.zshrc"
-alias ohmyzsh="nvim ~/.oh-my-zsh"
-export EDITOR='nvim'
+if ! type "$nvim" > /dev/null; then
+    export EDITOR='vim'
+else
+    export EDITOR='nvim'
+
+fi
+
+
+alias zshconfig="edit ~/.zshrc"
+alias ohmyzsh="edit ~/.oh-my-zsh"
 
 export LANG="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -18,7 +25,6 @@ export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-
 
 # Adds aliases to open your current repo & branch on github.
 zplug "peterhurford/git-it-on.zsh"
@@ -59,18 +65,14 @@ zplug "unixorn/jpb.zshplugin"
 
 
 # Make sure to use double quotes
-zplug "zsh-users/zsh-history-substring-search", defer:3
+#zplug "zsh-users/zsh-history-substring-search", defer:3
 
-#bindkey -v
-
-#bindkey '^[OA' history-substring-search-up
-#bindkey '^[OB' history-substring-search-down
-#bindkey '^[OA' down-line-or-history
-#bindkey '^[OB' up-line-or-history
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
 #bindkey -M emacs '^P' history-substring-search-up
 #bindkey -M emacs '^N' history-substring-search-down
-#bindkey -M vicmd 'k' history-substring-search-up
-#bindkey -M vicmd 'j' history-substring-search-down
+
+
 
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
@@ -92,7 +94,10 @@ zplug "junegunn/fzf-bin", \
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
-#zplug "lib/keybindings", from:oh-my-zsh 
+zplug "lib/key-bindings", from:oh-my-zsh 
+zplug "lib/termsupport", from:oh-my-zsh 
+zplug "lib/completion", from:oh-my-zsh 
+zplug "lib/compfix", from:oh-my-zsh 
 
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
@@ -130,7 +135,7 @@ zplug "b4b4r07/httpstat", \
 # after executing compinit command and sourcing other plugins
 # (If the defer tag is given 2 or above, run after compinit command)
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
-#zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
+# zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 
 # Can manage local plugins
 zplug "~/.zsh", from:local
@@ -243,6 +248,7 @@ zstyle ':completion:*:descriptions' format '%d'
 zstyle ':completion:*:options' verbose yes
 zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
+
 
 # cd search path
  cdpath=($HOME)
