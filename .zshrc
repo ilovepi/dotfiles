@@ -10,14 +10,14 @@ alias zshconfig="nvim ~/.zshrc"
 alias ohmyzsh="nvim ~/.oh-my-zsh"
 export EDITOR='nvim'
 
-#export LANG="en_US.UTF-8"
-#export LC_COLLATE="en_US.UTF-8"
-#export LC_CTYPE="en_US.UTF-8"
-#export LC_MESSAGES="en_US.UTF-8"
-#export LC_MONETARY="en_US.UTF-8"
-#export LC_NUMERIC="en_US.UTF-8"
-#export LC_TIME="en_US.UTF-8"
-#export LC_ALL="en_US.UTF-8"
+export LANG="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 
 
 # Adds aliases to open your current repo & branch on github.
@@ -50,7 +50,7 @@ zplug "unixorn/git-extra-commands"
 zplug "skx/sysadmin-util"
 
 # Also prezto
-# zplug "modules/prompt", from:prezto
+ #zplug "modules/prompt", from:prezto
 
 zplug "sharat87/pip-app"
 zplug "chrissicool/zsh-256color"
@@ -60,9 +60,9 @@ zplug "unixorn/jpb.zshplugin"
 
 
 # Make sure to use double quotes
-#zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-history-substring-search", defer:3
 
-#
+
 #autoload -U up-line-or-beginning-search
 #autoload -U down-line-or-beginning-search
 #zle -N up-line-or-beginning-search
@@ -70,15 +70,15 @@ zplug "unixorn/jpb.zshplugin"
 #bindkey "^[OA" up-line-or-beginning-search # Up
 #bindkey "^[OB" down-line-or-beginning-search # Down
 
-
-#bindkey '^[OA' history-substring-search-up
-##bindkey '^[OB' history-substring-search-down
+#bindkey -v
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 #bindkey '^[OA' down-line-or-history
 #bindkey '^[OB' up-line-or-history
-#bindkey -M emacs '^P' history-substring-search-up
-#bindkey -M emacs '^N' history-substring-search-down
-
-
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
@@ -100,7 +100,7 @@ zplug "junegunn/fzf-bin", \
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
-zplug "lib/keybindings", from:oh-my-zsh 
+#zplug "lib/keybindings", from:oh-my-zsh 
 
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
@@ -143,7 +143,7 @@ zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 # Can manage local plugins
 zplug "~/.zsh", from:local
 
-# Load textrasheme file
+# Load theme file
 zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
 
 # Install plugins if there are plugins that have not been installed
@@ -154,52 +154,17 @@ if ! zplug check --verbose; then
     fi
 fi
 
-
-
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:descriptions' format '%d'
-zstyle ':completion:*:options' verbose yes
-zstyle ':completion:*:values' verbose yes
-zstyle ':completion:*:options' prefix-needed yes
-# Use cache completion
-# apt-get, dpkg (Debian), rpm (Redhat), urpmi (Mandrake), perl -M,
-# bogofilter (zsh 4.2.1 >=), fink, mac_apps...
-zstyle ':completion:*' use-cache true
-zstyle ':completion:*:default' menu select=1
-zstyle ':completion:*' matcher-list \
-	'' \
-	'm:{a-z}={A-Z}' \
-	'l:|=* r:|[.,_-]=* r:|=* m:{a-z}={A-Z}'
-
-# sudo completions
-zstyle ':completion:*:sudo:*' command-path /usr/local/sbin /usr/local/bin \
-	/usr/sbin /usr/bin /sbin /bin /usr/X11R6/bin
-zstyle ':completion:*' menu select
-zstyle ':completion:*' keep-prefix
-zstyle ':completion:*' completer _oldlist _complete _match _ignored \
-	_approximate _list _history
-
-autoload -U compinit; compinit -d ~/.zcompdump
-# Original complete functions
- compdef '_files -g "*.hs"' runhaskell
- compdef _man w3mman
- compdef _tex platex
-
-
 # cd search path
  cdpath=($HOME)
-
- zstyle ':completion:*:processes' command "ps -u $USER -o pid,stat,%cpu,%mem,cputime,command"
-
 
 
   #Share zsh histories
   HISTFILE=$HOME/.zsh-history
-  HISTSIZE=100000
-  SAVEHIST=500000
+  HISTSIZE=10000
+  SAVEHIST=50000
   setopt inc_append_history
   setopt share_history
+  setopt hist_ignore_dups
  
   # Enable math functions
   zmodload zsh/mathfunc
@@ -209,3 +174,4 @@ autoload -U compinit; compinit -d ~/.zcompdump
 zplug load --verbose
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
