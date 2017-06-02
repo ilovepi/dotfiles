@@ -1,6 +1,6 @@
 [user]
-	name = Paul Kirth
-	email = pk1574@gmail.com
+    name = Paul Kirth
+    email = pk1574@gmail.com
 [diff]
     tool = meld
 [difftool]
