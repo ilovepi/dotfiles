@@ -10,7 +10,6 @@ if ! type "$nvim" > /dev/null; then
     export EDITOR='vim'
 else
     export EDITOR='nvim'
-
 fi
 
 
@@ -58,7 +57,7 @@ zplug "skx/sysadmin-util"
 
 
 zplug "sharat87/pip-app"
-zplug "chrissicool/zsh-256color"
+#zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "rimraf/k"
 zplug "unixorn/jpb.zshplugin"
