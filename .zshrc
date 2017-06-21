@@ -6,6 +6,8 @@ fi
 
 source ~/.zplug/init.zsh
 
+export SHELL=/usr/bin/zsh
+
 if ! type "$nvim" > /dev/null; then
     export EDITOR='vim'
 else
@@ -60,7 +62,7 @@ zplug "sharat87/pip-app"
 #zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "rimraf/k"
-zplug "unixorn/jpb.zshplugin"
+#zplug "unixorn/jpb.zshplugin"
 
 
 # Make sure to use double quotes
@@ -95,8 +97,13 @@ zplug "junegunn/fzf-bin", \
 zplug "lib/clipboard", from:oh-my-zsh 
 zplug "lib/key-bindings", from:oh-my-zsh 
 zplug "lib/termsupport", from:oh-my-zsh 
+zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh 
 zplug "lib/compfix", from:oh-my-zsh 
+
+
+eval `dircolors $HOME/dir_colors/dircolors.256dark`
+
 
 # Run a command after a plugin is installed/updated
 # Provided, it requires to set the variable like the following:
