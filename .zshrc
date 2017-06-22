@@ -275,7 +275,7 @@ zstyle ':completion:*:descriptions' format '%d'
 zstyle ':completion:*:options' verbose yes
 zstyle ':completion:*:values' verbose yes
 zstyle ':completion:*:options' prefix-needed yes
-
+zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # cd search path
  cdpath=($HOME)
