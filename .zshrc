@@ -266,6 +266,15 @@ setopt hist_ignore_dups
 # Enable math functions
 zmodload zsh/mathfunc
 
+if [[ ! -d ~/.dircolors ]]; then
+    git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
+    ln -s ~/.dircolors ~/dir_colors/dircolors.ansi-dark
+    ln -s ~/.dir_colors ~/.dircolors
+end
+
+#eval `gdircolors $HOME/.dircolors`
+
+
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
