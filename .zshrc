@@ -93,6 +93,27 @@ zplug "junegunn/fzf-bin", \
     rename-to:fzf 
 
 
+if [[ ! -d ~/.dircolors ]]; then
+    git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
+    ln -s ~/.dircolors ~/dir_colors/dircolors.ansi-dark
+    ln -s ~/.dir_colors ~/.dircolors
+end
+
+
+case `uname` in
+  Darwin)
+    # commandsj for OS X go here
+        eval `gdircolors $HOME/.dircolors`
+         ;;
+  Linux)
+    # commands for Linux go here
+        eval `dircolors $HOME/.dircolors`
+                 ;;
+  FreeBSD)
+    # commands for FreeBSD go here
+        ;;
+esac
+
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
 zplug "lib/key-bindings", from:oh-my-zsh 
@@ -102,7 +123,6 @@ zplug "lib/completion", from:oh-my-zsh
 zplug "lib/compfix", from:oh-my-zsh 
 
 
-eval `dircolors $HOME/dir_colors/dircolors.256dark`
 
 
 # Run a command after a plugin is installed/updated
@@ -271,14 +291,6 @@ setopt hist_ignore_dups
 
 # Enable math functions
 zmodload zsh/mathfunc
-
-if [[ ! -d ~/.dircolors ]]; then
-    git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
-    ln -s ~/.dircolors ~/dir_colors/dircolors.ansi-dark
-    ln -s ~/.dir_colors ~/.dircolors
-end
-
-#eval `gdircolors $HOME/.dircolors`
 
 
 # Then, source plugins and add commands to $PATH
