@@ -64,7 +64,6 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "rimraf/k"
 #zplug "unixorn/jpb.zshplugin"
 
-
 # Make sure to use double quotes
 #zplug "zsh-users/zsh-history-substring-search", defer:3
 
@@ -93,26 +92,23 @@ zplug "junegunn/fzf-bin", \
     rename-to:fzf 
 
 
-if [[ ! -d ~/.dircolors ]]; then
-    git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
-    ln -s ~/.dircolors ~/dir_colors/dircolors.ansi-dark
-    ln -s ~/.dir_colors ~/.dircolors
-end
+
+#if [[ ! -d ~/dir_colors ]]; then
+    #git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
+    #ln -s ~/dir_colors/dircolors.ansi-dark ~/.dircolors
+    #ln -s ~/.dircolors ~/.dir_colors
+#end
 
 
-case `uname` in
-  Darwin)
-    # commandsj for OS X go here
-        eval `gdircolors $HOME/.dircolors`
-         ;;
-  Linux)
-    # commands for Linux go here
-        eval `dircolors $HOME/.dircolors`
-                 ;;
-  FreeBSD)
-    # commands for FreeBSD go here
-        ;;
-esac
+#if [[ "$OSTYPE" == darwin*  ]]; then
+    ## commands for OS X go here
+    #eval `gdircolors $HOME/.dircolors`
+#else
+    ## commands for Linux go here
+    #eval `dircolors $HOME/.dircolors`
+#fi
+
+
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
