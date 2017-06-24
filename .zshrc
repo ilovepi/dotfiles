@@ -1,3 +1,5 @@
+zmodload zsh/zprof
+
 #check if zplug is installed
 if [[ ! -d ~/.zplug ]]; then
 	git clone https://github.com/zplug/zplug ~/.zplug
@@ -64,16 +66,6 @@ zplug "zsh-users/zsh-autosuggestions"
 zplug "rimraf/k"
 #zplug "unixorn/jpb.zshplugin"
 
-# Make sure to use double quotes
-#zplug "zsh-users/zsh-history-substring-search", defer:3
-
-#bindkey '^[[A' history-substring-search-up
-#bindkey '^[[B' history-substring-search-down
-#bindkey -M emacs '^P' history-substring-search-up
-#bindkey -M emacs '^N' history-substring-search-down
-
-
-
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
 zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
@@ -89,26 +81,24 @@ zplug "k4rthik/git-cal", as:command, frozen:1
 zplug "junegunn/fzf-bin", \
     from:gh-r, \
     as:command, \
-    rename-to:fzf 
+    rename-to:fzf
 
 
 
-#if [[ ! -d ~/dir_colors ]]; then
-    #git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
-    #ln -s ~/dir_colors/dircolors.ansi-dark ~/.dircolors
-    #ln -s ~/.dircolors ~/.dir_colors
-#end
+if [[ ! -d ~/dir_colors ]] ; then
+    git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
+    ln -s ~/dir_colors/dircolors.ansi-dark ~/.dircolors
+    ln -s ~/.dircolors ~/.dir_colors
+fi
 
 
-#if [[ "$OSTYPE" == darwin*  ]]; then
-    ## commands for OS X go here
-    #eval `gdircolors $HOME/.dircolors`
-#else
-    ## commands for Linux go here
-    #eval `dircolors $HOME/.dircolors`
-#fi
-
-
+if [[ "$OSTYPE" == darwin*  ]]; then
+    # commands for OS X go here
+    eval `gdircolors $HOME/.dircolors`
+else
+    # commands for Linux go here
+    eval `dircolors $HOME/.dircolors`
+fi
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
@@ -117,8 +107,6 @@ zplug "lib/termsupport", from:oh-my-zsh
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh 
 zplug "lib/compfix", from:oh-my-zsh 
-
-
 
 
 # Run a command after a plugin is installed/updated
