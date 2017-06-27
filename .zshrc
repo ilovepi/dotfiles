@@ -267,8 +267,8 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # Share zsh histories
 HISTFILE=$HOME/.zsh-history
-HISTSIZE=10000
-SAVEHIST=50000
+HISTSIZE=100000
+SAVEHIST=500000
 setopt inc_append_history
 setopt share_history
 setopt hist_ignore_dups
