@@ -226,6 +226,7 @@ setopt interactive_comments
 setopt rm_star_wait
 # Enable extended glob
 setopt extended_glob
+unsetopt nomatch
 # Note: It is a lot of errors in script
 # setopt no_unset
 # Prompt substitution
@@ -279,5 +280,8 @@ zmodload zsh/mathfunc
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
+
+unalias ag
+
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
