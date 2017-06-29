@@ -16,7 +16,6 @@ else
     export EDITOR='nvim'
 fi
 
-
 alias zshconfig="edit ~/.zshrc"
 alias ohmyzsh="edit ~/.oh-my-zsh"
 
@@ -46,7 +45,6 @@ zplug "plugins/npm",               from:oh-my-zsh
 zplug "plugins/systemadmin",       from:oh-my-zsh
 zplug "plugins/emacs",             from:oh-my-zsh
 zplug "plugins/z",                 from:oh-my-zsh
-zplug "plugins/zsh-completions",   from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
@@ -61,10 +59,11 @@ zplug "skx/sysadmin-util"
 
 
 zplug "sharat87/pip-app"
-#zplug "chrissicool/zsh-256color"
 zplug "zsh-users/zsh-autosuggestions"
+zplug "zsh-users/zsh-completions"
 zplug "rimraf/k"
 #zplug "unixorn/jpb.zshplugin"
+#zplug "chrissicool/zsh-256color"
 
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
@@ -281,7 +280,7 @@ zmodload zsh/mathfunc
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-unalias ag
+#unalias ag
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
