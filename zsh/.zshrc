@@ -249,7 +249,7 @@ setopt auto_pushd
 setopt pushd_minus
 setopt pushd_ignore_dups
 # Check original command in alias completion
-setopt complete_aliases
+#setopt complete_aliases
 unsetopt hist_verify
 # }}}
 
