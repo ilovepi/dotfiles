@@ -60,7 +60,7 @@ zplug "skx/sysadmin-util"
 
 zplug "yonchu/vimman"
 
-zplug "joel-porquet/zsh-dircolors-solarized"
+zplug "joel-porquet/zsh-dircolors-solarized", hook-build:"setupsolarized dircolors.ansi-dark"
 
 zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
