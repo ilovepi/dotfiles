@@ -9,6 +9,7 @@ fi
 source ~/.zplug/init.zsh
 
 export SHELL=/usr/bin/zsh
+export TERM=xterm-256color
 
 if ! type "$nvim" > /dev/null; then
     export EDITOR='vim'
@@ -29,7 +30,7 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # Adds aliases to open your current repo & branch on github.
-zplug "peterhurford/git-it-on.zsh"
+zplug "unixorn/git-extra-commands"
 
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/pip",               from:oh-my-zsh
@@ -57,6 +58,9 @@ zplug "djui/alias-tips"
 zplug "unixorn/git-extra-commands"
 zplug "skx/sysadmin-util"
 
+zplug "yonchu/vimman"
+
+zplug "joel-porquet/zsh-dircolors-solarized"
 
 zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
@@ -83,21 +87,20 @@ zplug "junegunn/fzf-bin", \
     rename-to:fzf
 
 
+#if [[ ! -d ~/dir_colors ]] ; then
+    #git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
+    #ln -s ~/dir_colors/dircolors.ansi-dark ~/.dircolors
+    #ln -s ~/.dircolors ~/.dir_colors
+#fi
 
-if [[ ! -d ~/dir_colors ]] ; then
-    git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
-    ln -s ~/dir_colors/dircolors.ansi-dark ~/.dircolors
-    ln -s ~/.dircolors ~/.dir_colors
-fi
 
-
-if [[ "$OSTYPE" == darwin*  ]]; then
-    # commands for OS X go here
-    eval `gdircolors $HOME/.dircolors`
-else
-    # commands for Linux go here
-    eval `dircolors $HOME/.dircolors`
-fi
+#if [[ "$OSTYPE" == darwin*  ]]; then
+    ## commands for OS X go here
+    #eval `gdircolors $HOME/.dircolors`
+#else
+    ## commands for Linux go here
+    #eval `dircolors $HOME/.dircolors`
+#fi
 
 # Load if "if" tag returns true
 zplug "lib/clipboard", from:oh-my-zsh 
