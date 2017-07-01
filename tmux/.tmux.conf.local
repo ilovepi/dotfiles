@@ -246,6 +246,12 @@ tmux_conf_copy_to_os_clipboard=false
 # increase history size
 set -g history-limit 100000
 
+
+#set default shell
+set -g default-shell /usr/bin/zsh
+set -g default-command /usr/bin/zsh
+
+
 # force Vi mode
 #   really you should export VISUAL or EDITOR environment variable, see manual
 #set -g status-keys vi
