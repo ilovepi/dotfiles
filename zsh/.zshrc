@@ -51,7 +51,7 @@ zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
-zplug "plugins/debian",            from:oh-my-zsh
+zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
 
 
 zplug "djui/alias-tips"
@@ -60,7 +60,7 @@ zplug "skx/sysadmin-util"
 
 zplug "yonchu/vimman"
 
-zplug "joel-porquet/zsh-dircolors-solarized", hook-build:"setupsolarized dircolors.ansi-dark"
+zplug "joel-porquet/zsh-dircolors-solarized"
 
 zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
