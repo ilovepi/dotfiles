@@ -9,7 +9,7 @@ fi
 source ~/.zplug/init.zsh
 
 export SHELL=/usr/bin/zsh
-export TERM=xterm-256color
+#export TERM=xterm-256color
 
 if ! type "$nvim" > /dev/null; then
     export EDITOR='vim'
