@@ -44,7 +44,7 @@ zplug "plugins/colorize",          from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/npm",               from:oh-my-zsh
 zplug "plugins/systemadmin",       from:oh-my-zsh
-zplug "plugins/emacs",             from:oh-my-zsh
+#zplug "plugins/emacs",             from:oh-my-zsh
 zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/history",           from:oh-my-zsh
