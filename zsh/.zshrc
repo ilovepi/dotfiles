@@ -284,6 +284,6 @@ zmodload zsh/mathfunc
 zplug load --verbose
 
 #unalias ag
-
+alias :q='exit'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
