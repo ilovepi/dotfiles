@@ -18,6 +18,11 @@
 [push]
 	default = simple
 [color]
-	ui = true
-[core]
-	pager = less -R
+	ui = auto
+    diff = auto
+    status = auto 
+    branch = auto
+    interactive = auto
+    grep = auto
+;[core]
+	;pager = less -R
