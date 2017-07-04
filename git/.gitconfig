@@ -17,3 +17,7 @@
     ;cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
 [push]
 	default = simple
+[color]
+	ui = true
+[core]
+	pager = less -R
