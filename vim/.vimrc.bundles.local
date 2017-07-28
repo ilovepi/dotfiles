@@ -1,2 +1,4 @@
 UnBundle 'amirh/HTML-AutoCloseTag'
+UnBundle 'AutoClose'
 Bundle 'octol/vim-cpp-enhanced-highlight'
+

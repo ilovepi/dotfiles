@@ -65,7 +65,7 @@ zplug "joel-porquet/zsh-dircolors-solarized"
 zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
-zplug "rimraf/k"
+zplug "supercrabtree/k"
 #zplug "unixorn/jpb.zshplugin"
 #zplug "chrissicool/zsh-256color"
 
