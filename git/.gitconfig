@@ -12,17 +12,19 @@
     tool = meld
 [mergetool]
     prompt = false
+    keepBackup = false
+    keepTemporaries = false
 ;[mergetool "meld"]
     ;trustExitCode = true
     ;cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
 [push]
-	default = simple
+    default = simple
 [color]
-	ui = auto
+    ui = auto
     diff = auto
     status = auto 
     branch = auto
     interactive = auto
     grep = auto
 ;[core]
-	;pager = less -R
+    ;pager = less -R
