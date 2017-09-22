@@ -41,6 +41,7 @@ values."
      better-defaults
      emacs-lisp
      (c-c++ :variables c-c++-enable-clang-support t)
+     semantic
      git
      markdown
      org
