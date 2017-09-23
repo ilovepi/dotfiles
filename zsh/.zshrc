@@ -285,5 +285,7 @@ zplug load --verbose
 
 #unalias ag
 alias :q='exit'
+unalias rm
+alias lh='ls -ld .?*'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

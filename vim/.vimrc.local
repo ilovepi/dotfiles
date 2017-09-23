@@ -22,4 +22,7 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
-let g:easytags_autorecurse = 1
+let g:easytags_dynamic_files = 1
+"let g:easytags_autorecurse = 1 " bad to use in $HOME
+"let s:ctrlp_fallback = 'ag %s --hidden --nocolor -l -g ""'
+"let g:ctrlp_show_hidden = 1
