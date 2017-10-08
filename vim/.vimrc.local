@@ -1,4 +1,7 @@
+" sane remap of <Esc>
 :imap jk <Esc>
+
+" Syntax highlighting variables
 "set guifont=Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h11,Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h14
 let g:cpp_class_scope_highlight = 1
 let g:cpp_member_variable_highlight = 1
@@ -22,7 +25,7 @@ map <C-J> <C-W>j
 map <C-K> <C-W>k
 map <C-L> <C-W>l
 map <C-H> <C-W>h
-let g:easytags_dynamic_files = 1
-"let g:easytags_autorecurse = 1 " bad to use in $HOME
+
+" CtrlP options
 "let s:ctrlp_fallback = 'ag %s --hidden --nocolor -l -g ""'
 "let g:ctrlp_show_hidden = 1
