@@ -44,7 +44,6 @@ zplug "plugins/colorize",          from:oh-my-zsh
 zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/npm",               from:oh-my-zsh
 zplug "plugins/systemadmin",       from:oh-my-zsh
-zplug "plugins/vi-mode",           from:oh-my-zsh
 #zplug "plugins/emacs",             from:oh-my-zsh
 zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
@@ -108,8 +107,8 @@ zplug "lib/clipboard", from:oh-my-zsh
 zplug "lib/key-bindings", from:oh-my-zsh 
 zplug "lib/termsupport", from:oh-my-zsh 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
-#zplug "lib/completion", from:oh-my-zsh 
-#zplug "lib/compfix", from:oh-my-zsh 
+zplug "lib/completion", from:oh-my-zsh 
+zplug "lib/compfix", from:oh-my-zsh 
 
 
 # Run a command after a plugin is installed/updated
@@ -147,9 +146,8 @@ zplug "b4b4r07/httpstat", \
 # e.g., zsh-syntax-highlighting must be loaded
 # after executing compinit command and sourcing other plugins
 # (If the defer tag is given 2 or above, run after compinit command)
-zplug "zsh-users/zsh-syntax-highlighting", defer:3
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
-zplug "plugins/history-substring-search", from:oh-my-zsh, defer:2
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 # Can manage local plugins
@@ -187,8 +185,6 @@ setopt equals
 setopt no_flow_control
 # Ignore dups
 setopt hist_ignore_dups
-# Don't find duplicates
-setopt hist_find_no_dups
 # Reduce spaces
 setopt hist_reduce_blanks
 # Ignore add history if space
@@ -286,11 +282,6 @@ zmodload zsh/mathfunc
 
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
-
-
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-
 
 #unalias ag
 alias :q='exit'
