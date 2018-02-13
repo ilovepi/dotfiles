@@ -46,6 +46,8 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
+zplug "~/dotfiles/apt-fast",       from:local
+
 # Adds aliases to open your current repo & branch on github.
 zplug "unixorn/git-extra-commands"
 
@@ -168,7 +170,7 @@ zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
 # Can manage local plugins
-zplug "~/.zsh", from:local
+zplug "~/.zsh",                     from:local
 
 # Load theme file
 zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
