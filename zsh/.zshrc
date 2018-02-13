@@ -11,6 +11,23 @@ source ~/.zplug/init.zsh
 export SHELL=/usr/bin/zsh
 #export TERM=xterm-256color
 
+#add Zotero to path
+PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
+
+#add local bin dir to PATH
+PATH=$HOME/bin:$PATH
+
+# add Go directories to PATH
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/workspace/go
+
+PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+#add cargo directories to PATH
+PATH=$HOME/.cargo/bin:$PATH
+
+export PATH
+
 if ! type "$nvim" > /dev/null; then
     export EDITOR='vim'
 else
