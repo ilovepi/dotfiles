@@ -8,7 +8,7 @@ PATH=$PATH:$HOME/Zotero_linux-x86_64
 #PATH=$HOME/bin:$HOME/rust-nightly/bin:$PATH
 
 #Add cargo directories to PATH
-PATH="$HOME/.cargo/bin:$HOME/bin:$PATH"
+PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
 
 export PATH
 

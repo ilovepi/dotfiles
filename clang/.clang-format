@@ -9,7 +9,6 @@ AlignConsecutiveAssignments: true
 AlignTrailingComments: true
 IndentWidth: 4
 AllowShortIfStatementsOnASingleLine: false
-IndentCaseLabels: false
 ColumnLimit: 0
 AllowAllParametersOfDeclarationOnNextLine: true
 AllowShortBlocksOnASingleLine: false
@@ -31,6 +30,10 @@ Cpp11BracedListStyle: true
 DerivePointerAlignment: false
 DisableFormat:   false
 ExperimentalAutoDetectBinPacking: false
+SortIncludes: true
+SortUsingDeclarations: true
+IncludeBlocks: Regroup
+IndentPPDirectives: AfterHash
 IndentCaseLabels: false
 IndentFunctionDeclarationAfterType: false
 IndentWidth:     4
