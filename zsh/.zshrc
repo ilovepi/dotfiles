@@ -170,8 +170,17 @@ zplug "mollifier/anyframe"
 # after executing compinit command and sourcing other plugins
 # (If the defer tag is given 2 or above, run after compinit command)
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+
+
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # Can manage local plugins
 zplug "~/.zsh", from:local
