@@ -45,6 +45,10 @@ export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+#fpath=(/usr/share/zsh/vendor-completions/ $fpath)
+# completions for silver searcher
+#zplug "ggreer/the_silver_searcher", defer:0
+
 
 # Adds aliases to open your current repo & branch on github.
 #zplug "unixorn/git-extra-commands"
@@ -94,9 +98,6 @@ zplug "supercrabtree/k"
 
 # Can manage everything e.g., other person's zshrc
 zplug "tcnksm/docker-alias", use:zshrc
-
-# completions for silver searcher
-zplug "ggreer/the_silver_searcher", use:_the_silver_searcher
 
 # Disable updates using the "frozen" tag
 #zplug "k4rthik/git-cal", as:command, frozen:1
