@@ -24,6 +24,7 @@ export GOPATH=$HOME/workspace/go
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 #add cargo directories to PATH
+PATH=$HOME/rust-install/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
 
 export PATH
@@ -131,8 +132,8 @@ zplug "junegunn/fzf-bin", \
 #zplug "lib/key-bindings", from:oh-my-zsh 
 #zplug "lib/termsupport", from:oh-my-zsh 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
-#zplug "lib/completion", from:oh-my-zsh 
-#zplug "lib/compfix", from:oh-my-zsh 
+zplug "lib/completion", from:oh-my-zsh 
+zplug "lib/compfix", from:oh-my-zsh 
 
 
 # Run a command after a plugin is installed/updated
