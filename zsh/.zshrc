@@ -128,9 +128,9 @@ zplug "junegunn/fzf-bin", \
 #fi
 
 # Load if "if" tag returns true
-#zplug "lib/clipboard", from:oh-my-zsh 
-#zplug "lib/key-bindings", from:oh-my-zsh 
-#zplug "lib/termsupport", from:oh-my-zsh 
+zplug "lib/clipboard", from:oh-my-zsh 
+zplug "lib/key-bindings", from:oh-my-zsh 
+zplug "lib/termsupport", from:oh-my-zsh 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh 
 zplug "lib/compfix", from:oh-my-zsh 
@@ -179,9 +179,13 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
+#export KEYTIMEOUT=1
 
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
+#bindkey -v
+#bindkey "${terminfo[khome]}" beginning-of-line
+#bindkey "${terminfo[kend]}" end-of-line
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
