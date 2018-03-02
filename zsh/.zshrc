@@ -82,6 +82,8 @@ zplug "unixorn/git-extra-commands"
 zplug "skx/sysadmin-util"
 
 zplug "yonchu/vimman"
+#zplug "sharat87/zsh-vim-mode"
+zplug "laurenkt/zsh-vimto"
 
 zplug "joel-porquet/zsh-dircolors-solarized"
 
@@ -128,8 +130,8 @@ zplug "junegunn/fzf-bin", \
 #fi
 
 # Load if "if" tag returns true
-zplug "lib/clipboard", from:oh-my-zsh 
-zplug "lib/key-bindings", from:oh-my-zsh 
+#zplug "lib/clipboard", from:oh-my-zsh 
+#zplug "lib/key-bindings", from:oh-my-zsh 
 zplug "lib/termsupport", from:oh-my-zsh 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh 
