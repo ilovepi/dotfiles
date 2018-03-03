@@ -46,7 +46,7 @@ export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
-#fpath=(/usr/share/zsh/vendor-completions/ $fpath)
+fpath=(/usr/share/zsh/vendor-completions/ $fpath)
 # completions for silver searcher
 #zplug "ggreer/the_silver_searcher", defer:0
 
@@ -57,7 +57,7 @@ export LC_ALL="en_US.UTF-8"
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/pip",               from:oh-my-zsh
 zplug "plugins/python",            from:oh-my-zsh
-zplug "plugins/github",            from:oh-my-zsh
+#zplug "plugins/github",            from:oh-my-zsh
 zplug "plugins/rsync",             from:oh-my-zsh
 zplug "plugins/tmux",              from:oh-my-zsh
 zplug "plugins/docker",            from:oh-my-zsh
@@ -73,7 +73,7 @@ zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
-zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
+#zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
 
 zplug "zlsun/solarized-man"
 
@@ -186,8 +186,10 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 #bindkey -v
 #bindkey "${terminfo[khome]}" beginning-of-line
 #bindkey "${terminfo[kend]}" end-of-line
-bindkey '^[[A' history-substring-search-up
-bindkey '^[[B' history-substring-search-down
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
