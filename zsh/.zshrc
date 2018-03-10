@@ -75,6 +75,23 @@ zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
 #zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
 
+setopt extended_glob
+case `lsb_release -sd` in
+    *(#i)(arch)*)
+        ;&
+    *(#i)(manjaro)*)
+        zplug "plugins/archlinux",  from:oh-my-zsh
+        ;;
+    *(#i)(debian)*)
+        ;&
+    *(#i)(ubuntu)*)
+        zplug "plugins/debian",     from:oh-my-zsh
+        ;;
+esac
+
+
+
+
 zplug "zlsun/solarized-man"
 
 zplug "djui/alias-tips"
@@ -196,7 +213,7 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 
 # Can manage local plugins
-zplug "~/.zsh", from:local
+#zplug "~/.zsh", from:local
 
 # Load theme file
 zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
