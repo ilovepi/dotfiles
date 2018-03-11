@@ -48,9 +48,6 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 fpath=(/usr/share/zsh/vendor-completions/ $fpath)
 fpath=(/usr/share/zsh/site-functions/ $fpath)
-# completions for silver searcher
-#zplug "ggreer/the_silver_searcher", defer:0
-
 
 # Adds aliases to open your current repo & branch on github.
 #zplug "unixorn/git-extra-commands"
