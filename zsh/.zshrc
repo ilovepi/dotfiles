@@ -18,7 +18,7 @@ PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
 PATH=$HOME/bin:$PATH
 
 # add Go directories to PATH
-export GOROOT=/usr/local/go
+#export GOROOT=/usr/local/go
 export GOPATH=$HOME/workspace/go
 
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
@@ -47,6 +47,7 @@ export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 fpath=(/usr/share/zsh/vendor-completions/ $fpath)
+fpath=(/usr/share/zsh/site-functions/ $fpath)
 # completions for silver searcher
 #zplug "ggreer/the_silver_searcher", defer:0
 
@@ -57,39 +58,38 @@ fpath=(/usr/share/zsh/vendor-completions/ $fpath)
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/pip",               from:oh-my-zsh
 zplug "plugins/python",            from:oh-my-zsh
-#zplug "plugins/github",            from:oh-my-zsh
 zplug "plugins/rsync",             from:oh-my-zsh
 zplug "plugins/tmux",              from:oh-my-zsh
 zplug "plugins/docker",            from:oh-my-zsh
 zplug "plugins/vagrant",           from:oh-my-zsh
-#zplug "plugins/colorize",          from:oh-my-zsh
-#zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/npm",               from:oh-my-zsh
 zplug "plugins/systemadmin",       from:oh-my-zsh
-#zplug "plugins/emacs",             from:oh-my-zsh
 zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
-#zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
 
 setopt extended_glob
 case `lsb_release -sd` in
     *(#i)(arch)*)
         ;&
     *(#i)(manjaro)*)
-        zplug "plugins/archlinux",  from:oh-my-zsh
+        zplug "plugins/archlinux", from:oh-my-zsh
         ;;
     *(#i)(debian)*)
         ;&
     *(#i)(ubuntu)*)
-        zplug "plugins/debian",     from:oh-my-zsh
+        zplug "plugins/debian",    from:oh-my-zsh
         ;;
 esac
 
-
+#zplug "plugins/colored-man-pages", from:oh-my-zsh
+#zplug "plugins/colorize",          from:oh-my-zsh
+#zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
+#zplug "plugins/emacs",             from:oh-my-zsh
+#zplug "plugins/github",            from:oh-my-zsh
 
 
 zplug "zlsun/solarized-man"
@@ -100,7 +100,7 @@ zplug "skx/sysadmin-util"
 
 zplug "yonchu/vimman"
 #zplug "sharat87/zsh-vim-mode"
-zplug "laurenkt/zsh-vimto"
+#zplug "laurenkt/zsh-vimto"
 
 zplug "joel-porquet/zsh-dircolors-solarized"
 
@@ -130,26 +130,10 @@ zplug "junegunn/fzf-bin", \
     as:command, \
     rename-to:fzf
 
-
-#if [[ ! -d ~/dir_colors ]] ; then
-    #git clone https://github.com/seebi/dircolors-solarized.git ~/dir_colors
-    #ln -s ~/dir_colors/dircolors.ansi-dark ~/.dircolors
-    #ln -s ~/.dircolors ~/.dir_colors
-#fi
-
-
-#if [[ "$OSTYPE" == darwin*  ]]; then
-    ## commands for OS X go here
-    #eval `gdircolors $HOME/.dircolors`
-#else
-    ## commands for Linux go here
-    #eval `dircolors $HOME/.dircolors`
-#fi
-
 # Load if "if" tag returns true
 #zplug "lib/clipboard", from:oh-my-zsh 
 #zplug "lib/key-bindings", from:oh-my-zsh 
-zplug "lib/termsupport", from:oh-my-zsh 
+#zplug "lib/termsupport", from:oh-my-zsh 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh 
 zplug "lib/compfix", from:oh-my-zsh 
@@ -165,6 +149,8 @@ zplug "jhawthorn/fzy", as:command, rename-to:fzy, hook-build:"make && sudo make 
 #zplug "b4b4r07/enhancd", at:v1
 #zplug "mollifier/anyframe", at:4c23cb60
 
+#zplug "burgerga/better-vi-mode"
+zplug "b4b4r07/zsh-vimode-visual", defer:3
 zplug "b4b4r07/enhancd"
 zplug "mollifier/anyframe"
 
@@ -198,25 +184,83 @@ zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
-#export KEYTIMEOUT=1
+export KEYTIMEOUT=1
 
-#bindkey -v
-#bindkey "${terminfo[khome]}" beginning-of-line
-#bindkey "${terminfo[kend]}" end-of-line
+if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
+  function zle-line-init() {
+    echoti smkx
+  }
+  function zle-line-finish() {
+    echoti rmkx
+  }
+  zle -N zle-line-init
+  zle -N zle-line-finish
+fi
+
+bindkey -v
+# start typing + [Up-Arrow] - fuzzy find history forward
+bindkey "${terminfo[kcuu1]}" history-substring-search-up
+# start typing + [Down-Arrow] - fuzzy find history backward
+bindkey "${terminfo[kcud1]}" history-substring-search-down
+
 #bindkey '^[[A' history-substring-search-up
 #bindkey '^[[B' history-substring-search-down
-bindkey '^[OA' history-substring-search-up
-bindkey '^[OB' history-substring-search-down
+#bindkey '^[OA' history-substring-search-up
+#bindkey '^[OB' history-substring-search-down
 bindkey -M emacs '^P' history-substring-search-up
 bindkey -M emacs '^N' history-substring-search-down
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+bindkey "${terminfo[khome]}" beginning-of-line # [Home] - Go to beginning of line
+bindkey "${terminfo[kend]}"  end-of-line       # [End] - Go to end of line
+bindkey '^?' backward-delete-char              # [Backspace] - delete backward
+bindkey "${terminfo[kdch1]}" delete-char       # [Delete] - delete forward
 
 # Can manage local plugins
 #zplug "~/.zsh", from:local
 
 # Load theme file
 zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
+function zle-keymap-select() {
+  zle reset-prompt
+  zle -R
+}
+
+zle -N zle-keymap-select
+
+prompt_vi_mode()
+{
+    case ${KEYMAP} in
+        vicmd)
+            prompt='black white %BNORMAL%b'
+            ;;
+        viins|main| )
+            prompt='yellow black %BINSERT%b'
+            ;;
+        vivis)
+            prompt='magenta white %BVISUAL%b'
+            ;;
+        *)
+            prompt='208 black %BUNKNOWN%b'
+            ;;
+    esac
+    prompt_segment $(echo $prompt)
+}
+
+BULLETTRAIN_PROMPT_ORDER=(
+    vi_mode
+    status
+    context
+    dir
+    screen
+    virtualenv
+    #nvm
+    go
+    rust
+    git
+    cmd_exec_time
+  )
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
