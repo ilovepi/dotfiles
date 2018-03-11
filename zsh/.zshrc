@@ -250,6 +250,7 @@ prompt_vi_mode()
 
 BULLETTRAIN_PROMPT_ORDER=(
     vi_mode
+    time
     status
     context
     dir
