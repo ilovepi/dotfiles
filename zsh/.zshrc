@@ -24,6 +24,7 @@ export GOPATH=$HOME/workspace/go
 PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
 #add cargo directories to PATH
+PATH=$HOME/rust-install/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
 
 export PATH
@@ -45,22 +46,26 @@ export LC_MONETARY="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
+fpath=(/usr/share/zsh/vendor-completions/ $fpath)
+# completions for silver searcher
+#zplug "ggreer/the_silver_searcher", defer:0
+
 
 zplug "~/dotfiles/apt-fast",       from:local
 
 # Adds aliases to open your current repo & branch on github.
-zplug "unixorn/git-extra-commands"
+#zplug "unixorn/git-extra-commands"
 
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/pip",               from:oh-my-zsh
 zplug "plugins/python",            from:oh-my-zsh
-zplug "plugins/github",            from:oh-my-zsh
+#zplug "plugins/github",            from:oh-my-zsh
 zplug "plugins/rsync",             from:oh-my-zsh
 zplug "plugins/tmux",              from:oh-my-zsh
 zplug "plugins/docker",            from:oh-my-zsh
 zplug "plugins/vagrant",           from:oh-my-zsh
-zplug "plugins/colorize",          from:oh-my-zsh
-zplug "plugins/colored-man-pages", from:oh-my-zsh
+#zplug "plugins/colorize",          from:oh-my-zsh
+#zplug "plugins/colored-man-pages", from:oh-my-zsh
 zplug "plugins/npm",               from:oh-my-zsh
 zplug "plugins/systemadmin",       from:oh-my-zsh
 #zplug "plugins/emacs",             from:oh-my-zsh
@@ -70,14 +75,17 @@ zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
-zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
+#zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
 
+zplug "zlsun/solarized-man"
 
 zplug "djui/alias-tips"
 zplug "unixorn/git-extra-commands"
 zplug "skx/sysadmin-util"
 
 zplug "yonchu/vimman"
+#zplug "sharat87/zsh-vim-mode"
+zplug "laurenkt/zsh-vimto"
 
 zplug "joel-porquet/zsh-dircolors-solarized"
 
@@ -85,18 +93,20 @@ zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "supercrabtree/k"
+
 #zplug "unixorn/jpb.zshplugin"
 #zplug "chrissicool/zsh-256color"
 
 # Use the package as a command
 # And accept glob patterns (e.g., brace, wildcard, ...)
-zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
+#zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
 
 # Can manage everything e.g., other person's zshrc
 zplug "tcnksm/docker-alias", use:zshrc
 
 # Disable updates using the "frozen" tag
-zplug "k4rthik/git-cal", as:command, frozen:1
+#zplug "k4rthik/git-cal", as:command, frozen:1
+zplug "k4rthik/git-cal", as:command
 
 # Grab binaries from GitHub Releases
 # and rename with the "rename-to:" tag
@@ -122,8 +132,8 @@ zplug "junegunn/fzf-bin", \
 #fi
 
 # Load if "if" tag returns true
-zplug "lib/clipboard", from:oh-my-zsh 
-zplug "lib/key-bindings", from:oh-my-zsh 
+#zplug "lib/clipboard", from:oh-my-zsh 
+#zplug "lib/key-bindings", from:oh-my-zsh 
 zplug "lib/termsupport", from:oh-my-zsh 
 zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh 
@@ -137,26 +147,29 @@ ZPLUG_SUDO_PASSWORD="a"
 zplug "jhawthorn/fzy", as:command, rename-to:fzy, hook-build:"make && sudo make install"
 
 # Supports checking out a specific branch/tag/commit
-zplug "b4b4r07/enhancd", at:v1
-zplug "mollifier/anyframe", at:4c23cb60
+#zplug "b4b4r07/enhancd", at:v1
+#zplug "mollifier/anyframe", at:4c23cb60
+
+zplug "b4b4r07/enhancd"
+zplug "mollifier/anyframe"
 
 # Can manage gist file just like other packages
-zplug "b4b4r07/79ee61f7c140c63d2786", \
-    from:gist, \
-    as:command, \
-    use:get_last_pane_path.sh
+#zplug "b4b4r07/79ee61f7c140c63d2786", \
+    #from:gist, \
+    #as:command, \
+    #use:get_last_pane_path.sh
 
 # Support bitbucket
-zplug "b4b4r07/hello_bitbucket", \
-    from:bitbucket, \
-    as:command, \
-    use:"*.sh"
+#zplug "b4b4r07/hello_bitbucket", \
+    #from:bitbucket, \
+    #as:command, \
+    #use:"*.sh"
 
 # Rename a command with the string captured with `use` tag
-zplug "b4b4r07/httpstat", \
-    as:command, \
-    use:'(*).sh', \
-    rename-to:'$1'
+#zplug "b4b4r07/httpstat", \
+    #as:command, \
+    #use:'(*).sh', \
+    #rename-to:'$1'
 
 # Note: To specify the order in which packages should be loaded, use the defer
 #       tag described in the next section
@@ -166,8 +179,23 @@ zplug "b4b4r07/httpstat", \
 # after executing compinit command and sourcing other plugins
 # (If the defer tag is given 2 or above, run after compinit command)
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+
+#export KEYTIMEOUT=1
+
+#bindkey -v
+#bindkey "${terminfo[khome]}" beginning-of-line
+#bindkey "${terminfo[kend]}" end-of-line
+#bindkey '^[[A' history-substring-search-up
+#bindkey '^[[B' history-substring-search-down
+bindkey '^[OA' history-substring-search-up
+bindkey '^[OB' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 # Can manage local plugins
 zplug "~/.zsh",                     from:local
@@ -238,13 +266,13 @@ setopt short_loops
 # Ignore history (fc -l) command in history
 setopt hist_no_store
 setopt transient_rprompt
-unsetopt promptcr
+#unsetopt promptcr
 setopt hash_cmds
 setopt numeric_glob_sort
 # Enable comment string
 setopt interactive_comments
 # Improve rm *
-setopt rm_star_wait
+#setopt rm_star_wait
 # Enable extended glob
 setopt extended_glob
 unsetopt nomatch
@@ -270,17 +298,17 @@ setopt auto_pushd
 setopt pushd_minus
 setopt pushd_ignore_dups
 # Check original command in alias completion
-setopt complete_aliases
+#setopt complete_aliases
 unsetopt hist_verify
 # }}}
 
 
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:descriptions' format '%d'
-zstyle ':completion:*:options' verbose yes
-zstyle ':completion:*:values' verbose yes
-zstyle ':completion:*:options' prefix-needed yes
+#zstyle ':completion:*' group-name ''
+#zstyle ':completion:*:messages' format '%d'
+#zstyle ':completion:*:descriptions' format '%d'
+#zstyle ':completion:*:options' verbose yes
+#zstyle ':completion:*:values' verbose yes
+#zstyle ':completion:*:options' prefix-needed yes
 zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 
 # cd search path
@@ -304,7 +332,7 @@ zplug load --verbose
 
 #unalias ag
 alias :q='exit'
-unalias rm
+#unalias rm
 alias lh='ls -ld .?*'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
