@@ -219,7 +219,8 @@ bindkey "${terminfo[kdch1]}" delete-char       # [Delete] - delete forward
 #zplug "~/.zsh", from:local
 
 # Load theme file
-zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
+zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
+
 function zle-keymap-select() {
   zle reset-prompt
   zle -R
@@ -231,16 +232,16 @@ prompt_vi_mode()
 {
     case ${KEYMAP} in
         vicmd)
-            prompt='black white %BNORMAL%b'
+            prompt='black white NORMAL'
             ;;
-        viins|main| )
-            prompt='yellow black %BINSERT%b'
+        viins|main|'')
+            prompt='yellow black INSERT'
             ;;
         vivis)
-            prompt='magenta white %BVISUAL%b'
+            prompt='magenta white VISUAL'
             ;;
         *)
-            prompt='208 black %BUNKNOWN%b'
+            prompt='208 black UNKNOWN'
             ;;
     esac
     prompt_segment $(echo $prompt)
