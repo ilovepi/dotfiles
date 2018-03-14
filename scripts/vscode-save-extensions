@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+code --list-extensions >! ~/dotfiles/vscode/extension-list
