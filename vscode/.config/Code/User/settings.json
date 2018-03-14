@@ -1,0 +1,37 @@
+{
+    "workbench.iconTheme": "vscode-icons",
+    "clang.cxxflags": [
+        "-std=c++17"
+    ],
+    "C_Cpp.clang_format_path": "/usr/bin/clang-format",
+    "vim.cmdLineInitialColon": true,
+    "vim.cursorStylePerMode": {},
+    "vim.easymotion": true,
+    "vim.enableNeovim": true,
+    "vim.hlsearch": true,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": ["j", "k"],
+            "after": ["<Esc>"]
+        }
+    ],
+    "vim.leader": ",",
+    "vim.sneak": true,
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors": {
+        "normal": ["#8FBCBB", "#434C5E"],
+        "insert": "#BF616A",
+        "visual": "#B48EAD",
+        "visualline": "#B48EAD",
+        "visualblock": "#A3BE8C",
+        "replace": "#D08770"
+    },
+    "rust-client.channel": "nightly",
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#8FBCBB",
+        "statusBar.noFolderBackground": "#8FBCBB",
+        "statusBar.debuggingBackground": "#8FBCBB",
+        "statusBar.foreground": "#434C5E"
+    },
+    "terminal.integrated.fontFamily": "SauceCodePro Nerd Font"
+}
