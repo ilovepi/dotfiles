@@ -56,7 +56,6 @@
 " }
 
 " Key Bindings {
-
     if has('nvim')
         tnoremap <Esc> <C-\><C-n>
         tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
@@ -78,5 +77,4 @@
     map <C-K> <C-W>k
     map <C-L> <C-W>l
     map <C-H> <C-W>h
-
 "}
