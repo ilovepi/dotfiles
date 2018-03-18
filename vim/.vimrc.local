@@ -9,50 +9,40 @@
 :imap jk <Esc>
 
 " Git Gutter {
-
     "settings for signify
     let g:signify_vcs_list = [ 'git', 'hg' ]
     let g:signify_realtime = 1
     let g:signify_line_highlight = 1
-
 " }
 
 " Syntax Highlighting {
-
     "set guifont=Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h11,Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h14
     let g:cpp_class_scope_highlight = 1
     let g:cpp_member_variable_highlight = 1
     let g:cpp_experimental_template_highlight = 1
     let g:cpp_concepts_highlight = 1
-
 " }
 
 " Clang Library Path {
-
     " path to directory where library can be found
     if OSX()
         let g:clang_library_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
     else
         let g:clang_library_path='/usr/lib/llvm-3.8/lib'
     endif
-
 " }
 
 " YCM Options {
-
     let g:ycm_enable_diagnostic_signs = 1
     let g:ycm_enable_diagnostic_highlighting = 1
     let g:ycm_collect_identifiers_from_tags_files = 1
     let g:ycm_autoclose_preview_window_after_completion = 1
     let g:ycm_global_ycm_extra_conf = '~/.ycm_extra_conf.py'
-
 "}
 
 " CtrlP options {
-
     "let s:ctrlp_fallback = 'ag %s --hidden --nocolor -l -g ""'
     "let g:ctrlp_show_hidden = 1
-
 " }
 
 " Key Bindings {
