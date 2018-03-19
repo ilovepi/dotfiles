@@ -12,3 +12,5 @@ PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
 
 export PATH
 
+
+export PATH="$HOME/.cargo/bin:$PATH"
