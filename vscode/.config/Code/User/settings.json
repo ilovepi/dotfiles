@@ -26,12 +26,15 @@
         "visualblock": "#A3BE8C",
         "replace": "#D08770"
     },
-    "rust-client.channel": "nightly",
     "workbench.colorCustomizations": {
         "statusBar.background": "#8FBCBB",
         "statusBar.noFolderBackground": "#8FBCBB",
         "statusBar.debuggingBackground": "#8FBCBB",
         "statusBar.foreground": "#434C5E"
     },
-    "terminal.integrated.fontFamily": "SauceCodePro Nerd Font"
+    "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+    "rust-client.channel": "nightly",
+    "rust-client.updateOnStartup": true,
+    "rust.all_features": true,
+    "rust.unstable_features": true
 }
