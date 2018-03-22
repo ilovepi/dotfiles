@@ -27,6 +27,8 @@ PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 PATH=$HOME/rust-install/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
 
+mkdir -p ~/.zshrc/completions $GOPATH
+
 export PATH
 
 if ! type "$nvim" > /dev/null; then
@@ -48,6 +50,7 @@ export LC_TIME="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 fpath=(/usr/share/zsh/vendor-completions/ $fpath)
 fpath=(/usr/share/zsh/site-functions/ $fpath)
+fpath=(~/.zsh/completions/ $fpath)
 
 # Adds aliases to open your current repo & branch on github.
 #zplug "unixorn/git-extra-commands"
@@ -67,6 +70,7 @@ zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
+#zplug "plugins/github",            from:oh-my-zsh, hook-build: "go get github.com/github/hub"
 
 setopt extended_glob
 case `lsb_release -sd` in
@@ -87,7 +91,6 @@ esac
 #zplug "plugins/colorize",          from:oh-my-zsh
 #zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
 #zplug "plugins/emacs",             from:oh-my-zsh
-#zplug "plugins/github",            from:oh-my-zsh
 
 
 zplug "zlsun/solarized-man"

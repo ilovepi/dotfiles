@@ -36,7 +36,7 @@
     "settings for signify
     let g:signify_vcs_list = [ 'git', 'hg' ]
     let g:signify_realtime = 1
-    let g:signify_line_highlight = 1
+    "let g:signify_line_highlight = 1
 " }
 
 " Syntax Highlighting {
@@ -71,3 +71,8 @@
     "let g:ctrlp_show_hidden = 1
 " }
 
+" Ack Options {
+    if executable('ag')
+        let g:ackprg = 'ag --vimgrep'
+    endif
+" }
