@@ -15,6 +15,7 @@
       call dein#add('Shougo/denite.nvim')
       call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
+
       call dein#add('tpope/vim-fugitive')
       call dein#add('tpope/vim-surround')
       call dein#add('tpope/vim-sleuth')
@@ -48,7 +49,6 @@
       call dein#add('flazz/vim-colorschemes')
       call dein#add('mbbill/undotree')
       call dein#add('nathanaelkane/vim-indent-guides')
-      "call dein#add('vim-scripts/restore_view.vim')
       call dein#add('mhinz/vim-signify')
       call dein#add('osyo-manga/vim-over')
       call dein#add('kana/vim-textobj-user')
@@ -73,12 +73,19 @@
       call dein#add('ludovicchabant/vim-gutentags')
       call dein#add('christoomey/vim-tmux-navigator')
 
-
+      call dein#add('Chiel92/vim-autoformat')
+      call dein#add('chrisbra/NrrwRgn')
+      call dein#add('farmergreg/vim-lastplace')
+      call dein#add('/usr/local/opt/fzf')
+      call dein#add('junegunn/fzf.vim')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
       endif
+
+      "call dein#add('vim-scripts/restore_view.vim')
+      "call dein#add('svermeulen/vim-easyclip')
 
       call dein#end()
       call dein#save_state()
@@ -169,7 +176,6 @@
 " UI {
 
     set showmode                    " Display the current mode
-
     set cursorline                  " Highlight current line
 
     if has('cmdline_info')
@@ -179,10 +185,20 @@
                                     " Selected characters/lines in visual mode
     endif
 
-" }
+    "if has('statusline')
+        "set laststatus=2
 
-    let mapleader = ' '
-    let maplocalleader = '_'
+        "" Broken down into easily includeable segments
+        "set statusline=%<%f\                     " Filename
+        "set statusline+=%w%h%m%r                 " Options
+        "if !exists('g:override_spf13_bundles')
+            "set statusline+=%{fugitive#statusline()} " Git Hotness
+        "endif
+        "set statusline+=\ [%{&ff}/%Y]            " Filetype
+        "set statusline+=\ [%{getcwd()}]          " Current dir
+        "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
+    "endif
+
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set number                      " Line numbers on
@@ -200,6 +216,8 @@
     set foldenable                  " Auto fold code
     set list
     set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
+
+" }
 
 " Formatting {
 
@@ -219,6 +237,8 @@
 
 " Key Mappings {
 
+    let mapleader = ' '
+    let maplocalleader = '_'
 
     " Easier moving in tabs and windows
     " The lines conflict with the default digraph mapping of <C-K>
@@ -256,14 +276,15 @@
     map <Leader>= <C-w>=
 " }
 
-    set termguicolors
-    colorscheme NeoSolarized
-    syntax on
-    let g:deoplete#enable_at_startup = 1
+    " Colors {
+        set termguicolors
+        colorscheme NeoSolarized
+        syntax on
+    "}
 
-    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-
-    let g:airline_powerline_fonts=1
+    " Deoplete{
+        let g:deoplete#enable_at_startup = 1
+    "}
 
 
     " UndoTree {
@@ -274,19 +295,11 @@
         endif
     " }
 
-
     " indent_guides {
         let g:indent_guides_start_level = 2
         let g:indent_guides_guide_size = 1
         let g:indent_guides_enable_on_vim_startup = 1
     " }
-
-
-    " vim-airline {
-        let g:airline_powerline_fonts=1
-        let g:airline_theme = 'solarized'
-    " }
-
 
     " Fugitive {
         nnoremap <silent> <leader>gs :Gstatus<CR>
@@ -303,18 +316,15 @@
         nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
-
     " Rainbow {
         if isdirectory(expand("~/.vim/bundle/rainbow/"))
             let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
         endif
     "}
 
-
     " TagBar {
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
     "}
-
 
     " PyMode {
         " Disable if python support not present
@@ -329,7 +339,6 @@
             let g:pymode_rope = 0
         endif
     " }
-
 
     " NerdTree {
         if isdirectory(expand("~/.vim/bundle/nerdtree"))
@@ -366,9 +375,10 @@
             vmap <Leader>a,, :Tabularize /,\zs<CR>
             nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
             vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+            nmap <Leader>a\ :Tabularize /\\<CR>
+            vmap <Leader>a\ :Tabularize /\\<CR>
         endif
     " }
-
 
     " Ctags {
         set tags=./tags;/,~/.vimtags
@@ -379,7 +389,6 @@
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
     " }
-
 
 " Key Bindings {
     " sane remap of <Esc>
@@ -429,12 +438,16 @@
 " }
 
 " Ack Options {
-    if executable('ag')
-        let g:ackprg = 'ag --vimgrep'
-    endif
+    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
+    "if executable('ag')
+        "let g:ackprg = 'ag --vimgrep'
+    "endif
 " }
 
+
 " Airline Options {
+    let g:airline_powerline_fonts=1
+    let g:airline_theme = 'solarized'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -446,3 +459,7 @@
 
 
     let g:snips_author = 'Paul Kirth <pkirth@uci.edu>'
+    let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+    let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+    "let g:lastplace_open_folds = 0
+    nnoremap <C-p> :Denite file_rec<cr>
