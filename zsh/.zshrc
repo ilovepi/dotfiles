@@ -27,7 +27,7 @@ PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 PATH=$HOME/rust-install/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
 
-mkdir -p ~/.zshrc/completions $GOPATH
+mkdir -p ~/.zsh/completions $GOPATH
 
 export PATH
 

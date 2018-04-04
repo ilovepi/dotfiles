@@ -27,14 +27,28 @@
         "replace": "#D08770"
     },
     "workbench.colorCustomizations": {
-        "statusBar.background": "#8FBCBB",
-        "statusBar.noFolderBackground": "#8FBCBB",
-        "statusBar.debuggingBackground": "#8FBCBB",
-        "statusBar.foreground": "#434C5E"
+        "statusBar.background": "#BF616A",
+        "statusBar.noFolderBackground": "#BF616A",
+        "statusBar.debuggingBackground": "#BF616A"
     },
     "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
     "rust-client.channel": "nightly",
     "rust-client.updateOnStartup": true,
     "rust.all_features": true,
-    "rust.unstable_features": true
+    "rust.unstable_features": true,
+    "git.autofetch": true,
+    "rust.mode": "legacy",
+    "rust.rustup": {
+        "toolchain": "nightly-x86_64-unknown-linux-gnu"
+    },
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    }
 }
