@@ -70,7 +70,6 @@ zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
-#zplug "plugins/github",            from:oh-my-zsh, hook-build: "go get github.com/github/hub"
 
 setopt extended_glob
 case `lsb_release -sd` in
@@ -87,6 +86,7 @@ case `lsb_release -sd` in
         ;;
 esac
 
+#zplug "plugins/github",            from:oh-my-zsh, hook-build: "go get github.com/github/hub"
 #zplug "plugins/colored-man-pages", from:oh-my-zsh
 #zplug "plugins/colorize",          from:oh-my-zsh
 #zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"

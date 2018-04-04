@@ -41,10 +41,16 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      helm
      html
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t)
      better-defaults
      emacs-lisp
-     (c-c++ :variables c-c++-enable-clang-support t)
+     (c-c++ :variables
+            c-c++-enable-clang-support t
+            c-c++-enable-rtags-support t)
+
+     rust
      semantic
      git
      markdown
@@ -462,6 +468,7 @@ before packages are loaded."
   (setq-default evil-escape-key-sequence "jk")
 
   ;; navigate visual lines properly
+  (setq-default evil-cross-lines t)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
