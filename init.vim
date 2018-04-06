@@ -13,7 +13,7 @@
       call dein#add('Shougo/dein.vim')
       call dein#add('Shougo/deoplete.nvim')
       call dein#add('Shougo/denite.nvim')
-      call dein#add('neomake/neomake')
+      "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
 
       call dein#add('tpope/vim-fugitive')
@@ -25,7 +25,8 @@
       call dein#add('rust-lang/rust.vim')
       call dein#add('cespare/vim-toml')
       call dein#add('spf13/vim-preview')
-      call dein#add('scrooloose/syntastic')
+      "call dein#add('scrooloose/syntastic')
+      call dein#add('w0rp/ale')
       call dein#add('scrooloose/nerdtree')
       call dein#add('scrooloose/nerdcommenter')
       call dein#add('godlygeek/tabular')
@@ -463,3 +464,5 @@
     let g:lastplace_ignore_buftype = "quickfix,nofile,help"
     "let g:lastplace_open_folds = 0
     nnoremap <C-p> :Denite file_rec<cr>
+    " Enable completion where available.
+    "let g:ale_completion_enabled = 1
