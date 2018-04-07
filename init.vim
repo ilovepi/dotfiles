@@ -35,7 +35,6 @@
       call dein#add('mattn/gist-vim')
       call dein#add('majutsushi/tagbar')
       call dein#add('mhinz/vim-signify')
-      call dein#add('luochen1990/rainbow')
 
       call dein#add('rhysd/conflict-marker.vim')
       call dein#add('jiangmiao/auto-pairs')
@@ -287,7 +286,6 @@
         let g:deoplete#enable_at_startup = 1
     "}
 
-
     " UndoTree {
         if isdirectory(expand("~/.vim/bundle/undotree/"))
             nnoremap <Leader>u :UndotreeToggle<CR>
@@ -445,7 +443,6 @@
     "endif
 " }
 
-
 " Airline Options {
     let g:airline_powerline_fonts=1
     let g:airline_theme = 'solarized'
@@ -459,15 +456,29 @@
     nmap <S-L> <Plug>AirlineSelectNextTab
 "}
 
-
+" Snippets {
     let g:snips_author = 'Paul Kirth <pkirth@uci.edu>'
+"}
+
+" Last Place {
     let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
     let g:lastplace_ignore_buftype = "quickfix,nofile,help"
     "let g:lastplace_open_folds = 0
+" }
+
+" Denite {
     nnoremap <C-p> :Denite file_rec<cr>
+" }
+
+" Ale {
     " Enable completion where available.
     "let g:ale_completion_enabled = 1
     let g:ale_linters = {
-	\   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
-	\   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
-	\}
+    \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+    \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+    \}
+" }
+
+" Autoformat {
+    noremap <Leader>kk :Autoformat<CR>
+" }
