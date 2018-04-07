@@ -452,6 +452,7 @@
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#ale#enabled = 1
     "nmap <leader>- <Plug>AirlineSelectPrevTab
     "nmap <leader>+ <Plug>AirlineSelectNextTab
     nmap <S-H> <Plug>AirlineSelectPrevTab
@@ -466,3 +467,7 @@
     nnoremap <C-p> :Denite file_rec<cr>
     " Enable completion where available.
     "let g:ale_completion_enabled = 1
+    let g:ale_linters = {
+	\   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+	\   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+	\}

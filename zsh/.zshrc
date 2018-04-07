@@ -16,6 +16,7 @@ PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
 
 #add local bin dir to PATH
 PATH=$HOME/bin:$PATH
+PATH=$HOME/.local/bin:$PATH
 
 # add Go directories to PATH
 #export GOROOT=/usr/local/go
