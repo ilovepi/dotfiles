@@ -76,8 +76,14 @@
       call dein#add('Chiel92/vim-autoformat')
       call dein#add('chrisbra/NrrwRgn')
       call dein#add('farmergreg/vim-lastplace')
-      call dein#add('/usr/local/opt/fzf')
-      call dein#add('junegunn/fzf.vim')
+      call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+      call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+
+      call dein#add('andreshazard/vim-logreview')
+      call dein#add('ekalinin/Dockerfile.vim')
+      call dein#add('metakirby5/codi.vim')
+      call dein#add('brooth/far.vim')
+      call dein#add('rhysd/committia.vim')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
