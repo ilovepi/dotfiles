@@ -11,12 +11,15 @@
 
       call dein#add('~/.nvim/bundle/')
       call dein#add('Shougo/dein.vim')
+      call dein#add('haya14busa/dein-command.vim')        " dein bindings
       call dein#add('Shougo/deoplete.nvim')
       call dein#add('Shougo/denite.nvim')
+      call dein#add('Shougo/vinarise.vim')
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
 
-      call dein#add('tpope/vim-fugitive')
+      "call dein#add('tpope/vim-fugitive')
+      call dein#add('jreybert/vimagit')
       call dein#add('tpope/vim-surround')
       call dein#add('tpope/vim-sleuth')
       call dein#add('tpope/vim-repeat')
