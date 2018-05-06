@@ -8,26 +8,26 @@ fi
 
 source ~/.zplug/init.zsh
 
-export SHELL=/usr/bin/zsh
-#export TERM=xterm-256color
+#export SHELL=/usr/bin/zsh
+##export TERM=xterm-256color
 
-#add Zotero to path
-PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
+##add Zotero to path
+##PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
 
-#add local bin dir to PATH
-PATH=$HOME/bin:$PATH
+##add local bin dir to PATH
+#PATH=$HOME/bin:$PATH
 
-# add Go directories to PATH
-#export GOROOT=/usr/local/go
-export GOPATH=$HOME/workspace/go
+## add Go directories to PATH
+##export GOROOT=/usr/local/go
+#export GOPATH=$HOME/workspace/go
 
-PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+#PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 
-#add cargo directories to PATH
-PATH=$HOME/rust-install/bin:$PATH
-PATH=$HOME/.cargo/bin:$PATH
+##add cargo directories to PATH
+#PATH=$HOME/rust-install/bin:$PATH
+#PATH=$HOME/.cargo/bin:$PATH
 
-export PATH
+#export PATH
 
 if ! type "$nvim" > /dev/null; then
     export EDITOR='vim'
@@ -38,16 +38,17 @@ fi
 alias zshconfig="edit ~/.zshrc"
 alias ohmyzsh="edit ~/.oh-my-zsh"
 
-export LANG="en_US.UTF-8"
-export LC_COLLATE="en_US.UTF-8"
-export LC_CTYPE="en_US.UTF-8"
-export LC_MESSAGES="en_US.UTF-8"
-export LC_MONETARY="en_US.UTF-8"
-export LC_NUMERIC="en_US.UTF-8"
-export LC_TIME="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
+#export LANG="en_US.UTF-8"
+#export LC_COLLATE="en_US.UTF-8"
+#export LC_CTYPE="en_US.UTF-8"
+#export LC_MESSAGES="en_US.UTF-8"
+#export LC_MONETARY="en_US.UTF-8"
+#export LC_NUMERIC="en_US.UTF-8"
+#export LC_TIME="en_US.UTF-8"
+#export LC_ALL="en_US.UTF-8"
 fpath=(/usr/share/zsh/vendor-completions/ $fpath)
 fpath=(/usr/share/zsh/site-functions/ $fpath)
+fpath=(~/.zsh/completions/ $fpath)
 
 # Adds aliases to open your current repo & branch on github.
 #zplug "unixorn/git-extra-commands"
@@ -57,13 +58,10 @@ zplug "plugins/pip",               from:oh-my-zsh
 zplug "plugins/python",            from:oh-my-zsh
 zplug "plugins/rsync",             from:oh-my-zsh
 zplug "plugins/tmux",              from:oh-my-zsh
-zplug "plugins/docker",            from:oh-my-zsh
 zplug "plugins/vagrant",           from:oh-my-zsh
 zplug "plugins/npm",               from:oh-my-zsh
 zplug "plugins/systemadmin",       from:oh-my-zsh
-zplug "plugins/z",                 from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
-zplug "plugins/history",           from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
@@ -82,18 +80,12 @@ case `lsb_release -sd` in
         ;;
 esac
 
-#zplug "plugins/colored-man-pages", from:oh-my-zsh
-#zplug "plugins/colorize",          from:oh-my-zsh
-#zplug "plugins/debian",            from:oh-my-zsh,  hook-build:"~/dotfiles/fix_debian_alias.sh"
-#zplug "plugins/emacs",             from:oh-my-zsh
-#zplug "plugins/github",            from:oh-my-zsh
-
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
 
 zplug "zlsun/solarized-man"
 
 zplug "djui/alias-tips"
-zplug "unixorn/git-extra-commands"
-zplug "skx/sysadmin-util"
 
 zplug "yonchu/vimman"
 #zplug "sharat87/zsh-vim-mode"
@@ -105,35 +97,23 @@ zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
 zplug "supercrabtree/k"
-
-#zplug "unixorn/jpb.zshplugin"
-#zplug "chrissicool/zsh-256color"
-
-# Use the package as a command
-# And accept glob patterns (e.g., brace, wildcard, ...)
-#zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
-
-# Can manage everything e.g., other person's zshrc
-zplug "tcnksm/docker-alias", use:zshrc
+zplug wfxr/forgit, from:github, defer:1
+zplug "zdharma/zsh-diff-so-fancy"
 
 # Disable updates using the "frozen" tag
-#zplug "k4rthik/git-cal", as:command, frozen:1
 zplug "k4rthik/git-cal", as:command
 
 # Grab binaries from GitHub Releases
 # and rename with the "rename-to:" tag
-zplug "junegunn/fzf-bin", \
-    from:gh-r, \
-    as:command, \
-    rename-to:fzf
+zplug "junegunn/fzf", as:command, use:bin/fzf, hook-build:"./install --all"
 
 # Load if "if" tag returns true
-#zplug "lib/clipboard", from:oh-my-zsh 
-#zplug "lib/key-bindings", from:oh-my-zsh 
-#zplug "lib/termsupport", from:oh-my-zsh 
+#zplug "lib/clipboard", from:oh-my-zsh
+#zplug "lib/key-bindings", from:oh-my-zsh
+#zplug "lib/termsupport", from:oh-my-zsh
 zplug "lib/theme-and-appearance", from:oh-my-zsh
-zplug "lib/completion", from:oh-my-zsh 
-zplug "lib/compfix", from:oh-my-zsh 
+zplug "lib/completion", from:oh-my-zsh
+zplug "lib/compfix", from:oh-my-zsh
 
 
 # Run a command after a plugin is installed/updated
@@ -142,32 +122,17 @@ zplug "lib/compfix", from:oh-my-zsh
 ZPLUG_SUDO_PASSWORD="a"
 zplug "jhawthorn/fzy", as:command, rename-to:fzy, hook-build:"make && sudo make install"
 
-# Supports checking out a specific branch/tag/commit
-#zplug "b4b4r07/enhancd", at:v1
-#zplug "mollifier/anyframe", at:4c23cb60
+
 
 #zplug "burgerga/better-vi-mode"
 zplug "b4b4r07/zsh-vimode-visual", defer:3
-zplug "b4b4r07/enhancd"
-zplug "mollifier/anyframe"
-
-# Can manage gist file just like other packages
-#zplug "b4b4r07/79ee61f7c140c63d2786", \
-    #from:gist, \
-    #as:command, \
-    #use:get_last_pane_path.sh
-
-# Support bitbucket
-#zplug "b4b4r07/hello_bitbucket", \
-    #from:bitbucket, \
-    #as:command, \
-    #use:"*.sh"
-
-# Rename a command with the string captured with `use` tag
-#zplug "b4b4r07/httpstat", \
-    #as:command, \
-    #use:'(*).sh', \
-    #rename-to:'$1'
+zplug "b4b4r07/enhancd", use:init.sh
+if zplug check "b4b4r07/enhancd"; then
+    #export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
+    export ENHANCD_FILTER="fzf --height 50% --reverse --ansi"
+    export ENHANCD_DOT_SHOW_FULLPATH=1
+    export ENHANCD_COMMAND=ecd
+fi
 
 # Note: To specify the order in which packages should be loaded, use the defer
 #       tag described in the next section
@@ -176,7 +141,8 @@ zplug "mollifier/anyframe"
 # e.g., zsh-syntax-highlighting must be loaded
 # after executing compinit command and sourcing other plugins
 # (If the defer tag is given 2 or above, run after compinit command)
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug zdharma/fast-syntax-highlighting, from:github
+#zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 zstyle :omz:plugins:ssh-agent agent-forwarding on
@@ -218,7 +184,8 @@ bindkey "${terminfo[kdch1]}" delete-char       # [Delete] - delete forward
 #zplug "~/.zsh", from:local
 
 # Load theme file
-zplug 'caiogondim/bullet-train-oh-my-zsh-theme', as:theme
+zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
+
 function zle-keymap-select() {
   zle reset-prompt
   zle -R
@@ -389,7 +356,18 @@ zplug load --verbose
 
 #unalias ag
 alias :q='exit'
-#unalias rm
 alias lh='ls -ld .?*'
+unalias rm
+unalias fd
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Completion w/ fzf is bad so far
+#export FZF_COMPLETION_TRIGGER=''
+#export FZF_CTRL_T_COMMAND='fd --follow --exclude .git --color=always'
+#export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+#export FZF_DEFAULT_OPTS="--ansi"
+#export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+#export FZF_COMPLETION_OPTS='+c -x'
+#bindkey '^T' fzf-completion
+#bindkey '^I' $fzf_default_completion

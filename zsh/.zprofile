@@ -4,11 +4,21 @@
 # Add Zotero to PATH
 PATH=$PATH:$HOME/Zotero_linux-x86_64
 
-#add local bindirectories to PATH
-#PATH=$HOME/bin:$HOME/rust-nightly/bin:$PATH
+export SHELL=/usr/bin/zsh
+#export TERM=xterm-256color
 
-#Add cargo directories to PATH
-PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
+#add local bin dir to PATH
+PATH=$HOME/bin:$PATH
+
+# add Go directories to PATH
+#export GOROOT=/usr/local/go
+export GOPATH=$HOME/workspace/go
+
+PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+#add cargo directories to PATH
+PATH=$HOME/rust-install/bin:$PATH
+PATH=$HOME/.cargo/bin:$PATH
 
 export PATH
 
