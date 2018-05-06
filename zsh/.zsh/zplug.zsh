@@ -30,32 +30,31 @@ case `lsb_release -sd` in
         ;;
 esac
 
-zplug "changyuheng/fz", defer:1
-zplug "rupa/z", use:z.sh
-
-zplug "zlsun/solarized-man"
-
 zplug "djui/alias-tips"
-
-zplug "yonchu/vimman"
-#zplug "sharat87/zsh-vim-mode"
-#zplug "laurenkt/zsh-vimto"
-
+#zplug "zlsun/solarized-man"
 zplug "joel-porquet/zsh-dircolors-solarized"
-
-zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
+
+zplug "sharat87/pip-app"
+
 zplug "supercrabtree/k"
+zplug "k4rthik/git-cal", as:command
 zplug wfxr/forgit, from:github, defer:1
 zplug "zdharma/zsh-diff-so-fancy"
 
-# Disable updates using the "frozen" tag
-zplug "k4rthik/git-cal", as:command
 
-# Grab binaries from GitHub Releases
-# and rename with the "rename-to:" tag
 zplug "junegunn/fzf", as:command, use:bin/fzf, hook-build:"./install --all"
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
+
+zplug "b4b4r07/enhancd", use:init.sh
+if zplug check "b4b4r07/enhancd"; then
+    #export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
+    export ENHANCD_FILTER="fzf --height 50% --reverse --ansi"
+    export ENHANCD_DOT_SHOW_FULLPATH=1
+    export ENHANCD_COMMAND=ecd
+fi
 
 # Load if "if" tag returns true
 #zplug "lib/clipboard", from:oh-my-zsh
@@ -65,36 +64,17 @@ zplug "lib/theme-and-appearance", from:oh-my-zsh
 zplug "lib/completion", from:oh-my-zsh
 zplug "lib/compfix", from:oh-my-zsh
 
-
-# Run a command after a plugin is installed/updated
-# Provided, it requires to set the variable like the following:
-# ZPLUG_SUDO_PASSWORD="********"
+# Fake password for docker/vagrant
 ZPLUG_SUDO_PASSWORD="a"
 zplug "jhawthorn/fzy", as:command, rename-to:fzy, hook-build:"make && sudo make install"
 
-
-
+zplug "yonchu/vimman"
+#zplug "sharat87/zsh-vim-mode"
+#zplug "laurenkt/zsh-vimto"
 #zplug "burgerga/better-vi-mode"
 zplug "b4b4r07/zsh-vimode-visual", defer:3
-zplug "b4b4r07/enhancd", use:init.sh
-if zplug check "b4b4r07/enhancd"; then
-    #export ENHANCD_FILTER="fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
-    export ENHANCD_FILTER="fzf --height 50% --reverse --ansi"
-    export ENHANCD_DOT_SHOW_FULLPATH=1
-    export ENHANCD_COMMAND=ecd
-fi
 
-# Note: To specify the order in which packages should be loaded, use the defer
-#       tag described in the next section
-
-# Set the priority when loading
-# e.g., zsh-syntax-highlighting must be loaded
-# after executing compinit command and sourcing other plugins
-# (If the defer tag is given 2 or above, run after compinit command)
 zplug zdharma/fast-syntax-highlighting, from:github
-#zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-history-substring-search", defer:3
 zplug "plugins/ssh-agent",   from:oh-my-zsh, defer:3
 zstyle :omz:plugins:ssh-agent agent-forwarding on
-
-
