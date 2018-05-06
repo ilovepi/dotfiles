@@ -22,11 +22,27 @@
 [color]
     ui = auto
     diff = auto
-    status = auto 
+    status = auto
     branch = auto
     interactive = auto
     grep = auto
-;[core]
-    ;pager = less -R
 [branch]
 	autosetuprebase = always
+;[core]
+    ;pager = less -R
+
+;[core]
+    ;pager = diff-so-fancy | less --tabs=4 -FXRi
+
+;[color "diff-highlight"]
+	;oldNormal = red bold
+	;oldHighlight = red bold 52
+	;newNormal = green bold
+	;newHighlight = green bold 22
+;[color "diff"]
+	;meta = yellow
+	;frag = magenta bold
+	;commit = yellow bold
+	;old = red bold
+	;new = green bold
+	;whitespace = red reverse

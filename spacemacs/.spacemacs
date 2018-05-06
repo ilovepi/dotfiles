@@ -48,8 +48,9 @@ This function should only modify configuration layer settings."
      emacs-lisp
      (c-c++ :variables
             c-c++-enable-clang-support t
-            c-c++-enable-rtags-support t)
-
+            c-c++-default-mode-for-headers 'c++-mode
+            c-c++-enable-rtags-support t
+            )
      rust
      semantic
      git
@@ -472,6 +473,7 @@ before packages are loaded."
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 
+  (setq vc-follow-symlinks t)
   (setq magit-repository-directories '("~/"))
   (setq evil-want-fine-undo t)
   (add-hook 'doc-view-mode-hook 'auto-revert-mode)

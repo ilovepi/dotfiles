@@ -8,7 +8,7 @@ fi
 
 source ~/.zplug/init.zsh
 
-export SHELL=/usr/bin/zsh
+#export SHELL=/usr/bin/zsh
 #export TERM=xterm-256color
 
 mkdir -p ~/.zsh/completions $GOPATH
