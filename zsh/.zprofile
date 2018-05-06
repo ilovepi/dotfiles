@@ -2,15 +2,24 @@
 #_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 
 # Add Zotero to PATH
-PATH=$PATH:$HOME/Zotero_linux-x86_64
+#PATH=$PATH:$HOME/Zotero_linux-x86_64
 
-#add local bindirectories to PATH
-#PATH=$HOME/bin:$HOME/rust-nightly/bin:$PATH
+#add Zotero to path
+PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
 
-#Add cargo directories to PATH
-PATH=$HOME/.cargo/bin:$HOME/bin:$PATH
+#add local bin dir to PATH
+PATH=$HOME/bin:$PATH
+PATH=$HOME/.local/bin:$PATH
+
+# add Go directories to PATH
+#export GOROOT=/usr/local/go
+export GOPATH=$HOME/workspace/go
+
+#PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+PATH=$GOPATH/bin:$PATH
+
+#add cargo directories to PATH
+PATH=$HOME/rust-install/bin:$PATH
+PATH=$HOME/.cargo/bin:$PATH
 
 export PATH
-
-
-export PATH="$HOME/.cargo/bin:$PATH"
