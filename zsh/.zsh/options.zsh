@@ -31,9 +31,6 @@ setopt long_list_jobs
 setopt magic_equal_subst
 # Add "/" if completes directory
 setopt mark_dirs
-# Disable menu complete for vimshell
-#setopt no_menu_complete
-#setopt list_rows_first
 # Expand globs when completion
 setopt glob_complete
 # Enable multi io redirection
@@ -56,8 +53,6 @@ setopt hash_cmds
 setopt numeric_glob_sort
 # Enable comment string
 setopt interactive_comments
-# Improve rm *
-#setopt rm_star_wait
 # Enable extended glob
 setopt extended_glob
 unsetopt nomatch

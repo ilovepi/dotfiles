@@ -1,5 +1,6 @@
-# Set parts of path here ... 
-# Because sometimes .zprofile and .zshenv aren't used?
+# Set parts of path here ...
+# Add Zotero to PATH
+#PATH=$PATH:$HOME/Zotero_linux-x86_64
 
 #add Zotero to path
 PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
@@ -18,7 +19,5 @@ PATH=$GOPATH/bin:$PATH
 #add cargo directories to PATH
 PATH=$HOME/rust-install/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
-
-mkdir -p ~/.zsh/completions $GOPATH
 
 export PATH

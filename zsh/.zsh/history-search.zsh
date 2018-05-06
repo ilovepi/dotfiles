@@ -1,3 +1,4 @@
+# setup vi mode and configure substring search
 export KEYTIMEOUT=1
 
 if (( ${+terminfo[smkx]} )) && (( ${+terminfo[rmkx]} )); then
