@@ -8,7 +8,10 @@ fi
 
 source ~/.zplug/init.zsh
 
-#export SHELL=/usr/bin/zsh
+# TODO: avoid this hack
+# Docker doesn't set the SHELL vaiable, so we'll set it ourselves
+SHELL=`which zsh`
+export SHELL
 #export TERM=xterm-256color
 
 mkdir -p $GOPATH
