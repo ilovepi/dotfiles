@@ -11,22 +11,22 @@ source ~/.zplug/init.zsh
 #export SHELL=/usr/bin/zsh
 #export TERM=xterm-256color
 
-mkdir -p ~/.zsh/completions $GOPATH
+mkdir -p $GOPATH
 
 #setup vim/nvim as editor
-source ~/dotfiles/zsh/editor.zsh
+source ~/.zsh/editor.zsh
 
 # update fpath w/ some normal system paths for zsh completions
-source ~/dotfiles/zsh/fpath.zsh
+source ~/.zsh/fpath.zsh
 
 # load plugins w/ zplug
-source ~/dotfiles/zsh/zplug.zsh
+source ~/.zsh/zplug.zsh
 
 # setup history substring search and keybindings
-source ~/dotfiles/zsh/history-search.zsh
+source ~/.zsh/history-search.zsh
 
 # setup theme (bullet train w/ vi mode support)
-source ~/dotfiles/zsh/theme.zsh
+source ~/.zsh/theme.zsh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
@@ -37,7 +37,7 @@ if ! zplug check --verbose; then
 fi
 
 # set zsh options
-source ~/dotfiles/zsh/options.zsh
+source ~/.zsh/options.zsh
 
 #zstyle ':completion:*' group-name ''
 #zstyle ':completion:*:messages' format '%d'
@@ -50,7 +50,7 @@ zstyle ':completion:*:default' list-colors ${(s.:.)LS_COLORS}
 # cd search path
 cdpath=($HOME)
 
-source ~/dotfiles/zsh/history.zsh
+source ~/.zsh/history.zsh
 
 # Enable math functions
 zmodload zsh/mathfunc
@@ -58,7 +58,7 @@ zmodload zsh/mathfunc
 # Then, source plugins and add commands to $PATH
 zplug load --verbose
 
-source ~/dotfiles/zsh/aliases.zsh
+source ~/.zsh/aliases.zsh
 
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
