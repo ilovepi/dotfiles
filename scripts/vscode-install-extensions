@@ -1,0 +1,3 @@
+#!/usr/bin/env zsh
+
+cat ~/dotfiles/vscode/extension-list | xargs -n 1 code --install-extension

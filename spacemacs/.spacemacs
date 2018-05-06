@@ -41,7 +41,9 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      helm
      html
-     auto-completion
+     (auto-completion :variables
+                      auto-completion-enable-snippets-in-popup t
+                      auto-completion-enable-help-tooltip t)
      better-defaults
      emacs-lisp
      (c-c++ :variables
@@ -59,7 +61,8 @@ This function should only modify configuration layer settings."
             shell-default-height 30
             shell-default-position 'bottom)
      syntax-checking
-     (spell-checking :variables enable-flyspell-auto-completion t)
+     spell-checking
+     ;; (spell-checking :variables enable-flyspell-auto-completion t)
      version-control
      csharp
      docker
@@ -466,6 +469,7 @@ before packages are loaded."
   (setq-default evil-escape-key-sequence "jk")
 
   ;; navigate visual lines properly
+  (setq-default evil-cross-lines t)
   (define-key evil-normal-state-map (kbd "j") 'evil-next-visual-line)
   (define-key evil-normal-state-map (kbd "k") 'evil-previous-visual-line)
 

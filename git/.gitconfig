@@ -8,8 +8,8 @@
 ;[difftool "meld"]
     ;trustExitCode = true
     ;cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
-[merge]
-    tool = meld
+;[merge]
+    ;tool = meld
 [mergetool]
     prompt = false
     keepBackup = false
@@ -20,14 +20,18 @@
 [push]
     default = simple
 [color]
-	ui = true
+	ui = auto
     diff = auto
     status = auto
     branch = auto
     interactive = auto
     grep = auto
+[branch]
+	autosetuprebase = always
+
 ;[core]
     ;pager = less -R
+
 ;[core]
     ;pager = diff-so-fancy | less --tabs=4 -FXRi
 
@@ -36,6 +40,7 @@
 	;oldHighlight = red bold 52
 	;newNormal = green bold
 	;newHighlight = green bold 22
+
 ;[color "diff"]
 	;meta = yellow
 	;frag = magenta bold
