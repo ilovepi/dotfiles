@@ -27,12 +27,14 @@
         "replace": "#D08770"
     },
     "workbench.colorCustomizations": {
-        "statusBar.background": "#BF616A",
-        "statusBar.noFolderBackground": "#BF616A",
-        "statusBar.debuggingBackground": "#BF616A"
+        "statusBar.background": "#8FBCBB",
+        "statusBar.noFolderBackground": "#8FBCBB",
+        "statusBar.debuggingBackground": "#8FBCBB",
+        "statusBar.foreground": "#434C5E"
     },
     "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
     "rust-client.channel": "nightly",
+    //"rust-client.channel": "nightly-2018-04-01",
     "rust-client.updateOnStartup": true,
     "rust.all_features": true,
     "rust.unstable_features": true,

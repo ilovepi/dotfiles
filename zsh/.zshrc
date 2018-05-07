@@ -16,6 +16,8 @@ PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
 
 #add local bin dir to PATH
 PATH=$HOME/bin:$PATH
+PATH=$PATH:/usr/lib/llvm-7/share
+PATH=$HOME/.local/bin:$PATH
 
 # add Go directories to PATH
 #export GOROOT=/usr/local/go
@@ -107,7 +109,6 @@ zplug "joel-porquet/zsh-dircolors-solarized"
 
 zplug "sharat87/pip-app"
 zplug "zsh-users/zsh-autosuggestions"
-zplug "zsh-users/zsh-completions"
 zplug "supercrabtree/k"
 
 #zplug "unixorn/jpb.zshplugin"
@@ -394,7 +395,7 @@ zplug load --verbose
 
 #unalias ag
 alias :q='exit'
-#unalias rm
+unalias rm
 alias lh='ls -ld .?*'
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
