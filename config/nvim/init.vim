@@ -18,7 +18,7 @@
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
 
-      "call dein#add('tpope/vim-fugitive')
+      call dein#add('tpope/vim-fugitive')
       call dein#add('jreybert/vimagit')
       call dein#add('tpope/vim-surround')
       call dein#add('tpope/vim-sleuth')
