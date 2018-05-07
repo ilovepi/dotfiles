@@ -4,12 +4,12 @@
 
 " Dein {
     set nocompatible
-    set runtimepath+=~/.nvim/bundle/repos/github.com/Shougo/dein.vim
+    set runtimepath+=~/.nvim/dein/repos/github.com/Shougo/dein.vim
 
-    if dein#load_state('~/.nvim/bundle')
-      call dein#begin('~/.nvim/bundle/')
+    if dein#load_state('~/.nvim/dein')
+      call dein#begin('~/.nvim/dein/')
 
-      call dein#add('~/.nvim/bundle/')
+      call dein#add('~/.nvim/dein/')
       call dein#add('Shougo/dein.vim')
       call dein#add('haya14busa/dein-command.vim')        " dein bindings
       call dein#add('Shougo/deoplete.nvim')
@@ -340,7 +340,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/bundle/repos/github.com/keln/python-mode"))
+        if isdirectory(expand("~/.nvim/dein/repos/github.com/keln/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0

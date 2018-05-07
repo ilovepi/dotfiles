@@ -1,4 +1,4 @@
-#export TERM=xterm-256color
+export TERM=xterm-256color
 #_byobu_sourced=1 . /usr/bin/byobu-launch 2>/dev/null || true
 
 export LANG="en_US.UTF-8"
