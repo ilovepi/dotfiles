@@ -18,13 +18,12 @@
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
 
-      "call dein#add('tpope/vim-fugitive')
+      call dein#add('tpope/vim-fugitive')
       call dein#add('jreybert/vimagit')
       call dein#add('tpope/vim-surround')
       call dein#add('tpope/vim-sleuth')
       call dein#add('tpope/vim-repeat')
       call dein#add('tpope/vim-markdown')
-      call dein#add('rust-lang/rust.vim')
       call dein#add('rust-lang/rust.vim')
       call dein#add('cespare/vim-toml')
       call dein#add('spf13/vim-preview')
@@ -87,6 +86,8 @@
       call dein#add('metakirby5/codi.vim')
       call dein#add('brooth/far.vim')
       call dein#add('rhysd/committia.vim')
+
+      call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -293,6 +294,31 @@
 
     " Deoplete{
         let g:deoplete#enable_at_startup = 1
+        let g:deoplete#enable_smart_case = 1
+
+        " disable autocomplete by default
+        let b:deoplete_disable_auto_complete=1 
+        let g:deoplete_disable_auto_complete=1
+        call deoplete#custom#buffer_option('auto_complete', v:false)
+
+        if !exists('g:deoplete#omni#input_patterns')
+            let g:deoplete#omni#input_patterns = {}
+        endif
+
+        " Disable the candidates in Comment/String syntaxes.
+        call deoplete#custom#source('_',
+                    \ 'disabled_syntaxes', ['Comment', 'String'])
+
+        autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+
+        " set sources
+        let g:deoplete#sources         = {}
+        let g:deoplete#sources.c       = ['LanguageClient']
+        let g:deoplete#sources.cpp     = ['LanguageClient']
+        let g:deoplete#sources.python  = ['LanguageClient']
+        let g:deoplete#sources.python3 = ['LanguageClient']
+        let g:deoplete#sources.rust    = ['LanguageClient']
+        let g:deoplete#sources.vim     = ['vim']
     "}
 
     " UndoTree {
@@ -459,6 +485,12 @@
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
     let g:airline#extensions#ale#enabled = 1
+    let airline#extensions#ale#error_symbol = '✖ '
+    let airline#extensions#ale#warning_symbol = '⚠ '
+    let airline#extensions#ale#show_line_numbers = 1
+    let airline#extensions#ale#open_lnum_symbol = '(L'
+    let airline#extensions#ale#close_lnum_symbol = ')'
+
     "nmap <leader>- <Plug>AirlineSelectPrevTab
     "nmap <leader>+ <Plug>AirlineSelectNextTab
     nmap <S-H> <Plug>AirlineSelectPrevTab
@@ -516,3 +548,34 @@
         "map g# <Plug>(incsearch-nohl-g#)
     " }
 
+    " FZF Settings {
+        " Customize fzf colors to match your color scheme
+        let g:fzf_colors =
+        \ { 'fg':      ['fg', 'Normal'],
+          \ 'bg':      ['bg', 'Normal'],
+          \ 'hl':      ['fg', 'Comment'],
+          \ 'fg+':     ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
+          \ 'bg+':     ['bg', 'CursorLine', 'CursorColumn'],
+          \ 'hl+':     ['fg', 'Statement'],
+          \ 'info':    ['fg', 'PreProc'],
+          \ 'border':  ['fg', 'Ignore'],
+          \ 'prompt':  ['fg', 'Conditional'],
+          \ 'pointer': ['fg', 'Exception'],
+          \ 'marker':  ['fg', 'Keyword'],
+          \ 'spinner': ['fg', 'Label'],
+          \ 'header':  ['fg', 'Comment'] }
+    " }
+
+    " LanguageClient {
+        let g:LanguageClient_serverCommands = {
+            \ 'cpp' : ['clangd'],
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'javascript': ['javascript-typescript-stdio'],
+            \ }
+
+        set signcolumn=yes
+        nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+        nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+        nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+        let g:LanguageClient_selectionUI = 'fzf'
+    " }
