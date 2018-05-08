@@ -3,7 +3,7 @@ Checks:          '*,-llvm-header-guard,-google-build-using-namespace,-google-run
 WarningsAsErrors: ''
 HeaderFilterRegex: '.*'
 AnalyzeTemporaryDtors: true
-CheckOptions:    
+CheckOptions:
   - key:             cert-oop11-cpp.UseCERTSemantics
     value:           '1'
   - key:             google-readability-braces-around-statements.ShortStatementLines
