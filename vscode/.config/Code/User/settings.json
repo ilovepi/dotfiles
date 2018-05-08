@@ -34,7 +34,6 @@
     },
     "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
     "rust-client.channel": "nightly",
-    //"rust-client.channel": "nightly-2018-04-01",
     "rust-client.updateOnStartup": true,
     "rust.all_features": true,
     "rust.unstable_features": true,
