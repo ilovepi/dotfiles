@@ -4,19 +4,22 @@
 
 " Dein {
     set nocompatible
-    set runtimepath+=~/.nvim/bundle/repos/github.com/Shougo/dein.vim
+    set runtimepath+=~/.nvim/dein/repos/github.com/Shougo/dein.vim
 
-    if dein#load_state('~/.nvim/bundle')
-      call dein#begin('~/.nvim/bundle/')
+    if dein#load_state('~/.nvim/dein')
+      call dein#begin('~/.nvim/dein/')
 
-      call dein#add('~/.nvim/bundle/')
+      call dein#add('~/.nvim/dein/')
       call dein#add('Shougo/dein.vim')
+      call dein#add('haya14busa/dein-command.vim')        " dein bindings
       call dein#add('Shougo/deoplete.nvim')
       call dein#add('Shougo/denite.nvim')
+      call dein#add('Shougo/vinarise.vim')
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
 
-      call dein#add('tpope/vim-fugitive')
+      "call dein#add('tpope/vim-fugitive')
+      call dein#add('jreybert/vimagit')
       call dein#add('tpope/vim-surround')
       call dein#add('tpope/vim-sleuth')
       call dein#add('tpope/vim-repeat')
@@ -35,7 +38,6 @@
       call dein#add('mattn/gist-vim')
       call dein#add('majutsushi/tagbar')
       call dein#add('mhinz/vim-signify')
-      call dein#add('luochen1990/rainbow')
 
       call dein#add('rhysd/conflict-marker.vim')
       call dein#add('jiangmiao/auto-pairs')
@@ -77,8 +79,14 @@
       call dein#add('Chiel92/vim-autoformat')
       call dein#add('chrisbra/NrrwRgn')
       call dein#add('farmergreg/vim-lastplace')
-      call dein#add('/usr/local/opt/fzf')
-      call dein#add('junegunn/fzf.vim')
+      call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+      call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+
+      call dein#add('andreshazard/vim-logreview')
+      call dein#add('ekalinin/Dockerfile.vim')
+      call dein#add('metakirby5/codi.vim')
+      call dein#add('brooth/far.vim')
+      call dein#add('rhysd/committia.vim')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -287,7 +295,6 @@
         let g:deoplete#enable_at_startup = 1
     "}
 
-
     " UndoTree {
         if isdirectory(expand("~/.vim/bundle/undotree/"))
             nnoremap <Leader>u :UndotreeToggle<CR>
@@ -303,18 +310,18 @@
     " }
 
     " Fugitive {
-        nnoremap <silent> <leader>gs :Gstatus<CR>
-        nnoremap <silent> <leader>gd :Gdiff<CR>
-        nnoremap <silent> <leader>gc :Gcommit<CR>
-        nnoremap <silent> <leader>gb :Gblame<CR>
-        nnoremap <silent> <leader>gl :Glog<CR>
-        nnoremap <silent> <leader>gp :Git push<CR>
-        nnoremap <silent> <leader>gr :Gread<CR>
-        nnoremap <silent> <leader>gw :Gwrite<CR>
-        nnoremap <silent> <leader>ge :Gedit<CR>
-        " Mnemonic _i_nteractive
-        nnoremap <silent> <leader>gi :Git add -p %<CR>
-        nnoremap <silent> <leader>gg :SignifyToggle<CR>
+        "nnoremap <silent> <leader>gs :Gstatus<CR>
+        "nnoremap <silent> <leader>gd :Gdiff<CR>
+        "nnoremap <silent> <leader>gc :Gcommit<CR>
+        "nnoremap <silent> <leader>gb :Gblame<CR>
+        "nnoremap <silent> <leader>gl :Glog<CR>
+        "nnoremap <silent> <leader>gp :Git push<CR>
+        "nnoremap <silent> <leader>gr :Gread<CR>
+        "nnoremap <silent> <leader>gw :Gwrite<CR>
+        "nnoremap <silent> <leader>ge :Gedit<CR>
+        "" Mnemonic _i_nteractive
+        "nnoremap <silent> <leader>gi :Git add -p %<CR>
+        "nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
     " Rainbow {
@@ -333,7 +340,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/bundle/repos/github.com/keln/python-mode"))
+        if isdirectory(expand("~/.nvim/dein/repos/github.com/keln/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -445,24 +452,67 @@
     "endif
 " }
 
-
 " Airline Options {
     let g:airline_powerline_fonts=1
     let g:airline_theme = 'solarized'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
+    let g:airline#extensions#ale#enabled = 1
     "nmap <leader>- <Plug>AirlineSelectPrevTab
     "nmap <leader>+ <Plug>AirlineSelectNextTab
     nmap <S-H> <Plug>AirlineSelectPrevTab
     nmap <S-L> <Plug>AirlineSelectNextTab
 "}
 
-
+" Snippets {
     let g:snips_author = 'Paul Kirth <pkirth@uci.edu>'
+"}
+
+" Last Place {
     let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
     let g:lastplace_ignore_buftype = "quickfix,nofile,help"
     "let g:lastplace_open_folds = 0
+" }
+
+" Denite {
     nnoremap <C-p> :Denite file_rec<cr>
+" }
+
+" Ale {
     " Enable completion where available.
     "let g:ale_completion_enabled = 1
+    let g:ale_linters = {
+    \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+    \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+    \}
+" }
+
+" Autoformat {
+    noremap <Leader>kk :Autoformat<CR>
+" }
+
+    " IncSearch {
+          "call dein#add('haya14busa/incsearch.vim')
+          "call dein#add('haya14busa/incsearch-fuzzy.vim')
+        "function! s:config_fuzzyall(...) abort
+          "return extend(copy({
+          "\   'converters': [
+          "\     incsearch#config#fuzzy#converter(),
+          "\     incsearch#config#fuzzyspell#converter()
+          "\   ],
+          "\ }), get(a:, 1, {}))
+        "endfunction
+
+        "noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
+        "noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
+        "noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
+        "let g:incsearch#auto_nohlsearch = 1
+        "map n  <Plug>(incsearch-nohl-n)
+        "map N  <Plug>(incsearch-nohl-N)
+        "map *  <Plug>(incsearch-nohl-*)
+        "map #  <Plug>(incsearch-nohl-#)
+        "map g* <Plug>(incsearch-nohl-g*)
+        "map g# <Plug>(incsearch-nohl-g#)
+    " }
+
