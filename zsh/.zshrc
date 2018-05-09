@@ -69,6 +69,8 @@ source ~/.zsh/aliases.zsh
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+spaceship_vi_mode_enable
+
 # Completion w/ fzf is bad so far
 #export FZF_COMPLETION_TRIGGER=''
 export FZF_CTRL_T_COMMAND='fd --follow --exclude .git --color=always'
@@ -78,7 +80,3 @@ export FZF_DEFAULT_OPTS="--ansi"
 #export FZF_COMPLETION_OPTS='+c -x'
 #bindkey '^T' fzf-completion
 #bindkey '^I' $fzf_default_completion
-
-if [[ $ZSH_PROFILING ]]; then
-    zprof
-fi
