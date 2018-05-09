@@ -3,14 +3,15 @@
 
 
 # Supports oh-my-zsh plugins and the like
-zplug "plugins/pip",               from:oh-my-zsh
-zplug "plugins/python",            from:oh-my-zsh
-zplug "plugins/rust",              from:oh-my-zsh
-zplug "plugins/cargo",             from:oh-my-zsh
-zplug "plugins/rsync",             from:oh-my-zsh
-zplug "plugins/tmux",              from:oh-my-zsh
-zplug "plugins/vagrant",           from:oh-my-zsh
-zplug "plugins/npm",               from:oh-my-zsh
+zplug "plugins/pip",               from:oh-my-zsh, lazy:yes
+zplug "plugins/python",            from:oh-my-zsh, lazy:yes
+zplug "plugins/rust",              from:oh-my-zsh, lazy:yes
+zplug "plugins/cargo",             from:oh-my-zsh, lazy:yes
+zplug "plugins/rsync",             from:oh-my-zsh, lazy:yes
+zplug "plugins/tmux",              from:oh-my-zsh, lazy:yes
+zplug "plugins/tmuxinator",        from:oh-my-zsh, lazy:yes
+zplug "plugins/vagrant",           from:oh-my-zsh, lazy:yes
+zplug "plugins/npm",               from:oh-my-zsh, lazy:yes
 zplug "plugins/systemadmin",       from:oh-my-zsh
 zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
