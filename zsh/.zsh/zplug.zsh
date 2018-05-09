@@ -5,6 +5,7 @@
 # Supports oh-my-zsh plugins and the like
 zplug "plugins/pip",               from:oh-my-zsh
 zplug "plugins/python",            from:oh-my-zsh
+zplug "plugins/rust",              from:oh-my-zsh
 zplug "plugins/rsync",             from:oh-my-zsh
 zplug "plugins/tmux",              from:oh-my-zsh
 zplug "plugins/vagrant",           from:oh-my-zsh
