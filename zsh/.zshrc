@@ -66,6 +66,8 @@ source ~/.zsh/aliases.zsh
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+spaceship_vi_mode_enable
+
 # Completion w/ fzf is bad so far
 #export FZF_COMPLETION_TRIGGER=''
 export FZF_CTRL_T_COMMAND='fd --follow --exclude .git --color=always'
