@@ -5,8 +5,15 @@ SPACESHIP_VI_MODE_INSERT='\e[91m'  #'\ue780'
 SPACESHIP_VI_MODE_NORMAL='' #'\uf441'   #'' # '\ue7a9'
 SPACESHIP_VI_MODE_VISUAL=''  #'\ue7a7'
 
-
-
+#  𝗥  '\U1d5e5'
+#  𝗡  '\U1d5e1'
+#  𝗜  '\U1d5dc'
+#  𝗩  '\U1d5e9'
+#    '\uf490'
+#  Ⓝ  '\u24c3'
+#  Ⓘ  '\u24be'
+#  I  '\u0049'
+#  Ⓥ  '\u24cb'
 #zplug mafredri/zsh-async, from:github
 #zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 #function zle-keymap-select() {
