@@ -15,6 +15,10 @@ zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 SPACESHIP_VI_MODE_NORMAL=%{$fg_bold[blue]%}'Ⓝ'  #'\u24c3'
 SPACESHIP_VI_MODE_INSERT=%{$fg_bold[yellow]%}'Ⓘ'  #'\u24be'
 SPACESHIP_VI_MODE_VISUAL=%{$fg_bold[magenta]%}'Ⓥ'  #'\u24cb'
+SPACESHIP_HG_SHOW=false
+
+
+
 #zplug mafredri/zsh-async, from:github
 #zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 #function zle-keymap-select() {
