@@ -66,6 +66,10 @@ zplug load
 
 source ~/.zsh/aliases.zsh
 
+# Think about actually using vim to edit the command
+#autoload edit-command-line; zle -N edit-command-line
+#bindkey -M vicmd t edit-command-line
+
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
@@ -82,7 +86,7 @@ export FZF_DEFAULT_OPTS="--ansi"
 #bindkey '^I' $fzf_default_completion
 
 
-# git diff brower
+# git diff browser
 forgit::diff::branch() {
     forgit::inside_work_tree || return 1
     local prefix=$(git rev-parse --show-toplevel)
