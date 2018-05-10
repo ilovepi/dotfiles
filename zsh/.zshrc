@@ -80,3 +80,18 @@ export FZF_DEFAULT_OPTS="--ansi"
 #export FZF_COMPLETION_OPTS='+c -x'
 #bindkey '^T' fzf-completion
 #bindkey '^I' $fzf_default_completion
+
+
+# git diff brower
+forgit::diff::branch() {
+    forgit::inside_work_tree || return 1
+    local prefix=$(git rev-parse --show-toplevel)
+    local cmd="git diff --color=always $1 -- $prefix/{} $forgit_emojify $forgit_fancy"
+    git diff $1 --name-only |
+        forgit::fzf -e -0 \
+            --bind="enter:execute($cmd |LESS='-R' less)" \
+            --preview="$cmd"
+}
+
+alias gd='forgit::diff::branch'
+
