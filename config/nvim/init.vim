@@ -68,6 +68,7 @@
       call dein#add('vim-scripts/python_match.vim')
       call dein#add('vim-scripts/pythoncomplete')
       call dein#add('mileszs/ack.vim')
+      call dein#add('jremmen/vim-ripgrep')
 
       call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
@@ -497,10 +498,14 @@
 " }
 
 " Ack Options {
-    let g:ackprg = 'ag --nogroup --nocolor --column --smart-case'
-    "if executable('ag')
-        "let g:ackprg = 'ag --vimgrep'
-    "endif
+    if executable('rg')
+        let g:ackprg = 'rg --vimgrep --no-heading --smart-case'
+    else
+        let g:ackprg = 'ag --vimgrep'
+    endif
+    let g:rg_highlight=1
+    let g:rg_command ='rg --vimgrep --smart-case'
+
 " }
 
 " Airline Options {
