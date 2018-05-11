@@ -1,14 +1,14 @@
 
 #Editor aliases
-alias zshconfig="edit /dotfiles/zsh/.zshrc"
-alias zprofile="edit ~/dotfiles/zsh/.zprofile"
-alias zshplug="edit ~/dotfiles/zsh/.zsh/zplug.zsh"
-alias ztheme="edit ~/dotfiles/zsh/.zsh/theme.zsh"
-alias zaliases="edit ~/dotfiles/zsh/.zsh/aliases.zsh"
-alias ztheme="edit ~/dotfiles/zsh/.zsh/theme.zsh"
-alias ztheme="edit ~/dotfiles/zsh/.zsh/theme.zsh"
-alias nvimrc="edit ~/dotfiles/config/nvim/init.vim"
-alias vv="edit $(fd | fzf)"
+alias zshconfig="$EDITOR ~/dotfiles/zsh/.zshrc"
+alias zprofile="$EDITOR ~/dotfiles/zsh/.zprofile"
+alias zshplug="$EDITOR ~/dotfiles/zsh/.zsh/zplug.zsh"
+alias ztheme="$EDITOR ~/dotfiles/zsh/.zsh/theme.zsh"
+alias zaliases="$EDITOR ~/dotfiles/zsh/.zsh/aliases.zsh"
+alias ztheme="$EDITOR ~/dotfiles/zsh/.zsh/theme.zsh"
+alias ztheme="$EDITOR ~/dotfiles/zsh/.zsh/theme.zsh"
+alias nvimrc="$EDITOR ~/dotfiles/config/nvim/init.vim"
+alias fim='$EDITOR $(fd | fzf)'
 
 alias :q='exit'
 alias lh='ls -ld .?*'
