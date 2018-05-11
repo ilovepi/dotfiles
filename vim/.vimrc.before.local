@@ -1,4 +1,5 @@
 let g:airline_powerline_fonts=1
+let g:airline_theme='gruvbox'
 let g:spf13_bundle_groups=['general', 'writing', 'python', 'programming', 'misc', 'youcompleteme']
 let g:spf13_no_easyWindows = 1
 set rtp+=~/.zplug/repos/junegunn/fzf

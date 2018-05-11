@@ -88,6 +88,9 @@
 "}
 
 
+    set termguicolors
+    colorscheme gruvbox
+
     let g:snips_author = 'Paul Kirth <pkirth@uci.edu>'
 
 " Tagbar {

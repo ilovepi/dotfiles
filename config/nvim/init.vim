@@ -17,6 +17,7 @@
       call dein#add('Shougo/vinarise.vim')
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
+      call dein#add('morhetz/gruvbox')
 
       call dein#add('tpope/vim-fugitive')
       call dein#add('jreybert/vimagit')
@@ -344,6 +345,7 @@
     " Colors {
         set termguicolors
         colorscheme NeoSolarized
+        colorscheme gruvbox
         syntax on
     "}
 
@@ -513,6 +515,7 @@
 " Airline Options {
     let g:airline_powerline_fonts=1
     let g:airline_theme = 'solarized'
+    let g:airline_theme = 'gruvbox'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
