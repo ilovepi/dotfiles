@@ -76,7 +76,7 @@ source ~/.zsh/aliases.zsh
 spaceship_vi_mode_enable
 
 # Completion w/ fzf is bad so far
-#export FZF_COMPLETION_TRIGGER=''
+export FZF_COMPLETION_TRIGGER='~~'
 export FZF_CTRL_T_COMMAND='fd --follow --exclude .git --color=always'
 export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_DEFAULT_OPTS="--ansi"
