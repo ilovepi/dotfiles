@@ -284,6 +284,58 @@
 
     " Adjust viewports to the same size
     map <Leader>= <C-w>=
+
+    " sane remap of <Esc>
+    :imap jk <Esc>
+
+    if has('nvim')
+        tnoremap <Esc> <C-\><C-n>
+        tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
+        tnoremap <C-h> <C-\><C-N><C-w>h
+        tnoremap <C-j> <C-\><C-N><C-w>j
+        tnoremap <C-k> <C-\><C-N><C-w>k
+        tnoremap <C-l> <C-\><C-N><C-w>l
+        inoremap <C-h> <C-\><C-N><C-w>h
+        inoremap <C-j> <C-\><C-N><C-w>j
+        inoremap <C-k> <C-\><C-N><C-w>k
+        inoremap <C-l> <C-\><C-N><C-w>l
+        "nnoremap <C-h> <C-w>h
+        "nnoremap <C-j> <C-w>j
+        "nnoremap <C-k> <C-w>k
+        "nnoremap <C-l> <C-w>l
+    endif
+
+    map <C-J> <C-W>j
+    map <C-K> <C-W>k
+    map <C-L> <C-W>l
+    map <C-H> <C-W>h
+
+
+
+    " Stupid shift key fixes
+    if !exists('g:spf13_no_keyfixes')
+        if has("user_commands")
+            command! -bang -nargs=* -complete=file E e<bang> <args>
+            command! -bang -nargs=* -complete=file W w<bang> <args>
+            command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+            command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+            command! -bang Wa wa<bang>
+            command! -bang WA wa<bang>
+            command! -bang Q q<bang>
+            command! -bang QA qa<bang>
+            command! -bang Qa qa<bang>
+        endif
+
+        cmap Tabe tabe
+    endif
+
+    " Yank from the cursor to the end of the line, to be consistent with C and D.
+    nnoremap Y y$
+
+    "toggle search highlighting rather than clear the current search results.
+    nmap <silent> <leader>/ :set invhlsearch<CR>
+
+
 " }
 
     " Colors {
@@ -423,33 +475,6 @@
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
     " }
-
-" Key Bindings {
-    " sane remap of <Esc>
-    :imap jk <Esc>
-
-    if has('nvim')
-        tnoremap <Esc> <C-\><C-n>
-        tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
-        tnoremap <C-h> <C-\><C-N><C-w>h
-        tnoremap <C-j> <C-\><C-N><C-w>j
-        tnoremap <C-k> <C-\><C-N><C-w>k
-        tnoremap <C-l> <C-\><C-N><C-w>l
-        inoremap <C-h> <C-\><C-N><C-w>h
-        inoremap <C-j> <C-\><C-N><C-w>j
-        inoremap <C-k> <C-\><C-N><C-w>k
-        inoremap <C-l> <C-\><C-N><C-w>l
-        "nnoremap <C-h> <C-w>h
-        "nnoremap <C-j> <C-w>j
-        "nnoremap <C-k> <C-w>k
-        "nnoremap <C-l> <C-w>l
-    endif
-
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
-"}
 
 " Git Gutter {
     "settings for signify
