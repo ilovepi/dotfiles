@@ -78,7 +78,7 @@
       call dein#add('Chiel92/vim-autoformat')
       call dein#add('chrisbra/NrrwRgn')
       call dein#add('farmergreg/vim-lastplace')
-      call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 }) 
+      call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
       call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
 
       call dein#add('andreshazard/vim-logreview')
@@ -185,13 +185,13 @@
 
 " UI {
 
-    set showmode                    " Display the current mode
+    set noshowmode                    " Display the current mode
     set cursorline                  " Highlight current line
 
     if has('cmdline_info')
         set ruler                   " Show the ruler
         set rulerformat=%30(%=\:b%n%y%m%r%w\ %l,%c%V\ %P%) " A ruler on steroids
-        set showcmd                 " Show partial commands in status line and
+        set noshowcmd                 " Show partial commands in status line and
                                     " Selected characters/lines in visual mode
     endif
 
@@ -297,7 +297,7 @@
         let g:deoplete#enable_smart_case = 1
 
         " disable autocomplete by default
-        let b:deoplete_disable_auto_complete=1 
+        let b:deoplete_disable_auto_complete=1
         let g:deoplete_disable_auto_complete=1
         call deoplete#custom#buffer_option('auto_complete', v:false)
 
