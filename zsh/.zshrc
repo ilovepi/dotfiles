@@ -78,13 +78,14 @@ spaceship_vi_mode_enable
 # Completion w/ fzf is bad so far
 #export FZF_COMPLETION_TRIGGER=''
 export FZF_CTRL_T_COMMAND='fd --follow --exclude .git --color=always'
-#export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
+export FZF_CTRL_T_OPTS="--preview '(highlight -O ansi -l {} 2> /dev/null || cat {} || tree -C {}) 2> /dev/null | head -200'"
 export FZF_DEFAULT_OPTS="--ansi"
-#export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap --bind '?:toggle-preview'"
 #export FZF_COMPLETION_OPTS='+c -x'
 #bindkey '^T' fzf-completion
 #bindkey '^I' $fzf_default_completion
 
+source ~/dotfiles/scripts/fed.zsh
 
 # git diff browser
 forgit::diff::branch() {
@@ -98,4 +99,3 @@ forgit::diff::branch() {
 }
 
 alias gd='forgit::diff::branch'
-
