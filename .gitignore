@@ -21,4 +21,5 @@ cscope.po.out
 
 vscode/.config/Code/User
 
+scripts/clang-format-all
 # End of https://www.gitignore.io/api/tags
