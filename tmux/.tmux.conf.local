@@ -253,6 +253,9 @@ set -g history-limit 100000
 set -g default-shell /bin/zsh
 set -g default-command /bin/zsh
 
+set -g default-terminal "xterm-256color" # colors!
+#set-option -ga terminal-overrides ",xterm-256color:Tc"
+#
 # start with mouse mode enabled
 set -g mouse on
 
