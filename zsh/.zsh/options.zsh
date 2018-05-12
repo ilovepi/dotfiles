@@ -1,7 +1,7 @@
 #####################################################################
 # options
 ######################################################################
-#{{{
+# Options {{{
 setopt auto_resume
 # Ignore <C-d> logout
 setopt ignore_eof
@@ -15,16 +15,6 @@ setopt correct
 setopt equals
 # Disable flow control
 setopt no_flow_control
-# Ignore dups
-setopt hist_ignore_dups
-# Reduce spaces
-setopt hist_reduce_blanks
-# Ignore add history if space
-setopt hist_ignore_space
-# Save time stamp
-setopt extended_history
-# Expand history
-setopt hist_expand
 # Better jobs
 setopt long_list_jobs
 # Enable completion in "--option=arg"
@@ -45,10 +35,7 @@ setopt pushd_ignore_dups
 setopt pushd_silent
 # Short statements in for, repeat, select, if, function
 setopt short_loops
-# Ignore history (fc -l) command in history
-setopt hist_no_store
 setopt transient_rprompt
-#unsetopt promptcr
 setopt hash_cmds
 setopt numeric_glob_sort
 # Enable comment string
@@ -79,7 +66,6 @@ setopt pushd_minus
 setopt pushd_ignore_dups
 # Check original command in alias completion
 #setopt complete_aliases
-unsetopt hist_verify
 # }}}
 
 

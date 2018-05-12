@@ -1,6 +1,7 @@
 # Load theme file
 #zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
 zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+#zplug nyarla/zsh-theme-nerdish, use:nerdish.zsh, from:github, as:theme
 #SPACESHIP_VI_MODE_INSERT='%{\e[91m%}'  #'\ue780'
 #SPACESHIP_VI_MODE_INSERT=%{$fg_bold[yellow]%}''  #'\ue780'
 #SPACESHIP_VI_MODE_NORMAL='' #'\uf441'   #'' # '\ue7a9'
