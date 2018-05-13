@@ -5,9 +5,12 @@ alias zprofile="$EDITOR ~/dotfiles/zsh/.zprofile"
 alias zshplug="$EDITOR ~/dotfiles/zsh/.zsh/zplug.zsh"
 alias ztheme="$EDITOR ~/dotfiles/zsh/.zsh/theme.zsh"
 alias zaliases="$EDITOR ~/dotfiles/zsh/.zsh/aliases.zsh"
-alias ztheme="$EDITOR ~/dotfiles/zsh/.zsh/theme.zsh"
-alias ztheme="$EDITOR ~/dotfiles/zsh/.zsh/theme.zsh"
+alias zeditor="$EDITOR ~/dotfiles/zsh/.zsh/editor.zsh"
+alias zhistory="$EDITOR ~/dotfiles/zsh/.zsh/history.zsh"
+alias zoptions="$EDITOR ~/dotfiles/zsh/.zsh/options.zsh"
+alias zpath="$EDITOR ~/dotfiles/zsh/.zsh/path.zsh"
 alias nvimrc="$EDITOR ~/dotfiles/config/nvim/init.vim"
+alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
 alias fim='$EDITOR $(fd | fzf)'
 
 alias :q='exit'
