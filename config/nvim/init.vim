@@ -90,6 +90,8 @@
 
       call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
 
+      call dein#add('wincent/loupe')
+
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
@@ -334,7 +336,7 @@
     nnoremap Y y$
 
     "toggle search highlighting rather than clear the current search results.
-    nmap <silent> <leader>/ :set invhlsearch<CR>
+    "nmap <silent> <leader>/ :set invhlsearch<CR>
 
 
 " }
