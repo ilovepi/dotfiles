@@ -18,6 +18,7 @@
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
       call dein#add('morhetz/gruvbox')
+      call dein#add('rakr/vim-two-firewatch')
 
       call dein#add('tpope/vim-fugitive')
       call dein#add('jreybert/vimagit')
@@ -345,7 +346,7 @@
     " Colors {
         set termguicolors
         colorscheme NeoSolarized
-        colorscheme gruvbox
+        "colorscheme gruvbox
         syntax on
     "}
 

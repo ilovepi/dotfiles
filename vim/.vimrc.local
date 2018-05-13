@@ -90,6 +90,7 @@
 
     set termguicolors
     colorscheme gruvbox
+    "colorscheme NeoSolarized
 
     let g:snips_author = 'Paul Kirth <pkirth@uci.edu>'
 
@@ -108,5 +109,3 @@
         "\]
         "\}
 " }
-
-"set noshowmode
