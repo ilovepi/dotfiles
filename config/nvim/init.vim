@@ -31,6 +31,7 @@
       call dein#add('tpope/vim-repeat')
       call dein#add('tpope/vim-markdown')
       call dein#add('rust-lang/rust.vim')
+      call dein#add('sheerun/vim-polyglot')
       call dein#add('cespare/vim-toml')
       call dein#add('spf13/vim-preview')
       "call dein#add('scrooloose/syntastic')
@@ -353,6 +354,7 @@
         "colorscheme gruvbox
         "colorscheme Tomorrow-Night-Eighties
         "colorscheme two-firewatch
+        colorscheme nova
         "let g:two_firewatch_italics=1
         colorscheme nova
         syntax on
@@ -543,7 +545,7 @@
     "let g:airline_theme = 'gruvbox'
     "let g:airline_theme = 'tomorrow'
     "let g:airline_theme = 'twofirewatch'
-        "let g:two_firewatch_italics=1
+    "let g:airline_theme = 'onedark'
     let g:airline_theme = 'nova'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
@@ -638,8 +640,8 @@
             \ }
 
         set signcolumn=yes
-        nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-        nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-        nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+        nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+        nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+        nnoremap <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
         let g:LanguageClient_selectionUI = 'fzf'
     " }
