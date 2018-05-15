@@ -99,3 +99,8 @@ forgit::diff::branch() {
 }
 
 alias gd='forgit::diff::branch'
+
+if [[ $ZSH_PROFILING ]]; then
+    zprof
+fi
+

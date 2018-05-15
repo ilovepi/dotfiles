@@ -1,5 +1,6 @@
 
 #Editor aliases
+alias zshrc="$EDITOR ~/dotfiles/zsh/.zshrc"
 alias zshconfig="$EDITOR ~/dotfiles/zsh/.zshrc"
 alias zprofile="$EDITOR ~/dotfiles/zsh/.zprofile"
 alias zshplug="$EDITOR ~/dotfiles/zsh/.zsh/zplug.zsh"

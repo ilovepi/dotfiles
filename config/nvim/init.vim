@@ -353,6 +353,7 @@
         "colorscheme gruvbox
         "colorscheme Tomorrow-Night-Eighties
         "colorscheme two-firewatch
+        "let g:two_firewatch_italics=1
         colorscheme nova
         syntax on
     "}
@@ -542,6 +543,7 @@
     "let g:airline_theme = 'gruvbox'
     "let g:airline_theme = 'tomorrow'
     "let g:airline_theme = 'twofirewatch'
+        "let g:two_firewatch_italics=1
     let g:airline_theme = 'nova'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
