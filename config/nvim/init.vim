@@ -19,6 +19,10 @@
       call dein#add('iCyMind/NeoSolarized')
       call dein#add('morhetz/gruvbox')
       call dein#add('rakr/vim-two-firewatch')
+      call dein#add('rakr/vim-one')
+      call dein#add('reedes/vim-colors-pencil')
+      call dein#add('trevordmiller/nova-vim')
+
 
       call dein#add('tpope/vim-fugitive')
       call dein#add('jreybert/vimagit')
@@ -38,7 +42,8 @@
       call dein#add('mattn/webapi-vim')
       call dein#add('mattn/gist-vim')
       call dein#add('majutsushi/tagbar')
-      call dein#add('mhinz/vim-signify')
+      "call dein#add('mhinz/vim-signify')
+      call dein#add('airblade/vim-gitgutter')
 
       call dein#add('rhysd/conflict-marker.vim')
       call dein#add('jiangmiao/auto-pairs')
@@ -53,7 +58,6 @@
       call dein#add('flazz/vim-colorschemes')
       call dein#add('mbbill/undotree')
       call dein#add('nathanaelkane/vim-indent-guides')
-      call dein#add('mhinz/vim-signify')
       call dein#add('osyo-manga/vim-over')
       call dein#add('kana/vim-textobj-user')
       call dein#add('kana/vim-textobj-indent')
@@ -345,8 +349,11 @@
 
     " Colors {
         set termguicolors
-        colorscheme NeoSolarized
+        "colorscheme NeoSolarized
         "colorscheme gruvbox
+        "colorscheme Tomorrow-Night-Eighties
+        "colorscheme two-firewatch
+        colorscheme nova
         syntax on
     "}
 
@@ -484,14 +491,25 @@
 
 " Git Gutter {
     "settings for signify
-    let g:signify_vcs_list = [ 'git', 'hg' ]
-    let g:signify_realtime = 1
-    "let g:signify_line_highlight = 1
+    "let g:signify_vcs_list = [ 'git', 'hg' ]
+    "let g:signify_sign_add='┃'
+    "let g:signify_sign_change='┃'
+    "let g:signify_sign_delete='◢'
+    "let g:signify_sign_delete_first_line='◥'
 
-    let g:signify_sign_add='┃'
-    let g:signify_sign_change='┃'
-    let g:signify_sign_delete='◢'
-    let g:signify_sign_delete_first_line='◥'
+
+    "nmap <Leader>ha <Plug>GitGutterStageHunk
+    "nmap <Leader>hu <Plug>GitGutterUndoHunk
+    "nmap ]c <Plug>GitGutterNextHunk
+    "nmap [c <Plug>GitGutterPrevHunk
+
+    let g:gitgutter_override_sign_column_highlight = 0
+    let g:gitgutter_sign_added='┃'
+    let g:gitgutter_sign_modified='┃'
+    let g:gitgutter_sign_removed='◢'
+    let g:gitgutter_sign_removed_first_line='◥'
+    let g:gitgutter_sign_modified_removed='◢'
+
 " }
 
 " Syntax Highlighting {
@@ -520,8 +538,11 @@
 
 " Airline Options {
     let g:airline_powerline_fonts=1
-    let g:airline_theme = 'solarized'
-    let g:airline_theme = 'gruvbox'
+    "let g:airline_theme = 'solarized'
+    "let g:airline_theme = 'gruvbox'
+    "let g:airline_theme = 'tomorrow'
+    "let g:airline_theme = 'twofirewatch'
+    let g:airline_theme = 'nova'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
