@@ -71,7 +71,7 @@ source ~/.zsh/aliases.zsh
 #bindkey -M vicmd t edit-command-line
 
 #FZF stuff
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.zsh/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.zsh/fzf.zsh
 
 spaceship_vi_mode_enable
 
