@@ -322,8 +322,6 @@
     map <C-L> <C-W>l
     map <C-H> <C-W>h
 
-
-
     " Stupid shift key fixes
     if !exists('g:spf13_no_keyfixes')
         if has("user_commands")
@@ -346,7 +344,6 @@
 
     "toggle search highlighting rather than clear the current search results.
     "nmap <silent> <leader>/ :set invhlsearch<CR>
-
 
 " }
 
