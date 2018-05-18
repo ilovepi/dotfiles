@@ -276,11 +276,12 @@
     vnoremap < <gv
     vnoremap > >gv
 
+    " Toggle fold at current position.
+    nnoremap <Tab> za
 
     " Allow using the repeat operator with a visual selection (!)
     " http://stackoverflow.com/a/8064607/127816
     vnoremap . :normal .<CR>
-
 
     " For when you forget to sudo.. Really Write the file.
     cmap w!! w !sudo tee % >/dev/null
