@@ -94,6 +94,10 @@
 
     let g:snips_author = 'Paul Kirth <pkirth@uci.edu>'
 
+" Autoformat {
+    noremap <Leader>kk :Autoformat<CR>
+" }
+
 " Tagbar {
     "let g:tagbar_type_rust = {
         "\ 'ctagstype' : 'rust',
