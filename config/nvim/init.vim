@@ -20,6 +20,7 @@
       call dein#add('morhetz/gruvbox')
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('rakr/vim-one')
+      call dein#add('reedes/vim-pencil')
       call dein#add('reedes/vim-colors-pencil')
       call dein#add('trevordmiller/nova-vim')
 
@@ -80,8 +81,10 @@
       call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-      call dein#add('ludovicchabant/vim-gutentags')
+      "call dein#add('ludovicchabant/vim-gutentags')
       call dein#add('christoomey/vim-tmux-navigator')
+
+      call dein#add('junegunn/goyo.vim')
 
       call dein#add('Chiel92/vim-autoformat')
       call dein#add('chrisbra/NrrwRgn')
@@ -94,6 +97,7 @@
       call dein#add('metakirby5/codi.vim')
       call dein#add('brooth/far.vim')
       call dein#add('rhysd/committia.vim')
+      call dein#add('lervag/vimtex')
 
       call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
 
@@ -172,7 +176,7 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set spell                           " Spell checking on
+    "set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -490,6 +494,9 @@
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
+
+        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
     " }
 
 " Git Gutter {
@@ -580,6 +587,7 @@
 " Ale {
     " Enable completion where available.
     "let g:ale_completion_enabled = 1
+    let g:ale_linters_explicit = 1
     let g:ale_linters = {
     \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
     \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
@@ -644,4 +652,41 @@
         nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
         nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
         let g:LanguageClient_selectionUI = 'fzf'
+
+
+        function SetLSPShortcuts()
+          nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+          nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+          nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+          nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+          nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+          nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+          nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+          nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+          nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+          nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+        endfunction()
+
+        augroup LSP
+          autocmd!
+          autocmd FileType cpp,c call SetLSPShortcuts()
+        augroup END
+    " }
+
+    " Vimtex { 
+        "let g:vimtex_compiler_progname = 'nvr'
+        let g:vimtex_view_method = 'zathura'
+        let g:polyglot_disabled = ['latex']
+    "}
+
+    " Writing {
+        let g:tex_flavor = "latex"
+        let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+        augroup pencil
+          autocmd!
+          autocmd FileType markdown,mkd      call pencil#init()
+          autocmd FileType text,tex,plaintex call pencil#init()
+        augroup END
+
+
     " }
