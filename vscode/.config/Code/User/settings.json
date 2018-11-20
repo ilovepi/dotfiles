@@ -9,13 +9,33 @@
     "vim.easymotion": true,
     "vim.enableNeovim": true,
     "vim.hlsearch": true,
+    "vim.normalModeKeyBindings": [
+        {
+            "before": ["j"],
+            "after": ["g","j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g","k"]
+        }
+    ],
+    "vim.visualModeKeyBindings": [
+        {
+            "before": ["j"],
+            "after": ["g","j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g","k"]
+        }
+    ],
     "vim.insertModeKeyBindings": [
         {
             "before": ["j", "k"],
             "after": ["<Esc>"]
         }
     ],
-    "vim.leader": ",",
+    "vim.leader": "space",
     "vim.sneak": true,
     "vim.statusBarColorControl": true,
     "vim.statusBarColors": {
@@ -51,5 +71,16 @@
         "suppressNoRepositoryWarning": false,
         "suppressResultsExplorerNotice": false,
         "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "editor.wordWrap": "wordWrapColumn",
+    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.latex.autoBuild.onTexChange.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.external.command": {
+        "command": "zathura",
+        "args": [
+            "%PDF%"
+        ]
     }
 }
