@@ -1,7 +1,7 @@
 # Load theme file
 #zplug "caiogondim/bullet-train.zsh", use:bullet-train.zsh-theme, defer:3 # defer until other plugins like oh-my-zsh is loaded
-zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
-#zplug nyarla/zsh-theme-nerdish, use:nerdish.zsh, from:github, as:theme
+#zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
+#zplug runthee/zsh-theme-nerdish, use:nerdish.zsh, from:github, as:theme
 #SPACESHIP_VI_MODE_INSERT='%{\e[91m%}'  #'\ue780'
 #SPACESHIP_VI_MODE_INSERT=%{$fg_bold[yellow]%}''  #'\ue780'
 #SPACESHIP_VI_MODE_NORMAL='' #'\uf441'   #'' # '\ue7a9'
@@ -13,15 +13,16 @@ zplug denysdovhan/spaceship-prompt, use:spaceship.zsh, from:github, as:theme
 #SPACESHIP_VI_MODE_INSERT=%{$fg_bold[yellow]%}'𝗜'  #'\U1d5dc'
 #SPACESHIP_VI_MODE_VISUAL=%{$fg_bold[magenta]%}'𝗩'  #'\U1d5e9'
 #SPACESHIP_VI_MODE_INSERT=''  #'\uf490'
-SPACESHIP_VI_MODE_NORMAL=%{$fg[blue]%}'Ⓝ'  #'\u24c3'
-SPACESHIP_VI_MODE_INSERT=%{$fg[yellow]%}'Ⓘ'  #'\u24be'
-SPACESHIP_VI_MODE_VISUAL=%{$fg[magenta]%}'Ⓥ'  #'\u24cb'
-SPACESHIP_HG_SHOW=false
+
+#SPACESHIP_VI_MODE_NORMAL=%{$fg[blue]%}'Ⓝ'  #'\u24c3'
+#SPACESHIP_VI_MODE_INSERT=%{$fg[yellow]%}'Ⓘ'  #'\u24be'
+#SPACESHIP_VI_MODE_VISUAL=%{$fg[magenta]%}'Ⓥ'  #'\u24cb'
+#SPACESHIP_HG_SHOW=false
 
 
 
-#zplug mafredri/zsh-async, from:github
-#zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+zplug mafredri/zsh-async, from:github
+zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 #function zle-keymap-select() {
   #zle reset-prompt
   #zle -R
@@ -29,6 +30,7 @@ SPACESHIP_HG_SHOW=false
 
 #zle -N zle-keymap-select
 
+#
 #prompt_vi_mode()
 #{
     #case ${KEYMAP} in
