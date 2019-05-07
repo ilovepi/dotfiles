@@ -659,9 +659,13 @@
     " LanguageClient {
         let g:LanguageClient_serverCommands = {
             \ 'cpp' : ['clangd'],
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-            \ 'javascript': ['javascript-typescript-stdio'],
             \ }
+        "let g:LanguageClient_serverCommands = {
+            "\ 'cpp' : ['clangd'],
+            "\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            "\ 'javascript': ['javascript-typescript-stdio'],
+            "\ }
+
 
         set signcolumn=yes
         nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
