@@ -15,12 +15,15 @@
       call dein#add('Shougo/deoplete.nvim')
       call dein#add('Shougo/denite.nvim')
       call dein#add('Shougo/vinarise.vim')
+      "call dein#add('Shougo/deol.nvim')
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
       call dein#add('morhetz/gruvbox')
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('rakr/vim-one')
       call dein#add('reedes/vim-colors-pencil')
+      call dein#add('reedes/vim-pencil')
+      call dein#add('reedes/vim-wordy')
       call dein#add('trevordmiller/nova-vim')
 
 
@@ -39,7 +42,7 @@
       call dein#add('scrooloose/nerdtree')
       call dein#add('scrooloose/nerdcommenter')
       call dein#add('godlygeek/tabular')
-      call dein#add('luochen1990/rainbow')
+      "call dein#add('luochen1990/rainbow')
       call dein#add('mattn/webapi-vim')
       call dein#add('mattn/gist-vim')
       call dein#add('majutsushi/tagbar')
@@ -70,7 +73,7 @@
       call dein#add('reedes/vim-wordy')
       call dein#add('SirVer/ultisnips')
       call dein#add('honza/vim-snippets')
-      call dein#add('klen/python-mode')
+      call dein#add('python-mode/python-mode')
       call dein#add('yssource/python.vim')
       call dein#add('vim-scripts/python_match.vim')
       call dein#add('vim-scripts/pythoncomplete')
@@ -80,7 +83,9 @@
       call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-      call dein#add('ludovicchabant/vim-gutentags')
+      "call dein#add('ludovicchabant/vim-gutentags')
+      "call dein#add('skywind3000/gutentags_plus')
+      "call dein#add('jsfaint/gen_tags.vim')
       call dein#add('christoomey/vim-tmux-navigator')
 
       call dein#add('Chiel92/vim-autoformat')
@@ -98,6 +103,7 @@
       call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
 
       call dein#add('wincent/loupe')
+      call dein#add('lervag/vimtex')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -433,7 +439,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/dein/repos/github.com/keln/python-mode"))
+        if isdirectory(expand("~/.nvim/dein/repos/github.com/python-mode/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -483,13 +489,26 @@
     " }
 
     " Ctags {
+        "set tags=./tags;/,~/.vimtags;/,~/.cache/tags_dir
         set tags=./tags;/,~/.vimtags
+        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
+    " }
+
+    " Gutentags {
+        let g:gutentags_cache_dir="~/.vimtags"
+        "let g:gutentags_modules=[ 'ctags', 'gtags_cscope' ]
+        "let g:gutentags_auto_add_gtags_cscope=1
+        "set cscopeprg='gtags-cscope'
+
+        "let g:gen_tags#use_cache_dir=1
+        "let g:gen_tags#gtags_auto_gen=1
     " }
 
 " Git Gutter {
@@ -583,6 +602,7 @@
     let g:ale_linters = {
     \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
     \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+    \   'latex': [ 'chktex', 'lacheck', 'proselint', 'vale', 'write-good' ],
     \}
 " }
 
@@ -645,3 +665,24 @@
         nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
         let g:LanguageClient_selectionUI = 'fzf'
     " }
+
+" VimTex{
+
+    let g:vimtex_enabled=1
+    let g:vimtex_view_method = 'zathura'
+    let g:latex_view_general_viewer = 'zathura'
+    let g:vimtex_latexmk_progname= '/usr/bin/nvr'
+    let g:polyglot_disabled = ['latex']
+
+"}
+
+"Writing {
+let g:tex_flavor = "latex"
+let g:pencil#wrapModeDefault = 'soft'
+augroup pencil
+  autocmd!
+  autocmd FileType markdown,mkd call pencil#init()
+  autocmd FileType text         call pencil#init()
+  autocmd FileType tex          call pencil#init()
+augroup END
+"}

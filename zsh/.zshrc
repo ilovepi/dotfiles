@@ -74,7 +74,7 @@ source ~/.zsh/aliases.zsh
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.zsh/fzf.zsh
 
 spaceship_vi_mode_enable
-
+unset zle_bracketed_paste
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi

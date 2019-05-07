@@ -17,6 +17,7 @@ zplug "plugins/common-aliases",    from:oh-my-zsh
 zplug "plugins/git",               from:oh-my-zsh
 zplug "plugins/git-extras",        from:oh-my-zsh
 zplug "plugins/git-flow",          from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
 
 setopt extended_glob
 case `lsb_release -sd` in
@@ -34,7 +35,7 @@ case `lsb_release -sd` in
 esac
 
 zplug "djui/alias-tips"
-zplug "zlsun/solarized-man"
+#zplug "zlsun/solarized-man"
 zplug "joel-porquet/zsh-dircolors-solarized"
 zplug "zsh-users/zsh-autosuggestions"
 zplug "zsh-users/zsh-completions"
