@@ -21,8 +21,11 @@
 
 
 
-zplug mafredri/zsh-async, from:github
-zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
+zplugin light mafredri/zsh-async
+zplugin light sindresorhus/pure
+
+#zplug mafredri/zsh-async, from:github
+#zplug sindresorhus/pure, use:pure.zsh, from:github, as:theme
 #function zle-keymap-select() {
   #zle reset-prompt
   #zle -R

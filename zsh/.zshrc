@@ -2,13 +2,12 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-#check if zplug is installed
-if [[ ! -d ~/.zplug ]]; then
-        git clone https://github.com/zplug/zplug ~/.zplug
-        source ~/.zplug/init.zsh && zplug update --self
-fi
 
-source ~/.zplug/init.zsh
+### Added by Zplugin's installer
+source '/Users/paul/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
 
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
@@ -25,21 +24,13 @@ source ~/.zsh/editor.zsh
 source ~/.zsh/fpath.zsh
 
 # load plugins w/ zplug
-source ~/.zsh/zplug.zsh
+source ~/.zsh/zplugin.zsh
 
 # setup history substring search and keybindings
 source ~/.zsh/history-search.zsh
 
 # setup theme (bullet train w/ vi mode support)
 source ~/.zsh/theme.zsh
-
-# Install plugins if there are plugins that have not been installed
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
-fi
 
 # set zsh options
 source ~/.zsh/options.zsh
@@ -60,9 +51,6 @@ source ~/.zsh/history.zsh
 # Enable math functions
 zmodload zsh/mathfunc
 
-# Then, source plugins and add commands to $PATH
-#zplug load --verbose
-zplug load
 
 source ~/.zsh/aliases.zsh
 
@@ -73,8 +61,11 @@ source ~/.zsh/aliases.zsh
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.zsh/fzf.zsh
 
-#spaceship_vi_mode_enable
-unset zle_bracketed_paste
+autoload -Uz compinit
+compinit
+
+zplugin cdreplay -q
+
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi
