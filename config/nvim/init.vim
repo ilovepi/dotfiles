@@ -78,7 +78,7 @@
       call dein#add('vim-scripts/python_match.vim')
       call dein#add('vim-scripts/pythoncomplete')
       call dein#add('mileszs/ack.vim')
-      call dein#add('jremmen/vim-ripgrep')
+      "call dein#add('jremmen/vim-ripgrep')
 
       call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
@@ -178,7 +178,7 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set spell                           " Spell checking on
+    "set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -225,6 +225,7 @@
         "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     "endif
 
+    set colorcolumn=80              " Puts a visual marker at the desired line width
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set number                      " Line numbers on
@@ -307,7 +308,8 @@
     :imap jk <Esc>
 
     if has('nvim')
-        tnoremap <Esc> <C-\><C-n>
+        au FileType fzf tunmap <Esc>
+        au TermOpen * tnoremap <Esc> <C-\><c-n>
         tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
         tnoremap <C-h> <C-\><C-N><C-w>h
         tnoremap <C-j> <C-\><C-N><C-w>j
@@ -359,7 +361,6 @@
         "colorscheme gruvbox
         "colorscheme Tomorrow-Night-Eighties
         "colorscheme two-firewatch
-        colorscheme nova
         "let g:two_firewatch_italics=1
         colorscheme nova
         syntax on
@@ -665,24 +666,3 @@
         nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
         let g:LanguageClient_selectionUI = 'fzf'
     " }
-
-" VimTex{
-
-    let g:vimtex_enabled=1
-    let g:vimtex_view_method = 'zathura'
-    let g:latex_view_general_viewer = 'zathura'
-    let g:vimtex_latexmk_progname= '/usr/bin/nvr'
-    let g:polyglot_disabled = ['latex']
-
-"}
-
-"Writing {
-let g:tex_flavor = "latex"
-let g:pencil#wrapModeDefault = 'soft'
-augroup pencil
-  autocmd!
-  autocmd FileType markdown,mkd call pencil#init()
-  autocmd FileType text         call pencil#init()
-  autocmd FileType tex          call pencil#init()
-augroup END
-"}
