@@ -18,6 +18,9 @@ alias :q='exit'
 alias lh='ls -ld .?*'
 alias magit='nvim -c MagitOnly'
 alias fpth='sed "s/ /\n/g" <<< $fpath'
+#if type ls++ > /dev/null; then
+    #alias ls=ls++
+#fi
 
 #unalias ag
 unalias rm

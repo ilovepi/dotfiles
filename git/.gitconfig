@@ -39,7 +39,7 @@
   changed = red bold
 [color "diff"]
   meta = red bold
-  frag = black bold
+  frag = blue bold
   func = blue
   old = red strike
   new = green

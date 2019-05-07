@@ -30,7 +30,7 @@ setopt path_dirs
 # For multi byte
 setopt print_eight_bit
 # Print exit value if return code is non-zero
-setopt print_exit_value
+unsetopt print_exit_value
 setopt pushd_ignore_dups
 setopt pushd_silent
 # Short statements in for, repeat, select, if, function

@@ -15,13 +15,15 @@
       call dein#add('Shougo/deoplete.nvim')
       call dein#add('Shougo/denite.nvim')
       call dein#add('Shougo/vinarise.vim')
+      "call dein#add('Shougo/deol.nvim')
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
       call dein#add('morhetz/gruvbox')
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('rakr/vim-one')
-      call dein#add('reedes/vim-pencil')
       call dein#add('reedes/vim-colors-pencil')
+      call dein#add('reedes/vim-pencil')
+      call dein#add('reedes/vim-wordy')
       call dein#add('trevordmiller/nova-vim')
 
 
@@ -40,7 +42,7 @@
       call dein#add('scrooloose/nerdtree')
       call dein#add('scrooloose/nerdcommenter')
       call dein#add('godlygeek/tabular')
-      call dein#add('luochen1990/rainbow')
+      "call dein#add('luochen1990/rainbow')
       call dein#add('mattn/webapi-vim')
       call dein#add('mattn/gist-vim')
       call dein#add('majutsushi/tagbar')
@@ -71,17 +73,19 @@
       call dein#add('reedes/vim-wordy')
       call dein#add('SirVer/ultisnips')
       call dein#add('honza/vim-snippets')
-      call dein#add('klen/python-mode')
+      call dein#add('python-mode/python-mode')
       call dein#add('yssource/python.vim')
       call dein#add('vim-scripts/python_match.vim')
       call dein#add('vim-scripts/pythoncomplete')
       call dein#add('mileszs/ack.vim')
-      call dein#add('jremmen/vim-ripgrep')
+      "call dein#add('jremmen/vim-ripgrep')
 
       call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
       "call dein#add('ludovicchabant/vim-gutentags')
+      "call dein#add('skywind3000/gutentags_plus')
+      "call dein#add('jsfaint/gen_tags.vim')
       call dein#add('christoomey/vim-tmux-navigator')
 
       call dein#add('junegunn/goyo.vim')
@@ -97,11 +101,11 @@
       call dein#add('metakirby5/codi.vim')
       call dein#add('brooth/far.vim')
       call dein#add('rhysd/committia.vim')
-      call dein#add('lervag/vimtex')
 
       call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
 
       call dein#add('wincent/loupe')
+      call dein#add('lervag/vimtex')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -179,7 +183,7 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    "set spell                           " Spell checking on
+    set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -226,6 +230,7 @@
         "set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     "endif
 
+    set colorcolumn=80              " Puts a visual marker at the desired line width
     set backspace=indent,eol,start  " Backspace for dummies
     set linespace=0                 " No extra spaces between rows
     set number                      " Line numbers on
@@ -321,7 +326,8 @@
     :imap jk <Esc>
 
     if has('nvim')
-        tnoremap <Esc> <C-\><C-n>
+        au FileType fzf tunmap <Esc>
+        au TermOpen * tnoremap <Esc> <C-\><c-n>
         tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'
         tnoremap <C-h> <C-\><C-N><C-w>h
         tnoremap <C-j> <C-\><C-N><C-w>j
@@ -373,7 +379,6 @@
         "colorscheme gruvbox
         "colorscheme Tomorrow-Night-Eighties
         "colorscheme two-firewatch
-        colorscheme nova
         "let g:two_firewatch_italics=1
         colorscheme nova
         syntax on
@@ -453,7 +458,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/dein/repos/github.com/keln/python-mode"))
+        if isdirectory(expand("~/.nvim/dein/repos/github.com/python-mode/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -503,16 +508,28 @@
     " }
 
     " Ctags {
+        "set tags=./tags;/,~/.vimtags;/,~/.cache/tags_dir
         set tags=./tags;/,~/.vimtags
+        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
-
         "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
         "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+    " }
+
+    " Gutentags {
+        let g:gutentags_cache_dir="~/.vimtags"
+        "let g:gutentags_modules=[ 'ctags', 'gtags_cscope' ]
+        "let g:gutentags_auto_add_gtags_cscope=1
+        "set cscopeprg='gtags-cscope'
+
+        "let g:gen_tags#use_cache_dir=1
+        "let g:gen_tags#gtags_auto_gen=1
     " }
 
 " Git Gutter {
@@ -607,6 +624,7 @@
     let g:ale_linters = {
     \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
     \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+    \   'latex': [ 'chktex', 'lacheck', 'proselint', 'vale', 'write-good' ],
     \}
 " }
 
@@ -659,6 +677,8 @@
     " LanguageClient {
         let g:LanguageClient_serverCommands = {
             \ 'cpp' : ['clangd'],
+            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'javascript': ['javascript-typescript-stdio'],
             \ }
         "let g:LanguageClient_serverCommands = {
             "\ 'cpp' : ['clangd'],
