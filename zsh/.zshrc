@@ -4,9 +4,9 @@ fi
 
 
 ### Added by Zplugin's installer
-source '/Users/paul/.zplugin/bin/zplugin.zsh'
-autoload -Uz _zplugin
-(( ${+_comps} )) && _comps[zplugin]=_zplugin
+source '/home/paul/.zplugin/bin/zplugin.zsh'
+#autoload -Uz _zplugin
+#(( ${+_comps} )) && _comps[zplugin]=_zplugin
 ### End of Zplugin's installer chunk
 
 # TODO: avoid this hack
@@ -60,6 +60,11 @@ source ~/.zsh/aliases.zsh
 
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.zsh/fzf.zsh
+
+zplugin light  zsh-users/zsh-history-substring-search
+
+#zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
+zplugin light zdharma/fast-syntax-highlighting
 
 autoload -Uz compinit
 compinit
