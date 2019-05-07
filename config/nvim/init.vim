@@ -293,6 +293,9 @@
     vnoremap < <gv
     vnoremap > >gv
 
+    " Easier formatting
+    nnoremap <silent> <leader>q gwip
+
     " Toggle fold at current position.
     nnoremap <Tab> za
 
