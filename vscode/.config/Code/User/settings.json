@@ -82,5 +82,7 @@
         "args": [
             "%PDF%"
         ]
-    }
+    },
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true
 }
