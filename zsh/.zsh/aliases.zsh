@@ -3,7 +3,7 @@
 alias zshrc="$EDITOR ~/dotfiles/zsh/.zshrc"
 alias zshconfig="$EDITOR ~/dotfiles/zsh/.zshrc"
 alias zprofile="$EDITOR ~/dotfiles/zsh/.zprofile"
-alias zshplug="$EDITOR ~/dotfiles/zsh/.zsh/zplug.zsh"
+alias zshplug="$EDITOR ~/dotfiles/zsh/.zsh/zplugin.zsh"
 alias ztheme="$EDITOR ~/dotfiles/zsh/.zsh/theme.zsh"
 alias zaliases="$EDITOR ~/dotfiles/zsh/.zsh/aliases.zsh"
 alias zeditor="$EDITOR ~/dotfiles/zsh/.zsh/editor.zsh"

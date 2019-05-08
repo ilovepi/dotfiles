@@ -2,12 +2,7 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-
-### Added by Zplugin's installer
 source '/home/paul/.zplugin/bin/zplugin.zsh'
-#autoload -Uz _zplugin
-#(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
 
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
@@ -29,7 +24,6 @@ source ~/.zsh/zplugin.zsh
 # setup history substring search and keybindings
 source ~/.zsh/history-search.zsh
 
-# setup theme (bullet train w/ vi mode support)
 source ~/.zsh/theme.zsh
 
 # set zsh options
@@ -63,13 +57,14 @@ source ~/.zsh/aliases.zsh
 
 zplugin light  zsh-users/zsh-history-substring-search
 
-#zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
+zplugin ice wait"0" atinit"ZPLGM[COMPINIT_OPTS]=-C zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
-autoload -Uz compinit
-compinit
+#autoload -Uz compinit
+#compinit -D
+#zpcompinit
 
-zplugin cdreplay -q
+#zplugin cdreplay -q
 
 if [[ $ZSH_PROFILING ]]; then
     zprof
