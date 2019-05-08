@@ -10,6 +10,8 @@ SHELL=`which zsh`
 export SHELL
 #export TERM=xterm-256color
 
+GOPATH=${GOPATH:=$HOME/workspace/go}
+
 mkdir -p $GOPATH
 
 #setup vim/nvim as editor
@@ -24,7 +26,6 @@ source $HOME/.zsh/zplugin.zsh
 # setup history substring search and keybindings
 source $HOME/.zsh/history-search.zsh
 
-# setup theme (bullet train w/ vi mode support)
 source $HOME/.zsh/theme.zsh
 
 # set zsh options
@@ -46,7 +47,6 @@ source $HOME/.zsh/history.zsh
 # Enable math functions
 zmodload zsh/mathfunc
 
-
 source $HOME/.zsh/aliases.zsh
 
 # Think about actually using vim to edit the command
@@ -59,7 +59,7 @@ source $HOME/.zsh/aliases.zsh
 zplugin light  zsh-users/zsh-history-substring-search
 
 autoload -Uz compinit
-zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
+zplugin ice wait"0" atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
 if [[ $ZSH_PROFILING ]]; then

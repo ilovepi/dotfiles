@@ -3,5 +3,3 @@ if which nvim &> /dev/null; then
 else
     export EDITOR=$(which vim)
 fi
-
-

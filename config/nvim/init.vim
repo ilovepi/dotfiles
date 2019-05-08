@@ -15,6 +15,7 @@
       call dein#add('Shougo/deoplete.nvim')
       call dein#add('Shougo/denite.nvim')
       call dein#add('Shougo/vinarise.vim')
+      "call dein#add('Shougo/deol.nvim')
       "call dein#add('neomake/neomake')
       call dein#add('iCyMind/NeoSolarized')
       call dein#add('morhetz/gruvbox')
@@ -22,6 +23,7 @@
       call dein#add('rakr/vim-one')
       call dein#add('reedes/vim-colors-pencil')
       call dein#add('reedes/vim-pencil')
+      call dein#add('reedes/vim-wordy')
       call dein#add('trevordmiller/nova-vim')
 
 
@@ -40,7 +42,7 @@
       call dein#add('scrooloose/nerdtree')
       call dein#add('scrooloose/nerdcommenter')
       call dein#add('godlygeek/tabular')
-      call dein#add('luochen1990/rainbow')
+      "call dein#add('luochen1990/rainbow')
       call dein#add('mattn/webapi-vim')
       call dein#add('mattn/gist-vim')
       call dein#add('majutsushi/tagbar')
@@ -71,7 +73,7 @@
       call dein#add('reedes/vim-wordy')
       call dein#add('SirVer/ultisnips')
       call dein#add('honza/vim-snippets')
-      call dein#add('klen/python-mode')
+      call dein#add('python-mode/python-mode')
       call dein#add('yssource/python.vim')
       call dein#add('vim-scripts/python_match.vim')
       call dein#add('vim-scripts/pythoncomplete')
@@ -81,8 +83,12 @@
       call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-      "call dein#add('ludovicchabant/vim
+      "call dein#add('ludovicchabant/vim-gutentags')
+      "call dein#add('skywind3000/gutentags_plus')
+      "call dein#add('jsfaint/gen_tags.vim')
       call dein#add('christoomey/vim-tmux-navigator')
+
+      call dein#add('junegunn/goyo.vim')
 
       call dein#add('Chiel92/vim-autoformat')
       call dein#add('chrisbra/NrrwRgn')
@@ -99,6 +105,7 @@
       call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
 
       call dein#add('wincent/loupe')
+      call dein#add('lervag/vimtex')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -154,7 +161,7 @@
     " }
 
 " Basic Settings {
-    "set background=dark
+    set background=dark
     filetype plugin indent on   " Automatically detect file types.
     syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
@@ -169,11 +176,14 @@
         endif
     endif
 
+    " Always switch to the current file directory
+    autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
+
     set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    "set spell                           " Spell checking on
+    set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -270,6 +280,16 @@
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
 
+
+    " Find merge conflict markers
+    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
+
+    " Shortcuts
+    " Change Working Directory to that of the current file
+    cmap cwd lcd %:p:h
+    cmap cd. lcd %:p:h
+
+
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
     noremap k gk
@@ -277,6 +297,9 @@
     " Visual shifting (does not exit Visual mode)
     vnoremap < <gv
     vnoremap > >gv
+
+    " Easier formatting
+    nnoremap <silent> <leader>q gwip
 
     " Toggle fold at current position.
     nnoremap <Tab> za
@@ -435,7 +458,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/dein/repos/github.com/keln/python-mode"))
+        if isdirectory(expand("~/.nvim/dein/repos/github.com/python-mode/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -485,13 +508,28 @@
     " }
 
     " Ctags {
+        "set tags=./tags;/,~/.vimtags;/,~/.cache/tags_dir
         set tags=./tags;/,~/.vimtags
+        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
 
         " Make tags placed in .git/tags file available in all levels of a repository
         let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
         if gitroot != ''
             let &tags = &tags . ',' . gitroot . '/.git/tags'
         endif
+        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
+        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
+    " }
+
+    " Gutentags {
+        let g:gutentags_cache_dir="~/.vimtags"
+        "let g:gutentags_modules=[ 'ctags', 'gtags_cscope' ]
+        "let g:gutentags_auto_add_gtags_cscope=1
+        "set cscopeprg='gtags-cscope'
+
+        "let g:gen_tags#use_cache_dir=1
+        "let g:gen_tags#gtags_auto_gen=1
     " }
 
 " Git Gutter {
@@ -582,9 +620,11 @@
 " Ale {
     " Enable completion where available.
     "let g:ale_completion_enabled = 1
+    let g:ale_linters_explicit = 1
     let g:ale_linters = {
     \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
     \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
+    \   'latex': [ 'chktex', 'lacheck', 'proselint', 'vale', 'write-good' ],
     \}
 " }
 
@@ -640,11 +680,53 @@
             \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
             \ 'javascript': ['javascript-typescript-stdio'],
             \ }
+        "let g:LanguageClient_serverCommands = {
+            "\ 'cpp' : ['clangd'],
+            "\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            "\ 'javascript': ['javascript-typescript-stdio'],
+            "\ }
+
 
         set signcolumn=yes
         nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
         nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
         nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
         let g:LanguageClient_selectionUI = 'fzf'
+
+
+        function SetLSPShortcuts()
+          nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
+          nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
+          nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
+          nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
+          nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
+          nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
+          nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
+          nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
+          nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
+          nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
+        endfunction()
+
+        augroup LSP
+          autocmd!
+          autocmd FileType cpp,c call SetLSPShortcuts()
+        augroup END
     " }
 
+    " Vimtex { 
+        "let g:vimtex_compiler_progname = 'nvr'
+        let g:vimtex_view_method = 'zathura'
+        let g:polyglot_disabled = ['latex']
+    "}
+
+    " Writing {
+        let g:tex_flavor = "latex"
+        let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
+        augroup pencil
+          autocmd!
+          autocmd FileType markdown,mkd      call pencil#init()
+          autocmd FileType text,tex,plaintex call pencil#init()
+        augroup END
+
+
+    " }

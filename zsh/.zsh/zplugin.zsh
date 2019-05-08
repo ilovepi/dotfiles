@@ -102,3 +102,4 @@ zplugin snippet OMZ::lib/compfix.zsh
 
 zplugin snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+
