@@ -2,18 +2,15 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-
-### Added by Zplugin's installer
 source '/home/paul/.zplugin/bin/zplugin.zsh'
-#autoload -Uz _zplugin
-#(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
 
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
 SHELL=`which zsh`
 export SHELL
 #export TERM=xterm-256color
+
+GOPATH=${GOPATH:=$HOME/workspace/go}
 
 mkdir -p $GOPATH
 
@@ -29,7 +26,6 @@ source ~/.zsh/zplugin.zsh
 # setup history substring search and keybindings
 source ~/.zsh/history-search.zsh
 
-# setup theme (bullet train w/ vi mode support)
 source ~/.zsh/theme.zsh
 
 # set zsh options
@@ -51,7 +47,6 @@ source ~/.zsh/history.zsh
 # Enable math functions
 zmodload zsh/mathfunc
 
-
 source ~/.zsh/aliases.zsh
 
 # Think about actually using vim to edit the command
@@ -63,13 +58,13 @@ source ~/.zsh/aliases.zsh
 
 zplugin light  zsh-users/zsh-history-substring-search
 
-#zplugin ice wait"0" atinit"zpcompinit; zpcdreplay" lucid
+autoload -Uz compinit
+zplugin ice wait"0" atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
-autoload -Uz compinit
-compinit
+#compinit
 
-zplugin cdreplay -q
+#zplugin cdreplay -q
 
 if [[ $ZSH_PROFILING ]]; then
     zprof

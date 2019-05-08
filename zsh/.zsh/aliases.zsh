@@ -23,5 +23,5 @@ alias fpth='sed "s/ /\n/g" <<< $fpath'
 #fi
 
 #unalias ag
-unalias rm
-unalias fd
+#unalias rm
+#unalias fd
