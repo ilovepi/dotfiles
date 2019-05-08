@@ -91,8 +91,6 @@ zplugin snippet OMZ::lib/compfix.zsh
 #zplugin ice pick"completion.zsh" src"theme-and-appearance.zsh" src"compfix.zsh"
 #zplugin snippet OMZ::lib
 
-
-
 # Fake password for docker/vagrant
 #zplug "jhawthorn/fzy", as:command, hook-build:"make && PREFIX=$ZPLUG_BIN make install"
 
@@ -102,7 +100,5 @@ zplugin snippet OMZ::lib/compfix.zsh
 #zplugin light  burgerga/better-vi-mode
 #zplugin light  b4b4r07/zsh-vimode-visual
 
-zplugin light zdharma/fast-syntax-highlighting
-zplugin light  zsh-users/zsh-history-substring-search
 zplugin snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 zstyle :omz:plugins:ssh-agent agent-forwarding on
