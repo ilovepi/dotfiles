@@ -2,21 +2,29 @@
 #zplug "~/.zsh", from:local
 
 # oh-my-zsh plugins
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/pip/pip.plugin.zsh
 #zplug "plugins/python",            from:oh-my-zsh, lazy:yes
-zplugin ice as"completion"
+zplugin ice as"completion" wait"0" lucid
 zplugin snippet OMZ::plugins/rust/_rust
-zplugin ice as"completion"
+zplugin ice as"completion" wait"0" lucid
 zplugin snippet OMZ::plugins/cargo/_cargo
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/rsync/rsync.plugin.zsh
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/tmux/tmux.plugin.zsh
 #zplug "plugins/tmuxinator",        from:oh-my-zsh, lazy:yes
 #zplug "plugins/vagrant",           from:oh-my-zsh, lazy:yes
 #zplug "plugins/npm",               from:oh-my-zsh, lazy:yes
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/systemadmin/systemadmin.plugin.zsh
+zplugin ice wait"0" atload"unalias rm; unalias fd" lucid
 zplugin snippet OMZ::plugins/common-aliases/common-aliases.plugin.zsh
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/git/git.plugin.zsh
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/git-flow/git-flow.plugin.zsh
 
 setopt extended_glob
@@ -26,7 +34,7 @@ case "$OSTYPE" in
         alias dircolors=gdircolors
         #zplugin snippet OMZ::plugins/osx/osx.plugin.zsh
         # Or with most recent Zplugin and with ~/.zplugin/snippeds directory pruned (rm -rf -- ${ZPLGM[SNIPPETS_DIR]}):
-        zplugin ice svn
+        zplugin ice svn wait"0" lucid
         zplugin snippet OMZ::plugins/osx
 
         ;;
@@ -35,6 +43,7 @@ case "$OSTYPE" in
             *(#i)(arch)*)
                 ;&
             *(#i)(manjaro)*)
+                zplugin ice wait"0" lucid
                 zplugin snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
                 ;;
             *(#i)(debian)*)
@@ -66,7 +75,9 @@ zplugin light zdharma/zsh-diff-so-fancy
 zplugin ice as"program" make"!" atclone'./install --all' atpull'%atclone' pick"bin/fzf"
 zplugin light junegunn/fzf
 #zplug "junegunn/fzf", as:command, use:bin/fzf, hook-build:"./install --all"
+zplugin ice wait"0" lucid
 zplugin light  changyuheng/fz
+zplugin ice wait"0" lucid
 zplugin light  rupa/z
 
 #if zplug check "b4b4r07/enhancd"; then
@@ -75,6 +86,7 @@ zplugin light  rupa/z
     export ENHANCD_DOT_SHOW_FULLPATH=1
     export ENHANCD_COMMAND=ecd
     export ENHANCD_DOT_ARG=...
+zplugin ice wait"0" lucid
 zplugin light  b4b4r07/enhancd
 #fi
 
@@ -83,8 +95,13 @@ zplugin light  b4b4r07/enhancd
 #zplugin snippet OMZ::lib/key-bindings/bindings.zsh
 #zplugin snippet OMZ::lib/termsupport/termsupport.zsh
 #zplugin snippet OMZ::lib/theme-and-appearance.zsh
+zplugin ice wait"0" lucid
+zplugin snippet OMZ::lib/git.zsh
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::lib/theme-and-appearance.zsh
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::lib/completion.zsh
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::lib/compfix.zsh
 
 
@@ -100,6 +117,7 @@ zplugin snippet OMZ::lib/compfix.zsh
 #zplugin light  burgerga/better-vi-mode
 #zplugin light  b4b4r07/zsh-vimode-visual
 
+zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 zstyle :omz:plugins:ssh-agent agent-forwarding on
 
