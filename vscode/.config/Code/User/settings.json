@@ -53,7 +53,7 @@
         "statusBar.foreground": "#434C5E"
     },
     "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
-    "rust-client.channel": "nightly",
+    "rust-client.channel": "debug",
     "rust-client.updateOnStartup": true,
     "rust.all_features": true,
     "rust.unstable_features": true,

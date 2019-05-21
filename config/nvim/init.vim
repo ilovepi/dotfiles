@@ -21,6 +21,7 @@
       call dein#add('morhetz/gruvbox')
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('rakr/vim-one')
+      call dein#add('connorholyday/vim-snazzy')
       call dein#add('reedes/vim-colors-pencil')
       call dein#add('reedes/vim-pencil')
       call dein#add('reedes/vim-wordy')
@@ -377,10 +378,11 @@
         set termguicolors
         "colorscheme NeoSolarized
         "colorscheme gruvbox
-        "colorscheme Tomorrow-Night-Eighties
+        colorscheme Tomorrow-Night-Eighties
         "colorscheme two-firewatch
+        "set background=dark
         "let g:two_firewatch_italics=1
-        colorscheme nova
+        "colorscheme nova
         syntax on
     "}
 
@@ -586,7 +588,8 @@
     "let g:airline_theme = 'tomorrow'
     "let g:airline_theme = 'twofirewatch'
     "let g:airline_theme = 'onedark'
-    let g:airline_theme = 'nova'
+    "let g:airline_theme = 'nova'
+    let g:airline_theme = 'tomorrow'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
