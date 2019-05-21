@@ -2,7 +2,12 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
+
+### Added by Zplugin's installer
 source '/home/paul/.zplugin/bin/zplugin.zsh'
+autoload -Uz _zplugin
+(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
 
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
