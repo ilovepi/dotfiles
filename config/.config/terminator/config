@@ -1,0 +1,56 @@
+[global_config]
+  enabled_plugins = TerminatorThemes, LaunchpadCodeURLHandler, APTURLHandler, LaunchpadBugURLHandler
+[keybindings]
+[layouts]
+  [[default]]
+    [[[child0]]]
+      fullscreen = False
+      last_active_term = 31c7679b-4e3e-4c9d-b140-58b7a0f05c9e
+      last_active_window = True
+      maximised = False
+      order = 0
+      parent = ""
+      position = 0:0
+      size = 734, 452
+      title = ~
+      type = Window
+    [[[terminal1]]]
+      order = 0
+      parent = child0
+      profile = default
+      type = Terminal
+      uuid = 31c7679b-4e3e-4c9d-b140-58b7a0f05c9e
+[plugins]
+[profiles]
+  [[default]]
+    background_color = "#242424"
+    cursor_color = "#97979b"
+    foreground_color = "#eff0eb"
+    login_shell = True
+    palette = "#282a36:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#f1f1f0:#686868:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#eff0eb"
+    scrollback_infinite = True
+  [[Firewatch]]
+    background_color = "#1e2027"
+    cursor_color = "#f6f7ec"
+    foreground_color = "#9ba2b2"
+    palette = "#585f6d:#d95360:#5ab977:#dfb563:#4d89c4:#d55119:#44a8b6:#e6e5ff:#585f6d:#d95360:#5ab977:#dfb563:#4c89c5:#d55119:#44a8b6:#e6e5ff"
+  [[Snazzy]]
+    background_color = "#242424"
+    cursor_color = "#97979b"
+    foreground_color = "#eff0eb"
+    palette = "#282a36:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#f1f1f0:#686868:#ff5c57:#5af78e:#f3f99d:#57c7ff:#ff6ac1:#9aedfe:#eff0eb"
+  [[Solarized Dark - Patched]]
+    background_color = "#001e27"
+    cursor_color = "#708284"
+    foreground_color = "#708284"
+    palette = "#002831:#d11c24:#738a05:#a57706:#2176c7:#c61c6f:#259286:#eae3cb:#475b62:#bd3613:#475b62:#536870:#708284:#5956ba:#819090:#fcf4dc"
+  [[Tomorrow Night Eighties]]
+    background_color = "#2d2d2d"
+    cursor_color = "#cccccc"
+    foreground_color = "#cccccc"
+    palette = "#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff:#000000:#f2777a:#99cc99:#ffcc66:#6699cc:#cc99cc:#66cccc:#ffffff"
+  [[Zenburn]]
+    background_color = "#3f3f3f"
+    cursor_color = "#73635a"
+    foreground_color = "#dcdccc"
+    palette = "#4d4d4d:#705050:#60b48a:#f0dfaf:#506070:#dc8cc3:#8cd0d3:#dcdccc:#709080:#dca3a3:#c3bf9f:#e0cf9f:#94bff3:#ec93d3:#93e0e3:#ffffff"
