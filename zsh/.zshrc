@@ -2,8 +2,6 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-source $HOME/.zplugin/bin/zplugin.zsh
-
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
 SHELL=`which zsh`
@@ -19,6 +17,8 @@ source ~/.zsh/editor.zsh
 
 # update fpath w/ some normal system paths for zsh completions
 source ~/.zsh/fpath.zsh
+
+source $HOME/.zplugin/bin/zplugin.zsh
 
 # load plugins w/ zplug
 source ~/.zsh/zplugin.zsh
