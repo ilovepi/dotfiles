@@ -21,6 +21,8 @@
       call dein#add('morhetz/gruvbox')
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('rakr/vim-one')
+      call dein#add('connorholyday/vim-snazzy')
+      call dein#add('arcticicestudio/nord-vim')
       call dein#add('reedes/vim-colors-pencil')
       call dein#add('reedes/vim-pencil')
       call dein#add('reedes/vim-wordy')
@@ -359,10 +361,10 @@
         set termguicolors
         "colorscheme NeoSolarized
         "colorscheme gruvbox
-        "colorscheme Tomorrow-Night-Eighties
+        colorscheme Tomorrow-Night-Eighties
         "colorscheme two-firewatch
         "let g:two_firewatch_italics=1
-        colorscheme nova
+        "colorscheme nova
         syntax on
     "}
 
@@ -450,20 +452,18 @@
 
     " NerdTree {
         let g:NERDTreeMinimalUI=1
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
-            map <C-e> <plug>NERDTreeTabsToggle<CR>
-            map <leader>e :NERDTreeFind<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
+        map <C-e> <plug>NERDTreeTabsToggle<CR>
+        map <leader>e :NERDTreeFind<CR>
+        nmap <leader>nt :NERDTreeFind<CR>
 
-            "let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-            let NERDTreeChDirMode=0
-            let NERDTreeQuitOnOpen=1
-            let NERDTreeMouseMode=2
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_open_on_gui_startup=0
-        endif
+        "let NERDTreeShowBookmarks=1
+        let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
+        let NERDTreeChDirMode=0
+        let NERDTreeQuitOnOpen=1
+        let NERDTreeMouseMode=2
+        let NERDTreeShowHidden=1
+        let NERDTreeKeepTreeInNewTab=1
+        let g:nerdtree_tabs_open_on_gui_startup=0
     " }
 
     " Tabularize {
@@ -563,10 +563,10 @@
     let g:airline_powerline_fonts=1
     "let g:airline_theme = 'solarized'
     "let g:airline_theme = 'gruvbox'
-    "let g:airline_theme = 'tomorrow'
+    let g:airline_theme = 'tomorrow'
     "let g:airline_theme = 'twofirewatch'
     "let g:airline_theme = 'onedark'
-    let g:airline_theme = 'nova'
+    "let g:airline_theme = 'nova'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1

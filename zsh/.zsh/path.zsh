@@ -19,4 +19,10 @@ PATH=$GOPATH/bin:$PATH
 PATH=$HOME/rust-install/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
 
+export GOMA_DIR=$HOME/goma
+
+PATH="$HOME/workspace/fuchsia/.jiri_root/bin:$PATH"
+PATH="$HOME/workspace/fuchsia/buildtools:$PATH"
+
+
 export PATH

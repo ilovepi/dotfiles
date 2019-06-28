@@ -12,7 +12,7 @@ zplugin snippet OMZ::plugins/cargo/_cargo
 zplugin ice wait"0" lucid
 zplugin snippet OMZ::plugins/rsync/rsync.plugin.zsh
 zplugin ice wait"0" lucid
-zplugin snippet OMZ::plugins/tmux/tmux.plugin.zsh
+#zplugin snippet OMZ::plugins/tmux/tmux.plugin.zsh
 #zplug "plugins/tmuxinator",        from:oh-my-zsh, lazy:yes
 #zplug "plugins/vagrant",           from:oh-my-zsh, lazy:yes
 #zplug "plugins/npm",               from:oh-my-zsh, lazy:yes
