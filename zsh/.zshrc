@@ -20,6 +20,11 @@ source ~/.zsh/editor.zsh
 # update fpath w/ some normal system paths for zsh completions
 source ~/.zsh/fpath.zsh
 
+### Added by Zplugin's installer
+#autoload -Uz _zplugin
+#(( ${+_comps} )) && _comps[zplugin]=_zplugin
+### End of Zplugin's installer chunk
+
 # load plugins w/ zplug
 source ~/.zsh/zplugin.zsh
 
@@ -59,8 +64,8 @@ source ~/.zsh/aliases.zsh
 zplugin ice wait"0" lucid
 zplugin light  zsh-users/zsh-history-substring-search
 
-autoload -Uz compinit
-zplugin ice wait"0" atinit"ZPLGM[COMPINIT_OPTS]='-C -Uz'; zpcompinit; zpcdreplay" lucid
+#autoload -Uz compinit
+zplugin ice wait"0" atinit"autoload -Uz compinit; compinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
 
 autoload -U edit-command-line
