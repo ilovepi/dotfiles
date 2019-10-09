@@ -122,6 +122,14 @@
 
 " }
 
+" DeinInstall {
+function DeinInstall()
+    set nomore
+    call dein#install()
+endfunction
+
+"}
+
     " Initialize directories {
     function! InitializeDirectories()
         let parent = $HOME
@@ -634,6 +642,7 @@
 " Autoformat {
     noremap <Leader>kk :Autoformat<CR>
 " }
+
 
     " IncSearch {
           "call dein#add('haya14busa/incsearch.vim')
