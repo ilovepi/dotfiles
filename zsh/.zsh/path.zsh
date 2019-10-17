@@ -35,11 +35,9 @@ PATH=$HOME/.cargo/bin:$PATH
 #export LLVM_DIR=$HOME/workspace/llvm-project/build
 
 
-PATH=$LLVM_DIR/bin:$PATH
+#PATH=$LLVM_DIR/bin:$PATH
 
-export SVF_HOME=$HOME/workspace/mpk/SVF
-
-PATH=$SVF_HOME/Release-build/bin:$PATH
+PATH=$HOME/clang/bin:$PATH
 
 
 export PATH
