@@ -480,7 +480,6 @@
 
     " NerdTree {
         let g:NERDTreeMinimalUI=1
-        if isdirectory(expand("~/.vim/bundle/nerdtree"))
             map <C-e> <plug>NERDTreeTabsToggle<CR>
             map <leader>e :NERDTreeFind<CR>
             nmap <leader>nt :NERDTreeFind<CR>
@@ -493,7 +492,6 @@
             let NERDTreeShowHidden=1
             let NERDTreeKeepTreeInNewTab=1
             let g:nerdtree_tabs_open_on_gui_startup=0
-        endif
     " }
 
     " Tabularize {
