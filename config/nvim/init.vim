@@ -4,7 +4,7 @@
 
 " Dein {
     set nocompatible
-    set runtimepath+=~/.nvim/dein/repos/github.com/Shougo/dein.vim
+    set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
     if dein#load_state('~/.nvim/dein')
       call dein#begin('~/.nvim/dein/')
