@@ -2,7 +2,7 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-source '/home/paul/.zplugin/bin/zplugin.zsh'
+source '/home/paul/.zinit/bin/zinit.zsh'
 
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
@@ -20,10 +20,10 @@ source ~/.zsh/editor.zsh
 # update fpath w/ some normal system paths for zsh completions
 source ~/.zsh/fpath.zsh
 
-### Added by Zplugin's installer
-#autoload -Uz _zplugin
-#(( ${+_comps} )) && _comps[zplugin]=_zplugin
-### End of Zplugin's installer chunk
+### Added by zinit's installer
+#autoload -Uz _zinit
+#(( ${+_comps} )) && _comps[zinit]=_zinit
+### End of zinit's installer chunk
 
 # load plugins w/ zplug
 source ~/.zsh/zplugin.zsh
@@ -61,19 +61,19 @@ source ~/.zsh/aliases.zsh
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh && source ~/.zsh/fzf.zsh
 
-zplugin ice wait"0" lucid
-zplugin light  zsh-users/zsh-history-substring-search
+zinit ice wait"0" lucid
+zinit light  zsh-users/zsh-history-substring-search
 
 #autoload -Uz compinit
-zplugin ice wait"0" atinit"autoload -Uz compinit; compinit; zpcdreplay" lucid
-zplugin light zdharma/fast-syntax-highlighting
+zinit ice wait"0" atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zpcdreplay" lucid
+zinit light zdharma/fast-syntax-highlighting
 
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
 #compinit
 
-#zplugin cdreplay -q
+#zinit cdreplay -q
 
 if [[ $ZSH_PROFILING ]]; then
     zprof

@@ -6,10 +6,10 @@
     set nocompatible
     set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-    if dein#load_state('~/.nvim/dein')
-      call dein#begin('~/.nvim/dein/')
+    if dein#load_state('~/.cache/dein')
+      call dein#begin('~/.cache/dein/')
 
-      call dein#add('~/.nvim/dein/')
+      call dein#add('~/.cache/dein/')
       call dein#add('Shougo/dein.vim')
       call dein#add('haya14busa/dein-command.vim')        " dein bindings
       call dein#add('Shougo/deoplete.nvim')
