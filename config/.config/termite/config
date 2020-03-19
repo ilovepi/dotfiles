@@ -9,8 +9,8 @@
 ;font = NotoSansMono-Regular-Nerd-Font 14
 ;font = Terminess (TTF) Nerd Font Complete Mono 
 font = SauceCodePro Nerd Font Mono Regular 14
-;font = Material Regular 14
-;font = Iosevka 14
+;font = Material Icons Regular 14
+;font = Iosevka Nerd Font Regular 14
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
