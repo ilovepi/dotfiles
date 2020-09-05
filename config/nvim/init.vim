@@ -799,16 +799,10 @@
 
     " LanguageClient {
         let g:LanguageClient_serverCommands = {
-            \ 'cpp' : ['clangd'],
+            \ 'cpp' : ['~/clang-dev/bin/clangd'],
             \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
             \ 'javascript': ['javascript-typescript-stdio'],
             \ }
-        "let g:LanguageClient_serverCommands = {
-            "\ 'cpp' : ['clangd'],
-            "\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-            "\ 'javascript': ['javascript-typescript-stdio'],
-            "\ }
-
 
         set signcolumn=yes
         nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -832,13 +826,13 @@
 
         augroup LSP
           autocmd!
-          autocmd FileType cpp,c call SetLSPShortcuts()
+          autocmd FileType cpp,c,rust call SetLSPShortcuts()
         augroup END
     " }
 
     " Vimtex { 
         "let g:vimtex_compiler_progname = 'nvr'
-        let g:vimtex_view_method = 'zathura'
+        "let g:vimtex_view_method = 'zathura'
         let g:polyglot_disabled = ['latex']
     "}
 
