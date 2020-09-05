@@ -56,12 +56,20 @@ source $HOME/.zsh/aliases.zsh
 #FZF stuff
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh && source $HOME/.zsh/fzf.zsh
 
+zplugin ice wait"0" lucid
 zplugin light  zsh-users/zsh-history-substring-search
 
-autoload -Uz compinit
-zplugin ice wait"0" atinit"ZPLGM[COMPINIT_OPTS]=-C; zpcompinit; zpcdreplay" lucid
+#autoload -Uz compinit
+zplugin ice wait"0" atinit"ZPLGM[COMPINIT_OPTS]='-C -Uz'; zpcompinit; zpcdreplay" lucid
 zplugin light zdharma/fast-syntax-highlighting
+
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^x' edit-command-line
+
 
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
