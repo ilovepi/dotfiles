@@ -78,10 +78,10 @@
       call dein#add('yssource/python.vim')
       call dein#add('vim-scripts/python_match.vim')
       call dein#add('vim-scripts/pythoncomplete')
-      call dein#add('mileszs/ack.vim')
+      "call dein#add('mileszs/ack.vim')
       "call dein#add('jremmen/vim-ripgrep')
 
-      call dein#add('octol/vim-cpp-enhanced-highlight')
+      "call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
       "call dein#add('ludovicchabant/vim-gutentags')
