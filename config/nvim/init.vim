@@ -177,10 +177,10 @@
 " Basic Settings {
     set background=dark
     filetype plugin indent on   " Automatically detect file types.
-    syntax on                   " Syntax highlighting
+    "syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
-    scriptencoding utf-8
+    "scriptencoding utf-8
 
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
