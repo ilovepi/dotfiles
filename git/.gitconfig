@@ -30,7 +30,7 @@
   interactive = auto
   grep = auto
 [color "status"]
-  header = black bold
+  header = white bold
   branch = cyan
   nobranch = red
   unmerged = red
@@ -62,7 +62,7 @@
   prompt = red
   header = red bold
   error = red
-  help = black bold
+  help = white bold
 [color "grep"]
   context = normal
   match = cyan
@@ -71,10 +71,6 @@
   selected = normal
   separator = red bold
   linenumber = normal
-
-
-
-
 
 ;[branch]
     ;autosetuprebase = always
@@ -91,10 +87,10 @@
     newNormal = green bold
     newHighlight = green bold 22
 
-;[color "diff"]
-    ;meta = yellow
-    ;frag = magenta bold
-    ;commit = yellow bold
-    ;old = red bold
-    ;new = green bold
-    ;whitespace = red reverse
+[color "diff"]
+    meta = yellow
+    frag = magenta bold
+    commit = yellow bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
