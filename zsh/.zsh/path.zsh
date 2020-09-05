@@ -3,7 +3,7 @@
 #PATH=$PATH:$HOME/Zotero_linux-x86_64
 
 #add Zotero to path
-PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
+#PATH=$PATH:$HOME/bootstrap/Zotero_linux-x86_64
 
 #add local bin dir to PATH
 PATH=$HOME/bin:$PATH
@@ -16,6 +16,9 @@ export GOPATH=$HOME/workspace/go
 
 #PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 PATH=$GOPATH/bin:$PATH
+
+# Add python path for OSX
+PATH=/Users/paul/Library/Python/3.7/bin:$PATH
 
 #add cargo directories to PATH
 PATH=$HOME/rust-install/bin:$PATH
@@ -35,8 +38,9 @@ PATH=$HOME/.cargo/bin:$PATH
 #export LLVM_DIR=$HOME/workspace/llvm-project/build
 
 
-PATH=$LLVM_DIR/bin:$PATH
+#PATH=$LLVM_DIR/bin:$PATH
 
+PATH=$HOME/clang-dev/bin:$PATH
 export SVF_HOME=$HOME/workspace/mpk/SVF
 
 PATH=$SVF_HOME/Release-build/bin:$PATH
