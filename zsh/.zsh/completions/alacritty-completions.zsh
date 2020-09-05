@@ -1,0 +1,1 @@
+/Users/paul/workspace/alacritty/alacritty-completions.zsh
