@@ -108,6 +108,9 @@
       call dein#add('wincent/loupe')
       call dein#add('lervag/vimtex')
 
+       call dein#add('raghur/fruzzy',
+        \{'hook_post_update': 'call fruzzy#install()'})
+
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
@@ -615,7 +618,73 @@
 " }
 
 " Denite {
-    nnoremap <C-p> :Denite file_rec<cr>
+    "nnoremap <C-p> :Denite file/rec<cr>
+
+
+
+    "call denite#custom#option('_', {
+      "\ 'prompt': '❯',
+      "\ 'split': 'floating',
+      "\ 'highlight_matched_char': 'Underlined',
+      "\ 'highlight_matched_range': 'NormalFloat',
+      "\ 'wincol': &columns / 6,
+      "\ 'winwidth': &columns * 2 / 3,
+      "\ 'winrow': &lines / 6,
+      "\ 'winheight': &lines * 2 / 3,
+      "\ 'max_dynamic_update_candidates': 100000
+      "\ })
+
+    call denite#custom#var('file/rec', 'command',
+          \ ['fd', '-H', '--full-path'])
+    call denite#custom#source(
+            \ 'file/rec', 'matchers', ['matcher/fruzzy'])
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts',
+          \ ['--vimgrep', '--smart-case', '--no-heading'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+
+    autocmd FileType denite call s:denite_settings()
+
+    function! s:denite_settings() abort
+      nnoremap <silent><buffer><expr> <CR>
+            \ denite#do_map('do_action')
+      nnoremap <silent><buffer><expr> <C-v>
+            \ denite#do_map('do_action', 'vsplit')
+      nnoremap <silent><buffer><expr> d
+            \ denite#do_map('do_action', 'delete')
+      nnoremap <silent><buffer><expr> p
+            \ denite#do_map('do_action', 'preview')
+      nnoremap <silent><buffer><expr> <Esc>
+            \ denite#do_map('quit')
+      nnoremap <silent><buffer><expr> q
+            \ denite#do_map('quit')
+      nnoremap <silent><buffer><expr> i
+            \ denite#do_map('open_filter_buffer')
+    endfunction
+
+    autocmd FileType denite-filter call s:denite_filter_settings()
+
+    function! s:denite_filter_settings() abort
+      nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
+    endfunction
+
+    nnoremap <C-p> :<C-u>Denite file/rec -start-filter<CR>
+    "nnoremap <leader>s :<C-u>Denite buffer<CR>
+    "nnoremap <leader>8 :<C-u>DeniteCursorWord grep:.<CR>
+    "nnoremap <leader>/ :<C-u>Denite -start-filter -filter-updatetime=0 grep:::!<CR>
+    "nnoremap <leader><Space>/ :<C-u>DeniteBufferDir -start-filter -filter-updatetime=0 grep:::!<CR>
+    "nnoremap <leader>d :<C-u>DeniteBufferDir file/rec -start-filter<CR>
+    "nnoremap <leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
+    "nnoremap <leader><C-r> :<C-u>Denite register:.<CR>
+    "nnoremap <leader>g :<C-u>Denite gitstatus<CR>
+
+    " neoyank
+
+    nnoremap <leader>y :<C-u>Denite neoyank<CR>
+
 " }
 
 " Ale {
