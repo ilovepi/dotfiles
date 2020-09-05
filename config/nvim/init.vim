@@ -125,6 +125,16 @@
 
 " }
 
+" DeinInstall {
+  command! -nargs=* -bar -bang -complete=customlist,s:names DeinInstall call s:install()
+    function! s:install()
+        if dein#check_install()
+            set nomore
+            call dein#install()
+        endif
+    endfunction
+"}
+
     " Initialize directories {
     function! InitializeDirectories()
         let parent = $HOME
