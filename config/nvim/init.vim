@@ -21,6 +21,7 @@
       call dein#add('morhetz/gruvbox')
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('rakr/vim-one')
+      call dein#add('connorholyday/vim-snazzy')
       call dein#add('reedes/vim-colors-pencil')
       call dein#add('reedes/vim-pencil')
       call dein#add('reedes/vim-wordy')
