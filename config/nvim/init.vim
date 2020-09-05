@@ -614,10 +614,10 @@
 
 " Syntax Highlighting {
     "set guifont=Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h11,Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h14
-    let g:cpp_class_scope_highlight = 1
-    let g:cpp_member_variable_highlight = 1
-    let g:cpp_experimental_template_highlight = 1
-    let g:cpp_concepts_highlight = 1
+    "let g:cpp_class_scope_highlight = 1
+    "let g:cpp_member_variable_highlight = 1
+    "let g:cpp_experimental_template_highlight = 1
+    "let g:cpp_concepts_highlight = 1
 " }
 
 " Clang Library Path {
