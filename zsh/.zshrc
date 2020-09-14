@@ -2,7 +2,7 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-source "$HOME/.zplugin/bin/zplugin.zsh"
+source "$HOME/.zinit/bin/zinit.zsh"
 
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
@@ -15,7 +15,7 @@ GOPATH=${GOPATH:=$HOME/workspace/go}
 mkdir -p $GOPATH
 
 #setup vim/nvim as editor
-source $HOME/.zsh/editor.zsh
+source ~/.zsh/editor.zsh
 
 # update fpath w/ some normal system paths for zsh completions
 source $HOME/.zsh/fpath.zsh
@@ -56,20 +56,20 @@ source $HOME/.zsh/aliases.zsh
 #FZF stuff
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh && source $HOME/.zsh/fzf.zsh
 
-zplugin ice wait"0" lucid
-zplugin light  zsh-users/zsh-history-substring-search
+zinit ice wait"0" lucid
+zinit light  zsh-users/zsh-history-substring-search
 
 #autoload -Uz compinit
-zplugin ice wait"0" atinit"ZPLGM[COMPINIT_OPTS]='-C -Uz'; zpcompinit; zpcdreplay" lucid
-zplugin light zdharma/fast-syntax-highlighting
+zinit ice wait"0" atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zpcdreplay" lucid
+zinit light zdharma/fast-syntax-highlighting
 
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^x' edit-command-line
+#compinit
 
+#zinit cdreplay -q
 
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

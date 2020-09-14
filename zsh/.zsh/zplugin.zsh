@@ -1,103 +1,100 @@
-# Can manage local plugins
-#zplug "~/.zsh", from:local
 
 # oh-my-zsh plugins
-zplugin ice wait"2" lucid
-zplugin snippet OMZ::plugins/pip/pip.plugin.zsh
-zplugin ice as"completion" wait"0" lucid
-zplugin snippet OMZ::plugins/rust/_rust
-zplugin ice as"completion" wait"0" lucid
-zplugin snippet OMZ::plugins/cargo/_cargo
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::plugins/rsync/rsync.plugin.zsh
-zplugin ice wait"2" lucid
-zplugin snippet OMZ::plugins/tmux/tmux.plugin.zsh
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::plugins/systemadmin/systemadmin.plugin.zsh
-zplugin ice wait"0" atload"unalias rm; unalias fd" lucid
-zplugin snippet OMZ::plugins/common-aliases/common-aliases.plugin.zsh
-zplugin ice wait"2" lucid
-zplugin snippet OMZ::plugins/git/git.plugin.zsh
-zplugin ice wait"2" lucid
-zplugin snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
-zplugin ice wait"2" lucid
-zplugin snippet OMZ::plugins/git-flow/git-flow.plugin.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/pip/pip.plugin.zsh
+zinit ice as"completion" wait"0" lucid
+zinit snippet OMZ::plugins/rust/_rust
+zinit ice as"completion" wait"0" lucid
+zinit snippet OMZ::plugins/cargo/_cargo
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/systemadmin/systemadmin.plugin.zsh
+zinit ice wait"0" atload"unalias rm; unalias fd" lucid
+zinit snippet OMZ::plugins/common-aliases/common-aliases.plugin.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/git-flow/git-flow.plugin.zsh
 
 setopt extended_glob
+if [ `env | rg -i wsl | rg Debian` ];
+then
+   zinit ice wait"0" lucid
+   zinit snippet OMZ::plugins/debian/debian.plugin.zsh
 
-case "$OSTYPE" in
-    darwin*)
-        alias dircolors=gdircolors
-        #zplugin snippet OMZ::plugins/osx/osx.plugin.zsh
-        # Or with most recent Zplugin and with ~/.zplugin/snippeds directory pruned (rm -rf -- ${ZPLGM[SNIPPETS_DIR]}):
-        zplugin ice svn wait"0" lucid
-        zplugin snippet OMZ::plugins/osx
+else
 
-        ;;
-    linux*)
-        case `lsb_release -sd` in
+   case "$OSTYPE" in
+      darwin*)
+         alias dircolors=gdircolors
+         zinit ice svn wait"0" lucid
+         zinit snippet OMZ::plugins/osx
+
+         ;;
+      linux*)
+         case `lsb_release -sd` in
             *(#i)(arch)*)
-                ;&
+               ;&
             *(#i)(manjaro)*)
-                zplugin ice wait"0" lucid
-                zplugin snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
-                ;;
+               zinit ice wait"0" lucid
+               zinit snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
+               ;;
             *(#i)(debian)*)
-                ;&
+               ;&
             *(#i)(ubuntu)*)
-                zplugin ice wait"0" lucid
-                zplugin snippet OMZ::plugins/debian/debian.plugin.zsh
-                #zplug "~/dotfiles/apt-fast",       from:local
-                ;;
-        esac
-        ;;
-esac
+               zinit ice wait"0" lucid
+               zinit snippet OMZ::plugins/debian/debian.plugin.zsh
+               #zplug "~/dotfiles/apt-fast",       from:local
+               ;;
+         esac
+         ;;
+   esac
 
-zplugin ice wait"0" lucid
-zplugin light djui/alias-tips
-zplugin ice wait"0" lucid
-zplugin light zlsun/solarized-man
-zplugin ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh"
-zplugin load trapd00r/LS_COLORS
-zplugin ice wait"0" lucid
-zplugin light zsh-users/zsh-autosuggestions
-zplugin ice wait"0" lucid
-zplugin light zsh-users/zsh-completions
+fi
 
-zplugin ice wait"0" lucid
-zplugin light  wfxr/forgit
-zplugin ice as"program" pick"bin/git-dsf" wait"0" lucid
-zplugin light zdharma/zsh-diff-so-fancy
+zinit ice wait"0" lucid
+zinit light djui/alias-tips
+zinit ice wait"0" lucid
+zinit light zlsun/solarized-man
+zinit ice atclone"dircolors -b LS_COLORS > c.zsh" atpull'%atclone' pick"c.zsh"
+zinit load trapd00r/LS_COLORS
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-completions
 
-zplugin ice as"program" make"!" atclone'./install --all' atpull'%atclone' pick"bin/fzf" wait"0" lucid
-zplugin light junegunn/fzf
-#zplug "junegunn/fzf", as:command, use:bin/fzf, hook-build:"./install --all"
-zplugin ice wait"0" lucid
-zplugin light changyuheng/fz
-zplugin ice wait"0" lucid
-zplugin light rupa/z
+zinit ice wait"0" lucid
+zinit light  wfxr/forgit
+zinit ice as"program" pick"bin/git-dsf"
+zinit light zdharma/zsh-diff-so-fancy
 
-#export ENHANCD_FILTER="~/.zplug/bin/fzf --height 50% --reverse --ansi --preview 'ls -l {}' --preview-window down"
+
+zinit ice as"program" make"!" atclone'./install --all' atpull'%atclone' pick"bin/fzf"
+zinit light junegunn/fzf
+zinit ice wait"0" lucid
+zinit light changyuheng/fz
+zinit ice wait"0" lucid
+zinit light rupa/z
+
 export ENHANCD_FILTER="fzf --height 50% --reverse --ansi"
 export ENHANCD_DOT_SHOW_FULLPATH=1
 export ENHANCD_COMMAND=ecd
 export ENHANCD_DOT_ARG=...
-zplugin ice wait"0" lucid
-zplugin light  b4b4r07/enhancd
+zinit ice wait"0" lucid
+zinit light  b4b4r07/enhancd
 
-#zplugin snippet OMZ::lib/clipboard/clipboard.zsh
-#zplugin snippet OMZ::lib/key-bindings/bindings.zsh
-#zplugin snippet OMZ::lib/termsupport/termsupport.zsh
-#zplugin snippet OMZ::lib/theme-and-appearance.zsh
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::lib/git.zsh
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::lib/theme-and-appearance.zsh
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::lib/completion.zsh
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::lib/compfix.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::lib/git.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::lib/theme-and-appearance.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::lib/completion.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::lib/compfix.zsh
 
-zplugin ice wait"0" lucid
-zplugin snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+zinit ice wait"0" lucid
+zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 zstyle :omz:plugins:ssh-agent agent-forwarding on
