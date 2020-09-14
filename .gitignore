@@ -3,6 +3,7 @@
 
 ### Tags ###
 # Ignore tags created by etags, ctags, gtags (GNU global) and cscope
+.DS_Store
 TAGS
 .TAGS
 !TAGS/
