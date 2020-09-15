@@ -2,7 +2,7 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-source '/home/paul/.zinit/bin/zinit.zsh'
+source "${HOME}/.zinit/bin/zinit.zsh"
 
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
