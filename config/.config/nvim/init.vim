@@ -71,7 +71,6 @@
       call dein#add('reedes/vim-litecorrect')
       call dein#add('reedes/vim-textobj-sentence')
       call dein#add('reedes/vim-textobj-quote')
-      call dein#add('reedes/vim-wordy')
       call dein#add('SirVer/ultisnips')
       call dein#add('honza/vim-snippets')
       call dein#add('python-mode/python-mode')
@@ -389,11 +388,12 @@
         set termguicolors
         "colorscheme NeoSolarized
         "colorscheme gruvbox
-        colorscheme Tomorrow-Night-Eighties
+        "colorscheme Tomorrow-Night-Eighties
         "colorscheme two-firewatch
         "set background=dark
         "let g:two_firewatch_italics=1
         "colorscheme nova
+        colorscheme materialbox
         syntax on
     "}
 
@@ -404,7 +404,7 @@
         " disable autocomplete by default
         let b:deoplete_disable_auto_complete=1
         let g:deoplete_disable_auto_complete=1
-        call deoplete#custom#buffer_option('auto_complete', v:false)
+        "call deoplete#custom#buffer_option('auto_complete', v:false)
 
         if !exists('g:deoplete#omni#input_patterns')
             let g:deoplete#omni#input_patterns = {}
@@ -427,9 +427,11 @@
     "}
 
     " UndoTree {
+        if isdirectory(expand("~/.cache/dein/repos/github.com/mbbill/undotree"))
             nnoremap <Leader>u :UndotreeToggle<CR>
             " If undotree is opened, it is likely one wants to interact with it.
             let g:undotree_SetFocusWhenToggle=1
+        endif
     " }
 
     " indent_guides {
@@ -453,12 +455,6 @@
         "nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
-    " Rainbow {
-        if isdirectory(expand("~/.vim/bundle/rainbow/"))
-            let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-        endif
-    "}
-
     " TagBar {
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
     "}
@@ -469,7 +465,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/dein/repos/github.com/python-mode/python-mode"))
+        if isdirectory(expand("~/.cache/dein/repos/github.com/python-mode/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -494,7 +490,7 @@
     " }
 
     " Tabularize {
-        if isdirectory(expand("~/.vim/bundle/tabular"))
+        if isdirectory(expand("~/.cache/dein/repos/github.com/godlygeek/tabular"))
             nmap <Leader>a& :Tabularize /&<CR>
             vmap <Leader>a& :Tabularize /&<CR>
             nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
@@ -720,7 +716,7 @@
 
         augroup LSP
           autocmd!
-          autocmd FileType cpp,c call SetLSPShortcuts()
+          autocmd FileType cpp,c,rust call SetLSPShortcuts()
         augroup END
     " }
 
