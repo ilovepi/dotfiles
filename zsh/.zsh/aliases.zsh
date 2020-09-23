@@ -13,15 +13,29 @@ alias zpath="$EDITOR ~/dotfiles/zsh/.zsh/path.zsh"
 alias nvimrc="$EDITOR ~/dotfiles/config/.config/nvim/init.vim"
 alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
 alias fim='$EDITOR $(fd | fzf)'
+alias rgs='rg --sort-files'
 
 alias :q='exit'
 alias lh='ls -ld .?*'
 alias magit='nvim -c MagitOnly'
 alias fpth='sed "s/ /\n/g" <<< $fpath'
-#if type ls++ > /dev/null; then
-    #alias ls=ls++
-#fi
 
+if type lsd > /dev/null; then
+    alias ls=lsd
+elif type ls++ > /dev/null; then
+    alias ls=ls++
+elif type exa > /dev/null; then
+    alias ls=exa
+fi
+
+if type fdfind > /dev/null; then
+    alias fd='fdfind'
+fi
+
+
+if type batcat > /dev/null; then
+    alias bat='batcat'
+fi
 #unalias ag
 #unalias rm
 #unalias fd

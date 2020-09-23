@@ -2,6 +2,7 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " }
 
+        let g:polyglot_disabled = ['latex']
 " Dein {
     set nocompatible
     set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
@@ -38,16 +39,13 @@
       call dein#add('sheerun/vim-polyglot')
       call dein#add('cespare/vim-toml')
       call dein#add('spf13/vim-preview')
-      "call dein#add('scrooloose/syntastic')
       call dein#add('w0rp/ale')
       call dein#add('scrooloose/nerdtree')
       call dein#add('scrooloose/nerdcommenter')
       call dein#add('godlygeek/tabular')
-      "call dein#add('luochen1990/rainbow')
       call dein#add('mattn/webapi-vim')
       call dein#add('mattn/gist-vim')
       call dein#add('majutsushi/tagbar')
-      "call dein#add('mhinz/vim-signify')
       call dein#add('airblade/vim-gitgutter')
 
       call dein#add('rhysd/conflict-marker.vim')
@@ -84,9 +82,6 @@
       call dein#add('octol/vim-cpp-enhanced-highlight')
       call dein#add('ryanoasis/vim-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-      "call dein#add('ludovicchabant/vim-gutentags')
-      "call dein#add('skywind3000/gutentags_plus')
-      "call dein#add('jsfaint/gen_tags.vim')
       call dein#add('christoomey/vim-tmux-navigator')
 
       call dein#add('junegunn/goyo.vim')
@@ -398,35 +393,28 @@
 
     " Deoplete{
         let g:deoplete#enable_at_startup = 1
-        let g:deoplete#enable_smart_case = 1
-
-        " disable autocomplete by default
-        let b:deoplete_disable_auto_complete=1
-        let g:deoplete_disable_auto_complete=1
-        call deoplete#custom#buffer_option('auto_complete', v:false)
-
-        if !exists('g:deoplete#omni#input_patterns')
-            let g:deoplete#omni#input_patterns = {}
-        endif
+        call deoplete#custom#option('smart_case', v:true)
 
         " Disable the candidates in Comment/String syntaxes.
-        call deoplete#custom#source('_',
-                    \ 'disabled_syntaxes', ['Comment', 'String'])
+		call deoplete#custom#source('_',
+		\ 'disabled_syntaxes', ['Comment', 'String', 'Constant'])
 
         autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-        " set sources
-        let g:deoplete#sources         = {}
-        let g:deoplete#sources.c       = ['LanguageClient']
-        let g:deoplete#sources.cpp     = ['LanguageClient']
-        let g:deoplete#sources.python  = ['LanguageClient']
-        let g:deoplete#sources.python3 = ['LanguageClient']
-        let g:deoplete#sources.rust    = ['LanguageClient']
-        let g:deoplete#sources.vim     = ['vim']
+        call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+
+        call deoplete#custom#option('sources',{
+            \ 'c':['LanguageClient'],
+            \ 'cpp':['LanguageClient'],
+            \ 'python':['LanguageClient'],
+            \ 'python3':['LanguageClient'],
+            \ 'rust':['LanguageClient'],
+            \ 'vim':['vim'],
+            \ })
     "}
 
     " UndoTree {
-        if isdirectory(expand("~/.vim/bundle/undotree/"))
+        if isdirectory(expand("~/.cache/dein/repos/github.com/mbbill/undotree"))
             nnoremap <Leader>u :UndotreeToggle<CR>
             " If undotree is opened, it is likely one wants to interact with it.
             let g:undotree_SetFocusWhenToggle=1
@@ -454,12 +442,6 @@
         "nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
-    " Rainbow {
-        if isdirectory(expand("~/.vim/bundle/rainbow/"))
-            let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-        endif
-    "}
-
     " TagBar {
         nnoremap <silent> <leader>tt :TagbarToggle<CR>
     "}
@@ -470,7 +452,7 @@
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/dein/repos/github.com/python-mode/python-mode"))
+        if isdirectory(expand("~/.cache/dein/repos/github.com/python-mode/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -495,7 +477,7 @@
     " }
 
     " Tabularize {
-        if isdirectory(expand("~/.vim/bundle/tabular"))
+        if isdirectory(expand("~/.cache/dein/repos/github.com/godlygeek/tabular"))
             nmap <Leader>a& :Tabularize /&<CR>
             vmap <Leader>a& :Tabularize /&<CR>
             nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
@@ -625,7 +607,7 @@
 " }
 
 " Denite {
-    nnoremap <C-p> :Denite file_rec<cr>
+    nnoremap <C-p> :Denite file/rec<CR>
 " }
 
 " Ale {
@@ -689,7 +671,7 @@
     " LanguageClient {
         let g:LanguageClient_serverCommands = {
             \ 'cpp' : ['clangd'],
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'rust': ['rust-analyzer'],
             \ 'javascript': ['javascript-typescript-stdio'],
             \ }
         "let g:LanguageClient_serverCommands = {
@@ -721,14 +703,13 @@
 
         augroup LSP
           autocmd!
-          autocmd FileType cpp,c call SetLSPShortcuts()
+          autocmd FileType cpp,c,rust call SetLSPShortcuts()
         augroup END
     " }
 
     " Vimtex { 
         "let g:vimtex_compiler_progname = 'nvr'
         let g:vimtex_view_method = 'zathura'
-        let g:polyglot_disabled = ['latex']
     "}
 
     " Writing {
