@@ -11,10 +11,6 @@ zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
 zinit ice wait lucid
-zinit snippet OMZ::plugins/systemadmin/systemadmin.plugin.zsh
-zinit ice wait atload"unalias rm; unalias fd" lucid
-zinit snippet OMZ::plugins/common-aliases/common-aliases.plugin.zsh
-zinit ice wait lucid
 zinit snippet OMZ::plugins/git/git.plugin.zsh
 zinit ice wait lucid
 zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
@@ -26,15 +22,10 @@ if [ `env | rg -i wsl | rg Debian` ];
 then
    zinit ice wait lucid
    zinit snippet OMZ::plugins/debian/debian.plugin.zsh
-
 else
-
    case "$OSTYPE" in
       darwin*)
          alias dircolors=gdircolors
-         zinit ice svn wait lucid
-         zinit snippet OMZ::plugins/osx
-
          ;;
       linux*)
          case `lsb_release -sd` in
@@ -71,7 +62,6 @@ zinit light  wfxr/forgit
 zinit ice as"program" pick"bin/git-dsf"
 zinit light zdharma/zsh-diff-so-fancy
 
-
 zinit ice as"program" make"!" atclone'./install --all' atpull'%atclone' pick"bin/fzf"
 zinit light junegunn/fzf
 zinit ice wait lucid
@@ -88,8 +78,6 @@ zinit light  b4b4r07/enhancd
 
 zinit ice wait lucid
 zinit snippet OMZ::lib/git.zsh
-zinit ice wait lucid
-zinit snippet OMZ::lib/theme-and-appearance.zsh
 zinit ice wait lucid
 zinit snippet OMZ::lib/completion.zsh
 zinit ice wait lucid
