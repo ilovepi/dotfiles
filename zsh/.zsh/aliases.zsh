@@ -13,6 +13,7 @@ alias zpath="$EDITOR ~/dotfiles/zsh/.zsh/path.zsh"
 alias nvimrc="$EDITOR ~/dotfiles/config/nvim/init.vim"
 alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
 alias fim='$EDITOR $(fd | fzf)'
+alias rgs='rg --sort-files'
 
 alias :q='exit'
 alias lh='ls -ld .?*'

@@ -4,6 +4,9 @@ fi
 
 source "$HOME/.zinit/bin/zinit.zsh"
 
+module_path+=( "/Users/paul/.zinit/bin/zmodules/Src" )
+zmodload zdharma/zplugin
+
 # TODO: avoid this hack
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
 SHELL=`which zsh`
@@ -56,11 +59,11 @@ source $HOME/.zsh/aliases.zsh
 #FZF stuff
 [ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh && source $HOME/.zsh/fzf.zsh
 
-zinit ice wait"0" lucid
+zinit ice wait lucid
 zinit light  zsh-users/zsh-history-substring-search
 
 #autoload -Uz compinit
-zinit ice wait"0" atinit"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zpcdreplay" lucid
+zinit ice wait atload"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zpcdreplay" lucid
 zinit light zdharma/fast-syntax-highlighting
 
 autoload -U edit-command-line
