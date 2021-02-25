@@ -3,7 +3,6 @@
 #add local bin dir to PATH
 PATH=$HOME/bin:$PATH
 PATH=$HOME/.local/bin:$PATH
-PATH=$PATH:/usr/lib/llvm-7/share
 
 # add Go directories to PATH
 export GOPATH=$HOME/workspace/go
