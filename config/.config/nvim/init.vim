@@ -9,115 +9,108 @@
     if dein#load_state('~/.nvim/dein')
       call dein#begin('~/.nvim/dein/')
 
+      " Dein
       call dein#add('~/.nvim/dein/')
       call dein#add('Shougo/dein.vim')
       call dein#add('haya14busa/dein-command.vim')        " dein bindings
-      call dein#add('Shougo/deoplete.nvim')
+
+      " Completion
+      call dein#add('Chiel92/vim-autoformat')
       call dein#add('Shougo/denite.nvim')
-      call dein#add('Shougo/vinarise.vim')
-      "call dein#add('Shougo/deol.nvim')
-      "call dein#add('neomake/neomake')
+      call dein#add('Shougo/deoplete.nvim')
+      call dein#add('Shougo/deorise.vim')
+      call dein#add('SirVer/ultisnips')
+      call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
+      call dein#add('honza/vim-snippets')
+      call dein#add('w0rp/ale')
+
+
+      " Search & Navigation
+      call dein#add('brooth/far.vim')
+      call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+      call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+      call dein#add('raghur/fruzzy',
+        \{'hook_post_update': 'call fruzzy#install()'})
+      call dein#add('scrooloose/nerdtree')
+      call dein#add('wincent/loupe')
+
+      " Appearance
+      call dein#add('connorholyday/vim-snazzy')
+      call dein#add('flazz/vim-colorschemes')
       call dein#add('iCyMind/NeoSolarized')
       call dein#add('morhetz/gruvbox')
-      call dein#add('rakr/vim-two-firewatch')
+      call dein#add('powerline/fonts')
       call dein#add('rakr/vim-one')
-      call dein#add('connorholyday/vim-snazzy')
+      call dein#add('rakr/vim-two-firewatch')
+      call dein#add('ryanoasis/vim-devicons')
+      call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+      call dein#add('trevordmiller/nova-vim')
+      call dein#add('vim-airline/vim-airline')
+      call dein#add('vim-airline/vim-airline-themes')
+
+      " Writing
+      call dein#add('junegunn/goyo.vim')
+      call dein#add('lervag/vimtex')
       call dein#add('reedes/vim-colors-pencil')
       call dein#add('reedes/vim-pencil')
       call dein#add('reedes/vim-wordy')
-      call dein#add('trevordmiller/nova-vim')
 
-
-      call dein#add('tpope/vim-fugitive')
+      "  Git
+      call dein#add('airblade/vim-gitgutter')
       call dein#add('jreybert/vimagit')
-      call dein#add('tpope/vim-surround')
-      call dein#add('tpope/vim-sleuth')
-      call dein#add('tpope/vim-repeat')
-      call dein#add('tpope/vim-markdown')
+      call dein#add('mattn/gist-vim')
+      call dein#add('rhysd/committia.vim')
+      call dein#add('tpope/vim-fugitive')
+
+      " Languages
+      call dein#add('andreshazard/vim-logreview')
+      call dein#add('cespare/vim-toml')
+      call dein#add('ekalinin/Dockerfile.vim')
+      call dein#add('python-mode/python-mode')
       call dein#add('rust-lang/rust.vim')
       call dein#add('sheerun/vim-polyglot')
-      call dein#add('cespare/vim-toml')
-      call dein#add('spf13/vim-preview')
-      "call dein#add('scrooloose/syntastic')
-      call dein#add('w0rp/ale')
-      call dein#add('scrooloose/nerdtree')
-      call dein#add('scrooloose/nerdcommenter')
-      call dein#add('godlygeek/tabular')
-      "call dein#add('luochen1990/rainbow')
-      call dein#add('mattn/webapi-vim')
-      call dein#add('mattn/gist-vim')
-      call dein#add('majutsushi/tagbar')
-      "call dein#add('mhinz/vim-signify')
-      call dein#add('airblade/vim-gitgutter')
+      call dein#add('tpope/vim-markdown')
+      call dein#add('vim-scripts/python_match.vim')
+      call dein#add('vim-scripts/pythoncomplete')
+      call dein#add('yssource/python.vim')
 
-      call dein#add('rhysd/conflict-marker.vim')
-      call dein#add('jiangmiao/auto-pairs')
-      call dein#add('terryma/vim-multiple-cursors')
-      call dein#add('vim-scripts/matchit.zip')
-      call dein#add('vim-airline/vim-airline')
-      call dein#add('vim-airline/vim-airline-themes')
-      call dein#add('powerline/fonts')
+      " Viewing
+      call dein#add('greyblake/vim-preview')
+
+      " Vim navigation & editing essentials
       call dein#add('bling/vim-bufferline')
+      call dein#add('chrisbra/NrrwRgn')
+      call dein#add('christoomey/vim-tmux-navigator')
       call dein#add('easymotion/vim-easymotion')
+      call dein#add('farmergreg/vim-lastplace')
+      call dein#add('gcmt/wildfire.vim')
+      call dein#add('godlygeek/tabular')
+      call dein#add('jiangmiao/auto-pairs')
       call dein#add('jistr/vim-nerdtree-tabs')
-      call dein#add('flazz/vim-colorschemes')
+      call dein#add('kana/vim-textobj-indent')
+      call dein#add('kana/vim-textobj-user')
+      call dein#add('mattn/webapi-vim')
       call dein#add('mbbill/undotree')
       call dein#add('nathanaelkane/vim-indent-guides')
       call dein#add('osyo-manga/vim-over')
-      call dein#add('kana/vim-textobj-user')
-      call dein#add('kana/vim-textobj-indent')
-      call dein#add('gcmt/wildfire.vim')
-
       call dein#add('reedes/vim-litecorrect')
-      call dein#add('reedes/vim-textobj-sentence')
       call dein#add('reedes/vim-textobj-quote')
+      call dein#add('reedes/vim-textobj-sentence')
       call dein#add('reedes/vim-wordy')
-      call dein#add('SirVer/ultisnips')
-      call dein#add('honza/vim-snippets')
-      call dein#add('python-mode/python-mode')
-      call dein#add('yssource/python.vim')
-      call dein#add('vim-scripts/python_match.vim')
-      call dein#add('vim-scripts/pythoncomplete')
-      "call dein#add('mileszs/ack.vim')
-      "call dein#add('jremmen/vim-ripgrep')
+      call dein#add('rhysd/conflict-marker.vim')
+      call dein#add('scrooloose/nerdcommenter')
+      call dein#add('tpope/vim-repeat')
+      call dein#add('tpope/vim-sleuth')
+      call dein#add('tpope/vim-surround')
+      call dein#add('vim-scripts/matchit.zip')
 
-      "call dein#add('octol/vim-cpp-enhanced-highlight')
-      call dein#add('ryanoasis/vim-devicons')
-      call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-      "call dein#add('ludovicchabant/vim-gutentags')
-      "call dein#add('skywind3000/gutentags_plus')
-      "call dein#add('jsfaint/gen_tags.vim')
-      call dein#add('christoomey/vim-tmux-navigator')
 
-      call dein#add('junegunn/goyo.vim')
-
-      call dein#add('Chiel92/vim-autoformat')
-      call dein#add('chrisbra/NrrwRgn')
-      call dein#add('farmergreg/vim-lastplace')
-      call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-      call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-
-      call dein#add('andreshazard/vim-logreview')
-      call dein#add('ekalinin/Dockerfile.vim')
       call dein#add('metakirby5/codi.vim')
-      call dein#add('brooth/far.vim')
-      call dein#add('rhysd/committia.vim')
-
-      call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
-
-      call dein#add('wincent/loupe')
-      call dein#add('lervag/vimtex')
-
-       call dein#add('raghur/fruzzy',
-        \{'hook_post_update': 'call fruzzy#install()'})
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
         call dein#add('roxma/vim-hug-neovim-rpc')
       endif
-
-      "call dein#add('vim-scripts/restore_view.vim')
-      "call dein#add('svermeulen/vim-easyclip')
 
       call dein#end()
       call dein#save_state()
@@ -389,12 +382,6 @@
 
     " Colors {
         set termguicolors
-        "colorscheme NeoSolarized
-        "colorscheme gruvbox
-        "colorscheme Tomorrow-Night-Eighties
-        "colorscheme two-firewatch
-        "let g:two_firewatch_italics=1
-        "colorscheme nova
         colorscheme materialbox
         syntax on
     "}
@@ -403,15 +390,6 @@
         let g:deoplete#enable_at_startup = 1
         call deoplete#custom#option('smart_case', v:true)
 
-        " disable autocomplete by default
-        "let b:deoplete_disable_auto_complete=1
-        "let g:deoplete_disable_auto_complete=1
-        "call deoplete#custom#buffer_option('auto_complete', v:false)
-
-        "if !exists('g:deoplete#omni#input_patterns')
-            "let g:deoplete#omni#input_patterns = {}
-        "endif
-
         " Disable the candidates in Comment/String syntaxes.
         call deoplete#custom#source('_',
                     \ 'disabled_syntaxes', ['Comment', 'String'])
@@ -419,7 +397,6 @@
         autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
         call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
-        "call deoplete#custom#source('vim', 'min_pattern_length', 2)
 
         call deoplete#custom#option('sources', {
             \ 'cpp': ['LanguageClient'],
@@ -430,16 +407,6 @@
             \ 'vim': ['vim'],
             \ })
 
-
-
-        " set sources
-        "let g:deoplete#sources         = {}
-        "let g:deoplete#sources.c       = ['LanguageClient']
-        "let g:deoplete#sources.cpp     = ['LanguageClient']
-        "let g:deoplete#sources.python  = ['LanguageClient']
-        "let g:deoplete#sources.python3 = ['LanguageClient']
-        "let g:deoplete#sources.rust    = ['LanguageClient']
-        "let g:deoplete#sources.vim     = ['vim']
 
         " <TAB>: completion.
         inoremap <silent><expr> <TAB>
@@ -487,28 +454,18 @@
     " }
 
     " Fugitive {
-        "nnoremap <silent> <leader>gs :Gstatus<CR>
-        "nnoremap <silent> <leader>gd :Gdiff<CR>
-        "nnoremap <silent> <leader>gc :Gcommit<CR>
-        "nnoremap <silent> <leader>gb :Gblame<CR>
-        "nnoremap <silent> <leader>gl :Glog<CR>
-        "nnoremap <silent> <leader>gp :Git push<CR>
-        "nnoremap <silent> <leader>gr :Gread<CR>
-        "nnoremap <silent> <leader>gw :Gwrite<CR>
-        "nnoremap <silent> <leader>ge :Gedit<CR>
-        "" Mnemonic _i_nteractive
-        "nnoremap <silent> <leader>gi :Git add -p %<CR>
-        "nnoremap <silent> <leader>gg :SignifyToggle<CR>
-    "}
-
-    " Rainbow {
-        if isdirectory(expand("~/.vim/bundle/rainbow/"))
-            let g:rainbow_active = 1 "0 if you want to enable it later via :RainbowToggle
-        endif
-    "}
-
-    " TagBar {
-        nnoremap <silent> <leader>tt :TagbarToggle<CR>
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gv :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
     " PyMode {
@@ -542,7 +499,7 @@
     " }
 
     " Tabularize {
-        if isdirectory(expand("~/.vim/bundle/tabular"))
+        if isdirectory(expand("~/.nvim/dein/repos/github.com/godlygeek/tabular"))
             nmap <Leader>a& :Tabularize /&<CR>
             vmap <Leader>a& :Tabularize /&<CR>
             nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
@@ -564,40 +521,7 @@
         endif
     " }
 
-    " Ctags {
-        "set tags=./tags;/,~/.vimtags;/,~/.cache/tags_dir
-        set tags=./tags;/,~/.vimtags
-        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-
-        " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot != ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
-        endif
-        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-    " }
-
-    " Gutentags {
-        let g:gutentags_cache_dir="~/.vimtags"
-        "let g:gutentags_modules=[ 'ctags', 'gtags_cscope' ]
-        "let g:gutentags_auto_add_gtags_cscope=1
-        "set cscopeprg='gtags-cscope'
-
-        "let g:gen_tags#use_cache_dir=1
-        "let g:gen_tags#gtags_auto_gen=1
-    " }
-
 " Git Gutter {
-    "settings for signify
-    "let g:signify_vcs_list = [ 'git', 'hg' ]
-    "let g:signify_sign_add='┃'
-    "let g:signify_sign_change='┃'
-    "let g:signify_sign_delete='◢'
-    "let g:signify_sign_delete_first_line='◥'
-
-
     "nmap <Leader>ha <Plug>GitGutterStageHunk
     "nmap <Leader>hu <Plug>GitGutterUndoHunk
     "nmap ]c <Plug>GitGutterNextHunk
@@ -610,14 +534,6 @@
     let g:gitgutter_sign_removed_first_line='◥'
     let g:gitgutter_sign_modified_removed='◢'
 
-" }
-
-" Syntax Highlighting {
-    "set guifont=Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h11,Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h14
-    "let g:cpp_class_scope_highlight = 1
-    "let g:cpp_member_variable_highlight = 1
-    "let g:cpp_experimental_template_highlight = 1
-    "let g:cpp_concepts_highlight = 1
 " }
 
 " Clang Library Path {
@@ -638,11 +554,6 @@
 
 " Airline Options {
     let g:airline_powerline_fonts=1
-    "let g:airline_theme = 'solarized'
-    "let g:airline_theme = 'gruvbox'
-    "let g:airline_theme = 'tomorrow'
-    "let g:airline_theme = 'twofirewatch'
-    "let g:airline_theme = 'onedark'
     let g:airline_theme = 'nova'
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
@@ -654,8 +565,6 @@
     let airline#extensions#ale#open_lnum_symbol = '(L'
     let airline#extensions#ale#close_lnum_symbol = ')'
 
-    "nmap <leader>- <Plug>AirlineSelectPrevTab
-    "nmap <leader>+ <Plug>AirlineSelectNextTab
     nmap <S-H> <Plug>AirlineSelectPrevTab
     nmap <S-L> <Plug>AirlineSelectNextTab
 "}
@@ -725,17 +634,16 @@
     endfunction
 
     nnoremap <C-p> :<C-u>Denite file/rec -start-filter<CR>
-    "nnoremap <leader>s :<C-u>Denite buffer<CR>
-    "nnoremap <leader>8 :<C-u>DeniteCursorWord grep:.<CR>
-    "nnoremap <leader>/ :<C-u>Denite -start-filter -filter-updatetime=0 grep:::!<CR>
-    "nnoremap <leader><Space>/ :<C-u>DeniteBufferDir -start-filter -filter-updatetime=0 grep:::!<CR>
-    "nnoremap <leader>d :<C-u>DeniteBufferDir file/rec -start-filter<CR>
+    nnoremap <leader>s :<C-u>Denite buffer<CR>
+    nnoremap <leader>8 :<C-u>DeniteCursorWord grep:.<CR>
+    nnoremap <leader>/ :<C-u>Denite -start-filter -filter-updatetime=0 grep:::!<CR>
+    nnoremap <leader><Space>/ :<C-u>DeniteBufferDir -start-filter -filter-updatetime=0 grep:::!<CR>
+    nnoremap <leader>d :<C-u>DeniteBufferDir file/rec -start-filter<CR>
     "nnoremap <leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
-    "nnoremap <leader><C-r> :<C-u>Denite register:.<CR>
-    "nnoremap <leader>g :<C-u>Denite gitstatus<CR>
+    nnoremap <leader><C-r> :<C-u>Denite register:.<CR>
+    nnoremap <leader>g :<C-u>Denite gitstatus<CR>
 
     " neoyank
-
     nnoremap <leader>y :<C-u>Denite neoyank<CR>
 
 " }
