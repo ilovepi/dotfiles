@@ -14,14 +14,35 @@ alias nvimrc="$EDITOR ~/dotfiles/config/.config/nvim/init.vim"
 alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
 alias fim='$EDITOR $(fd | fzf)'
 
+# ls, the common ones I use a lot shortened for rapid fire usage
+alias l='ls -lFh'     #size,show type,human readable
+alias la='ls -lAFh'   #long list,show almost all,show type,human readable
+alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
+alias ll='ls -l'      #long list
+alias ldot='ls -ld .*'
+alias lS='ls -1FSsh'
+alias lart='ls -1Fcart'
+alias lrt='ls -1Fcrt'
+alias lh='ls -ld .?*'
+
+# enable diff color if possible.
+if command diff --color . . &>/dev/null; then
+  alias diff='diff --color'
+fi
+
+if type ls++ > /dev/null; then
+    alias ls=ls++
+elif type exa > /dev/null; then
+    alias ls='exa'
+    alias la='ls -laFh'   #long list,show almost all,show type,human readable
+    alias lt='ls -lFht=modified'   #long list,sorted by date,show type,human readable
+    alias lart='ls -1Fart=modified'
+    alias lrt='ls -1Frt=modified'
+fi
+
+alias rgs='rg --sort-files'
 alias :q='exit'
 alias lh='ls -ld .?*'
 alias magit='nvim -c MagitOnly'
 alias fpth='sed "s/ /\n/g" <<< $fpath'
-#if type ls++ > /dev/null; then
-    #alias ls=ls++
-#fi
-
-#unalias ag
-#unalias rm
-#unalias fd
