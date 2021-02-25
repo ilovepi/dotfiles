@@ -19,7 +19,7 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
-
+zsh/.zsh/*.zwc
 vscode/.config/Code/User
 
 scripts/clang-format-all
