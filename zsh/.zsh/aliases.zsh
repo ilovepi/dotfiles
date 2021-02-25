@@ -33,7 +33,11 @@ fi
 if type ls++ > /dev/null; then
     alias ls=ls++
 elif type exa > /dev/null; then
-     alias ls='exa'
+    alias ls='exa'
+    alias la='ls -laFh'   #long list,show almost all,show type,human readable
+    alias lt='ls -lFht=modified'   #long list,sorted by date,show type,human readable
+    alias lart='ls -1Fart=modified'
+    alias lrt='ls -1Frt=modified'
 fi
 
 alias rgs='rg --sort-files'
