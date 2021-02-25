@@ -9,7 +9,7 @@ alias zeditor="$EDITOR ~/dotfiles/zsh/.zsh/editor.zsh"
 alias zhistory="$EDITOR ~/dotfiles/zsh/.zsh/history.zsh"
 alias zoptions="$EDITOR ~/dotfiles/zsh/.zsh/options.zsh"
 alias zpath="$EDITOR ~/dotfiles/zsh/.zsh/path.zsh"
-alias nvimrc="$EDITOR ~/dotfiles/config/nvim/init.vim"
+alias nvimrc="$EDITOR ~/dotfiles/config/.config/nvim/init.vim"
 alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
 alias fim='$EDITOR $(fd | fzf)'
 
