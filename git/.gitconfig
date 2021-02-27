@@ -72,12 +72,6 @@
   separator = red bold
   linenumber = normal
 
-;[branch]
-    ;autosetuprebase = always
-
-;[core]
-    ;pager = less -R
-
 [core]
     pager = diff-so-fancy | less --tabs=4 -FXRi
 
