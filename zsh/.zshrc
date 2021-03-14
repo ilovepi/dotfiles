@@ -76,3 +76,5 @@ bindkey '^x^x' edit-command-line
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi
+
+[ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh
