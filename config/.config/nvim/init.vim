@@ -2,15 +2,16 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " }
 
+        let g:polyglot_disabled = ['latex']
 " Dein {
     set nocompatible
-    set runtimepath+=~/.nvim/dein/repos/github.com/Shougo/dein.vim
+    set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-    if dein#load_state('~/.nvim/dein')
-      call dein#begin('~/.nvim/dein/')
+    if dein#load_state('~/.cache/dein')
+      call dein#begin('~/.cache/dein/')
 
       " Dein
-      call dein#add('~/.nvim/dein/')
+      call dein#add('~/.cache/dein/')
       call dein#add('Shougo/dein.vim')
       call dein#add('haya14busa/dein-command.vim')        " dein bindings
 
@@ -41,7 +42,10 @@
       call dein#add('morhetz/gruvbox')
       call dein#add('powerline/fonts')
       call dein#add('rakr/vim-one')
+      call dein#add('sainnhe/edge')
       call dein#add('rakr/vim-two-firewatch')
+      call dein#add('b4skyx/serenade')
+      call dein#add('sainnhe/gruvbox-material')
       call dein#add('ryanoasis/vim-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
       call dein#add('trevordmiller/nova-vim')
@@ -96,14 +100,12 @@
       call dein#add('reedes/vim-litecorrect')
       call dein#add('reedes/vim-textobj-quote')
       call dein#add('reedes/vim-textobj-sentence')
-      call dein#add('reedes/vim-wordy')
-      call dein#add('rhysd/conflict-marker.vim')
+      "call dein#add('rhysd/conflict-marker.vim')
       call dein#add('scrooloose/nerdcommenter')
       call dein#add('tpope/vim-repeat')
       call dein#add('tpope/vim-sleuth')
       call dein#add('tpope/vim-surround')
       call dein#add('vim-scripts/matchit.zip')
-
 
       call dein#add('metakirby5/codi.vim')
 
@@ -131,7 +133,7 @@
     " Initialize directories {
     function! InitializeDirectories()
         let parent = $HOME
-        let prefix = 'vim'
+        let prefix = 'nvim'
         let dir_list = {
                     \ 'backup': 'backupdir',
                     \ 'views': 'viewdir',
@@ -141,11 +143,6 @@
             let dir_list['undo'] = 'undodir'
         endif
 
-        " To specify a different directory in which to place the vimbackup,
-        " vimviews, vimundo, and vimswap files/directories, add the following to
-        " your .vimrc.before.local file:
-        "   let g:spf13_consolidated_directory = <full path to desired directory>
-        "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
         let common_dir = parent . '/.' . prefix
 
         for [dirname, settingname] in items(dir_list)
@@ -287,15 +284,10 @@
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
 
-
-    " Find merge conflict markers
-    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
-
     " Shortcuts
     " Change Working Directory to that of the current file
     cmap cwd lcd %:p:h
     cmap cd. lcd %:p:h
-
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
@@ -344,10 +336,6 @@
         inoremap <C-j> <C-\><C-N><C-w>j
         inoremap <C-k> <C-\><C-N><C-w>k
         inoremap <C-l> <C-\><C-N><C-w>l
-        "nnoremap <C-h> <C-w>h
-        "nnoremap <C-j> <C-w>j
-        "nnoremap <C-k> <C-w>k
-        "nnoremap <C-l> <C-w>l
     endif
 
     map <C-J> <C-W>j
@@ -356,33 +344,46 @@
     map <C-H> <C-W>h
 
     " Stupid shift key fixes
-    if !exists('g:spf13_no_keyfixes')
-        if has("user_commands")
-            command! -bang -nargs=* -complete=file E e<bang> <args>
-            command! -bang -nargs=* -complete=file W w<bang> <args>
-            command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-            command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-            command! -bang Wa wa<bang>
-            command! -bang WA wa<bang>
-            command! -bang Q q<bang>
-            command! -bang QA qa<bang>
-            command! -bang Qa qa<bang>
-        endif
-
-        cmap Tabe tabe
+    if has("user_commands")
+        command! -bang -nargs=* -complete=file E e<bang> <args>
+        command! -bang -nargs=* -complete=file W w<bang> <args>
+        command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+        command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+        command! -bang Wa wa<bang>
+        command! -bang WA wa<bang>
+        command! -bang Q q<bang>
+        command! -bang QA qa<bang>
+        command! -bang Qa qa<bang>
     endif
+
+    cmap Tabe tabe
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
-
-    "toggle search highlighting rather than clear the current search results.
-    "nmap <silent> <leader>/ :set invhlsearch<CR>
 
 " }
 
     " Colors {
         set termguicolors
-        colorscheme materialbox
+
+        let g:gruvbox_material_background = 'soft'
+        let g:gruvbox_material_enable_bold = 1
+        let g:gruvbox_material_enable_italic = 1
+        let g:gruvbox_material_diagnostic_text_highlight = 1
+        let g:gruvbox_material_diagnostic_line_highlight = 1
+        let g:gruvbox_material_better_performance = 1
+
+
+        let g:serenade_background = 'soft'
+        let g:serenade_enable_bold = 1
+        let g:serenade_enable_italic = 1
+        let g:serenade_diagnostic_text_highlight = 1
+        let g:serenade_diagnostic_line_highlight = 1
+        let g:serenade_better_performance = 1
+
+
+
+        colorscheme serenade
         syntax on
     "}
 
@@ -554,7 +555,11 @@
 
 " Airline Options {
     let g:airline_powerline_fonts=1
-    let g:airline_theme = 'nova'
+    "let g:airline_theme = 'nova'
+    let g:airline_theme = 'serenade'
+    "let g:airline_theme = 'gruvbox_material'
+
+
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -663,30 +668,6 @@
     noremap <Leader>kk :Autoformat<CR>
 " }
 
-    " IncSearch {
-          "call dein#add('haya14busa/incsearch.vim')
-          "call dein#add('haya14busa/incsearch-fuzzy.vim')
-        "function! s:config_fuzzyall(...) abort
-          "return extend(copy({
-          "\   'converters': [
-          "\     incsearch#config#fuzzy#converter(),
-          "\     incsearch#config#fuzzyspell#converter()
-          "\   ],
-          "\ }), get(a:, 1, {}))
-        "endfunction
-
-        "noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
-        "noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
-        "noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
-        "let g:incsearch#auto_nohlsearch = 1
-        "map n  <Plug>(incsearch-nohl-n)
-        "map N  <Plug>(incsearch-nohl-N)
-        "map *  <Plug>(incsearch-nohl-*)
-        "map #  <Plug>(incsearch-nohl-#)
-        "map g* <Plug>(incsearch-nohl-g*)
-        "map g# <Plug>(incsearch-nohl-g#)
-    " }
-
     " FZF Settings {
         " Customize fzf colors to match your color scheme
         let g:fzf_colors =
@@ -708,7 +689,7 @@
     " LanguageClient {
         let g:LanguageClient_serverCommands = {
             \ 'cpp' : ['~/clang-dev/bin/clangd'],
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'rust': ['rust-analyzer'],
             \ 'javascript': ['javascript-typescript-stdio'],
             \ }
 
@@ -757,7 +738,7 @@
     " }
 
     " UltiSnips {
-        let g:UltiSnipsExpandTrigger="<c-k>"
+        let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<c-k>"
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
