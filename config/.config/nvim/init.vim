@@ -17,11 +17,11 @@
 
       " Completion
       call dein#add('Chiel92/vim-autoformat')
-      call dein#add('Shougo/denite.nvim')
-      call dein#add('Shougo/deoplete.nvim')
-      call dein#add('Shougo/deorise.vim')
+      "call dein#add('Shougo/denite.nvim')
+      "call dein#add('Shougo/deoplete.nvim')
+      "call dein#add('Shougo/deorise.nvim')
       call dein#add('SirVer/ultisnips')
-      call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
+      "call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
       call dein#add('honza/vim-snippets')
       call dein#add('w0rp/ale')
 
@@ -46,7 +46,8 @@
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('b4skyx/serenade')
       call dein#add('sainnhe/gruvbox-material')
-      call dein#add('ryanoasis/vim-devicons')
+      "call dein#add('ryanoasis/vim-devicons')
+      call dein#add('kyazdani42/nvim-web-devicons')
       call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
       call dein#add('trevordmiller/nova-vim')
       call dein#add('vim-airline/vim-airline')
@@ -108,6 +109,13 @@
       call dein#add('vim-scripts/matchit.zip')
 
       call dein#add('metakirby5/codi.vim')
+
+
+
+call dein#add('neovim/nvim-lspconfig')
+call dein#add('glepnir/lspsaga.nvim')
+call dein#add('nvim-treesitter/nvim-treesitter')
+call dein#add('nvim-lua/completion-nvim')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -338,10 +346,10 @@
         inoremap <C-l> <C-\><C-N><C-w>l
     endif
 
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
+    "map <C-J> <C-W>j
+    "map <C-K> <C-W>k
+    "map <C-L> <C-W>l
+    "map <C-H> <C-W>h
 
     " Stupid shift key fixes
     if has("user_commands")
@@ -388,6 +396,7 @@
     "}
 
     " Deoplete{
+    if 0 
         let g:deoplete#enable_at_startup = 1
         call deoplete#custom#option('smart_case', v:true)
 
@@ -437,7 +446,7 @@
               \ 'tex': g:vimtex#re#deoplete
               \})
 
-
+    endif
     "}
 
     " UndoTree {
@@ -559,7 +568,6 @@
     let g:airline_theme = 'serenade'
     "let g:airline_theme = 'gruvbox_material'
 
-
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -587,6 +595,7 @@
 " Denite {
     "nnoremap <C-p> :Denite file/rec<cr>
 
+    if 0
 
 
     "call denite#custom#option('_', {
@@ -650,6 +659,7 @@
 
     " neoyank
     nnoremap <leader>y :<C-u>Denite neoyank<CR>
+endif
 
 " }
 
@@ -687,6 +697,7 @@
     " }
 
     " LanguageClient {
+    if 0
         let g:LanguageClient_serverCommands = {
             \ 'cpp' : ['~/clang-dev/bin/clangd'],
             \ 'rust': ['rust-analyzer'],
@@ -717,6 +728,7 @@
           autocmd!
           autocmd FileType cpp,c,rust call SetLSPShortcuts()
         augroup END
+    endif
     " }
 
     " Vimtex { 
@@ -743,3 +755,23 @@
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
     " }
+
+
+    luafile ~/.config/nvim/lua/lsp.lua
+
+
+    " Use <Tab> and <S-Tab> to navigate through popup menu
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    imap <tab> <Plug>(completion_smart_tab)
+    imap <s-tab> <Plug>(completion_smart_s_tab)
+
+    " Set completeopt to have a better completion experience
+    set completeopt=menuone,noinsert,noselect
+
+    " Avoid showing message extra message when using completion
+    set shortmess+=c
+    "let g:completion_enable_snippet = 'UltiSnips'
+    autocmd BufEnter * lua require'completion'.on_attach()
+
