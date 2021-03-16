@@ -19,7 +19,7 @@
       call dein#add('Chiel92/vim-autoformat')
       call dein#add('Shougo/denite.nvim')
       call dein#add('Shougo/deoplete.nvim')
-      call dein#add('Shougo/deorise.vim')
+      call dein#add('Shougo/deorise.nvim')
       call dein#add('SirVer/ultisnips')
       call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
       call dein#add('honza/vim-snippets')
