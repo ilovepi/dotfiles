@@ -20,9 +20,10 @@
       "call dein#add('Shougo/denite.nvim')
       "call dein#add('Shougo/deoplete.nvim')
       "call dein#add('Shougo/deorise.nvim')
-      call dein#add('SirVer/ultisnips')
+      "call dein#add('SirVer/ultisnips')
       "call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
-      call dein#add('honza/vim-snippets')
+      "call dein#add('honza/vim-snippets')
+      call dein#add('norcalli/snippets.nvim')
       call dein#add('w0rp/ale')
 
 
@@ -116,6 +117,7 @@ call dein#add('neovim/nvim-lspconfig')
 call dein#add('glepnir/lspsaga.nvim')
 call dein#add('nvim-treesitter/nvim-treesitter')
 call dein#add('nvim-lua/completion-nvim')
+call dein#add('nvim-lua/lsp_extensions.nvim')
 
       if !has('nvim')
         call dein#add('roxma/nvim-yarp')
@@ -753,12 +755,9 @@ endif
         let g:UltiSnipsExpandTrigger="<tab>"
         let g:UltiSnipsJumpForwardTrigger="<c-k>"
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
-
     " }
 
-
     luafile ~/.config/nvim/lua/lsp.lua
-
 
     " Use <Tab> and <S-Tab> to navigate through popup menu
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -773,5 +772,22 @@ endif
     " Avoid showing message extra message when using completion
     set shortmess+=c
     "let g:completion_enable_snippet = 'UltiSnips'
+    let g:completion_enable_snippet = 'snippets.nvim'
+    "let g:completion_enable_auto_paren = 1
     autocmd BufEnter * lua require'completion'.on_attach()
+
+" <c-k> will either expand the current snippet at the word or try to jump to
+" the next position for the snippet.
+inoremap <c-t> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
+
+" <c-j> will jump backwards to the previous field.
+" If you jump before the first field, it will cancel the snippet.
+inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
+
+
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
 
