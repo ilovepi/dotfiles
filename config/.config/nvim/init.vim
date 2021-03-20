@@ -24,7 +24,8 @@
       "call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
       "call dein#add('honza/vim-snippets')
       call dein#add('norcalli/snippets.nvim')
-      call dein#add('w0rp/ale')
+      "call dein#add('w0rp/ale')
+      call dein#add('dense-analysis/ale')
 
 
       " Search & Navigation
@@ -115,7 +116,7 @@
 
 call dein#add('neovim/nvim-lspconfig')
 call dein#add('glepnir/lspsaga.nvim')
-call dein#add('nvim-treesitter/nvim-treesitter')
+"call dein#add('nvim-treesitter/nvim-treesitter')
 call dein#add('nvim-lua/completion-nvim')
 call dein#add('nvim-lua/lsp_extensions.nvim')
 
@@ -486,7 +487,7 @@ call dein#add('nvim-lua/lsp_extensions.nvim')
             let g:pymode = 0
         endif
 
-        if isdirectory(expand("~/.nvim/dein/repos/github.com/python-mode/python-mode"))
+        if isdirectory(expand("~/.cache/dein/repos/github.com/python-mode/python-mode"))
             let g:pymode_lint_checkers = ['pyflakes']
             let g:pymode_trim_whitespaces = 0
             let g:pymode_options = 0
@@ -511,7 +512,7 @@ call dein#add('nvim-lua/lsp_extensions.nvim')
     " }
 
     " Tabularize {
-        if isdirectory(expand("~/.nvim/dein/repos/github.com/godlygeek/tabular"))
+        if isdirectory(expand("~/.cache/dein/repos/github.com/godlygeek/tabular"))
             nmap <Leader>a& :Tabularize /&<CR>
             vmap <Leader>a& :Tabularize /&<CR>
             nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
@@ -669,6 +670,7 @@ endif
     " Enable completion where available.
     "let g:ale_completion_enabled = 1
     let g:ale_linters_explicit = 1
+    let g:ale_disable_lsp = 1
     let g:ale_linters = {
     \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
     \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
@@ -699,6 +701,7 @@ endif
     " }
 
     " LanguageClient {
+        set signcolumn=yes
     if 0
         let g:LanguageClient_serverCommands = {
             \ 'cpp' : ['~/clang-dev/bin/clangd'],
@@ -757,6 +760,25 @@ endif
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
     " }
 
+"hi LspDiagnosticsDefaultError guifg=#d75f5f ctermfg=124 gui=bold,italic
+"hi LspDiagnosticsDefaultWarning guifg=Yellow ctermfg=Yellow gui=italic,bold
+"hi LspDiagnosticsDefaultInformation guifg=White ctermfg=White gui=italic,bold
+"hi LspDiagnosticsDefaultHint guifg=Yellow ctermfg=White gui=italic,bold
+
+" Errors in Red
+hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
+" Warnings in Yellow
+hi LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow gui=italic,bold
+" Info and Hints in White
+hi LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White gui=italic,bold
+hi LspDiagnosticsVirtualTextHint guifg=#878787 ctermfg=White gui=italic,bold
+
+" Underline the offending code
+"hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline
+"hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline
+"hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
+"hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
+
     luafile ~/.config/nvim/lua/lsp.lua
 
     " Use <Tab> and <S-Tab> to navigate through popup menu
@@ -783,8 +805,6 @@ inoremap <c-t> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
 " <c-j> will jump backwards to the previous field.
 " If you jump before the first field, it will cancel the snippet.
 inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
-
-
 
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
