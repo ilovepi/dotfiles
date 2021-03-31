@@ -2,16 +2,15 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-source "$HOME/.zinit/bin/zinit.zsh"
-
 module_path+=( "/Users/paul/.zinit/bin/zmodules/Src" )
 zmodload zdharma/zplugin
 
-# TODO: avoid this hack
+source "$HOME/.zinit/bin/zinit.zsh"
+
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
-SHELL=`which zsh`
-export SHELL
-#export TERM=xterm-256color
+if grep -q docker /proc/1/cgroup; then
+    export SHELL=${SHELL:=`which zsh`}
+fi
 
 GOPATH=${GOPATH:=$HOME/workspace/go}
 
@@ -23,7 +22,7 @@ source ~/.zsh/editor.zsh
 # update fpath w/ some normal system paths for zsh completions
 source $HOME/.zsh/fpath.zsh
 
-# load plugins w/ zplug
+# load plugins w/ zinit
 source $HOME/.zsh/zplugin.zsh
 
 # setup history substring search and keybindings
@@ -57,7 +56,7 @@ source $HOME/.zsh/aliases.zsh
 #bindkey -M vicmd t edit-command-line
 
 #FZF stuff
-[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh && source $HOME/.zsh/fzf.zsh
+[ -f ${HOME}/.zsh/.fzf.zsh ] && source ${HOME}/.zsh/.fzf.zsh
 
 zinit ice wait lucid
 zinit light  zsh-users/zsh-history-substring-search
@@ -73,8 +72,10 @@ bindkey '^x^x' edit-command-line
 
 #zinit cdreplay -q
 
+eval "$(zoxide init zsh)"
+
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi
 
-[ -f ~/.zsh/.fzf.zsh ] && source ~/.zsh/.fzf.zsh
+
