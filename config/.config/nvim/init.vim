@@ -47,6 +47,7 @@
       call dein#add('sainnhe/edge')
       call dein#add('rakr/vim-two-firewatch')
       call dein#add('b4skyx/serenade')
+      call dein#add('savq/melange')
       call dein#add('sainnhe/gruvbox-material')
       "call dein#add('ryanoasis/vim-devicons')
       call dein#add('kyazdani42/nvim-web-devicons')
@@ -394,7 +395,20 @@ call dein#add('nvim-lua/lsp_extensions.nvim')
 
 
 
-        colorscheme serenade
+        "let g:srcery_background = 'soft'
+        "let g:srcery_bold = 1
+        "let g:srcery_italic = 1
+        "let g:srcery_diagnostic_text_highlight = 1
+        "let g:srcery_diagnostic_line_highlight = 1
+        "let g:srcery_better_performance = 1
+
+
+
+
+        colorscheme gruvbox-material
+        "colorscheme serenade
+        "colorscheme melange
+        "colorscheme srcery
         syntax on
     "}
 
@@ -568,8 +582,8 @@ call dein#add('nvim-lua/lsp_extensions.nvim')
 " Airline Options {
     let g:airline_powerline_fonts=1
     "let g:airline_theme = 'nova'
-    let g:airline_theme = 'serenade'
-    "let g:airline_theme = 'gruvbox_material'
+    "let g:airline_theme = 'serenade'
+    let g:airline_theme = 'gruvbox_material'
 
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
@@ -760,26 +774,39 @@ endif
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
     " }
 
-"hi LspDiagnosticsDefaultError guifg=#d75f5f ctermfg=124 gui=bold,italic
-"hi LspDiagnosticsDefaultWarning guifg=Yellow ctermfg=Yellow gui=italic,bold
-"hi LspDiagnosticsDefaultInformation guifg=White ctermfg=White gui=italic,bold
-"hi LspDiagnosticsDefaultHint guifg=Yellow ctermfg=White gui=italic,bold
-
+    if 1
 " Errors in Red
-hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
+"hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
+"hi LspDiagnosticsDefaultError guifg=#d75f5f ctermfg=124 gui=bold,italic
+"hi LspDiagnosticsDefaultSignError guifg=#d75f5f ctermfg=124 gui=bold
+
+hi LspDiagnosticsVirtualTextError guifg=#d76e6e ctermfg=124 gui=bold,italic
+hi LspDiagnosticsDefaultError guifg=#d76e6e ctermfg=124 gui=bold,italic
+hi LspDiagnosticsDefaultSignError guifg=#d75f5f ctermfg=124 gui=bold
+
+
 " Warnings in Yellow
-hi LspDiagnosticsVirtualTextWarning guifg=Yellow ctermfg=Yellow gui=italic,bold
+hi LspDiagnosticsVirtualTextWarning guifg=#e5a46b ctermfg=DarkYellow gui=italic,bold
+hi LspDiagnosticsDefaultWarning guifg=#e5a46b ctermfg=Yellow gui=italic,bold
+hi LspDiagnosticsDefaultSignWarning guifg=#e5a46b ctermfg=Yellow gui=bold
+
 " Info and Hints in White
-hi LspDiagnosticsVirtualTextInformation guifg=White ctermfg=White gui=italic,bold
+hi LspDiagnosticsVirtualTextInformation guifg=Purple ctermfg=White gui=italic,bold
+hi LspDiagnosticsDefaultInformation guifg=White ctermfg=White gui=italic,bold
+hi LspDiagnosticsDefaultSignInformation guifg=White ctermfg=White gui=bold
+
 hi LspDiagnosticsVirtualTextHint guifg=#878787 ctermfg=White gui=italic,bold
+hi LspDiagnosticsDefaultHint guifg=Cyan ctermfg=Cyan gui=italic,bold
+hi LspDiagnosticsDefaultSignHint guifg=#87c095 ctermfg=Cyan gui=bold
+
 
 " Underline the offending code
 "hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline
 "hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline
 "hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
 "hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
-
-    luafile ~/.config/nvim/lua/lsp.lua
+endif
+    lua require("lsp")
 
     " Use <Tab> and <S-Tab> to navigate through popup menu
     inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"

@@ -81,10 +81,17 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   }
 )
 
-vim.fn.sign_define("LspDiagnosticsSignError", {text = "ﮊ", numhl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultWarning"})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultInformation"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = "=>", numhl = "LspDiagnosticsDefaultHint", texthl="Purple"})
+--
+--
+--
+--
+
+--vim.fn.sign_define("LspDiagnosticsSignError", {text = "ﮊ", numhl = "LspDiagnosticsDefaultError"})
+vim.fn.sign_define("LspDiagnosticsSignError", {text = ">>", numhl = "LspDiagnosticsDefaultSignError", texthl="LspDiagnosticsDefaultSignError"})
+--vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "!!", numhl = "LspDiagnosticsDefaultSignWarning", texthl = "LspDiagnosticsDefaultSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultSignInformation", texthl = "LspDiagnosticsDefaultSignInformation"})
+vim.fn.sign_define("LspDiagnosticsSignHint", {text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl="LspDiagnosticsDefaultSignHint", gui=bold})
 
 
 --require'nvim-treesitter.configs'.setup {
