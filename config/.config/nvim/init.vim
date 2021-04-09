@@ -355,21 +355,19 @@
     map <C-H> <C-W>h
 
     " Stupid shift key fixes
-    if !exists('g:spf13_no_keyfixes')
-        if has("user_commands")
-            command! -bang -nargs=* -complete=file E e<bang> <args>
-            command! -bang -nargs=* -complete=file W w<bang> <args>
-            command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-            command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-            command! -bang Wa wa<bang>
-            command! -bang WA wa<bang>
-            command! -bang Q q<bang>
-            command! -bang QA qa<bang>
-            command! -bang Qa qa<bang>
-        endif
-
-        cmap Tabe tabe
+    if has("user_commands")
+        command! -bang -nargs=* -complete=file E e<bang> <args>
+        command! -bang -nargs=* -complete=file W w<bang> <args>
+        command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+        command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+        command! -bang Wa wa<bang>
+        command! -bang WA wa<bang>
+        command! -bang Q q<bang>
+        command! -bang QA qa<bang>
+        command! -bang Qa qa<bang>
     endif
+
+    cmap Tabe tabe
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
@@ -499,40 +497,7 @@
         endif
     " }
 
-    " Ctags {
-        "set tags=./tags;/,~/.vimtags;/,~/.cache/tags_dir
-        set tags=./tags;/,~/.vimtags
-        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-
-        " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot != ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
-        endif
-        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-    " }
-
-    " Gutentags {
-        let g:gutentags_cache_dir="~/.vimtags"
-        "let g:gutentags_modules=[ 'ctags', 'gtags_cscope' ]
-        "let g:gutentags_auto_add_gtags_cscope=1
-        "set cscopeprg='gtags-cscope'
-
-        "let g:gen_tags#use_cache_dir=1
-        "let g:gen_tags#gtags_auto_gen=1
-    " }
-
 " Git Gutter {
-    "settings for signify
-    "let g:signify_vcs_list = [ 'git', 'hg' ]
-    "let g:signify_sign_add='┃'
-    "let g:signify_sign_change='┃'
-    "let g:signify_sign_delete='◢'
-    "let g:signify_sign_delete_first_line='◥'
-
-
     "nmap <Leader>ha <Plug>GitGutterStageHunk
     "nmap <Leader>hu <Plug>GitGutterUndoHunk
     "nmap ]c <Plug>GitGutterNextHunk
@@ -545,14 +510,6 @@
     let g:gitgutter_sign_removed_first_line='◥'
     let g:gitgutter_sign_modified_removed='◢'
 
-" }
-
-" Syntax Highlighting {
-    "set guifont=Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h11,Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h14
-    let g:cpp_class_scope_highlight = 1
-    let g:cpp_member_variable_highlight = 1
-    let g:cpp_experimental_template_highlight = 1
-    let g:cpp_concepts_highlight = 1
 " }
 
 " Clang Library Path {
@@ -590,8 +547,6 @@
     let airline#extensions#ale#open_lnum_symbol = '(L'
     let airline#extensions#ale#close_lnum_symbol = ')'
 
-    "nmap <leader>- <Plug>AirlineSelectPrevTab
-    "nmap <leader>+ <Plug>AirlineSelectNextTab
     nmap <S-H> <Plug>AirlineSelectPrevTab
     nmap <S-L> <Plug>AirlineSelectNextTab
 "}
@@ -624,31 +579,6 @@
 " Autoformat {
     noremap <Leader>kk :Autoformat<CR>
 " }
-
-
-    " IncSearch {
-          "call dein#add('haya14busa/incsearch.vim')
-          "call dein#add('haya14busa/incsearch-fuzzy.vim')
-        "function! s:config_fuzzyall(...) abort
-          "return extend(copy({
-          "\   'converters': [
-          "\     incsearch#config#fuzzy#converter(),
-          "\     incsearch#config#fuzzyspell#converter()
-          "\   ],
-          "\ }), get(a:, 1, {}))
-        "endfunction
-
-        "noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
-        "noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
-        "noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
-        "let g:incsearch#auto_nohlsearch = 1
-        "map n  <Plug>(incsearch-nohl-n)
-        "map N  <Plug>(incsearch-nohl-N)
-        "map *  <Plug>(incsearch-nohl-*)
-        "map #  <Plug>(incsearch-nohl-#)
-        "map g* <Plug>(incsearch-nohl-g*)
-        "map g# <Plug>(incsearch-nohl-g#)
-    " }
 
     " FZF Settings {
         " Customize fzf colors to match your color scheme
@@ -721,5 +651,12 @@
           autocmd FileType text,tex,plaintex call pencil#init()
         augroup END
 
+
+    " }
+
+    " UltiSnips {
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<c-k>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-j>"
 
     " }
