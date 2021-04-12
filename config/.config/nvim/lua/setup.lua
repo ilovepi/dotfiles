@@ -8,7 +8,13 @@ if fn.empty(fn.glob(install_path)) > 0 then
   execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
 end
 vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerSync' -- Auto compile when there are changes in plugins.lua
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
 
 -- Install plugins
 require('plugins')
+
+--require('statusline')
+require('nvim-autopairs').setup({
+  check_line_pair = false
+})
+

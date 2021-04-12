@@ -21,13 +21,16 @@ return require('packer').startup(function()
     use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end}
     use 'junegunn/fzf.vim'
     use {'raghur/fruzzy', run = function() vim.fn['fruzzy#install']() end}
-    use { 
-        'scrooloose/nerdtree',
-        requires = {
-            {'tiagofumo/vim-nerdtree-syntax-highlight', opt = true},
-            {'jistr/vim-nerdtree-tabs', opt = true }
-        }
-    }
+    use 'kyazdani42/nvim-tree.lua'
+    --use { 
+        --'scrooloose/nerdtree',
+        --opt = true,
+        ----cmd = {'NERDTreeToggle'},
+        --keys = {'<Plug>(NERDTreeToggle)'},
+        --requires = {
+            --{'tiagofumo/vim-nerdtree-syntax-highlight', opt = true},
+        --}
+    --}
     use 'wincent/loupe'
 
     -- Appearance
@@ -68,22 +71,22 @@ return require('packer').startup(function()
     use 'ekalinin/Dockerfile.vim'
     use 'rust-lang/rust.vim'
     use 'sheerun/vim-polyglot'
-    use 'tpope/vim-markdown'
 
     -- Viewing
-    use 'greyblake/vim-preview'
+    --use 'greyblake/vim-preview'
 
     -- Vim navigation & editing essentials
     use 'bling/vim-bufferline'
     use 'chrisbra/NrrwRgn'
     use 'christoomey/vim-tmux-navigator'
     use 'farmergreg/vim-lastplace'
-    use 'gcmt/wildfire.vim'
+    --use 'gcmt/wildfire.vim'
     use 'godlygeek/tabular'
-    use 'jiangmiao/auto-pairs'
-    use 'kana/vim-textobj-indent'
-    use 'kana/vim-textobj-user'
-    use 'mattn/webapi-vim'
+    --use 'jiangmiao/auto-pairs'
+    use 'windwp/nvim-autopairs'
+    --use 'kana/vim-textobj-indent'
+    --use 'kana/vim-textobj-user'
+    --use 'mattn/webapi-vim'
     use 'mbbill/undotree'
     use 'nathanaelkane/vim-indent-guides'
     use 'osyo-manga/vim-over'
@@ -98,10 +101,10 @@ return require('packer').startup(function()
 
     use 'metakirby5/codi.vim'
 
-
-
+    -- lua vim stuff
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
+    --use 'glepnir/galaxyline.nvim'
     --use 'nvim-treesitter/nvim-treesitter'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-lua/completion-nvim'
