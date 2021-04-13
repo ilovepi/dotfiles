@@ -56,7 +56,7 @@ source $HOME/.zsh/aliases.zsh
 #bindkey -M vicmd t edit-command-line
 
 #FZF stuff
-[ -f ${HOME}/.zsh/.fzf.zsh ] && source ${HOME}/.zsh/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 zinit ice wait lucid
 zinit light  zsh-users/zsh-history-substring-search
@@ -77,5 +77,4 @@ eval "$(zoxide init zsh)"
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi
-
 

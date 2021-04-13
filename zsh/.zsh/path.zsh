@@ -40,7 +40,8 @@ PATH=$HOME/.cargo/bin:$PATH
 
 #PATH=$LLVM_DIR/bin:$PATH
 
-PATH=$HOME/clang-dev/bin:$PATH
+#PATH=$HOME/clang-dev/bin:$PATH
+PATH=$HOME/clang/bin:$PATH
 export SVF_HOME=$HOME/workspace/mpk/SVF
 
 PATH=$SVF_HOME/Release-build/bin:$PATH
