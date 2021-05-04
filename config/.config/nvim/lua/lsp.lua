@@ -27,7 +27,7 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<leader>e', '<cmd>lua require("lspsaga.diagnostic").show_line_diagnostics()<CR>', opts)
     --buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
     buf_set_keymap('n', '[d', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_prev()<CR>', opts)
-    --buf_set_keymap('n', ']d', '<cmd>lua vm.lsp.diagnostic.goto_next()<CR>', opts)
+    --buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
     buf_set_keymap('n', ']d', '<cmd>lua require("lspsaga.diagnostic").lsp_jump_diagnostic_next()<CR>', opts)
     buf_set_keymap('n', '<leader>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
     buf_set_keymap('n', '<leader>la', '<cmd>lua require("lspsaga.codeaction").code_action()<CR>', opts)
@@ -38,7 +38,7 @@ local on_attach = function(client, bufnr)
     if client.resolved_capabilities.document_formatting then
         buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
     elseif client.resolved_capabilities.document_range_formatting then
-        buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+        buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
     end
 
     -- Set autocommands conditional on server_capabilities
@@ -63,7 +63,9 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
-local servers = {  "rust_analyzer" }
+--local servers = {  "rust_analyzer", "vimlsp", "sumeneko" }
+require'lspinstall'.setup()
+local servers = require'lspinstall'.installed_servers()
 for _, lsp in ipairs(servers) do
     nvim_lsp[lsp].setup {
     capabilities = capabilities;
@@ -76,7 +78,7 @@ end
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
     virtual_text = true,
-    signs = true,
+    signs = false,
     update_in_insert = true,
   }
 )
@@ -88,8 +90,8 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 
 --vim.fn.sign_define("LspDiagnosticsSignError", {text = "ﮊ", numhl = "LspDiagnosticsDefaultError"})
 vim.fn.sign_define("LspDiagnosticsSignError", {text = ">>", numhl = "LspDiagnosticsDefaultSignError", texthl="LspDiagnosticsDefaultSignError"})
---vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "!!", numhl = "LspDiagnosticsDefaultSignWarning", texthl = "LspDiagnosticsDefaultSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultSignWarning"})
+--vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "!!", numhl = "LspDiagnosticsDefaultSignWarning", texthl = "LspDiagnosticsDefaultSignWarning"})
 vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultSignInformation", texthl = "LspDiagnosticsDefaultSignInformation"})
 vim.fn.sign_define("LspDiagnosticsSignHint", {text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl="LspDiagnosticsDefaultSignHint", gui=bold})
 

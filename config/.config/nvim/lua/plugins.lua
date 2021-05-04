@@ -1,6 +1,8 @@
 
 
 return require('packer').startup(function()
+    local use = require('packer').use
+
     use { 'wbthomason/packer.nvim', opt = true}
     -- Completion
     use 'Chiel92/vim-autoformat'
@@ -48,8 +50,8 @@ return require('packer').startup(function()
     --use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
     use 'trevordmiller/nova-vim'
-    use 'vim-airline/vim-airline'
-    use 'vim-airline/vim-airline-themes'
+    --use 'vim-airline/vim-airline'
+    --use 'vim-airline/vim-airline-themes'
 
     -- Writing
     use 'junegunn/goyo.vim'
@@ -76,7 +78,7 @@ return require('packer').startup(function()
     --use 'greyblake/vim-preview'
 
     -- Vim navigation & editing essentials
-    use 'bling/vim-bufferline'
+    --use 'bling/vim-bufferline'
     use 'chrisbra/NrrwRgn'
     use 'christoomey/vim-tmux-navigator'
     use 'farmergreg/vim-lastplace'
@@ -104,12 +106,12 @@ return require('packer').startup(function()
     -- lua vim stuff
     use 'neovim/nvim-lspconfig'
     use 'glepnir/lspsaga.nvim'
-    --use 'glepnir/galaxyline.nvim'
-    --use 'nvim-treesitter/nvim-treesitter'
+    use 'glepnir/galaxyline.nvim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/lsp_extensions.nvim'
     use 'kabouzeid/nvim-lspinstall'
+    use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
 
 end)

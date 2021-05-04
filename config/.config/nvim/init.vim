@@ -4,7 +4,6 @@
 
         let g:polyglot_disabled = ['latex']
 
-    lua require("setup")
 
         let g:vimtex_compiler_latexmk = {
             \ 'options' : [
@@ -574,8 +573,10 @@
     let airline#extensions#ale#open_lnum_symbol = '(L'
     let airline#extensions#ale#close_lnum_symbol = ')'
 
-    nmap <S-H> <Plug>AirlineSelectPrevTab
-    nmap <S-L> <Plug>AirlineSelectNextTab
+    "nmap <S-H> <Plug>AirlineSelectPrevTab
+    "nmap <S-L> <Plug>AirlineSelectNextTab
+    nmap <S-H> :BufferLineCycleNext<CR>
+    nmap <S-L> :BufferLineCyclePrev<CR>
 "}
 
 " Snippets {
@@ -724,7 +725,7 @@ endif
 
         augroup LSP
           autocmd!
-          autocmd FileType cpp,c,rust call SetLSPShortcuts()
+          autocmd FileType cpp,c,rust,vim,lua call SetLSPShortcuts()
         augroup END
     endif
     " }
@@ -753,7 +754,9 @@ endif
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
     " }
 
-    if 1
+    lua require("setup")
+
+    if 0
 " Errors in Red
 "hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
 "hi LspDiagnosticsDefaultError guifg=#d75f5f ctermfg=124 gui=bold,italic
@@ -828,6 +831,5 @@ inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
 " Enable type inlay hints
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-
 
 endif
