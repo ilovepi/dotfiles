@@ -8,9 +8,10 @@ zmodload zdharma/zplugin
 source "$HOME/.zinit/bin/zinit.zsh"
 
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
-if grep -q docker /proc/1/cgroup; then
-    export SHELL=${SHELL:=`which zsh`}
-fi
+#if grep -q docker /proc/1/cgroup; then
+    #export SHELL=${SHELL:=`which zsh`}
+#fi
+[ -f /.dockerenv ] && export SHELL=${SHELL:=`which zsh`}
 
 GOPATH=${GOPATH:=$HOME/workspace/go}
 
