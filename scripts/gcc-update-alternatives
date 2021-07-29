@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-GCC_VER=$1
-
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-$GCC_VER 60 --slave /usr/bin/g++ g++ /usr/bin/g++-$GCC_VER
