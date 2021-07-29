@@ -3,7 +3,7 @@
 return require('packer').startup(function()
     local use = require('packer').use
 
-    use { 'wbthomason/packer.nvim', opt = true}
+    use 'wbthomason/packer.nvim' 
     -- Completion
     use 'Chiel92/vim-autoformat'
     --use 'Shougo/denite.nvim'
