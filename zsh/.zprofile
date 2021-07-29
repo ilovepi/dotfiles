@@ -10,7 +10,7 @@
 #export LC_TIME="en_US.UTF-8"
 #export LC_ALL="en_US.UTF-8"
 
-MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+#MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 
 #export ZSH_PROFILING=1
 
