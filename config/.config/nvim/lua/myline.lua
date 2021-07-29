@@ -10,13 +10,13 @@ gl.short_line_list = {'vim-plug', 'tagbar', 'Mundo', 'MundoDiff'}
 local colors = {
   bg0_h = '#1d2021',
   bg0 = '#282828',
-  bg1 = '#3c3836',
-  bg2 = '#504945',
-  bg3 = '#665c54',
-  bg4 = '#7c6f64',
-  gray = '#928374',
-  fg0 = '#fbf1c7',
-  fg1 = '#ebdbb2',
+  bg1 = '#32302f',
+  bg2 = '#45403d',
+  bg3 = '#45403d',
+  bg4 = '#5a524c',
+  gray = '#7c6f64',
+  fg0 = '#d4be98',
+  fg1 = '#ddc7a1',
   fg2 = '#d5c4a1',
   fg3 = '#bdae93',
   fg4 = '#a89984',
@@ -61,10 +61,10 @@ local mode_map = {
 }
 
 local sep = {
-  right_filled = '', -- e0b2
-  left_filled = '', -- e0b0
-  right = '', -- e0b3
-  left = '', -- e0b1
+  right_filled = '', -- e0b2
+  left_filled = '', -- e0b0
+  right = '', -- e0b3
+  left = '', -- e0b1
 }
 
 local icons = {

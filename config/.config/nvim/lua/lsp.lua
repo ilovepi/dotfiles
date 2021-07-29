@@ -8,8 +8,8 @@ local on_attach = function(client, bufnr)
 
     -- Mappings.
     local opts = { noremap=true, silent=true }
-    buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
-    --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    --buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', 'gd', '<Cmd>lua require("lspsaga.provider").preview_definition()<CR>', opts)
     --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
     buf_set_keymap('n', 'K', '<Cmd>lua require("lspsaga.hover").render_hover_doc()<CR>', opts)
@@ -64,14 +64,34 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 -- Use a loop to conveniently both setup defined servers
 -- and map buffer local keybindings when the language server attaches
 --local servers = {  "rust_analyzer", "vimlsp", "sumeneko" }
-require'lspinstall'.setup()
-local servers = require'lspinstall'.installed_servers()
-for _, lsp in ipairs(servers) do
-    nvim_lsp[lsp].setup {
+--require'lspinstall'.setup()
+--local servers = require'lspinstall'.installed_servers()
+--for _, lsp in ipairs(servers) do
+    --nvim_lsp[lsp].setup {
+    --capabilities = capabilities;
+    --on_attach = on_attach,
+--}
+--end
+
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{
     capabilities = capabilities;
     on_attach = on_attach,
-}
+
+    }
+  end
 end
+
+setup_servers()
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
 
 --vim.lsp.set_log_level("debug")
 
