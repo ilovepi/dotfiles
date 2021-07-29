@@ -2,122 +2,141 @@
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " }
 
+        let g:polyglot_disabled = ['latex']
+
+
+        let g:vimtex_compiler_latexmk = {
+            \ 'options' : [
+            \   '-shell-escape',
+            \   '-bibtex',
+            \   '-pdf',
+            \   '-verbose',
+            \   '-file-line-error',
+            \   '-synctex=1',
+            \   '-interaction=nonstopmode',
+            \ ],
+            \}
+
 " Dein {
     set nocompatible
-    set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
+    "set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
 
-    if dein#load_state('~/.cache/dein')
-      call dein#begin('~/.cache/dein/')
+    "if dein#load_state('~/.cache/dein')
+      "call dein#begin('~/.cache/dein/')
 
-      call dein#add('~/.cache/dein/')
-      call dein#add('Shougo/dein.vim')
-      call dein#add('haya14busa/dein-command.vim')        " dein bindings
-      call dein#add('Shougo/deoplete.nvim')
-      call dein#add('Shougo/denite.nvim')
-      call dein#add('Shougo/vinarise.vim')
-      "call dein#add('Shougo/deol.nvim')
-      "call dein#add('neomake/neomake')
-      call dein#add('iCyMind/NeoSolarized')
-      call dein#add('morhetz/gruvbox')
-      call dein#add('rakr/vim-two-firewatch')
-      call dein#add('rakr/vim-one')
-      call dein#add('connorholyday/vim-snazzy')
-      call dein#add('reedes/vim-colors-pencil')
-      call dein#add('reedes/vim-pencil')
-      call dein#add('reedes/vim-wordy')
-      call dein#add('trevordmiller/nova-vim')
+      "" Dein
+      "call dein#add('~/.cache/dein/')
+      "call dein#add('Shougo/dein.vim')
+      "call dein#add('haya14busa/dein-command.vim')        " dein bindings
+
+      "" Completion
+      "call dein#add('Chiel92/vim-autoformat')
+      ""call dein#add('Shougo/denite.nvim')
+      ""call dein#add('Shougo/deoplete.nvim')
+      ""call dein#add('Shougo/deorise.nvim')
+      ""call dein#add('SirVer/ultisnips')
+      ""call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
+      "call dein#add('honza/vim-snippets')
+      "call dein#add('norcalli/snippets.nvim')
+      ""call dein#add('w0rp/ale')
+      "call dein#add('dense-analysis/ale')
 
 
-      call dein#add('tpope/vim-fugitive')
-      call dein#add('jreybert/vimagit')
-      call dein#add('tpope/vim-surround')
-      call dein#add('tpope/vim-sleuth')
-      call dein#add('tpope/vim-repeat')
-      call dein#add('tpope/vim-markdown')
-      call dein#add('rust-lang/rust.vim')
-      call dein#add('sheerun/vim-polyglot')
-      call dein#add('cespare/vim-toml')
-      call dein#add('spf13/vim-preview')
-      "call dein#add('scrooloose/syntastic')
-      call dein#add('w0rp/ale')
-      call dein#add('scrooloose/nerdtree')
-      call dein#add('scrooloose/nerdcommenter')
-      call dein#add('godlygeek/tabular')
-      "call dein#add('luochen1990/rainbow')
-      call dein#add('mattn/webapi-vim')
-      call dein#add('mattn/gist-vim')
-      call dein#add('majutsushi/tagbar')
-      "call dein#add('mhinz/vim-signify')
-      call dein#add('airblade/vim-gitgutter')
+      "" Search & Navigation
+      "call dein#add('brooth/far.vim')
+      "call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
+      "call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+      "call dein#add('raghur/fruzzy',
+        "\{'hook_post_update': 'call fruzzy#install()'})
+      "call dein#add('scrooloose/nerdtree')
+      "call dein#add('wincent/loupe')
 
-      call dein#add('rhysd/conflict-marker.vim')
-      call dein#add('jiangmiao/auto-pairs')
-      call dein#add('terryma/vim-multiple-cursors')
-      call dein#add('vim-scripts/matchit.zip')
-      call dein#add('vim-airline/vim-airline')
-      call dein#add('vim-airline/vim-airline-themes')
-      call dein#add('powerline/fonts')
-      call dein#add('bling/vim-bufferline')
-      call dein#add('easymotion/vim-easymotion')
-      call dein#add('jistr/vim-nerdtree-tabs')
-      call dein#add('flazz/vim-colorschemes')
-      call dein#add('mbbill/undotree')
-      call dein#add('nathanaelkane/vim-indent-guides')
-      call dein#add('osyo-manga/vim-over')
-      call dein#add('kana/vim-textobj-user')
-      call dein#add('kana/vim-textobj-indent')
-      call dein#add('gcmt/wildfire.vim')
+      "" Appearance
+      "call dein#add('connorholyday/vim-snazzy')
+      "call dein#add('flazz/vim-colorschemes')
+      "call dein#add('iCyMind/NeoSolarized')
+      "call dein#add('morhetz/gruvbox')
+      "call dein#add('powerline/fonts')
+      "call dein#add('rakr/vim-one')
+      "call dein#add('sainnhe/edge')
+      "call dein#add('rakr/vim-two-firewatch')
+      "call dein#add('b4skyx/serenade')
+      "call dein#add('savq/melange')
+      "call dein#add('sainnhe/gruvbox-material')
+      ""call dein#add('ryanoasis/vim-devicons')
+      "call dein#add('kyazdani42/nvim-web-devicons')
+      "call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
+      "call dein#add('trevordmiller/nova-vim')
+      "call dein#add('vim-airline/vim-airline')
+      "call dein#add('vim-airline/vim-airline-themes')
 
-      call dein#add('reedes/vim-litecorrect')
-      call dein#add('reedes/vim-textobj-sentence')
-      call dein#add('reedes/vim-textobj-quote')
-      call dein#add('SirVer/ultisnips')
-      call dein#add('honza/vim-snippets')
-      call dein#add('python-mode/python-mode')
-      call dein#add('yssource/python.vim')
-      call dein#add('vim-scripts/python_match.vim')
-      call dein#add('vim-scripts/pythoncomplete')
-      call dein#add('mileszs/ack.vim')
-      "call dein#add('jremmen/vim-ripgrep')
+      "" Writing
+      "call dein#add('junegunn/goyo.vim')
+      "call dein#add('lervag/vimtex')
+      "call dein#add('reedes/vim-colors-pencil')
+      "call dein#add('reedes/vim-pencil')
+      "call dein#add('reedes/vim-wordy')
 
-      call dein#add('octol/vim-cpp-enhanced-highlight')
-      call dein#add('ryanoasis/vim-devicons')
-      call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-      "call dein#add('ludovicchabant/vim-gutentags')
-      "call dein#add('skywind3000/gutentags_plus')
-      "call dein#add('jsfaint/gen_tags.vim')
-      call dein#add('christoomey/vim-tmux-navigator')
+      ""  Git
+      "call dein#add('airblade/vim-gitgutter')
+      "call dein#add('jreybert/vimagit')
+      "call dein#add('mattn/gist-vim')
+      "call dein#add('rhysd/committia.vim')
+      "call dein#add('tpope/vim-fugitive')
 
-      call dein#add('junegunn/goyo.vim')
+      "" Languages
+      "call dein#add('andreshazard/vim-logreview')
+      "call dein#add('cespare/vim-toml')
+      "call dein#add('ekalinin/Dockerfile.vim')
+      "call dein#add('rust-lang/rust.vim')
+      "call dein#add('sheerun/vim-polyglot')
+      "call dein#add('tpope/vim-markdown')
 
-      call dein#add('Chiel92/vim-autoformat')
-      call dein#add('chrisbra/NrrwRgn')
-      call dein#add('farmergreg/vim-lastplace')
-      call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-      call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
+      "" Viewing
+      "call dein#add('greyblake/vim-preview')
 
-      call dein#add('andreshazard/vim-logreview')
-      call dein#add('ekalinin/Dockerfile.vim')
-      call dein#add('metakirby5/codi.vim')
-      call dein#add('brooth/far.vim')
-      call dein#add('rhysd/committia.vim')
+      "" Vim navigation & editing essentials
+      "call dein#add('bling/vim-bufferline')
+      "call dein#add('chrisbra/NrrwRgn')
+      "call dein#add('christoomey/vim-tmux-navigator')
+      "call dein#add('farmergreg/vim-lastplace')
+      "call dein#add('gcmt/wildfire.vim')
+      "call dein#add('godlygeek/tabular')
+      "call dein#add('jiangmiao/auto-pairs')
+      "call dein#add('jistr/vim-nerdtree-tabs')
+      "call dein#add('kana/vim-textobj-indent')
+      "call dein#add('kana/vim-textobj-user')
+      "call dein#add('mattn/webapi-vim')
+      "call dein#add('mbbill/undotree')
+      "call dein#add('nathanaelkane/vim-indent-guides')
+      "call dein#add('osyo-manga/vim-over')
+      "call dein#add('reedes/vim-litecorrect')
+      "call dein#add('reedes/vim-textobj-quote')
+      "call dein#add('reedes/vim-textobj-sentence')
+      ""call dein#add('rhysd/conflict-marker.vim')
+      "call dein#add('scrooloose/nerdcommenter')
+      "call dein#add('tpope/vim-repeat')
+      "call dein#add('tpope/vim-sleuth')
+      "call dein#add('tpope/vim-surround')
 
-      call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
+      "call dein#add('metakirby5/codi.vim')
 
-      call dein#add('wincent/loupe')
-      call dein#add('lervag/vimtex')
 
-      if !has('nvim')
-        call dein#add('roxma/nvim-yarp')
-        call dein#add('roxma/vim-hug-neovim-rpc')
-      endif
 
-      "call dein#add('vim-scripts/restore_view.vim')
-      "call dein#add('svermeulen/vim-easyclip')
+"call dein#add('neovim/nvim-lspconfig')
+"call dein#add('glepnir/lspsaga.nvim')
+"call dein#add('nvim-treesitter/nvim-treesitter')
+"call dein#add('nvim-lua/completion-nvim')
+"call dein#add('nvim-lua/lsp_extensions.nvim')
 
-      call dein#end()
-      call dein#save_state()
-    endif
+      "if !has('nvim')
+        "call dein#add('roxma/nvim-yarp')
+        "call dein#add('roxma/vim-hug-neovim-rpc')
+      "endif
+
+      "call dein#end()
+      "call dein#save_state()
+    "endif
 
 " }
 
@@ -134,7 +153,7 @@
     " Initialize directories {
     function! InitializeDirectories()
         let parent = $HOME
-        let prefix = 'vim'
+        let prefix = 'nvim'
         let dir_list = {
                     \ 'backup': 'backupdir',
                     \ 'views': 'viewdir',
@@ -144,11 +163,6 @@
             let dir_list['undo'] = 'undodir'
         endif
 
-        " To specify a different directory in which to place the vimbackup,
-        " vimviews, vimundo, and vimswap files/directories, add the following to
-        " your .vimrc.before.local file:
-        "   let g:spf13_consolidated_directory = <full path to desired directory>
-        "   eg: let g:spf13_consolidated_directory = $HOME . '/.vim/'
         let common_dir = parent . '/.' . prefix
 
         for [dirname, settingname] in items(dir_list)
@@ -173,10 +187,10 @@
 " Basic Settings {
     set background=dark
     filetype plugin indent on   " Automatically detect file types.
-    syntax on                   " Syntax highlighting
+    "syntax on                   " Syntax highlighting
     set mouse=a                 " Automatically enable mouse usage
     set mousehide               " Hide the mouse cursor while typing
-    scriptencoding utf-8
+    "scriptencoding utf-8
 
     if has('clipboard')
         if has('unnamedplus')  " When possible use + register for copy-paste
@@ -193,7 +207,7 @@
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
-    set spell                           " Spell checking on
+    "set spell                           " Spell checking on
     set hidden                          " Allow buffer switching without saving
     set iskeyword-=.                    " '.' is an end of word designator
     set iskeyword-=#                    " '#' is an end of word designator
@@ -253,7 +267,6 @@
     set smartcase                   " Case sensitive when uc present
     set wildmenu                    " Show list instead of just completing
     set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
-    set wildignorecase              " <Tab> completion for files will ignore case
     set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
     set scrolljump=5                " Lines to scroll when cursor leaves screen
     set scrolloff=3                 " Minimum lines to keep above and below cursor
@@ -291,15 +304,10 @@
     map <C-L> <C-W>l<C-W>_
     map <C-H> <C-W>h<C-W>_
 
-
-    " Find merge conflict markers
-    map <leader>fc /\v^[<\|=>]{7}( .*\|$)<CR>
-
     " Shortcuts
     " Change Working Directory to that of the current file
     cmap cwd lcd %:p:h
     cmap cd. lcd %:p:h
-
 
     " Wrapped lines goes down/up to next row, rather than next line in file.
     noremap j gj
@@ -348,67 +356,72 @@
         inoremap <C-j> <C-\><C-N><C-w>j
         inoremap <C-k> <C-\><C-N><C-w>k
         inoremap <C-l> <C-\><C-N><C-w>l
-        "nnoremap <C-h> <C-w>h
-        "nnoremap <C-j> <C-w>j
-        "nnoremap <C-k> <C-w>k
-        "nnoremap <C-l> <C-w>l
     endif
 
-    map <C-J> <C-W>j
-    map <C-K> <C-W>k
-    map <C-L> <C-W>l
-    map <C-H> <C-W>h
+    "map <C-J> <C-W>j
+    "map <C-K> <C-W>k
+    "map <C-L> <C-W>l
+    "map <C-H> <C-W>h
 
     " Stupid shift key fixes
-    if !exists('g:spf13_no_keyfixes')
-        if has("user_commands")
-            command! -bang -nargs=* -complete=file E e<bang> <args>
-            command! -bang -nargs=* -complete=file W w<bang> <args>
-            command! -bang -nargs=* -complete=file Wq wq<bang> <args>
-            command! -bang -nargs=* -complete=file WQ wq<bang> <args>
-            command! -bang Wa wa<bang>
-            command! -bang WA wa<bang>
-            command! -bang Q q<bang>
-            command! -bang QA qa<bang>
-            command! -bang Qa qa<bang>
-        endif
-
-        cmap Tabe tabe
+    if has("user_commands")
+        command! -bang -nargs=* -complete=file E e<bang> <args>
+        command! -bang -nargs=* -complete=file W w<bang> <args>
+        command! -bang -nargs=* -complete=file Wq wq<bang> <args>
+        command! -bang -nargs=* -complete=file WQ wq<bang> <args>
+        command! -bang Wa wa<bang>
+        command! -bang WA wa<bang>
+        command! -bang Q q<bang>
+        command! -bang QA qa<bang>
+        command! -bang Qa qa<bang>
     endif
+
+    cmap Tabe tabe
 
     " Yank from the cursor to the end of the line, to be consistent with C and D.
     nnoremap Y y$
-
-    "toggle search highlighting rather than clear the current search results.
-    "nmap <silent> <leader>/ :set invhlsearch<CR>
 
 " }
 
     " Colors {
         set termguicolors
-        "colorscheme NeoSolarized
-        "colorscheme gruvbox
-        "colorscheme Tomorrow-Night-Eighties
-        "colorscheme two-firewatch
-        "set background=dark
-        "let g:two_firewatch_italics=1
-        "colorscheme nova
-        colorscheme materialbox
+
+        let g:gruvbox_material_background = 'soft'
+        let g:gruvbox_material_enable_bold = 1
+        let g:gruvbox_material_enable_italic = 1
+        let g:gruvbox_material_diagnostic_text_highlight = 1
+        let g:gruvbox_material_diagnostic_line_highlight = 1
+        let g:gruvbox_material_better_performance = 1
+
+
+        let g:serenade_background = 'soft'
+        let g:serenade_enable_bold = 1
+        let g:serenade_enable_italic = 1
+        let g:serenade_diagnostic_text_highlight = 1
+        let g:serenade_diagnostic_line_highlight = 1
+        let g:serenade_better_performance = 1
+
+
+
+        "let g:srcery_background = 'soft'
+        "let g:srcery_bold = 1
+        "let g:srcery_italic = 1
+        "let g:srcery_diagnostic_text_highlight = 1
+        "let g:srcery_diagnostic_line_highlight = 1
+        "let g:srcery_better_performance = 1
+
+
+        colorscheme gruvbox-material
+        "colorscheme serenade
+        "colorscheme melange
+        "colorscheme srcery
         syntax on
     "}
 
     " Deoplete{
+    if 0 
         let g:deoplete#enable_at_startup = 1
-        let g:deoplete#enable_smart_case = 1
-
-        " disable autocomplete by default
-        let b:deoplete_disable_auto_complete=1
-        let g:deoplete_disable_auto_complete=1
-        "call deoplete#custom#buffer_option('auto_complete', v:false)
-
-        if !exists('g:deoplete#omni#input_patterns')
-            let g:deoplete#omni#input_patterns = {}
-        endif
+        call deoplete#custom#option('smart_case', v:true)
 
         " Disable the candidates in Comment/String syntaxes.
         call deoplete#custom#source('_',
@@ -416,18 +429,51 @@
 
         autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 
-        " set sources
-        let g:deoplete#sources         = {}
-        let g:deoplete#sources.c       = ['LanguageClient']
-        let g:deoplete#sources.cpp     = ['LanguageClient']
-        let g:deoplete#sources.python  = ['LanguageClient']
-        let g:deoplete#sources.python3 = ['LanguageClient']
-        let g:deoplete#sources.rust    = ['LanguageClient']
-        let g:deoplete#sources.vim     = ['vim']
+        call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
+
+        call deoplete#custom#option('sources', {
+            \ 'cpp': ['LanguageClient'],
+            \ 'c': ['LanguageClient'],
+            \ 'python': ['LanguageClient'],
+            \ 'python3': ['LanguageClient'],
+            \ 'rust': ['LanguageClient'],
+            \ 'vim': ['vim'],
+            \ })
+
+
+        " <TAB>: completion.
+        inoremap <silent><expr> <TAB>
+              \ pumvisible() ? "\<C-n>" :
+              \ <SID>check_back_space() ? "\<TAB>" :
+              \ deoplete#manual_complete()
+        function! s:check_back_space() abort
+          let col = col('.') - 1
+          return !col || getline('.')[col - 1]  =~ '\s'
+        endfunction
+
+        " <S-TAB>: completion back.
+        inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
+
+        inoremap <expr><C-g>                deoplete#refresh()
+        inoremap <expr><C-e>                deoplete#cancel_popup()
+        inoremap <silent><expr><C-l>        deoplete#complete_common_string()
+
+        " <CR>: close popup and save indent.
+        "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
+        "function! s:my_cr_function() abort
+          ""return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
+          "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
+        "endfunction
+
+        call deoplete#custom#var('omni', 'input_patterns', {
+              \ 'tex': g:vimtex#re#deoplete
+              \})
+
+    endif
     "}
 
     " UndoTree {
-        if isdirectory(expand("~/.cache/dein/repos/github.com/mbbill/undotree"))
+        if isdirectory(expand("~/.nvim/dein/repos/github.com/mbbill/undotree/"))
             nnoremap <Leader>u :UndotreeToggle<CR>
             " If undotree is opened, it is likely one wants to interact with it.
             let g:undotree_SetFocusWhenToggle=1
@@ -441,111 +487,46 @@
     " }
 
     " Fugitive {
-        "nnoremap <silent> <leader>gs :Gstatus<CR>
-        "nnoremap <silent> <leader>gd :Gdiff<CR>
-        "nnoremap <silent> <leader>gc :Gcommit<CR>
-        "nnoremap <silent> <leader>gb :Gblame<CR>
-        "nnoremap <silent> <leader>gl :Glog<CR>
-        "nnoremap <silent> <leader>gp :Git push<CR>
-        "nnoremap <silent> <leader>gr :Gread<CR>
-        "nnoremap <silent> <leader>gw :Gwrite<CR>
-        "nnoremap <silent> <leader>ge :Gedit<CR>
-        "" Mnemonic _i_nteractive
-        "nnoremap <silent> <leader>gi :Git add -p %<CR>
-        "nnoremap <silent> <leader>gg :SignifyToggle<CR>
+        nnoremap <silent> <leader>gs :Gstatus<CR>
+        nnoremap <silent> <leader>gv :Gdiff<CR>
+        nnoremap <silent> <leader>gc :Gcommit<CR>
+        nnoremap <silent> <leader>gb :Gblame<CR>
+        nnoremap <silent> <leader>gl :Glog<CR>
+        nnoremap <silent> <leader>gp :Git push<CR>
+        nnoremap <silent> <leader>gr :Gread<CR>
+        nnoremap <silent> <leader>gw :Gwrite<CR>
+        nnoremap <silent> <leader>ge :Gedit<CR>
+        " Mnemonic _i_nteractive
+        nnoremap <silent> <leader>gi :Git add -p %<CR>
+        nnoremap <silent> <leader>gg :SignifyToggle<CR>
     "}
 
-    " TagBar {
-        nnoremap <silent> <leader>tt :TagbarToggle<CR>
-    "}
-
-    " PyMode {
-        " Disable if python support not present
-        if !has('python') && !has('python3')
-            let g:pymode = 0
-        endif
-
-        if isdirectory(expand("~/.cache/dein/repos/github.com/python-mode/python-mode"))
-            let g:pymode_lint_checkers = ['pyflakes']
-            let g:pymode_trim_whitespaces = 0
-            let g:pymode_options = 0
-            let g:pymode_rope = 0
-        endif
-    " }
-
-    " NerdTree {
-        let g:NERDTreeMinimalUI=1
-            map <C-e> <plug>NERDTreeTabsToggle<CR>
-            map <leader>e :NERDTreeFind<CR>
-            nmap <leader>nt :NERDTreeFind<CR>
-
-            "let NERDTreeShowBookmarks=1
-            let NERDTreeIgnore=['\.py[cd]$', '\~$', '\.swo$', '\.swp$', '^\.git$', '^\.hg$', '^\.svn$', '\.bzr$']
-            let NERDTreeChDirMode=0
-            let NERDTreeQuitOnOpen=1
-            let NERDTreeMouseMode=2
-            let NERDTreeShowHidden=1
-            let NERDTreeKeepTreeInNewTab=1
-            let g:nerdtree_tabs_open_on_gui_startup=0
+    " NvimTree {
+            nnoremap <C-e> :NvimTreeToggle<CR>
     " }
 
     " Tabularize {
-        if isdirectory(expand("~/.cache/dein/repos/github.com/godlygeek/tabular"))
-            nmap <Leader>a& :Tabularize /&<CR>
-            vmap <Leader>a& :Tabularize /&<CR>
-            nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-            vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
-            nmap <Leader>a=> :Tabularize /=><CR>
-            vmap <Leader>a=> :Tabularize /=><CR>
-            nmap <Leader>a: :Tabularize /:<CR>
-            vmap <Leader>a: :Tabularize /:<CR>
-            nmap <Leader>a:: :Tabularize /:\zs<CR>
-            vmap <Leader>a:: :Tabularize /:\zs<CR>
-            nmap <Leader>a, :Tabularize /,<CR>
-            vmap <Leader>a, :Tabularize /,<CR>
-            nmap <Leader>a,, :Tabularize /,\zs<CR>
-            vmap <Leader>a,, :Tabularize /,\zs<CR>
-            nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-            vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
-            nmap <Leader>a\ :Tabularize /\\<CR>
-            vmap <Leader>a\ :Tabularize /\\<CR>
-        endif
-    " }
-
-    " Ctags {
-        "set tags=./tags;/,~/.vimtags;/,~/.cache/tags_dir
-        set tags=./tags;/,~/.vimtags
-        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-
-        " Make tags placed in .git/tags file available in all levels of a repository
-        let gitroot = substitute(system('git rev-parse --show-toplevel'), '[\n\r]', '', 'g')
-        if gitroot != ''
-            let &tags = &tags . ',' . gitroot . '/.git/tags'
-        endif
-        "autocmd BufRead *.rs :setlocal tags=./rusty-tags.vi;/,$RUST_SRC_PATH/rusty-tags.vi
-        "autocmd BufWritePost *.rs :silent! exec "!rusty-tags vi --quiet --start-dir=" . expand('%:p:h') . "&" | redraw!
-    " }
-
-    " Gutentags {
-        let g:gutentags_cache_dir="~/.vimtags"
-        "let g:gutentags_modules=[ 'ctags', 'gtags_cscope' ]
-        "let g:gutentags_auto_add_gtags_cscope=1
-        "set cscopeprg='gtags-cscope'
-
-        "let g:gen_tags#use_cache_dir=1
-        "let g:gen_tags#gtags_auto_gen=1
+        nmap <Leader>a& :Tabularize /&<CR>
+        vmap <Leader>a& :Tabularize /&<CR>
+        nmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+        vmap <Leader>a= :Tabularize /^[^=]*\zs=<CR>
+        nmap <Leader>a=> :Tabularize /=><CR>
+        vmap <Leader>a=> :Tabularize /=><CR>
+        nmap <Leader>a: :Tabularize /:<CR>
+        vmap <Leader>a: :Tabularize /:<CR>
+        nmap <Leader>a:: :Tabularize /:\zs<CR>
+        vmap <Leader>a:: :Tabularize /:\zs<CR>
+        nmap <Leader>a, :Tabularize /,<CR>
+        vmap <Leader>a, :Tabularize /,<CR>
+        nmap <Leader>a,, :Tabularize /,\zs<CR>
+        vmap <Leader>a,, :Tabularize /,\zs<CR>
+        nmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        vmap <Leader>a<Bar> :Tabularize /<Bar><CR>
+        nmap <Leader>a\ :Tabularize /\\<CR>
+        vmap <Leader>a\ :Tabularize /\\<CR>
     " }
 
 " Git Gutter {
-    "settings for signify
-    "let g:signify_vcs_list = [ 'git', 'hg' ]
-    "let g:signify_sign_add='┃'
-    "let g:signify_sign_change='┃'
-    "let g:signify_sign_delete='◢'
-    "let g:signify_sign_delete_first_line='◥'
-
-
     "nmap <Leader>ha <Plug>GitGutterStageHunk
     "nmap <Leader>hu <Plug>GitGutterUndoHunk
     "nmap ]c <Plug>GitGutterNextHunk
@@ -558,14 +539,6 @@
     let g:gitgutter_sign_removed_first_line='◥'
     let g:gitgutter_sign_modified_removed='◢'
 
-" }
-
-" Syntax Highlighting {
-    "set guifont=Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h11,Meslo\ LG\ S\ for\ Powerline:h12,Meslo\ LG\ S\ for\ Powerline:h14
-    let g:cpp_class_scope_highlight = 1
-    let g:cpp_member_variable_highlight = 1
-    let g:cpp_experimental_template_highlight = 1
-    let g:cpp_concepts_highlight = 1
 " }
 
 " Clang Library Path {
@@ -586,13 +559,10 @@
 
 " Airline Options {
     let g:airline_powerline_fonts=1
-    "let g:airline_theme = 'solarized'
-    "let g:airline_theme = 'gruvbox'
-    "let g:airline_theme = 'tomorrow'
-    "let g:airline_theme = 'twofirewatch'
-    "let g:airline_theme = 'onedark'
     "let g:airline_theme = 'nova'
-    let g:airline_theme = 'tomorrow'
+    "let g:airline_theme = 'serenade'
+    let g:airline_theme = 'gruvbox_material'
+
     let g:airline#extensions#tabline#enabled = 1
     let g:airline#extensions#tabline#alt_sep = 1
     let g:airline#extensions#tabline#buffer_idx_mode = 1
@@ -603,10 +573,10 @@
     let airline#extensions#ale#open_lnum_symbol = '(L'
     let airline#extensions#ale#close_lnum_symbol = ')'
 
-    "nmap <leader>- <Plug>AirlineSelectPrevTab
-    "nmap <leader>+ <Plug>AirlineSelectNextTab
-    nmap <S-H> <Plug>AirlineSelectPrevTab
-    nmap <S-L> <Plug>AirlineSelectNextTab
+    "nmap <S-H> <Plug>AirlineSelectPrevTab
+    "nmap <S-L> <Plug>AirlineSelectNextTab
+    nmap <S-H> :BufferLineCycleNext<CR>
+    nmap <S-L> :BufferLineCyclePrev<CR>
 "}
 
 " Snippets {
@@ -620,13 +590,81 @@
 " }
 
 " Denite {
-    nnoremap <C-p> :Denite file_rec<cr>
+    "nnoremap <C-p> :Denite file/rec<cr>
+
+    if 0
+
+
+    "call denite#custom#option('_', {
+      "\ 'prompt': '❯',
+      "\ 'split': 'floating',
+      "\ 'highlight_matched_char': 'Underlined',
+      "\ 'highlight_matched_range': 'NormalFloat',
+      "\ 'wincol': &columns / 6,
+      "\ 'winwidth': &columns * 2 / 3,
+      "\ 'winrow': &lines / 6,
+      "\ 'winheight': &lines * 2 / 3,
+      "\ 'max_dynamic_update_candidates': 100000
+      "\ })
+
+    call denite#custom#var('file/rec', 'command',
+          \ ['fd', '-H', '--full-path'])
+    call denite#custom#source(
+            \ 'file/rec', 'matchers', ['matcher/fruzzy'])
+    call denite#custom#var('grep', 'command', ['rg'])
+    call denite#custom#var('grep', 'default_opts',
+          \ ['--vimgrep', '--smart-case', '--no-heading'])
+    call denite#custom#var('grep', 'recursive_opts', [])
+    call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+    call denite#custom#var('grep', 'separator', ['--'])
+    call denite#custom#var('grep', 'final_opts', [])
+
+    autocmd FileType denite call s:denite_settings()
+
+    function! s:denite_settings() abort
+      nnoremap <silent><buffer><expr> <CR>
+            \ denite#do_map('do_action')
+      nnoremap <silent><buffer><expr> <C-v>
+            \ denite#do_map('do_action', 'vsplit')
+      nnoremap <silent><buffer><expr> d
+            \ denite#do_map('do_action', 'delete')
+      nnoremap <silent><buffer><expr> p
+            \ denite#do_map('do_action', 'preview')
+      nnoremap <silent><buffer><expr> <Esc>
+            \ denite#do_map('quit')
+      nnoremap <silent><buffer><expr> q
+            \ denite#do_map('quit')
+      nnoremap <silent><buffer><expr> i
+            \ denite#do_map('open_filter_buffer')
+    endfunction
+
+    autocmd FileType denite-filter call s:denite_filter_settings()
+
+    function! s:denite_filter_settings() abort
+      nmap <silent><buffer> <Esc> <Plug>(denite_filter_quit)
+    endfunction
+
+    nnoremap <C-p> :<C-u>Denite file/rec -start-filter<CR>
+    nnoremap <leader>s :<C-u>Denite buffer<CR>
+    nnoremap <leader>8 :<C-u>DeniteCursorWord grep:.<CR>
+    nnoremap <leader>/ :<C-u>Denite -start-filter -filter-updatetime=0 grep:::!<CR>
+    nnoremap <leader><Space>/ :<C-u>DeniteBufferDir -start-filter -filter-updatetime=0 grep:::!<CR>
+    nnoremap <leader>d :<C-u>DeniteBufferDir file/rec -start-filter<CR>
+    "nnoremap <leader>r :<C-u>Denite -resume -cursor-pos=+1<CR>
+    nnoremap <leader><C-r> :<C-u>Denite register:.<CR>
+    nnoremap <leader>g :<C-u>Denite gitstatus<CR>
+
+    " neoyank
+    nnoremap <leader>y :<C-u>Denite neoyank<CR>
+endif
+
 " }
 
 " Ale {
     " Enable completion where available.
     "let g:ale_completion_enabled = 1
     let g:ale_linters_explicit = 1
+    let g:ale_disable_lsp = 1
     let g:ale_linters = {
     \   'c': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
     \   'cpp': [ 'clangtidy', 'clangcheck', 'flawfinder' ],
@@ -637,31 +675,6 @@
 " Autoformat {
     noremap <Leader>kk :Autoformat<CR>
 " }
-
-
-    " IncSearch {
-          "call dein#add('haya14busa/incsearch.vim')
-          "call dein#add('haya14busa/incsearch-fuzzy.vim')
-        "function! s:config_fuzzyall(...) abort
-          "return extend(copy({
-          "\   'converters': [
-          "\     incsearch#config#fuzzy#converter(),
-          "\     incsearch#config#fuzzyspell#converter()
-          "\   ],
-          "\ }), get(a:, 1, {}))
-        "endfunction
-
-        "noremap <silent><expr> z/ incsearch#go(<SID>config_fuzzyall())
-        "noremap <silent><expr> z? incsearch#go(<SID>config_fuzzyall({'command': '?'}))
-        "noremap <silent><expr> zg? incsearch#go(<SID>config_fuzzyall({'is_stay': 1}))
-        "let g:incsearch#auto_nohlsearch = 1
-        "map n  <Plug>(incsearch-nohl-n)
-        "map N  <Plug>(incsearch-nohl-N)
-        "map *  <Plug>(incsearch-nohl-*)
-        "map #  <Plug>(incsearch-nohl-#)
-        "map g* <Plug>(incsearch-nohl-g*)
-        "map g# <Plug>(incsearch-nohl-g#)
-    " }
 
     " FZF Settings {
         " Customize fzf colors to match your color scheme
@@ -682,17 +695,13 @@
     " }
 
     " LanguageClient {
+        set signcolumn=yes
+    if 0
         let g:LanguageClient_serverCommands = {
-            \ 'cpp' : ['clangd'],
-            \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+            \ 'cpp' : ['~/clang-dev/bin/clangd'],
+            \ 'rust': ['rust-analyzer'],
             \ 'javascript': ['javascript-typescript-stdio'],
             \ }
-        "let g:LanguageClient_serverCommands = {
-            "\ 'cpp' : ['clangd'],
-            "\ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-            "\ 'javascript': ['javascript-typescript-stdio'],
-            "\ }
-
 
         set signcolumn=yes
         nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
@@ -716,14 +725,15 @@
 
         augroup LSP
           autocmd!
-          autocmd FileType cpp,c,rust call SetLSPShortcuts()
+          autocmd FileType cpp,c,rust,vim,lua call SetLSPShortcuts()
         augroup END
+    endif
     " }
 
     " Vimtex { 
         "let g:vimtex_compiler_progname = 'nvr'
-        let g:vimtex_view_method = 'zathura'
-        let g:polyglot_disabled = ['latex']
+        "let g:vimtex_view_method = 'zathura'
+        "let g:polyglot_disabled = ['latex']
     "}
 
     " Writing {
@@ -737,3 +747,89 @@
 
 
     " }
+
+    " UltiSnips {
+        let g:UltiSnipsExpandTrigger="<tab>"
+        let g:UltiSnipsJumpForwardTrigger="<c-k>"
+        let g:UltiSnipsJumpBackwardTrigger="<c-j>"
+    " }
+
+    lua require("setup")
+
+    if 0
+" Errors in Red
+"hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
+"hi LspDiagnosticsDefaultError guifg=#d75f5f ctermfg=124 gui=bold,italic
+"hi LspDiagnosticsDefaultSignError guifg=#d75f5f ctermfg=124 gui=bold
+
+hi LspDiagnosticsVirtualTextError guifg=#d76e6e ctermfg=124 gui=bold,italic
+hi LspDiagnosticsDefaultError guifg=#d76e6e ctermfg=124 gui=bold,italic
+hi LspDiagnosticsDefaultSignError guifg=#d75f5f ctermfg=124 gui=bold
+
+
+" Warnings in Yellow
+hi LspDiagnosticsVirtualTextWarning guifg=#e5a46b ctermfg=DarkYellow gui=italic,bold
+hi LspDiagnosticsDefaultWarning guifg=#e5a46b ctermfg=Yellow gui=italic,bold
+hi LspDiagnosticsDefaultSignWarning guifg=#e5a46b ctermfg=Yellow gui=bold
+
+" Info and Hints in White
+hi LspDiagnosticsVirtualTextInformation guifg=Purple ctermfg=White gui=italic,bold
+hi LspDiagnosticsDefaultInformation guifg=White ctermfg=White gui=italic,bold
+hi LspDiagnosticsDefaultSignInformation guifg=White ctermfg=White gui=bold
+
+hi LspDiagnosticsVirtualTextHint guifg=#878787 ctermfg=White gui=italic,bold
+hi LspDiagnosticsDefaultHint guifg=Cyan ctermfg=Cyan gui=italic,bold
+hi LspDiagnosticsDefaultSignHint guifg=#87c095 ctermfg=Cyan gui=bold
+
+
+" Underline the offending code
+"hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline
+"hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline
+"hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
+"hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
+endif
+
+
+autocmd BufWritePost plugins.lua PackerCompile
+
+
+if 1
+
+    lua require("lsp")
+
+    " Use <Tab> and <S-Tab> to navigate through popup menu
+    inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+    inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+
+    imap <tab> <Plug>(completion_smart_tab)
+    imap <s-tab> <Plug>(completion_smart_s_tab)
+
+    " Set completeopt to have a better completion experience
+    set completeopt=menuone,noinsert,noselect
+
+    " Avoid showing message extra message when using completion
+    set shortmess+=c
+    "let g:completion_enable_snippet = 'UltiSnips'
+    let g:completion_enable_snippet = 'snippets.nvim'
+    "let g:completion_enable_auto_paren = 1
+    lua require'completion'.addCompletionSource('vimtex', require'vimtex'.complete_item)
+    let g:completion_chain_complete_list = {
+            \ 'tex' : [
+            \     {'complete_items': ['vimtex']}, 
+            \   ],
+            \ }
+    autocmd BufEnter * lua require'completion'.on_attach()
+
+" <c-k> will either expand the current snippet at the word or try to jump to
+" the next position for the snippet.
+inoremap <c-t> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
+
+" <c-j> will jump backwards to the previous field.
+" If you jump before the first field, it will cancel the snippet.
+inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+\ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+
+endif
