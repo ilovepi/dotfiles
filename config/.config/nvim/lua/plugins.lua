@@ -113,5 +113,6 @@ return require('packer').startup(function()
     use 'kabouzeid/nvim-lspinstall'
     use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
+    use {"npxbr/glow.nvim", run = "GlowInstall"}
 
 end)
