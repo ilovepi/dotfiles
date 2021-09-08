@@ -11,6 +11,8 @@ alias zoptions="$EDITOR ~/dotfiles/zsh/.zsh/options.zsh"
 alias zpath="$EDITOR ~/dotfiles/zsh/.zsh/path.zsh"
 alias nvimrc="$EDITOR ~/dotfiles/config/.config/nvim/init.vim"
 alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
+alias bspwmrc="$EDITOR ~/.config/bspwm/bspwmrc"
+alias sxhkdrc="$EDITOR ~/.config/bspwm/sxhkd/sxhkdrc"
 alias fim='$EDITOR $(fd | fzf)'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
@@ -45,3 +47,4 @@ alias :q='exit'
 alias magit='nvim -c MagitOnly'
 alias fpth='sed "s/ /\n/g" <<< $fpath'
 
+alias ssh="kitty +kitten ssh"
