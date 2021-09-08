@@ -18,8 +18,9 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
-*.zwc
 vscode/.config/Code/User
+*.zwc
+packer_compiled.lua
 
 scripts/clang-format-all
 # End of https://www.gitignore.io/api/tags
