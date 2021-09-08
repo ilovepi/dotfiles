@@ -74,6 +74,3 @@ zinit snippet OMZ::lib/completion.zsh
 zinit ice wait lucid
 zinit snippet OMZ::lib/compfix.zsh
 
-zinit ice wait lucid
-zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
-zstyle :omz:plugins:ssh-agent agent-forwarding on
