@@ -3,7 +3,7 @@
 return require('packer').startup(function()
     local use = require('packer').use
 
-    use { 'wbthomason/packer.nvim', opt = true}
+    use { 'wbthomason/packer.nvim'}
     -- Completion
     use 'Chiel92/vim-autoformat'
     --use 'Shougo/denite.nvim'
@@ -105,14 +105,14 @@ return require('packer').startup(function()
 
     -- lua vim stuff
     use 'neovim/nvim-lspconfig'
+    use 'williamboman/nvim-lsp-installer'
     use 'glepnir/lspsaga.nvim'
     use 'glepnir/galaxyline.nvim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/lsp_extensions.nvim'
-    use 'kabouzeid/nvim-lspinstall'
     use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
 
-    use {"npxbr/glow.nvim", run = "GlowInstall"}
+    use {"ellisonleao/glow.nvim"}
 
 end)
