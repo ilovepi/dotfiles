@@ -14,42 +14,27 @@ set shortmess+=c
 "let g:completion_enable_snippet = 'UltiSnips'
 let g:completion_enable_snippet = 'snippets.nvim'
 "let g:completion_enable_auto_paren = 1
-lua require'completion'.addCompletionSource('vimtex', require'vimtex'.complete_item)
-let g:completion_chain_complete_list = { 'tex' : [     {'complete_items': ['vimtex']},    ], }
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" <c-k> will either expand the current snippet at the word or try to jump to
-" the next position for the snippet.
-inoremap <c-t> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
-
-" <c-j> will jump backwards to the previous field.
-" If you jump before the first field, it will cancel the snippet.
-inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
-
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 " vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
 " }
 
-        let g:polyglot_disabled = ['latex']
+    let g:polyglot_disabled = ['latex']
 
 
-        let g:vimtex_compiler_latexmk = {
-            \ 'options' : [
-            \   '-shell-escape',
-            \   '-bibtex',
-            \   '-pdf',
-            \   '-verbose',
-            \   '-file-line-error',
-            \   '-synctex=1',
-            \   '-interaction=nonstopmode',
-            \ ],
-            \}
+    let g:vimtex_compiler_latexmk = {
+        \ 'options' : [
+        \   '-shell-escape',
+        \   '-bibtex',
+        \   '-pdf',
+        \   '-verbose',
+        \   '-file-line-error',
+        \   '-synctex=1',
+        \   '-interaction=nonstopmode',
+        \ ],
+        \}
 
-" Dein {
     set nocompatible
-    
+
     " Initialize directories {
     function! InitializeDirectories()
         let parent = $HOME
@@ -654,7 +639,25 @@ endif
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
     " }
 
-    lua require("setup")
+
+let g:completion_chain_complete_list = { 'tex' : [     {'complete_items': ['vimtex']},    ], }
+
+lua require("setup")
+
+" Enable type inlay hints
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
+lua require'completion'.addCompletionSource('vimtex', require'vimtex'.complete_item)
+autocmd BufEnter * lua require'completion'.on_attach()
+
+" <c-k> will either expand the current snippet at the word or try to jump to
+" the next position for the snippet.
+inoremap <c-t> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
+
+" <c-j> will jump backwards to the previous field.
+" If you jump before the first field, it will cancel the snippet.
+inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
+
+
 
 " Errors in Red
 "hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
