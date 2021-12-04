@@ -15,9 +15,9 @@ vim.cmd [[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]] -- A
 require('plugins')
 
 --require('statusline')
-require('myline')
+--require('myline')
 --require'bufferline'.setup{options = { separator_style = "thin"}}
-require'bufferline'.setup{options = { separator_style = "slant", show_buffer_close_icons = false}}
+--require'bufferline'.setup{options = { separator_style = "slant", show_buffer_close_icons = false}}
 --require'bufferline'.setup{options = { separator_style = "thick"}}
-require('nvim-autopairs').setup({ check_line_pair = false })
+--require('nvim-autopairs').setup({ check_line_pair = false })
 

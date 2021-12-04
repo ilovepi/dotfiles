@@ -2,10 +2,12 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-module_path+=( "/Users/paul/.zinit/bin/zmodules/Src" )
-zmodload zdharma/zplugin
 
-source "$HOME/.zinit/bin/zinit.zsh"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+module_path+=( "${ZINIT_HOME}/zinit/bin/zmodules/Src" )
+#zmodload zdharma-continuum/zinit
+source "${ZINIT_HOME}/zinit.zsh"
+
 
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
 #if grep -q docker /proc/1/cgroup; then
@@ -64,7 +66,7 @@ zinit light  zsh-users/zsh-history-substring-search
 
 #autoload -Uz compinit
 zinit ice wait atload"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zpcdreplay" lucid
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 autoload -U edit-command-line
 zle -N edit-command-line

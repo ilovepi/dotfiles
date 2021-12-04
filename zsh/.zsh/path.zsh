@@ -37,14 +37,18 @@ PATH=$HOME/.cargo/bin:$PATH
 #export LLVM_OBJ=$HOME/workspace/llvm-project/build
 #export LLVM_DIR=$HOME/workspace/llvm-project/build
 
+FUCHSIA=${HOME}/fuchsia
+PATH="${FUCHSIA}/.jiri_root/bin:${PATH}"
+PATH=${FUCHSIA}/prebuilt/third_party/cmake/${platform}/bin:${PATH}
+PATH=${FUCHSIA}/prebuilt/third_party/ninja/${platform}/bin:${PATH}
 
 #PATH=$LLVM_DIR/bin:$PATH
 
 #PATH=$HOME/clang-dev/bin:$PATH
 PATH=$HOME/clang/bin:$PATH
-export SVF_HOME=$HOME/workspace/mpk/SVF
+#export SVF_HOME=$HOME/workspace/mpk/SVF
 
-PATH=$SVF_HOME/Release-build/bin:$PATH
+#PATH=$SVF_HOME/Release-build/bin:$PATH
 
 
 export PATH
