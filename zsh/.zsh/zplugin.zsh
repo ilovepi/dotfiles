@@ -5,7 +5,7 @@ zinit snippet OMZ::plugins/pip/pip.plugin.zsh
 zinit ice as"completion" wait lucid
 zinit snippet OMZ::plugins/rust/_rust
 zinit ice as"completion" wait lucid
-zinit snippet OMZ::plugins/cargo/_cargo
+zinit snippet OMZ::plugins/cargo/cargo.plugin.zsh
 zinit ice wait'1' lucid
 zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
 zinit ice wait'1' lucid
@@ -62,7 +62,7 @@ zinit light zsh-users/zsh-completions
 zinit ice wait lucid
 zinit light wfxr/forgit
 zinit ice as"program" pick"bin/git-dsf" wait lucid
-zinit light zdharma/zsh-diff-so-fancy
+zinit light zdharma-continuum/zsh-diff-so-fancy
 
 zinit ice as"program" make"!" atclone'./install --all' atpull'%atclone' pick"bin/fzf"
 zinit light junegunn/fzf

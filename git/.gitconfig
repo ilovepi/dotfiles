@@ -1,8 +1,6 @@
 [user]
     name = Paul Kirth
-    email = pk1574@gmail.com
-[diff]
-    tool = meld
+    email = paulkirth@google.com
 [difftool]
     prompt = false
 ;[difftool "meld"]
@@ -71,10 +69,6 @@
   selected = normal
   separator = red bold
   linenumber = normal
-
-
-
-
 
 ;[branch]
     ;autosetuprebase = always

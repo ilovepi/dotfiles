@@ -2,10 +2,11 @@ if [[ $ZSH_PROFILING ]]; then
     zmodload zsh/zprof
 fi
 
-module_path+=( "${HOME}/.zinit/bin/zmodules/Src" )
-zmodload zdharma/zplugin
 
-source "${HOME}/.zinit/bin/zinit.zsh"
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+#module_path+=( "${ZINIT_HOME}/zinit/bin/zmodules/Src" )
+#zmodload zdharma-continuum/zinit
+source "${ZINIT_HOME}/zinit.zsh"
 
 # Docker doesn't set the SHELL vaiable, so we'll set it ourselves
 #if grep -q docker /proc/1/cgroup; then
@@ -67,7 +68,7 @@ zinit light  zsh-users/zsh-history-substring-search
 
 #autoload -Uz compinit
 zinit ice wait atload"ZINIT[COMPINIT_OPTS]=-C; zicompinit; zpcdreplay" lucid
-zinit light zdharma/fast-syntax-highlighting
+zinit light zdharma-continuum/fast-syntax-highlighting
 
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -76,9 +77,20 @@ bindkey '^x^x' edit-command-line
 
 #zinit cdreplay -q
 
-eval "$(zoxide init zsh)"
+unalias zi
+eval "$(zoxide init zsh --cmd z)"
 
 if [[ $ZSH_PROFILING ]]; then
     zprof
 fi
 
+
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
+
+### End of Zinit's installer chunk
