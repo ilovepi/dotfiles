@@ -1,3 +1,7 @@
+" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
+" }
+
+set nocompatible
 
 " Use <Tab> and <S-Tab> to navigate through popup menu
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -6,179 +10,23 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 imap <tab> <Plug>(completion_smart_tab)
 imap <s-tab> <Plug>(completion_smart_s_tab)
 
-" Set completeopt to have a better completion experience
-set completeopt=menuone,noinsert,noselect
-
-" Avoid showing message extra message when using completion
-set shortmess+=c
-"let g:completion_enable_snippet = 'UltiSnips'
-let g:completion_enable_snippet = 'snippets.nvim'
-"let g:completion_enable_auto_paren = 1
-lua require'completion'.addCompletionSource('vimtex', require'vimtex'.complete_item)
-let g:completion_chain_complete_list = { 'tex' : [     {'complete_items': ['vimtex']},    ], }
-autocmd BufEnter * lua require'completion'.on_attach()
-
-" <c-k> will either expand the current snippet at the word or try to jump to
-" the next position for the snippet.
-inoremap <c-t> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
-
-" <c-j> will jump backwards to the previous field.
-" If you jump before the first field, it will cancel the snippet.
-inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
-
-" Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost * lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
-
-" vim: set sw=4 ts=4 sts=4 et tw=78 foldmarker={,} foldlevel=0 foldmethod=marker spell:
-" }
-
-        let g:polyglot_disabled = ['latex']
 
 
-        let g:vimtex_compiler_latexmk = {
-            \ 'options' : [
-            \   '-shell-escape',
-            \   '-bibtex',
-            \   '-pdf',
-            \   '-verbose',
-            \   '-file-line-error',
-            \   '-synctex=1',
-            \   '-interaction=nonstopmode',
-            \ ],
-            \}
-
-" Dein {
-    set nocompatible
-    "set runtimepath+=~/.cache/dein/repos/github.com/Shougo/dein.vim
-
-    "if dein#load_state('~/.cache/dein')
-      "call dein#begin('~/.cache/dein/')
-
-      "" Dein
-      "call dein#add('~/.cache/dein/')
-      "call dein#add('Shougo/dein.vim')
-      "call dein#add('haya14busa/dein-command.vim')        " dein bindings
-
-      "" Completion
-      "call dein#add('Chiel92/vim-autoformat')
-      ""call dein#add('Shougo/denite.nvim')
-      ""call dein#add('Shougo/deoplete.nvim')
-      ""call dein#add('Shougo/deorise.nvim')
-      ""call dein#add('SirVer/ultisnips')
-      ""call dein#add('autozimu/LanguageClient-neovim', {'rev' : 'next', 'build' : 'bash install.sh'})
-      "call dein#add('honza/vim-snippets')
-      "call dein#add('norcalli/snippets.nvim')
-      ""call dein#add('w0rp/ale')
-      "call dein#add('dense-analysis/ale')
+let g:polyglot_disabled = ['latex']
 
 
-      "" Search & Navigation
-      "call dein#add('brooth/far.vim')
-      "call dein#add('junegunn/fzf', { 'build': './install --all', 'merged': 0 })
-      "call dein#add('junegunn/fzf.vim', { 'depends': 'fzf' })
-      "call dein#add('raghur/fruzzy',
-        "\{'hook_post_update': 'call fruzzy#install()'})
-      "call dein#add('scrooloose/nerdtree')
-      "call dein#add('wincent/loupe')
+let g:vimtex_compiler_latexmk = {
+    \ 'options' : [
+    \   '-shell-escape',
+    \   '-bibtex',
+    \   '-pdf',
+    \   '-verbose',
+    \   '-file-line-error',
+    \   '-synctex=1',
+    \   '-interaction=nonstopmode',
+    \ ],
+    \}
 
-      "" Appearance
-      "call dein#add('connorholyday/vim-snazzy')
-      "call dein#add('flazz/vim-colorschemes')
-      "call dein#add('iCyMind/NeoSolarized')
-      "call dein#add('morhetz/gruvbox')
-      "call dein#add('powerline/fonts')
-      "call dein#add('rakr/vim-one')
-      "call dein#add('sainnhe/edge')
-      "call dein#add('rakr/vim-two-firewatch')
-      "call dein#add('b4skyx/serenade')
-      "call dein#add('savq/melange')
-      "call dein#add('sainnhe/gruvbox-material')
-      ""call dein#add('ryanoasis/vim-devicons')
-      "call dein#add('kyazdani42/nvim-web-devicons')
-      "call dein#add('tiagofumo/vim-nerdtree-syntax-highlight')
-      "call dein#add('trevordmiller/nova-vim')
-      "call dein#add('vim-airline/vim-airline')
-      "call dein#add('vim-airline/vim-airline-themes')
-
-      "" Writing
-      "call dein#add('junegunn/goyo.vim')
-      "call dein#add('lervag/vimtex')
-      "call dein#add('reedes/vim-colors-pencil')
-      "call dein#add('reedes/vim-pencil')
-      "call dein#add('reedes/vim-wordy')
-
-      ""  Git
-      "call dein#add('airblade/vim-gitgutter')
-      "call dein#add('jreybert/vimagit')
-      "call dein#add('mattn/gist-vim')
-      "call dein#add('rhysd/committia.vim')
-      "call dein#add('tpope/vim-fugitive')
-
-      "" Languages
-      "call dein#add('andreshazard/vim-logreview')
-      "call dein#add('cespare/vim-toml')
-      "call dein#add('ekalinin/Dockerfile.vim')
-      "call dein#add('rust-lang/rust.vim')
-      "call dein#add('sheerun/vim-polyglot')
-      "call dein#add('tpope/vim-markdown')
-
-      "" Viewing
-      "call dein#add('greyblake/vim-preview')
-
-      "" Vim navigation & editing essentials
-      "call dein#add('bling/vim-bufferline')
-      "call dein#add('chrisbra/NrrwRgn')
-      "call dein#add('christoomey/vim-tmux-navigator')
-      "call dein#add('farmergreg/vim-lastplace')
-      "call dein#add('gcmt/wildfire.vim')
-      "call dein#add('godlygeek/tabular')
-      "call dein#add('jiangmiao/auto-pairs')
-      "call dein#add('jistr/vim-nerdtree-tabs')
-      "call dein#add('kana/vim-textobj-indent')
-      "call dein#add('kana/vim-textobj-user')
-      "call dein#add('mattn/webapi-vim')
-      "call dein#add('mbbill/undotree')
-      "call dein#add('nathanaelkane/vim-indent-guides')
-      "call dein#add('osyo-manga/vim-over')
-      "call dein#add('reedes/vim-litecorrect')
-      "call dein#add('reedes/vim-textobj-quote')
-      "call dein#add('reedes/vim-textobj-sentence')
-      ""call dein#add('rhysd/conflict-marker.vim')
-      "call dein#add('scrooloose/nerdcommenter')
-      "call dein#add('tpope/vim-repeat')
-      "call dein#add('tpope/vim-sleuth')
-      "call dein#add('tpope/vim-surround')
-
-      "call dein#add('metakirby5/codi.vim')
-
-
-
-"call dein#add('neovim/nvim-lspconfig')
-"call dein#add('glepnir/lspsaga.nvim')
-"call dein#add('nvim-treesitter/nvim-treesitter')
-"call dein#add('nvim-lua/completion-nvim')
-"call dein#add('nvim-lua/lsp_extensions.nvim')
-
-      "if !has('nvim')
-        "call dein#add('roxma/nvim-yarp')
-        "call dein#add('roxma/vim-hug-neovim-rpc')
-      "endif
-
-      "call dein#end()
-      "call dein#save_state()
-    "endif
-
-" }
-
-" DeinInstall {
-  "command! -nargs=* -bar -bang -complete=customlist,s:names DeinInstall call s:install()
-    "function! s:install()
-        "if dein#check_install()
-            "set nomore
-            "call dein#install()
-        "endif
-    "endfunction
-"}
 
     " Initialize directories {
     function! InitializeDirectories()
@@ -784,7 +632,7 @@ endif
         let g:UltiSnipsJumpBackwardTrigger="<c-j>"
     " }
 
-    lua require("setup")
+lua require("setup")
 
 " Errors in Red
 "hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
