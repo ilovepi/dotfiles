@@ -76,8 +76,8 @@
 ;[core]
     ;pager = less -R
 
-;[core]
-    ;pager = diff-so-fancy | less --tabs=4 -FXRi
+[core]
+    pager = diff-so-fancy | less --tabs=4 -FXRi
 
 [color "diff-highlight"]
     oldNormal = red strike
