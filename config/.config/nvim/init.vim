@@ -196,7 +196,7 @@ let g:vimtex_compiler_latexmk = {
     vnoremap > >gv
 
     " Easier formatting
-    nnoremap <silent> <leader>q gwip
+    "nnoremap <silent> <leader>q gwip
 
     " Toggle fold at current position.
     nnoremap <Tab> za
