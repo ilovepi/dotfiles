@@ -570,48 +570,7 @@ endif
           \ 'header':  ['fg', 'Comment'] }
     " }
 
-    " LanguageClient {
         set signcolumn=yes
-    if 0
-        let g:LanguageClient_serverCommands = {
-            \ 'cpp' : ['~/clang-dev/bin/clangd'],
-            \ 'rust': ['rust-analyzer'],
-            \ 'javascript': ['javascript-typescript-stdio'],
-            \ }
-
-        set signcolumn=yes
-        nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
-        nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
-        nnoremap <silent> <leader>r :call LanguageClient#textDocument_rename()<CR>
-        let g:LanguageClient_selectionUI = 'fzf'
-
-
-        function SetLSPShortcuts()
-          nnoremap <leader>ld :call LanguageClient#textDocument_definition()<CR>
-          nnoremap <leader>lr :call LanguageClient#textDocument_rename()<CR>
-          nnoremap <leader>lf :call LanguageClient#textDocument_formatting()<CR>
-          nnoremap <leader>lt :call LanguageClient#textDocument_typeDefinition()<CR>
-          nnoremap <leader>lx :call LanguageClient#textDocument_references()<CR>
-          nnoremap <leader>la :call LanguageClient_workspace_applyEdit()<CR>
-          nnoremap <leader>lc :call LanguageClient#textDocument_completion()<CR>
-          nnoremap <leader>lh :call LanguageClient#textDocument_hover()<CR>
-          nnoremap <leader>ls :call LanguageClient_textDocument_documentSymbol()<CR>
-          nnoremap <leader>lm :call LanguageClient_contextMenu()<CR>
-        endfunction()
-
-        augroup LSP
-          autocmd!
-          autocmd FileType cpp,c,rust,vim,lua call SetLSPShortcuts()
-        augroup END
-    endif
-    " }
-
-    " Vimtex { 
-        "let g:vimtex_compiler_progname = 'nvr'
-        "let g:vimtex_view_method = 'zathura'
-        "let g:polyglot_disabled = ['latex']
-    "}
-
     " Writing {
         let g:tex_flavor = "latex"
         let g:pencil#wrapModeDefault = 'soft'   " default is 'hard'
