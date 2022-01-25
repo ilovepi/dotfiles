@@ -25,7 +25,7 @@ PATH=$HOME/clang/bin:$PATH
 
 FUCHSIA=${HOME}/fuchsia
 PATH="${FUCHSIA}/.jiri_root/bin:${PATH}"
-PATH=${FUCHSIA}/prebuilt/third_party/cmake/${platform}/bin:${PATH}
-PATH=${FUCHSIA}/prebuilt/third_party/ninja/${platform}/bin:${PATH}
+PATH=${FUCHSIA}/prebuilt/third_party/cmake/linux-x64/bin:${PATH}
+PATH=${FUCHSIA}/prebuilt/third_party/ninja/linux-x64:${PATH}
 
 export PATH

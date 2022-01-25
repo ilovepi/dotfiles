@@ -32,6 +32,14 @@ if command diff --color . . &>/dev/null; then
   alias diff='diff --color'
 fi
 
+if type fdfind > /dev/null; then
+    alias fd=fdfind
+fi
+
+if type batcat > /dev/null; then
+    alias bat=batcat
+fi
+
 if type ls++ > /dev/null; then
     alias ls=ls++
 elif type exa > /dev/null; then

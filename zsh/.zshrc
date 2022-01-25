@@ -21,6 +21,8 @@ mkdir -p $GOPATH
 #setup vim/nvim as editor
 source ${HOME}/.zsh/editor.zsh
 
+source ${HOME}/.zsh/path.zsh
+
 # update fpath w/ some normal system paths for zsh completions
 source ${HOME}/.zsh/fpath.zsh
 
