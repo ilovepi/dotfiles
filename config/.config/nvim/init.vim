@@ -451,8 +451,8 @@ let g:vimtex_compiler_latexmk = {
 
     "nmap <S-H> <Plug>AirlineSelectPrevTab
     "nmap <S-L> <Plug>AirlineSelectNextTab
-    nmap <S-H> :BufferLineCycleNext<CR>
-    nmap <S-L> :BufferLineCyclePrev<CR>
+    nmap <S-H> :BufferLineCyclePrev<CR>
+    nmap <S-L> :BufferLineCycleNext<CR>
 "}
 
 " Snippets {
