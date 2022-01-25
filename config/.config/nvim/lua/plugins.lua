@@ -83,7 +83,7 @@ return require('packer').startup(function()
         'neovim/nvim-lspconfig',
         'williamboman/nvim-lsp-installer',
     }
-    use 'glepnir/lspsaga.nvim'
+    use { 'tami5/lspsaga.nvim' }
     use 'glepnir/galaxyline.nvim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-lua/completion-nvim'

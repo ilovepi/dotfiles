@@ -258,7 +258,9 @@ gls.right[2] = {
 gls.right[3] = {
   DiagnosticWarn = {
     provider = function()
-      local n = vim.lsp.diagnostic.get_count(0, 'Warning')
+      local opt ={}
+      opt['severity'] = 'Warn'
+      local n = table.getn(vim.diagnostic.get(0, opt))
       if n == 0 then return '' end
       return string.format(' %s %d ', icons.warning, n)
     end,
@@ -268,7 +270,9 @@ gls.right[3] = {
 gls.right[4] = {
   DiagnosticError = {
     provider = function()
-      local n = vim.lsp.diagnostic.get_count(0, 'Error')
+      local opt ={}
+      opt['severity'] = 'Error'
+      local n = table.getn(vim.diagnostic.get(0, opt)) 
       if n == 0 then return '' end
       return string.format(' %s %d ', icons.error, n)
     end,
