@@ -646,7 +646,9 @@ let g:completion_chain_complete_list = {
         \     {'complete_items': ['vimtex']}, 
         \   ],
         \ }
-autocmd BufEnter * lua require'completion'.on_attach()
+if !&diff
+    autocmd BufEnter * lua require'completion'.on_attach()
+endif
 
 " <c-k> will either expand the current snippet at the word or try to jump to
 " the next position for the snippet.
@@ -660,3 +662,6 @@ inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
 autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
+augroup filetype
+  au! BufRead,BufNewFile *.ll     set filetype=llvm
+augroup END
