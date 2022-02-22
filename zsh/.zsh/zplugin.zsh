@@ -1,27 +1,25 @@
 
 # oh-my-zsh plugins
 zinit ice wait'4' lucid
-zinit snippet OMZ::plugins/pip/pip.plugin.zsh
+zinit snippet OMZP::pip
 zinit ice as"completion" wait lucid
-zinit snippet OMZ::plugins/rust/_rust
+zinit snippet OMZP::rust
 zinit ice as"completion" wait lucid
-zinit snippet OMZ::plugins/cargo/cargo.plugin.zsh
+zinit snippet OMZP::cargo
 zinit ice wait'1' lucid
-zinit snippet OMZ::plugins/rsync/rsync.plugin.zsh
+zinit snippet OMZP::rsync
 zinit ice wait'1' lucid
-zinit snippet OMZ::plugins/tmux/tmux.plugin.zsh
+zinit snippet OMZP::tmux
 zinit ice wait lucid
-zinit snippet OMZ::plugins/git/git.plugin.zsh
+zinit snippet OMZP::git
 zinit ice wait lucid
-zinit snippet OMZ::plugins/git-extras/git-extras.plugin.zsh
-zinit ice wait lucid
-zinit snippet OMZ::plugins/git-flow/git-flow.plugin.zsh
+zinit snippet OMZP::git-extras
 
 setopt extended_glob
 if [ `env | rg -i wsl | rg Debian` ];
 then
    zinit ice wait lucid
-   zinit snippet OMZ::plugins/debian/debian.plugin.zsh
+   zinit snippet OMZP::debian
 else
    case "$OSTYPE" in
       darwin*)
@@ -33,13 +31,13 @@ else
                ;&
             *(#i)(manjaro)*)
                zinit ice wait lucid
-               zinit snippet OMZ::plugins/archlinux/archlinux.plugin.zsh
+               zinit snippet OMZP::archlinux
                ;;
             *(#i)(debian)*)
                ;&
             *(#i)(ubuntu)*)
                zinit ice wait lucid
-               zinit snippet OMZ::plugins/debian/debian.plugin.zsh
+               zinit snippet OMZP::debian
                #zplug "~/dotfiles/apt-fast",       from:local
                ;;
          esac
