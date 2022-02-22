@@ -94,3 +94,5 @@
     ;whitespace = red reverse
 [core]
 	editor = nvim
+[pull]
+	rebase = true
