@@ -1,20 +1,28 @@
 [user]
     name = Paul Kirth
     email = paulkirth@google.com
+
 [difftool]
     prompt = false
-;[difftool "meld"]
-    ;trustExitCode = true
-    ;cmd = open -W -a Meld --args \"$LOCAL\" \"$PWD/$REMOTE\"
-;[merge]
-    ;tool = meld
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true # use n and N to move between diff sections
+    light = false    # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+
+[diff]
+    colorMoved = default
+
+[merge]
+    conflictstyle = diff3
+
 [mergetool]
     prompt = false
     keepBackup = false
     keepTemporaries = false
-;[mergetool "meld"]
-    ;trustExitCode = true
-    ;cmd = open -W -a Meld --args --auto-merge \"$PWD/$LOCAL\" \"$PWD/$BASE\" \"$PWD/$REMOTE\" --output=\"$PWD/$MERGED\"
+
 [push]
     default = simple
 
@@ -70,14 +78,9 @@
   separator = red bold
   linenumber = normal
 
-;[branch]
-    ;autosetuprebase = always
-
-;[core]
-    ;pager = less -R
-
 [core]
-    pager = diff-so-fancy | less --tabs=4 -FXRi
+    editor = nvim
+    pager = delta --diff-so-fancy
 
 [color "diff-highlight"]
     oldNormal = red strike
@@ -85,20 +88,13 @@
     newNormal = green bold
     newHighlight = green bold 22
 
-;[color "diff"]
-    ;meta = yellow
-    ;frag = magenta bold
-    ;commit = yellow bold
-    ;old = red bold
-    ;new = green bold
-    ;whitespace = red reverse
-[core]
-	editor = nvim
 [pull]
-	rebase = true
+    rebase = true
+
 [credential "https://github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
