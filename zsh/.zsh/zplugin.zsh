@@ -57,8 +57,8 @@ zinit light zsh-users/zsh-autosuggestions
 zinit ice wait lucid
 zinit light zsh-users/zsh-completions
 
-#zinit ice as"program" make"!" atclone'./install --all' atpull'%atclone' pick"bin/fzf"
-#zinit light junegunn/fzf
+zinit ice as"program" make"!" atclone'./install --all' atpull'%atclone' pick"bin/fzf"
+zinit light junegunn/fzf
 
 zinit ice wait lucid
 zinit snippet OMZ::lib/git.zsh
@@ -66,3 +66,4 @@ zinit ice wait lucid
 zinit snippet OMZ::lib/completion.zsh
 zinit ice wait lucid
 zinit snippet OMZ::lib/compfix.zsh
+
