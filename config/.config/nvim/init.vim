@@ -7,11 +7,6 @@ set nocompatible
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
-
-
-
 let g:polyglot_disabled = ['latex']
 
 
@@ -401,7 +396,7 @@ let g:vimtex_compiler_latexmk = {
 "}
 
 " Snippets {
-    let g:snips_author = 'Paul Kirth <pkirth@uci.edu>'
+    let g:snips_author = 'Paul Kirth <paulkirth@google.com>'
 "}
 
 " Last Place {
@@ -503,8 +498,6 @@ lua require("lsp")
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
-imap <tab> <Plug>(completion_smart_tab)
-imap <s-tab> <Plug>(completion_smart_s_tab)
 
 " Set completeopt to have a better completion experience
 set completeopt=menuone,noinsert,noselect
@@ -512,28 +505,19 @@ set completeopt=menuone,noinsert,noselect
 " Avoid showing message extra message when using completion
 set shortmess+=c
 "let g:completion_enable_snippet = 'UltiSnips'
-let g:completion_enable_snippet = 'snippets.nvim'
+" let g:completion_enable_snippet = 'snippets.nvim'
 "let g:completion_enable_auto_paren = 1
-lua require'completion'.addCompletionSource('vimtex', require'vimtex'.complete_item)
-let g:completion_chain_complete_list = {
-        \ 'tex' : [
-        \     {'complete_items': ['vimtex']}, 
-        \   ],
-        \ }
-if !&diff
-    autocmd BufEnter * lua require'completion'.on_attach()
-endif
 
 " <c-k> will either expand the current snippet at the word or try to jump to
 " the next position for the snippet.
-inoremap <c-t> <cmd>lua return require'snippets'.expand_or_advance(1)<CR>
+" inoremap <c-t> <cmd>lua return require'luasnip'.expand_or_advance(1)<CR>
 
 " <c-j> will jump backwards to the previous field.
 " If you jump before the first field, it will cancel the snippet.
-inoremap <c-r> <cmd>lua return require'snippets'.advance_snippet(-1)<CR>
+" inoremap <c-r> <cmd>lua return require'luasnip'.advance_snippet(-1)<CR>
 
 " Enable type inlay hints
-autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *
+autocmd CursorMoved,InsertLeave,BufEnter,BufWinEnter,TabEnter,BufWritePost *.rs
 \ lua require'lsp_extensions'.inlay_hints{ prefix = '', highlight = "Comment", enabled = {"TypeHint", "ChainingHint", "ParameterHint"} }
 
 augroup filetype

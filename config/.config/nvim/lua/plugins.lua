@@ -1,3 +1,12 @@
+
+vim.cmd([[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]])
+
+
 return require('packer').startup(function()
     local use = require('packer').use
 
@@ -83,16 +92,30 @@ return require('packer').startup(function()
     use { 'tami5/lspsaga.nvim' }
     use 'glepnir/galaxyline.nvim'
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use 'nvim-lua/completion-nvim'
+    -- use 'nvim-lua/completion-nvim'
     use 'nvim-lua/lsp_extensions.nvim'
     use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
     use { "ellisonleao/glow.nvim" }
     use "rcarriga/nvim-notify"
     use "j-hui/fidget.nvim"
 
+    use "hrsh7th/nvim-cmp"
+    -- use "hrsh7th/cmp-cmdline"
+    use "hrsh7th/cmp-buffer"
+    use "hrsh7th/cmp-path"
+    use "hrsh7th/cmp-nvim-lua"
+    use "hrsh7th/cmp-nvim-lsp"
+    use "hrsh7th/cmp-nvim-lsp-document-symbol"
+    use 'hrsh7th/cmp-omni'
+    use "saadparwaiz1/cmp_luasnip"
+    use "tamago324/cmp-zsh"
+
+    use "L3MON4D3/LuaSnip"
+
+
+
     if packer_bootstrap then
       require('packer').sync()
     end
-
 
 end)
