@@ -1,13 +1,13 @@
-
 local nvim_lsp = require('lspconfig')
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
+
     local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 
     buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
     -- Mappings.
-    local opts = { noremap=true, silent=true }
+    local opts = { noremap = true, silent = true }
     --buf_set_keymap('n', '<leader>gd', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
     buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
     buf_set_keymap('n', '<leader>gd', '<Cmd>lua require("lspsaga.provider").preview_definition()<CR>', opts)
@@ -52,12 +52,12 @@ local on_attach = function(client, bufnr)
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
-    ]], false)
+    ]]   , false)
     end
 end
 
-require'snippets'.use_suggested_mappings()
-require'snippets'.set_ux(require'snippets.inserters.vim_input')
+require 'snippets'.use_suggested_mappings()
+require 'snippets'.set_ux(require 'snippets.inserters.vim_input')
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
@@ -79,7 +79,7 @@ local function setup_servers()
     -- Register a handler that will be called for all installed servers.
     -- Alternatively, you may also register handlers on specific server instances instead (see example below).
     lsp_installer.on_server_ready(function(server)
-        local opts = {on_attach = on_attach}
+        local opts = { on_attach = on_attach }
 
         -- (optional) Customize the options passed to the server
         -- if server.name == "tsserver" then
@@ -99,11 +99,11 @@ setup_servers()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
     vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        signs = false,
-        update_in_insert = true,
-    }
-    )
+    virtual_text = true,
+    signs = false,
+    update_in_insert = true,
+}
+)
 
 --
 --
@@ -111,18 +111,42 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --
 
 --vim.fn.sign_define("LspDiagnosticsSignError", {text = "ﮊ", numhl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("LspDiagnosticsSignError", {text = ">>", numhl = "LspDiagnosticsDefaultSignError", texthl="LspDiagnosticsDefaultSignError"})
-vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "", numhl = "LspDiagnosticsDefaultSignWarning"})
+vim.fn.sign_define("LspDiagnosticsSignError", { text = ">>", numhl = "LspDiagnosticsDefaultSignError", texthl = "LspDiagnosticsDefaultSignError" })
+vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultSignWarning" })
 --vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "!!", numhl = "LspDiagnosticsDefaultSignWarning", texthl = "LspDiagnosticsDefaultSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignInformation", {text = "", numhl = "LspDiagnosticsDefaultSignInformation", texthl = "LspDiagnosticsDefaultSignInformation"})
-vim.fn.sign_define("LspDiagnosticsSignHint", {text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl="LspDiagnosticsDefaultSignHint", gui=bold})
+vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", numhl = "LspDiagnosticsDefaultSignInformation", texthl = "LspDiagnosticsDefaultSignInformation" })
+vim.fn.sign_define("LspDiagnosticsSignHint", { text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl = "LspDiagnosticsDefaultSignHint", gui = bold })
 
 
---require'nvim-treesitter.configs'.setup {
---ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
---highlight = {
---enable = true,              -- false will disable the whole extension
---disable = { "c", "rust" },  -- list of language that will be disabled
---},
---}
-
+require 'nvim-treesitter.configs'.setup {
+    ensure_installed = {
+        "bash",
+        "c",
+        "cmake",
+        "comment",
+        "cpp",
+        "css",
+        "dockerfile",
+        "dot",
+        "go",
+        "help",
+        "html",
+        "javascript",
+        "json",
+        "latex",
+        "llvm",
+        "lua",
+        "make",
+        "markdown",
+        "ninja",
+        "python",
+        "rst",
+        "rust",
+        "toml",
+        "vim",
+        "yaml",
+    }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    highlight = {
+        enable = true,
+    },
+}

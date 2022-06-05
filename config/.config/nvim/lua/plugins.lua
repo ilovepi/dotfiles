@@ -1,5 +1,3 @@
-
-
 return require('packer').startup(function()
     local use = require('packer').use
 
@@ -13,10 +11,13 @@ return require('packer').startup(function()
 
     -- Search & Navigation
     use 'brooth/far.vim'
-    use {'junegunn/fzf', run = function() vim.fn['fzf#install']() end}
+    use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
     use 'junegunn/fzf.vim'
-    use {'raghur/fruzzy', run = function() vim.fn['fruzzy#install']() end}
-    use 'kyazdani42/nvim-tree.lua'
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = { 'kyazdani42/nvim-web-devicons' },
+        tag = 'nightly'
+    }
     use 'wincent/loupe'
 
     -- Appearance
@@ -31,7 +32,6 @@ return require('packer').startup(function()
     use 'b4skyx/serenade'
     use 'savq/melange'
     use 'sainnhe/gruvbox-material'
-    --use 'ryanoasis/vim-devicons'
     use 'kyazdani42/nvim-web-devicons'
     use 'trevordmiller/nova-vim'
 
@@ -45,7 +45,6 @@ return require('packer').startup(function()
     --  Git
     use 'airblade/vim-gitgutter'
     use 'jreybert/vimagit'
-    use 'mattn/gist-vim'
     use 'rhysd/committia.vim'
     use 'tpope/vim-fugitive'
 
@@ -54,7 +53,7 @@ return require('packer').startup(function()
     use 'cespare/vim-toml'
     use 'ekalinin/Dockerfile.vim'
     use 'rust-lang/rust.vim'
-    use 'sheerun/vim-polyglot'
+    -- use 'sheerun/vim-polyglot'
 
     -- Viewing
     --use 'greyblake/vim-preview'
@@ -62,21 +61,19 @@ return require('packer').startup(function()
     -- Vim navigation & editing essentials
     use 'chrisbra/NrrwRgn'
     use 'christoomey/vim-tmux-navigator'
-    use 'farmergreg/vim-lastplace'
+    use 'ethanholz/nvim-lastplace'
     use 'godlygeek/tabular'
     use 'windwp/nvim-autopairs'
-    use 'mbbill/undotree'
-    use 'nathanaelkane/vim-indent-guides'
+    use "jiaoshijie/undotree"
+    --use 'nathanaelkane/vim-indent-guides'
+    use "lukas-reineke/indent-blankline.nvim"
     use 'osyo-manga/vim-over'
-    use 'reedes/vim-litecorrect'
-    use 'reedes/vim-textobj-quote'
-    use 'reedes/vim-textobj-sentence'
-    use 'preservim/nerdcommenter'
+    --use 'preservim/nerdcommenter'
     use 'tpope/vim-repeat'
     use 'tpope/vim-sleuth'
     use 'tpope/vim-surround'
 
-    use 'metakirby5/codi.vim'
+    use 'numToStr/Comment.nvim'
 
     -- lua vim stuff
     use {
@@ -88,7 +85,14 @@ return require('packer').startup(function()
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-lua/completion-nvim'
     use 'nvim-lua/lsp_extensions.nvim'
-    use {'akinsho/nvim-bufferline.lua', requires = 'kyazdani42/nvim-web-devicons'}
-    use {"ellisonleao/glow.nvim"}
+    use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
+    use { "ellisonleao/glow.nvim" }
+    use "rcarriga/nvim-notify"
+    use "j-hui/fidget.nvim"
+
+    if packer_bootstrap then
+      require('packer').sync()
+    end
+
 
 end)
