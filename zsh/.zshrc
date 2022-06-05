@@ -62,8 +62,8 @@ source ${HOME}/.zsh/aliases.zsh
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-zstyle :omz:plugins:ssh-agent agent-forwarding on
-zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
+#zstyle :omz:plugins:ssh-agent agent-forwarding on
+#zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 
 zinit ice wait lucid
 zinit light  zsh-users/zsh-history-substring-search
