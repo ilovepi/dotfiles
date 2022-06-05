@@ -296,60 +296,6 @@ let g:vimtex_compiler_latexmk = {
         syntax on
     "}
 
-    " Deoplete{
-    if 0 
-        let g:deoplete#enable_at_startup = 1
-        call deoplete#custom#option('smart_case', v:true)
-
-        " Disable the candidates in Comment/String syntaxes.
-        call deoplete#custom#source('_',
-                    \ 'disabled_syntaxes', ['Comment', 'String'])
-
-        autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-
-        call deoplete#custom#source('LanguageClient', 'min_pattern_length', 2)
-
-        call deoplete#custom#option('sources', {
-            \ 'cpp': ['LanguageClient'],
-            \ 'c': ['LanguageClient'],
-            \ 'python': ['LanguageClient'],
-            \ 'python3': ['LanguageClient'],
-            \ 'rust': ['LanguageClient'],
-            \ 'vim': ['vim'],
-            \ })
-
-
-        " <TAB>: completion.
-        inoremap <silent><expr> <TAB>
-              \ pumvisible() ? "\<C-n>" :
-              \ <SID>check_back_space() ? "\<TAB>" :
-              \ deoplete#manual_complete()
-        function! s:check_back_space() abort
-          let col = col('.') - 1
-          return !col || getline('.')[col - 1]  =~ '\s'
-        endfunction
-
-        " <S-TAB>: completion back.
-        inoremap <expr><S-TAB>  pumvisible() ? "\<C-p>" : "\<C-h>"
-
-        inoremap <expr><C-g>                deoplete#refresh()
-        inoremap <expr><C-e>                deoplete#cancel_popup()
-        inoremap <silent><expr><C-l>        deoplete#complete_common_string()
-
-        " <CR>: close popup and save indent.
-        "inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-        "function! s:my_cr_function() abort
-          ""return pumvisible() ? deoplete#close_popup()."\<CR>" : "\<CR>"
-          "return (pumvisible() ? "\<C-y>" : "" ) . "\<CR>"
-        "endfunction
-
-        call deoplete#custom#var('omni', 'input_patterns', {
-              \ 'tex': g:vimtex#re#deoplete
-              \})
-
-    endif
-    "}
-
     " UndoTree {
         nnoremap <Leader>u :UndotreeToggle<CR>
         " If undotree is opened, it is likely one wants to interact with it.
