@@ -48,6 +48,7 @@ elif type exa > /dev/null; then
     alias lt='ls -lFht=modified'   #long list,sorted by date,show type,human readable
     alias lart='ls -1Fart=modified'
     alias lrt='ls -1Frt=modified'
+    alias tree='ls -T'
 fi
 
 alias rgs='rg --sort-files'
