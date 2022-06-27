@@ -4,8 +4,6 @@ zinit ice wait'4' lucid
 zinit snippet OMZP::pip
 zinit ice as"completion" wait lucid
 zinit snippet OMZP::rust
-zinit ice as"completion" wait lucid
-zinit snippet OMZP::cargo
 zinit ice wait'1' lucid
 zinit snippet OMZP::rsync
 zinit ice wait'1' lucid
