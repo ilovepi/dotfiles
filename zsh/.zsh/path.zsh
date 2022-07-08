@@ -23,6 +23,7 @@ PATH=/Users/paul/Library/Python/3.7/bin:$PATH
 #add cargo directories to PATH
 PATH=$HOME/rust-install/bin:$PATH
 PATH=$HOME/.cargo/bin:$PATH
+PATH=$HOME/depot_tools:$PATH
 
 
 #export LLVM_SRC=$HOME/workspace/mpk/rust/src/llvm
@@ -36,6 +37,8 @@ PATH=$HOME/.cargo/bin:$PATH
 #export LLVM_SRC=$HOME/workspace/llvm-project/llvm
 #export LLVM_OBJ=$HOME/workspace/llvm-project/build
 #export LLVM_DIR=$HOME/workspace/llvm-project/build
+
+platform=mac-x64
 
 FUCHSIA=${HOME}/fuchsia
 PATH="${FUCHSIA}/.jiri_root/bin:${PATH}"

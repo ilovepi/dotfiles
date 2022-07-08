@@ -88,3 +88,19 @@
     old = red bold
     new = green bold
     whitespace = red reverse
+[url "sso://android/"]
+	insteadOf = https://android.googlesource.com/
+[url "sso://chrome-internal/"]
+	insteadOf = https://chrome-internal.googlesource.com/
+[url "sso://chromium/"]
+	insteadOf = https://chromium.googlesource.com/
+[url "sso://dart/"]
+	insteadOf = https://dart.googlesource.com/
+[url "sso://fuchsia/"]
+	insteadOf = https://fuchsia.googlesource.com/
+[url "sso://googleplex-android/"]
+	insteadOf = https://googleplex-android.googlesource.com/
+[url "sso://partner-fuchsia/"]
+	insteadOf = https://partner-fuchsia.googlesource.com/
+[url "sso://turquoise-internal/"]
+	insteadOf = https://turquoise-internal.googlesource.com/
