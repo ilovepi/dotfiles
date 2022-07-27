@@ -226,7 +226,3 @@ alias awa="arcolinux-welcome-app"
 alias rmgitcache="rm -r ~/.cache/git"
 
 
-
-
-
-
