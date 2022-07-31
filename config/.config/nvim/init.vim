@@ -76,7 +76,7 @@ let g:vimtex_compiler_latexmk = {
     " Always switch to the current file directory
     autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
 
-    set shortmess+=filmnrxoOtT          " Abbrev. of messages (avoids 'hit enter')
+    set shortmess+=filmnrxoOtTc         " Abbrev. of messages (avoids 'hit enter')
     set viewoptions=folds,options,cursor,unix,slash " Better Unix / Windows compatibility
     set virtualedit=onemore             " Allow for cursor beyond last character
     set history=1000                    " Store a ton of history (default is 20)
@@ -88,7 +88,7 @@ let g:vimtex_compiler_latexmk = {
 
     " Instead of reverting the cursor to the last position in the buffer, we
     " set it to the first line when editing a git commit message
-    au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
+    " au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
 
     " Setting up the directories {
         set backup                  " Backups are nice ...
@@ -503,7 +503,6 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 set completeopt=menuone,noinsert,noselect
 
 " Avoid showing message extra message when using completion
-set shortmess+=c
 "let g:completion_enable_snippet = 'UltiSnips'
 " let g:completion_enable_snippet = 'snippets.nvim'
 "let g:completion_enable_auto_paren = 1
