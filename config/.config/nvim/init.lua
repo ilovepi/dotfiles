@@ -288,6 +288,14 @@ vim.g.fzf_colors = {
   ['header']  = {'fg', 'Comment'}
  }
 
+
+
+vim.keymap.set("n", "<leader>b", ":Buffers<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>f", ":Files<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>m", ":Maps<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>c", ":Colors<CR>", {noremap=true})
+vim.keymap.set("n", "<leader>g", ":Rg<CR>", {noremap=true})
+
 -- Writing
 vim.g.tex_flavor = "latex"
 vim.cmd("let g:pencil#wrapModeDefault = 'soft'")

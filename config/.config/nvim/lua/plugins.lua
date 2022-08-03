@@ -95,6 +95,7 @@ return require('packer').startup(function()
   use { "ellisonleao/glow.nvim" }
   use "rcarriga/nvim-notify"
   use "j-hui/fidget.nvim"
+  use {"kalcutter/vim-gn"}
 
   use "hrsh7th/nvim-cmp"
   -- use "hrsh7th/cmp-cmdline"

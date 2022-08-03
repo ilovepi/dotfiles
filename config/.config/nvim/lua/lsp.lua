@@ -37,8 +37,10 @@ local on_attach = function(client, bufnr)
   -- Set some keybinds conditional on server capabilities
   if client.resolved_capabilities.document_formatting then
     buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  elseif client.resolved_capabilities.document_range_formatting then
-    buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
+  end
+
+  if client.resolved_capabilities.document_range_formatting then
+      buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
   end
 
   -- Set autocommands conditional on server_capabilities
@@ -114,11 +116,14 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
 --
 
 --vim.fn.sign_define("LspDiagnosticsSignError", {text = "ﮊ", numhl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("LspDiagnosticsSignError", { text = ">>", numhl = "LspDiagnosticsDefaultSignError", texthl = "LspDiagnosticsDefaultSignError" })
+vim.fn.sign_define("LspDiagnosticsSignError",
+  { text = ">>", numhl = "LspDiagnosticsDefaultSignError", texthl = "LspDiagnosticsDefaultSignError" })
 vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultSignWarning" })
 --vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "!!", numhl = "LspDiagnosticsDefaultSignWarning", texthl = "LspDiagnosticsDefaultSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignInformation", { text = "", numhl = "LspDiagnosticsDefaultSignInformation", texthl = "LspDiagnosticsDefaultSignInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl = "LspDiagnosticsDefaultSignHint", gui = bold })
+vim.fn.sign_define("LspDiagnosticsSignInformation",
+  { text = "", numhl = "LspDiagnosticsDefaultSignInformation", texthl = "LspDiagnosticsDefaultSignInformation" })
+vim.fn.sign_define("LspDiagnosticsSignHint",
+  { text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl = "LspDiagnosticsDefaultSignHint", gui = bold })
 
 
 require 'nvim-treesitter.configs'.setup {
