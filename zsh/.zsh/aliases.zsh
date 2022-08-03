@@ -56,7 +56,9 @@ alias :q='exit'
 alias magit='nvim -c MagitOnly'
 alias fpth='sed "s/ /\n/g" <<< $fpath'
 
-alias ssh="kitty +kitten ssh"
+if (( ${+KITTY_WINDOW_ID} )); then
+  alias ssh="kitty +kitten ssh"
+fi
 
 #########################################
 ##########  Arco Linux aliases ##########
