@@ -89,13 +89,23 @@ return require('packer').startup(function()
   use { 'tami5/lspsaga.nvim' }
   use 'glepnir/galaxyline.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  -- use 'nvim-lua/completion-nvim'
-  -- use 'nvim-lua/lsp_extensions.nvim'
   use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
   use { "ellisonleao/glow.nvim" }
   use "rcarriga/nvim-notify"
   use "j-hui/fidget.nvim"
   use {"kalcutter/vim-gn"}
+
+  use {
+    "folke/todo-comments.nvim",
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      }
+    end
+  }
 
   use "hrsh7th/nvim-cmp"
   -- use "hrsh7th/cmp-cmdline"
