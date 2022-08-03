@@ -1,0 +1,12 @@
+[package]
+disabled = true
+
+
+[gcloud]
+disabled = true
+
+[golang]
+disabled = true
+
+[cmake]
+disabled = true
