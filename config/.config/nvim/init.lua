@@ -115,9 +115,13 @@ vim.keymap.set("n", "<C-K>", "<C-W>k<C-W>")
 vim.keymap.set("n", "<C-L>", "<C-W>l<C-W>")
 vim.keymap.set("n", "<C-H>", "<C-W>h<C-W>")
 
+-- Bufferline config
+vim.keymap.set("n", "<S-H>", ":BufferLineCyclePrev<CR>")
+vim.keymap.set("n", "<S-L>", ":BufferLineCycleNext<CR>")
+
 
 -- Shortcuts
--- Change Wroking Directory to that of the current file
+-- Change Working Directory to that of the current file
 
 vim.keymap.set("c", "cwd", "lcd %:p:h")
 vim.keymap.set("c", "cd.", "lcd %:p:h")
