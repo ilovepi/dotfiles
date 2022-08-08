@@ -107,6 +107,13 @@ return require('packer').startup(function()
     end
   }
 
+  use {
+  'lewis6991/spellsitter.nvim',
+  config = function()
+    require('spellsitter').setup()
+  end
+}
+
   use "hrsh7th/nvim-cmp"
   -- use "hrsh7th/cmp-cmdline"
   use "hrsh7th/cmp-buffer"
