@@ -162,7 +162,8 @@ vim.keymap.set("v", "et", ":tabe %%")
 vim.keymap.set("v", "<Leader>=", "<C-w>=")
 
 -- sane remap of <Esc>
-vim.keymap.set("v", "jk", "<Esc>=")
+-- vim.keymap.set("v", "jk", "<Esc>=")
+
 vim.cmd([[au FileType fzf tunmap <Esc>
           au TermOpen * tnoremap <Esc> <C-\><c-n>
           tnoremap <expr> <C-R> '<C-\><C-N>"'.nr2char(getchar()).'pi'

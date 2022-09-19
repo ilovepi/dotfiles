@@ -25,7 +25,24 @@ PATH=$HOME/clang/bin:$PATH
 
 FUCHSIA=${HOME}/fuchsia
 PATH="${FUCHSIA}/.jiri_root/bin:${PATH}"
-PATH=${FUCHSIA}/prebuilt/third_party/cmake/linux-x64/bin:${PATH}
-PATH=${FUCHSIA}/prebuilt/third_party/ninja/linux-x64:${PATH}
+
+if [ -z "${localpath}"]; then
+localpath="${localpath:=${HOME}/.local/bin}"
+for dir in clang go qemu rust gn ninja cmake; do
+  localpath="$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64/bin:$localpath"
+done
+
+for dir in ninja gn; do
+  localpath="$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64:$localpath"
+done
+
+localpath="${HOME}/infra/fuchsia/prebuilt/tools:$localpath"
+localpath="${HOME}/chromium/depot_tools:$localpath"
+localpath="/usr/lib/google-golang/bin:$localpath"
+fi
+
+PATH=${localpath}:$PATH
+
+PATH=${HOME}/arcanist/bin:${PATH}
 
 export PATH

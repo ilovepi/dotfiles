@@ -88,6 +88,8 @@ bindkey '^x^x' edit-command-line
 
 #zinit cdreplay -q
 
+source /etc/bash_completion.d/g4d
+
 unalias zi
 eval "$(zoxide init zsh --cmd z)"
 

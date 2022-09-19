@@ -98,3 +98,5 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[http]
+	cookiefile = /usr/local/google/home/paulkirth/.gitcookies
