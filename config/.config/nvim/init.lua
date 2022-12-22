@@ -115,6 +115,9 @@ vim.keymap.set("n", "<C-K>", "<C-W>k<C-W>")
 vim.keymap.set("n", "<C-L>", "<C-W>l<C-W>")
 vim.keymap.set("n", "<C-H>", "<C-W>h<C-W>")
 
+-- Make splits equal
+vim.keymap.set("n", "<leader>=", "<C-W>=")
+
 -- Bufferline config
 vim.keymap.set("n", "<S-H>", ":BufferLineCyclePrev<CR>")
 vim.keymap.set("n", "<S-L>", ":BufferLineCycleNext<CR>")
@@ -320,46 +323,10 @@ vim.g.UltiSnipsJumpBackwardTrigger="<c-j>"
 
 require('setup')
 
---[[
-" Errors in Red
-"hi LspDiagnosticsVirtualTextError guifg=#d75f5f ctermfg=124 gui=bold,italic
-"hi LspDiagnosticsDefaultError guifg=#d75f5f ctermfg=124 gui=bold,italic
-"hi LspDiagnosticsDefaultSignError guifg=#d75f5f ctermfg=124 gui=bold
-
-hi LspDiagnosticsVirtualTextError guifg=#d76e6e ctermfg=124 gui=bold,italic
-hi LspDiagnosticsDefaultError guifg=#d76e6e ctermfg=124 gui=bold,italic
-hi LspDiagnosticsDefaultSignError guifg=#d75f5f ctermfg=124 gui=bold
-
-
-" Warnings in Yellow
-hi LspDiagnosticsVirtualTextWarning guifg=#e5a46b ctermfg=DarkYellow gui=italic,bold
-hi LspDiagnosticsDefaultWarning guifg=#e5a46b ctermfg=Yellow gui=italic,bold
-hi LspDiagnosticsDefaultSignWarning guifg=#e5a46b ctermfg=Yellow gui=bold
-
-" Info and Hints in White
-hi LspDiagnosticsVirtualTextInformation guifg=Purple ctermfg=White gui=italic,bold
-hi LspDiagnosticsDefaultInformation guifg=White ctermfg=White gui=italic,bold
-hi LspDiagnosticsDefaultSignInformation guifg=White ctermfg=White gui=bold
-
-hi LspDiagnosticsVirtualTextHint guifg=#878787 ctermfg=White gui=italic,bold
-hi LspDiagnosticsDefaultHint guifg=Cyan ctermfg=Cyan gui=italic,bold
-hi LspDiagnosticsDefaultSignHint guifg=#87c095 ctermfg=Cyan gui=bold
-
-
-" Underline the offending code
-"hi LspDiagnosticsUnderlineError guifg=NONE ctermfg=NONE cterm=underline gui=underline
-"hi LspDiagnosticsUnderlineWarning guifg=NONE ctermfg=NONE cterm=underline gui=underline
-"hi LspDiagnosticsUnderlineInformation guifg=NONE ctermfg=NONE cterm=underline gui=underline
-"hi LspDiagnosticsUnderlineHint guifg=NONE ctermfg=NONE cterm=underline gui=underline
-
---]]
-
-
 require('lsp')
 
 vim.keymap.set("i", "<Tab>", "pumvisible() ? <C-n> : \\<Tab>", {noremap = true, expr = true})
 vim.keymap.set("i", "<S-Tab>", "pumvisible() ? <C-p> : \\<S-Tab>", {noremap = true, expr = true})
-
 
 opt.completeopt='menuone,noinsert,noselect'
 
