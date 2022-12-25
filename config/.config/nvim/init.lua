@@ -1,4 +1,12 @@
 
+local fn = vim.fn
+
+-- Auto install packer.nvim if not exists
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+end
+
 --- options
 
 vim.g.polyglot_disabled = { 'latex' }
@@ -221,7 +229,6 @@ vim.g.gruvbox_material_better_performance = 1
 -- vim.g.serenade_diagnostic_line_highlight = 1
 -- vim.g.serenade_better_performance = 1
 
-vim.cmd("colorscheme gruvbox-material")
 
 --- UndoTree
 vim.g.undotree_SetFocusWhenToggle=1
@@ -324,6 +331,8 @@ vim.g.UltiSnipsJumpBackwardTrigger="<c-j>"
 require('setup')
 
 require('lsp')
+
+vim.cmd("colorscheme gruvbox-material")
 
 vim.keymap.set("i", "<Tab>", "pumvisible() ? <C-n> : \\<Tab>", {noremap = true, expr = true})
 vim.keymap.set("i", "<S-Tab>", "pumvisible() ? <C-p> : \\<S-Tab>", {noremap = true, expr = true})
