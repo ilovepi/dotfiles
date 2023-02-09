@@ -44,9 +44,6 @@ o.mousehide        = true --- Hide the mouse cursor while typing
 o.clipboard        = 'unnamed,unnamedplus'
 
 --- Always switch to the current file directory
---- autocmd BufEnter * if bufname("") !~ "^\[A-Za-z0-9\]*://" | lcd %:p:h | endif
-
--- vim.api.nvim_create_autocmd("BufEnter", {})
 o.autochdir        = true
 
 o.shortmess        = vim.o.shortmess .. 'filmnrxoOtT' --- Abbrev. of messages (avoids 'hit enter')
@@ -61,10 +58,6 @@ opt.iskeyword      = opt.iskeyword - { '-' } --- '-' is an end of word designato
 
 vim.opt.signcolumn = 'yes:1'
 
---- Instead of reverting the cursor to the last position in the buffer, we
---- set it to the first line when editing a git commit message
---- au FileType gitcommit au! BufEnter COMMIT_EDITMSG call setpos('.', [0, 1, 1, 0])
-
 ---  Setting up the directories
 o.backup           = true --- Backups are nice ...
 o.undofile         = true --- So is persistent undo ...
@@ -73,7 +66,6 @@ o.undoreload       = 10000 --- Maximum number lines to save for undo on a buffer
 
 
 --- UI
-
 opt.cursorline       = true
 opt.showmode         = false
 opt.ruler            = true
@@ -303,13 +295,11 @@ vim.g.fzf_colors = {
     ['header']  = { 'fg', 'Comment' }
 }
 
-
-
 vim.keymap.set("n", "<leader>b", ":Buffers<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>f", ":Files<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>z", ":Files<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>m", ":Maps<CR>", { noremap = true })
 vim.keymap.set("n", "<leader>c", ":Colors<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>g", ":Rg<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>rg", ":Rg<CR>", { noremap = true })
 
 -- Writing
 vim.g.tex_flavor = "latex"
