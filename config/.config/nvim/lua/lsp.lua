@@ -50,7 +50,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 require("mason").setup()
 require("mason-lspconfig").setup {
-    ensure_installed = { "sumneko_lua", "rust_analyzer", "clangd" }
+    ensure_installed = { "lua_ls", "rust_analyzer", "clangd" }
 }
 
 local lspconfig = require("lspconfig")
@@ -64,7 +64,7 @@ lspconfig.rust_analyzer.setup {
     on_attach = on_attach, capabilities = capabilities
 }
 
-lspconfig.sumneko_lua.setup {
+lspconfig.lua_ls.setup {
     on_attach = on_attach,
     capabilities = capabilities,
     settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
@@ -199,12 +199,12 @@ cmp.setup.cmdline('/', {
     }
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- Use cmdline & path source for ':'
 cmp.setup.cmdline(':', {
-    mapping = cmp.mapping.preset.cmdline(),
+    completion = { autocomplete = false },
     sources = cmp.config.sources({
         { name = 'path' }
-    }, {
+        }, {
         { name = 'cmdline' }
     })
 })
