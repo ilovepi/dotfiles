@@ -224,8 +224,7 @@ vim.g.gruvbox_material_better_performance = 1
 
 
 --- UndoTree
-vim.g.undotree_SetFocusWhenToggle = 1
-vim.keymap.set("n", "<leader>u", ":UndotreeToggle<CR>", { noremap = true })
+vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
 
 --- Indent guides
 vim.g.indent_guides_start_level = 2

@@ -33,8 +33,6 @@ require('Comment').setup {
 
 require "fidget".setup {}
 
-vim.api.nvim_set_keymap('n', '<leader>u', ':UndotreeToggle', { noremap = true })
-
 vim.notify = require("notify")
 
 local has_words_before = function()
