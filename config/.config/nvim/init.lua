@@ -307,11 +307,6 @@ vim.cmd(
     augroup END]]
 )
 
--- UltiSnips
-vim.g.UltiSnipsExpandTrigger = "<tab>"
-vim.g.UltiSnipsJumpForwardTrigger = "<c-k>"
-vim.g.UltiSnipsJumpBackwardTrigger = "<c-j>"
-
 require('setup')
 
 require('lsp')
