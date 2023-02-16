@@ -258,11 +258,6 @@ vim.g.gitgutter_sign_modified_removed = '◢'
 
 vim.g.snips_author = 'Paul Kirth <paulkirth@google.com>'
 
--- Last Place
-vim.g.lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
-vim.g.lastplace_ignore_buftype = "quickfix,nofile,help"
-
-
 -- Ale
 vim.g.ale_linters_explicit = 1
 vim.g.ale_disable_lsp = 1
