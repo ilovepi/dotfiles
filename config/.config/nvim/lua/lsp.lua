@@ -25,6 +25,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', '<leader>la', '<cmd>lua require("lspsaga.codeaction"):code_action()<CR>', opts)
   buf_set_keymap('v', '<leader>la', '<cmd>lua require("lspsaga.codeaction"):code_action()<CR>', opts)
   buf_set_keymap('n', '<leader>lo', '<cmd>lua require("lspsaga.outline"):outline()<CR>', opts)
+  -- Call hierarchy
+  buf_set_keymap("n", "<Leader>ci", '<cmd>lua require("lspsaga.callhierarchy"):send_method(2)<CR>', opts)
+  buf_set_keymap("n", "<Leader>co", '<cmd>lua require("lspsaga.callhierarchy"):send_method(3)<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
   buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
