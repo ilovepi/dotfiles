@@ -3,8 +3,8 @@ local fn = vim.fn
 -- Auto install packer.nvim if not exists
 local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-          install_path })
+    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+            install_path })
 end
 
 --- options
@@ -23,11 +23,11 @@ vim.g.vimtex_compiler_latexmk = [[ 'options' : [
 
 
 local function init_dirs()
-  local prefix = vim.env.XDG_DATA_HOME or vim.fn.expand("~/.cache")
-  vim.opt.undodir = prefix .. "/nvim/.undo//"
-  vim.opt.backupdir = prefix .. "/nvim/.backup//"
-  vim.opt.directory = prefix .. "/nvim/.swp//"
-  vim.opt.viewdir = prefix .. "/nvim/.views//"
+    local prefix = vim.env.XDG_DATA_HOME or vim.fn.expand("~/.cache")
+    vim.opt.undodir = prefix .. "/nvim/.undo//"
+    vim.opt.backupdir = prefix .. "/nvim/.backup//"
+    vim.opt.directory = prefix .. "/nvim/.swp//"
+    vim.opt.viewdir = prefix .. "/nvim/.views//"
 end
 
 init_dirs()
