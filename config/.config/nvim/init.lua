@@ -289,11 +289,11 @@ vim.g.fzf_colors = {
     ['header']  = { 'fg', 'Comment' }
 }
 
-vim.keymap.set("n", "<leader>b", ":Buffers<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>z", ":Files<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>m", ":Maps<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>c", ":Colors<CR>", { noremap = true })
-vim.keymap.set("n", "<leader>rg", ":Rg<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>b", "<cmd>Buffers<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>z", "<cmd>Files<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>m", "<cmd>Maps<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>c", "<cmd>Colors<CR>", { noremap = true })
+vim.keymap.set("n", "<leader>rg", "<cmd>Rg<CR>", { noremap = true })
 
 -- Writing
 vim.g.tex_flavor = "latex"
