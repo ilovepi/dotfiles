@@ -298,7 +298,6 @@ vim.keymap.set("n", "<leader>rg", "<cmd>Rg<CR>", { noremap = true })
 -- Writing
 vim.g.tex_flavor = "latex"
 vim.cmd("let g:pencil#wrapModeDefault = 'soft'")
--- vim.g.pencil#wrapModeDefault = 'soft'   --- default is 'hard'
 vim.cmd(
     [[augroup pencil
     autocmd!
