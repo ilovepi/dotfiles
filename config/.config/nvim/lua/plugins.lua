@@ -46,7 +46,6 @@ return require('packer').startup(function()
         -- Writing
         use 'junegunn/goyo.vim'
         use 'lervag/vimtex'
-        use 'reedes/vim-colors-pencil'
         use 'reedes/vim-pencil'
         use 'reedes/vim-wordy'
 
