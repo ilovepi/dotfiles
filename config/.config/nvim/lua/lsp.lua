@@ -27,17 +27,17 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
 
   -- Set some keybinds conditional on server capabilities
-  if client.resolved_capabilities.document_formatting then
-    buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
-  end
+  -- if client.server_capabilities.document_formatting then
+  buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+  -- end
 
-  if client.resolved_capabilities.document_range_formatting then
-      buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.range_formatting()<CR>", opts)
-  end
+  -- if client.server_capabilities.document_range_formatting then
+  buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+  -- end
 
   -- Set autocommands conditional on server_capabilities
-  if client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
+  -- if client.server_capabilities.document_highlight then
+  vim.api.nvim_exec([[
       hi LspReferenceRead cterm=bold ctermbg=darkred guibg=LightYellow
       hi LspReferenceText cterm=bold ctermbg=darkred guibg=LightYellow
       hi LspReferenceWrite cterm=bold ctermbg=darkred guibg=LightYellow
@@ -47,12 +47,11 @@ local on_attach = function(client, bufnr)
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
     ]], false)
-  end
+  -- end
 end
-
 -- require 'snippets'.use_suggested_mappings()
 -- require 'snippets'.set_ux(require 'snippets.inserters.vim_input')
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 -- Use a loop to conveniently both setup defined servers
