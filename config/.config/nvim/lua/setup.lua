@@ -37,7 +37,7 @@ require('Comment').setup {
 
 require "fidget".setup {}
 
-vim.api.nvim_set_keymap('n', '<leader>u', ':UndotreeToggle', { noremap = true })
+vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
 
 vim.notify = require("notify")
 
