@@ -100,3 +100,15 @@
 	helper = !/usr/bin/gh auth git-credential
 [http]
 	cookiefile = /usr/local/google/home/paulkirth/.gitcookies
+[repo]
+	superprojectChoiceExpire = 1676913308
+	superprojectChoice = true
+[url "persistent-https://googleplex-android.git.corp.google.com"]
+	insteadof = https://googleplex-android.googlesource.com
+	insteadof = https://googleplex-android-review.googlesource.com
+[url "persistent-https://android.git.corp.google.com"]
+	insteadof = https://android.googlesource.com
+	insteadof = https://android-review.googlesource.com
+[url "persistent-https://partner-android.git.corp.google.com"]
+	insteadof = https://partner-android.googlesource.com
+	insteadof = https://partner-android-review.googlesource.com
