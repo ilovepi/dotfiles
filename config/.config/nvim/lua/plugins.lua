@@ -70,7 +70,15 @@ return require('packer').startup(function()
   use 'ethanholz/nvim-lastplace'
   use 'godlygeek/tabular'
   use 'windwp/nvim-autopairs'
-  use "jiaoshijie/undotree"
+  use {
+    "jiaoshijie/undotree",
+    config = function()
+      require('undotree').setup()
+    end,
+    requires = {
+      "nvim-lua/plenary.nvim"
+    }
+  }
   --use 'nathanaelkane/vim-indent-guides'
   use "lukas-reineke/indent-blankline.nvim"
   use 'osyo-manga/vim-over'
