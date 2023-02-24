@@ -140,6 +140,9 @@ return require('packer').startup(function()
   use "rcarriga/nvim-dap-ui"
   use "theHamsta/nvim-dap-virtual-text"
 
+  -- LLVM
+  -- use '~/llvm-sysroot/llvm/utils/vim/'
+
   if packer_bootstrap then
     require('packer').sync()
   end
