@@ -101,7 +101,7 @@ return require('packer').startup(function()
   use { "ellisonleao/glow.nvim" }
   use "rcarriga/nvim-notify"
   use "j-hui/fidget.nvim"
-  use {"kalcutter/vim-gn"}
+  use { "kalcutter/vim-gn" }
 
   use {
     "folke/todo-comments.nvim",
