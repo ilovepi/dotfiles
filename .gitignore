@@ -21,6 +21,26 @@ cscope.po.out
 vscode/.config/Code/User
 *.zwc
 packer_compiled.lua
+config/.config/.gsd*
+config/.config/GNOME*
+config/.config/chrome*
+config/.config/dconf
+config/.config/evolution
+config/.config/fish
+config/.config/flutter
+config/.config/gcloud
+config/.config/glinux
+config/.config/goobuntu*
+config/.config/google*
+config/.config/gtk*
+config/.config/htop
+config/.config/ibus
+config/.config/kaleido
+config/.config/mimeapps.list
+config/.config/pulse
+config/.config/user*
+config/.config/xdg*
+config/.config/gitui
 
 scripts/clang-format-all
 # End of https://www.gitignore.io/api/tags
