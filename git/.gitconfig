@@ -101,7 +101,7 @@
 [http]
 	cookiefile = /usr/local/google/home/paulkirth/.gitcookies
 [repo]
-	superprojectChoiceExpire = 1676913308
+	superprojectChoiceExpire = 1681495366
 	superprojectChoice = true
 [url "persistent-https://googleplex-android.git.corp.google.com"]
 	insteadof = https://googleplex-android.googlesource.com
@@ -112,3 +112,8 @@
 [url "persistent-https://partner-android.git.corp.google.com"]
 	insteadof = https://partner-android.googlesource.com
 	insteadof = https://partner-android-review.googlesource.com
+[url "sso://fuchsia/"]
+	insteadOf = https://fuchsia.googlesource.com/
+	insteadOf = https://fuchsia-review.googlesource.com/
+	insteadOf = http://fuchsia.googlesource.com/
+	insteadOf = http://fuchsia-review.googlesource.com/

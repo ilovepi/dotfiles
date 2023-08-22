@@ -40,6 +40,8 @@ if type batcat > /dev/null; then
     alias bat=batcat
 fi
 
+alias batg='bat --style=grid'
+
 if type ls++ > /dev/null; then
     alias ls=ls++
 elif type exa > /dev/null; then
