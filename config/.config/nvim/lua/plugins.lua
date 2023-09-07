@@ -160,6 +160,10 @@ return require('packer').startup(function()
     use "mfussenegger/nvim-dap"
     use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use "theHamsta/nvim-dap-virtual-text"
+    -- packer example:
+    use {
+      "LunarVim/bigfile.nvim",
+    }
 
     if packer_bootstrap then
         require('packer').sync()
