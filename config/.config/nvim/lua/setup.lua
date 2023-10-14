@@ -13,11 +13,12 @@ require 'nvim-lastplace'.setup {
     lastplace_open_folds = true,
 }
 
-require("indent_blankline").setup {
-    -- for example, context is off by default, use this to turn it on
-    show_current_context = true,
-    show_current_context_start = true,
-}
+require("ibl").setup()
+-- require("indent_blankline").setup {
+--     -- for example, context is off by default, use this to turn it on
+--     show_current_context = true,
+--     show_current_context_start = true,
+-- }
 
 require('Comment').setup {
     ---LHS of toggle mappings in NORMAL + VISUAL mode

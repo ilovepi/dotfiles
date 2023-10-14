@@ -1,11 +1,28 @@
-local fn = vim.fn
-
+-- local fn = vim.fn
 -- Auto install packer.nvim if not exists
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-    packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
-            install_path })
+-- local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+-- if fn.empty(fn.glob(install_path)) > 0 then
+--     packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
+--             install_path })
+-- end
+
+local function bootstrap_pckr()
+  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+
+  if not vim.loop.fs_stat(pckr_path) then
+    vim.fn.system({
+      'git',
+      'clone',
+      "--filter=blob:none",
+      'https://github.com/lewis6991/pckr.nvim',
+      pckr_path
+    })
+  end
+
+  vim.opt.rtp:prepend(pckr_path)
 end
+
+bootstrap_pckr()
 
 --- options
 
@@ -222,10 +239,6 @@ vim.g.gruvbox_material_better_performance = 1
 -- vim.g.serenade_diagnostic_line_highlight = 1
 -- vim.g.serenade_better_performance = 1
 
-
---- UndoTree
-vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
-
 --- Indent guides
 vim.g.indent_guides_start_level = 2
 vim.g.indent_guides_guide_size = 1
@@ -311,6 +324,10 @@ require('setup')
 require('lsp')
 
 require('dapconfig')
+
+--- UndoTree
+vim.keymap.set('n', '<leader>u', require('undotree').toggle, { noremap = true, silent = true })
+
 
 vim.cmd("colorscheme gruvbox-material")
 

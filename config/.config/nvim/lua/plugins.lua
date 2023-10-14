@@ -1,99 +1,121 @@
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
-]])
+-- vim.cmd([[
+--   augroup packer_user_config
+--     autocmd!
+--     autocmd BufWritePost plugins.lua source <afile> | PackerSync
+--   augroup end
+-- ]])
 
 
-return require('packer').startup(function()
-    local use = require('packer').use
+local cmd = require('pckr.loader.cmd')
+local keys = require('pckr.loader.keys')
 
-    use 'wbthomason/packer.nvim'
+require('pckr').add {
+    'wbthomason/packer.nvim',
     -- Completion
-    use 'Chiel92/vim-autoformat'
-    use 'honza/vim-snippets'
-    use 'norcalli/snippets.nvim'
-    use 'dense-analysis/ale'
-
+    'Chiel92/vim-autoformat',
+    'honza/vim-snippets',
+    'norcalli/snippets.nvim',
+    'dense-analysis/ale',
 
     -- Search & Navigation
-    use 'brooth/far.vim'
-    use { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end }
-    use 'junegunn/fzf.vim'
-    use {
+    'brooth/far.vim',
+    -- { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end },
+    -- 'junegunn/fzf.vim',
+
+    {
+        "arsham/fzfmania.nvim",
+        requires = {
+            "arsham/arshlib.nvim",
+            "junegunn/fzf.vim",
+            "nvim-lua/plenary.nvim",
+            "arsham/listish.nvim",
+            -- uncomment if you want a better ui.
+            {
+              "ibhagwan/fzf-lua",
+              requires = { "kyazdani42/nvim-web-devicons" },
+            },
+        },
+        config = function()
+            require("fzfmania").config({
+                frontend = "fzf-lua", -- uncomment if you want a better ui.
+            })
+        end,
+        event = { "UIEnter" }, -- best way to lazy load this plugin
+    },
+
+    {
         'kyazdani42/nvim-tree.lua',
         requires = { 'kyazdani42/nvim-web-devicons' },
         tag = 'nightly'
-    }
-    use 'wincent/loupe'
+    },
+    'wincent/loupe',
 
     -- Appearance
-    use 'connorholyday/vim-snazzy'
-    use 'flazz/vim-colorschemes'
-    use 'iCyMind/NeoSolarized'
-    use 'morhetz/gruvbox'
-    use 'powerline/fonts'
-    use 'rakr/vim-one'
-    use 'sainnhe/edge'
-    use 'rakr/vim-two-firewatch'
-    use 'b4skyx/serenade'
-    use 'savq/melange'
-    use 'sainnhe/gruvbox-material'
-    use 'kyazdani42/nvim-web-devicons'
-    use 'trevordmiller/nova-vim'
+    'connorholyday/vim-snazzy',
+    'flazz/vim-colorschemes',
+    'iCyMind/NeoSolarized',
+    'morhetz/gruvbox',
+    'powerline/fonts',
+    'rakr/vim-one',
+    'sainnhe/edge',
+    'rakr/vim-two-firewatch',
+    'b4skyx/serenade',
+    'savq/melange',
+    'sainnhe/gruvbox-material',
+    'kyazdani42/nvim-web-devicons',
+    'trevordmiller/nova-vim',
 
     -- Writing
-    use 'junegunn/goyo.vim'
-    use 'lervag/vimtex'
-    use 'reedes/vim-pencil'
-    use 'reedes/vim-wordy'
+    'junegunn/goyo.vim',
+    'lervag/vimtex',
+    'reedes/vim-pencil',
+    'reedes/vim-wordy',
 
     --  Git
-    use 'airblade/vim-gitgutter'
-    use 'jreybert/vimagit'
-    use 'rhysd/committia.vim'
-    use 'tpope/vim-fugitive'
+    'airblade/vim-gitgutter',
+    'jreybert/vimagit',
+    'rhysd/committia.vim',
+    'tpope/vim-fugitive',
 
     -- Languages
-    use 'andreshazard/vim-logreview'
-    use 'ekalinin/Dockerfile.vim'
-    use 'rust-lang/rust.vim'
+    'andreshazard/vim-logreview',
+    'ekalinin/Dockerfile.vim',
+    'rust-lang/rust.vim',
 
     -- Viewing
-    --use 'greyblake/vim-preview'
+    --'greyblake/vim-preview'
 
     -- Vim navigation & editing essentials
-    use 'chrisbra/NrrwRgn'
-    use 'christoomey/vim-tmux-navigator'
-    use 'ethanholz/nvim-lastplace'
-    use 'godlygeek/tabular'
-    use 'windwp/nvim-autopairs'
-    use {
+    'chrisbra/NrrwRgn',
+    'christoomey/vim-tmux-navigator',
+    'ethanholz/nvim-lastplace',
+    'godlygeek/tabular',
+    'windwp/nvim-autopairs',
+    {
         "jiaoshijie/undotree",
         config = function()
             require "undotree".setup {}
         end,
         requires = "nvim-lua/plenary.nvim"
-    }
-    --use 'nathanaelkane/vim-indent-guides'
-    use "lukas-reineke/indent-blankline.nvim"
-    use 'osyo-manga/vim-over'
-    --use 'preservim/nerdcommenter'
-    use 'tpope/vim-repeat'
-    use 'tpope/vim-sleuth'
-    use 'tpope/vim-surround'
+    },
+    --'nathanaelkane/vim-indent-guides'
+    "lukas-reineke/indent-blankline.nvim",
+    'osyo-manga/vim-over',
+    --'preservim/nerdcommenter'
+    'tpope/vim-repeat',
+    'tpope/vim-sleuth',
+    'tpope/vim-surround',
 
-    use 'numToStr/Comment.nvim'
+    'numToStr/Comment.nvim',
 
     -- lua vim stuff
 
-    use {
+    {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
-    }
-    use {
+    },
+    {
         'glepnir/lspsaga.nvim',
         branch = "main",
         config = function()
@@ -103,17 +125,16 @@ return require('packer').startup(function()
             { "nvim-tree/nvim-web-devicons" },
             { "nvim-treesitter/nvim-treesitter" }
         }
-    }
-    use 'glepnir/galaxyline.nvim'
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use {
+    },
+    'glepnir/galaxyline.nvim',
+    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+    {
         'akinsho/bufferline.nvim',
-        tag = "*",
         requires = 'kyazdani42/nvim-web-devicons'
-    }
-    use { "ellisonleao/glow.nvim" }
-    use "rcarriga/nvim-notify"
-    use {
+    },
+    { "ellisonleao/glow.nvim" },
+    "rcarriga/nvim-notify",
+    {
         "j-hui/fidget.nvim",
         tag = 'legacy',
         config = function()
@@ -121,51 +142,47 @@ return require('packer').startup(function()
                 -- options
             }
         end,
-    }
-    use { "kalcutter/vim-gn" }
+    },
+    { "kalcutter/vim-gn" },
 
-    use {
+    {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
         config = function()
             require("todo-comments").setup {
                 -- your configuration comes here
-                -- or leave it empty to use the default settings
+                -- or leave it empty to the default settings
                 -- refer to the configuration section below
             }
         end
-    }
+    },
 
-    -- use {
+    -- {
     --     'lewis6991/spellsitter.nvim',
     --     config = function()
     --         require('spellsitter').setup()
     --     end
     -- }
 
-    use "hrsh7th/nvim-cmp"
-    -- use "hrsh7th/cmp-cmdline"
-    use "hrsh7th/cmp-buffer"
-    use "hrsh7th/cmp-path"
-    use "hrsh7th/cmp-nvim-lua"
-    use "hrsh7th/cmp-nvim-lsp"
-    use "hrsh7th/cmp-nvim-lsp-document-symbol"
-    use 'hrsh7th/cmp-omni'
-    use "saadparwaiz1/cmp_luasnip"
-    use "tamago324/cmp-zsh"
+    "hrsh7th/nvim-cmp",
+    -- "hrsh7th/cmp-cmdline"
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    "hrsh7th/cmp-nvim-lua",
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-nvim-lsp-document-symbol",
+    'hrsh7th/cmp-omni',
+    "saadparwaiz1/cmp_luasnip",
+    "tamago324/cmp-zsh",
 
-    use "L3MON4D3/LuaSnip"
+    "L3MON4D3/LuaSnip",
 
     -- Debug Adapter Protocol
-    use "mfussenegger/nvim-dap"
-    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
-    use "theHamsta/nvim-dap-virtual-text"
+    "mfussenegger/nvim-dap",
+    { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
+    "theHamsta/nvim-dap-virtual-text",
     -- packer example:
-    use {
-      "LunarVim/bigfile.nvim",
-    }
-
-    if packer_bootstrap then
-        require('packer').sync()
-    end
-end)
+    {
+        "LunarVim/bigfile.nvim",
+    },
+}
