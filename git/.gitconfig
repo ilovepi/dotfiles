@@ -1,6 +1,6 @@
 [user]
     name = Paul Kirth
-    email = pk1574@gmail.com
+    email = paulkirth@google.com
 
 [difftool]
     prompt = false
@@ -81,6 +81,8 @@
 [core]
     editor = nvim
     pager = delta --diff-so-fancy
+    untrackedCache = true
+    fsmonitor = true
 
 [color "diff-highlight"]
     oldNormal = red strike
@@ -98,3 +100,13 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
+[repo]
+	superprojectChoiceExpire = 1707778217
+	superprojectChoice = true
+[http]
+	cookiefile = /usr/local/google/home/paulkirth/.gitcookies
+[url "sso://android/"]
+	insteadOf = https://android.googlesource.com/
+	insteadOf = https://android-review.googlesource.com/
+	insteadOf = http://android.googlesource.com/
+	insteadOf = http://android-review.googlesource.com/

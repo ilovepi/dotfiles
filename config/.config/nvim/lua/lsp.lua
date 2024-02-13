@@ -141,7 +141,7 @@ local has_words_before = function()
 end
 
 cmp.setup({
-    view = 'native',
+    -- view = 'native',
     snippet = {
         expand = function(args)
           require('luasnip').lsp_expand(args.body)

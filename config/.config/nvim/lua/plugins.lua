@@ -63,7 +63,7 @@ require('pckr').add {
     'savq/melange',
     'sainnhe/gruvbox-material',
     'kyazdani42/nvim-web-devicons',
-    'trevordmiller/nova-vim',
+    --'trevordmiller/nova-vim',
 
     -- Writing
     'junegunn/goyo.vim',
