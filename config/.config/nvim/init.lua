@@ -1,11 +1,3 @@
--- local fn = vim.fn
--- Auto install packer.nvim if not exists
--- local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
--- if fn.empty(fn.glob(install_path)) > 0 then
---     packer_bootstrap = fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim',
---             install_path })
--- end
-
 local function bootstrap_pckr()
   local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
 
@@ -119,7 +111,6 @@ opt.splitbelow       = true --- Puts new split windows to the bottom of the curr
 opt.shiftwidth       = 4 --- Use indents of 4 spaces
 opt.tabstop          = 4 --- An indentation every four columns
 opt.softtabstop      = 4 --- Let backspace delete indent
-opt.pastetoggle      = "<F12>" --- pastetoggle (sane indentation on pastes)
 
 --- Key Bindings
 

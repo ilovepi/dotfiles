@@ -1,16 +1,8 @@
--- vim.cmd([[
---   augroup packer_user_config
---     autocmd!
---     autocmd BufWritePost plugins.lua source <afile> | PackerSync
---   augroup end
--- ]])
-
 
 local cmd = require('pckr.loader.cmd')
 local keys = require('pckr.loader.keys')
 
 require('pckr').add {
-    'wbthomason/packer.nvim',
     -- Completion
     'Chiel92/vim-autoformat',
     'honza/vim-snippets',
@@ -44,9 +36,8 @@ require('pckr').add {
     },
 
     {
-        'kyazdani42/nvim-tree.lua',
-        requires = { 'kyazdani42/nvim-web-devicons' },
-        tag = 'nightly'
+        'nvim-tree/nvim-tree.lua',
+        requires = { 'nvim-tree/nvim-web-devicons' },
     },
     'wincent/loupe',
 
@@ -110,13 +101,11 @@ require('pckr').add {
 
     -- lua vim stuff
 
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
     {
-        "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
-        "neovim/nvim-lspconfig",
-    },
-    {
-        'glepnir/lspsaga.nvim',
+        'nvimdev/lspsaga.nvim',
         branch = "main",
         config = function()
             require("lspsaga").setup({})
@@ -126,7 +115,7 @@ require('pckr').add {
             { "nvim-treesitter/nvim-treesitter" }
         }
     },
-    'glepnir/galaxyline.nvim',
+    'nvimdev/galaxyline.nvim',
     { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
     {
         'akinsho/bufferline.nvim',
@@ -179,7 +168,8 @@ require('pckr').add {
 
     -- Debug Adapter Protocol
     "mfussenegger/nvim-dap",
-    { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } },
+    { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+    
     "theHamsta/nvim-dap-virtual-text",
     -- packer example:
     {

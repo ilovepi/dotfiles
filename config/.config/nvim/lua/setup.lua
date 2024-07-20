@@ -2,9 +2,9 @@
 require('plugins')
 
 require('myline')
-require 'bufferline'.setup { options = { separator_style = "slant", show_buffer_close_icons = false } }
+require('bufferline').setup({ options = { separator_style = "slant", show_buffer_close_icons = false } })
 require('nvim-autopairs').setup({ check_line_pair = false })
-require 'nvim-tree'.setup {}
+require('nvim-tree').setup()
 
 -- Last Place config
 require 'nvim-lastplace'.setup {
@@ -31,7 +31,7 @@ require('Comment').setup {
     },
 }
 
-require "fidget".setup {}
+require("fidget").setup {}
 
 require("bigfile").setup {
   -- default config

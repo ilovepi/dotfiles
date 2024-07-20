@@ -105,7 +105,7 @@ local function buffer_not_empty()
 end
 
 local function diagnostic_exists()
-  return not vim.tbl_isempty(vim.lsp.buf_get_clients(0))
+  return not vim.tbl_isempty(vim.lsp.get_clients({buffer=bufnr}))
 end
 
 local function wide_enough(width)
