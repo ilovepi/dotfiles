@@ -26,7 +26,7 @@ PATH=$HOME/clang/bin:$PATH
 FUCHSIA=${HOME}/fuchsia
 PATH="${FUCHSIA}/.jiri_root/bin:${PATH}"
 
-if [ -z "${localpath}"]; then
+if [ -z "${localpath}" ]; then
 localpath="${localpath:=${HOME}/.local/bin}"
 for dir in clang go qemu rust gn ninja cmake; do
   localpath="$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64/bin:$localpath"
