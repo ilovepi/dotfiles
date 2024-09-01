@@ -1,0 +1,12 @@
+-- Tabularize
+vim.keymap.set({ "n", "v" }, "<Leader>a&", ":Tabularize /&<CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a=", ":Tabularize /^[^=]*\zs=<CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a=>", ":Tabularize /=><CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a:", ":Tabularize /: <CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a::", ":Tabularize /: \zs<CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a,", ":Tabularize /,<CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a,,", ":Tabularize /,\zs<CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a<Bar>", ":Tabularize /<Bar><CR>")
+vim.keymap.set({ "n", "v" }, "<Leader>a\\", ":Tabularize /\\<CR>")
+
+

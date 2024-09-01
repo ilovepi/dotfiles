@@ -7,7 +7,7 @@ require('pckr').add {
     'Chiel92/vim-autoformat',
     'honza/vim-snippets',
     'norcalli/snippets.nvim',
-    'dense-analysis/ale',
+    -- 'dense-analysis/ale',
 
     -- Search & Navigation
     'brooth/far.vim',
@@ -89,7 +89,6 @@ require('pckr').add {
         end,
         requires = "nvim-lua/plenary.nvim"
     },
-    --'nathanaelkane/vim-indent-guides'
     "lukas-reineke/indent-blankline.nvim",
     'osyo-manga/vim-over',
     --'preservim/nerdcommenter'
