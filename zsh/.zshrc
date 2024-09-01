@@ -89,12 +89,14 @@ bindkey '^x^x' edit-command-line
 
 #zinit cdreplay -q
 
-source /etc/bash_completion.d/g4d
+if [ -d /etc/bash_completion.d/g4d ]; then
+  source /etc/bash_completion.d/g4d
+fi
 
 unalias zi
 eval "$(zoxide init zsh --cmd z)"
 
 if [[ $ZSH_PROFILING ]]; then
-    zprof
+  zprof
 fi
 
