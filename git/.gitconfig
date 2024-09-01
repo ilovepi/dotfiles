@@ -2,6 +2,9 @@
     name = Paul Kirth
     email = pk1574@gmail.com
 
+[includeIF "gitdir:/usr/local/google"]
+    path = .gitconfig-work
+
 [difftool]
     prompt = false
 
