@@ -56,7 +56,14 @@ require("mason-lspconfig").setup({
 local lspconfig = require("lspconfig")
 
 lspconfig.clangd.setup {
-    cmd = { "clangd", "--background-index", "--clang-tidy" },
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--background-index-priority=background",
+        "--clang-tidy",
+        "--malloc-trim",
+        -- "-j", "8"
+    },
     on_attach = on_attach,
     capabilities = capabilities,
 }
