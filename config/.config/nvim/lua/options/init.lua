@@ -1,5 +1,5 @@
-local o            = vim.o
-local opt          = vim.opt
+local o   = vim.o
+local opt = vim.opt
 
 --- Make sure various directories are in place...
 local function init_dirs()
