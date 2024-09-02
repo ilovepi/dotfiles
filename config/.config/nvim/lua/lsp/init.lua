@@ -117,6 +117,7 @@ require 'nvim-treesitter.configs'.setup {
         "dockerfile",
         "dot",
         "go",
+        "gn",
         "html",
         "javascript",
         "json",
