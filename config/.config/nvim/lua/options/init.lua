@@ -52,6 +52,7 @@ opt.number         = true --- Line numbers on
 opt.relativenumber = true --- Line numbers on
 opt.showmatch      = true --- Show matching brackets/parenthesis
 opt.incsearch      = true --- Find as you type search
+opt.inccommand     = "split" --- show the command as you type!
 opt.hlsearch       = true --- Highlight search terms
 opt.winminheight   = 0 --- Windows can be 0 line high
 opt.ignorecase     = true --- Case insensitive search
