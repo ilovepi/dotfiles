@@ -16,15 +16,15 @@ alias sxhkdrc="$EDITOR ~/.config/bspwm/sxhkd/sxhkdrc"
 alias fim='$EDITOR $(fd | fzf)'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
-alias l='ls -lhF'     #size,show type,human readable
-alias la='ls -lhAF'   #long list,human readable,show almost all,show type
-alias lr='ls -thRF'   #sorted by date,recursive,show type,human readable
-alias lt='ls -lhtFh'   #long list,sorted by date,show type,human readable
+alias l='ls -lhF=auto'     #size,show type,human readable
+alias la='ls -lhAF=auto'   #long list,human readable,show almost all,show type
+alias lr='ls -thRF=auto'   #sorted by date,recursive,show type,human readable
+alias lt='ls -lthF=auto'   #long list,sorted by date,show type,human readable
 alias ll='ls -l'      #long list
 alias ldot='ls -ld .*'
-alias lS='ls -1FSsh'
-alias lart='ls -1Fcart'
-alias lrt='ls -1Fcrt'
+alias lS='ls -F=auto -1hSs=size'
+alias lart='ls -1cartF=auto'
+alias lrt='ls -1crtF=auto'
 alias lh='ls -ld .?*'
 
 # enable diff color if possible.
@@ -41,11 +41,11 @@ if type batcat > /dev/null; then
 fi
 
 if type eza > /dev/null; then
-    alias ls='eza --icons'
-    alias la='ls -lahF'   #long list,show almost all,show type,human readable
-    alias lt='ls -lFht=modified'   #long list,sorted by date,show type,human readable
-    alias lart='ls -1Fart=modified'
-    alias lrt='ls -1Frt=modified'
+    alias ls='eza --icons=auto'
+    alias la='ls -lahF=auto'   #long list,show almost all,show type,human readable
+    alias lt='ls -lF=auto -ht=modified'   #long list,sorted by date,show type,human readable
+    alias lart='ls -1F=auto -art=modified'
+    alias lrt='ls -1F=auto -rt=modified'
     alias tree='ls -T'
 fi
 
@@ -225,4 +225,6 @@ alias awa="arcolinux-welcome-app"
 #remove
 alias rmgitcache="rm -r ~/.cache/git"
 
-
+# update a fork --- probably should have a better alias
+alias gpm="git pull upstream/main --ff-only"
+alias gpmgp="gpm && gp"
