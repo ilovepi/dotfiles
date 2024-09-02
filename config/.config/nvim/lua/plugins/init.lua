@@ -1,19 +1,17 @@
-
 local cmd = require('pckr.loader.cmd')
 local keys = require('pckr.loader.keys')
 
 require('pckr').add {
-    -- Completion
-    'Chiel92/vim-autoformat',
-    'honza/vim-snippets',
-    'norcalli/snippets.nvim',
-    -- 'dense-analysis/ale',
-
-    -- Search & Navigation
+    --- Search & Navigation
     'brooth/far.vim',
-    -- { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end },
-    -- 'junegunn/fzf.vim',
-
+    {
+        "arsham/listish.nvim",
+        requires = {
+            "arsham/arshlib.nvim",
+            "nvim-treesitter/nvim-treesitter-textobjects"
+        },
+        config = function() require("listish").config({}) end,
+    },
     {
         "arsham/fzfmania.nvim",
         requires = {
@@ -21,12 +19,12 @@ require('pckr').add {
             "junegunn/fzf.vim",
             "nvim-lua/plenary.nvim",
             "arsham/listish.nvim",
-            -- uncomment if you want a better ui.
             {
-              "ibhagwan/fzf-lua",
-              requires = { "kyazdani42/nvim-web-devicons" },
+                "ibhagwan/fzf-lua",
+                requires = { "kyazdani42/nvim-web-devicons" },
             },
         },
+        after = { "arsham/listish.nvim", "ibhagwan/fzf-lua" },
         config = function()
             require("fzfmania").config({
                 frontend = "fzf-lua", -- uncomment if you want a better ui.
@@ -34,14 +32,13 @@ require('pckr').add {
         end,
         event = { "UIEnter" }, -- best way to lazy load this plugin
     },
-
     {
         'nvim-tree/nvim-tree.lua',
         requires = { 'nvim-tree/nvim-web-devicons' },
     },
     'wincent/loupe',
 
-    -- Appearance
+    --- Appearance
     'connorholyday/vim-snazzy',
     'flazz/vim-colorschemes',
     'iCyMind/NeoSolarized',
@@ -54,31 +51,23 @@ require('pckr').add {
     'savq/melange',
     'sainnhe/gruvbox-material',
     'kyazdani42/nvim-web-devicons',
-    --'trevordmiller/nova-vim',
 
-    -- Writing
+    --- Writing
     'junegunn/goyo.vim',
     'lervag/vimtex',
     'reedes/vim-pencil',
     'reedes/vim-wordy',
 
-    --  Git
-    'airblade/vim-gitgutter',
     ---  Git
     "lewis6991/gitsigns.nvim",
     'jreybert/vimagit',
     'rhysd/committia.vim',
     'tpope/vim-fugitive',
 
-    -- Languages
-    'andreshazard/vim-logreview',
-    'ekalinin/Dockerfile.vim',
-    'rust-lang/rust.vim',
-
-    -- Viewing
+    --- Viewing
     --'greyblake/vim-preview'
 
-    -- Vim navigation & editing essentials
+    --- Vim navigation & editing essentials
     'chrisbra/NrrwRgn',
     'christoomey/vim-tmux-navigator',
     'ethanholz/nvim-lastplace',
@@ -93,48 +82,10 @@ require('pckr').add {
     },
     "lukas-reineke/indent-blankline.nvim",
     'osyo-manga/vim-over',
-    --'preservim/nerdcommenter'
     'tpope/vim-repeat',
     'tpope/vim-sleuth',
     'tpope/vim-surround',
-
     'numToStr/Comment.nvim',
-
-    -- lua vim stuff
-
-    "williamboman/mason.nvim",
-    "williamboman/mason-lspconfig.nvim",
-    "neovim/nvim-lspconfig",
-    {
-        'nvimdev/lspsaga.nvim',
-        branch = "main",
-        config = function()
-            require("lspsaga").setup({})
-        end,
-        dependencies = {
-            { "nvim-tree/nvim-web-devicons" },
-            { "nvim-treesitter/nvim-treesitter" }
-        }
-    },
-    'nvimdev/galaxyline.nvim',
-    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
-    {
-        'akinsho/bufferline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons'
-    },
-    { "ellisonleao/glow.nvim" },
-    "rcarriga/nvim-notify",
-    {
-        "j-hui/fidget.nvim",
-        tag = 'legacy',
-        config = function()
-            require("fidget").setup {
-                -- options
-            }
-        end,
-    },
-    { "kalcutter/vim-gn" },
-
     {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
@@ -147,13 +98,51 @@ require('pckr').add {
         end
     },
 
-    -- {
-    --     'lewis6991/spellsitter.nvim',
-    --     config = function()
-    --         require('spellsitter').setup()
-    --     end
-    -- }
+    --- FileType Support
+    'andreshazard/vim-logreview',
+    'ekalinin/Dockerfile.vim',
+    'rust-lang/rust.vim',
+    "kalcutter/vim-gn",
 
+    --- Lsp Config
+    "williamboman/mason.nvim",
+    "williamboman/mason-lspconfig.nvim",
+    "neovim/nvim-lspconfig",
+    {
+        'nvimdev/lspsaga.nvim',
+        branch = "main",
+        config = function()
+            require("lspsaga").setup({})
+        end,
+        dependencies = {
+            { "nvim-tree/nvim-web-devicons" },
+            { "nvim-treesitter/nvim-treesitter" },
+        }
+    },
+    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+
+    --- UI
+    'nvimdev/galaxyline.nvim',
+    {
+        'akinsho/bufferline.nvim',
+        requires = 'kyazdani42/nvim-web-devicons',
+    },
+    {
+        "ellisonleao/glow.nvim",
+        config = function() require("glow").setup() end,
+    },
+    "rcarriga/nvim-notify",
+    {
+        "j-hui/fidget.nvim",
+        tag = 'legacy',
+        config = function()
+            require("fidget").setup {
+                -- options
+            }
+        end,
+    },
+
+    --- Completions
     "hrsh7th/nvim-cmp",
     "hrsh7th/cmp-cmdline",
     "hrsh7th/cmp-buffer",
@@ -165,15 +154,15 @@ require('pckr').add {
     "saadparwaiz1/cmp_luasnip",
     "tamago324/cmp-zsh",
 
+    --- Snippets
+    'honza/vim-snippets',
+    'norcalli/snippets.nvim',
     "L3MON4D3/LuaSnip",
 
-    -- Debug Adapter Protocol
+    --- Debug Adapter Protocol
     "mfussenegger/nvim-dap",
     { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-    
+
     "theHamsta/nvim-dap-virtual-text",
-    -- packer example:
-    {
-        "LunarVim/bigfile.nvim",
-    },
+    "LunarVim/bigfile.nvim",
 }
