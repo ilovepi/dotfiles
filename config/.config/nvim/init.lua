@@ -17,7 +17,6 @@ end
 bootstrap_pckr()
 
 require("options")
-require("theme")
 require("plugin_config.before")
 require("keybindings")
 require('plugins')
@@ -26,5 +25,3 @@ require('lsp')
 require('dapconfig')
 require("plugin_config.after")
 
---- Set the colorscheme last, well after gruvbox-material is loaded
-vim.cmd("colorscheme gruvbox-material")
