@@ -79,7 +79,6 @@ lspconfig.lua_ls.setup {
     settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
 }
 
-
 --vim.lsp.set_log_level("debug")
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
