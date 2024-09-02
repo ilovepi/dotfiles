@@ -64,6 +64,8 @@ require('pckr').add {
 
     --  Git
     'airblade/vim-gitgutter',
+    ---  Git
+    "lewis6991/gitsigns.nvim",
     'jreybert/vimagit',
     'rhysd/committia.vim',
     'tpope/vim-fugitive',

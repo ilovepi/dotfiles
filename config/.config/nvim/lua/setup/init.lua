@@ -3,6 +3,7 @@ require('myline')
 require('bufferline').setup({ options = { separator_style = "slant", show_buffer_close_icons = false } })
 require('nvim-autopairs').setup({ check_line_pair = false })
 require('nvim-tree').setup()
+require("gitsigns").setup()
 
 -- Last Place config
 require 'nvim-lastplace'.setup {
