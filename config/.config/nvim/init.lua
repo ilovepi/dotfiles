@@ -1,27 +1,8 @@
-local function bootstrap_pckr()
-  local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
-
-  if not vim.loop.fs_stat(pckr_path) then
-    vim.fn.system({
-      'git',
-      'clone',
-      "--filter=blob:none",
-      'https://github.com/lewis6991/pckr.nvim',
-      pckr_path
-    })
-  end
-
-  vim.opt.rtp:prepend(pckr_path)
-end
-
-bootstrap_pckr()
-
-require("options")
-require("plugin_config.before")
-require("keybindings")
-require('plugins')
-require('setup')
-require('lsp')
-require('dapconfig')
-require("plugin_config.after")
-
+require("options")     --- neovim options
+require("before")      --- configs that run before plugins
+require("keybindings") --- keybindings
+require('plugins')     --- load plugins w/ pckr
+require('setup')       --- setup plugins
+require('lsp')         --- setup lsp & snippets
+require('dapconfig')   --- debugger config
+require("after")       --- configs that run after plugins

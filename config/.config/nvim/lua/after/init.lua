@@ -1,0 +1,5 @@
+require("after.fzf")
+require("after.tabularize")
+require("after.undotree")
+require("after.vimtex")
+require("after.gruvbox")

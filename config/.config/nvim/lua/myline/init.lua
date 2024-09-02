@@ -1,10 +1,10 @@
-local gl = require 'galaxyline'
+local gl = require('galaxyline')
 local gls = gl.section
-local devicons = require 'nvim-web-devicons'
-local vcs = require 'galaxyline.provider_vcs'
-local vcs_condition = require 'galaxyline.condition'
+local devicons = require('nvim-web-devicons')
+local vcs = require('galaxyline.provider_vcs')
+local vcs_condition = require('galaxyline.condition')
 
-gl.short_line_list = {'vim-plug', 'tagbar', 'Mundo', 'MundoDiff'}
+gl.short_line_list = { 'vim-plug', 'tagbar', 'Mundo', 'MundoDiff' }
 
 -- Gruvbox
 local colors = {
@@ -44,20 +44,20 @@ local colors = {
 }
 
 local mode_map = {
-  ['n'] = {'NORMAL', colors.fg3, colors.bg2},
+  ['n'] = { 'NORMAL', colors.fg3, colors.bg2 },
   -- ['n'] = {'NORMAL', colors.bright_green, colors.faded_green},
-  ['i'] = {'INSERT', colors.bright_blue, colors.faded_blue},
-  ['R'] = {'REPLACE', colors.bright_red, colors.faded_red},
-  ['v'] = {'VISUAL', colors.bright_orange, colors.faded_orange},
-  ['V'] = {'V-LINE', colors.bright_orange, colors.faded_orange},
-  ['c'] = {'COMMAND', colors.bright_yellow, colors.faded_yellow},
-  ['s'] = {'SELECT', colors.bright_orange, colors.faded_orange},
-  ['S'] = {'S-LINE', colors.bright_orange, colors.faded_orange},
-  ['t'] = {'TERMINAL', colors.bright_aqua, colors.faded_aqua},
-  [''] = {'V-BLOCK', colors.bright_orange, colors.faded_orange},
-  [''] = {'S-BLOCK', colors.bright_orange, colors.faded_orange},
-  ['Rv'] = {'VIRTUAL'},
-  ['rm'] = {'--MORE'},
+  ['i'] = { 'INSERT', colors.bright_blue, colors.faded_blue },
+  ['R'] = { 'REPLACE', colors.bright_red, colors.faded_red },
+  ['v'] = { 'VISUAL', colors.bright_orange, colors.faded_orange },
+  ['V'] = { 'V-LINE', colors.bright_orange, colors.faded_orange },
+  ['c'] = { 'COMMAND', colors.bright_yellow, colors.faded_yellow },
+  ['s'] = { 'SELECT', colors.bright_orange, colors.faded_orange },
+  ['S'] = { 'S-LINE', colors.bright_orange, colors.faded_orange },
+  ['t'] = { 'TERMINAL', colors.bright_aqua, colors.faded_aqua },
+  [''] = { 'V-BLOCK', colors.bright_orange, colors.faded_orange },
+  [''] = { 'S-BLOCK', colors.bright_orange, colors.faded_orange },
+  ['Rv'] = { 'VIRTUAL' },
+  ['rm'] = { '--MORE' },
 }
 
 local sep = {
@@ -88,7 +88,7 @@ local function mode_hl()
   local mode = mode_map[vim.fn.mode()]
   if mode == nil then
     mode = mode_map['v']
-    return {'V-BLOCK', mode[2], mode[3]}
+    return { 'V-BLOCK', mode[2], mode[3] }
   end
   return mode
 end
@@ -105,7 +105,7 @@ local function buffer_not_empty()
 end
 
 local function diagnostic_exists()
-  return not vim.tbl_isempty(vim.lsp.get_clients({buffer=bufnr}))
+  return not vim.tbl_isempty(vim.lsp.get_clients({ buffer = bufnr }))
 end
 
 local function wide_enough(width)
@@ -178,65 +178,65 @@ gls.left[5] = {
       return ''
     end,
     icon = '   ',
-    highlight = {colors.bright_red, colors.bg1},
+    highlight = { colors.bright_red, colors.bg1 },
   }
 }
 gls.left[6] = {
   GitIcon = {
-    provider = function ()
+    provider = function()
       if vcs_condition.check_git_workspace() and wide_enough(85) then
         return '   '
       end
       return ''
     end,
-    highlight = {colors.bright_red, colors.bg1},
+    highlight = { colors.bright_red, colors.bg1 },
   }
 }
 gls.left[7] = {
   GitBranch = {
-    provider = function ()
+    provider = function()
       if vcs_condition.check_git_workspace() and wide_enough(85) then
         return vcs.get_git_branch()
       end
       return ''
     end,
-    highlight = {colors.fg2, colors.bg1},
+    highlight = { colors.fg2, colors.bg1 },
   }
 }
 gls.left[8] = {
   DiffAdd = {
-    provider = function ()
+    provider = function()
       if vcs_condition.check_git_workspace() and wide_enough(95) then
         return vcs.diff_add()
       end
       return ''
     end,
     icon = ' ',
-    highlight = {colors.bright_green, colors.bg1},
+    highlight = { colors.bright_green, colors.bg1 },
   }
 }
 gls.left[9] = {
   DiffModified = {
-    provider = function ()
+    provider = function()
       if vcs_condition.check_git_workspace() and wide_enough(95) then
         return vcs.diff_modified()
       end
       return ''
     end,
     icon = ' ',
-    highlight = {colors.bright_orange, colors.bg1},
+    highlight = { colors.bright_orange, colors.bg1 },
   }
 }
 gls.left[10] = {
   DiffRemove = {
-    provider = function ()
+    provider = function()
       if vcs_condition.check_git_workspace() and wide_enough(95) then
         return vcs.diff_remove()
       end
       return ''
     end,
     icon = ' ',
-    highlight = {colors.bright_red, colors.bg1},
+    highlight = { colors.bright_red, colors.bg1 },
   }
 }
 
@@ -252,31 +252,31 @@ gls.right[2] = {
         return ''
       end
     end,
-    highlight = {colors.bright_green, colors.bg1},
+    highlight = { colors.bright_green, colors.bg1 },
   }
 }
 gls.right[3] = {
   DiagnosticWarn = {
     provider = function()
-      local opt ={}
+      local opt = {}
       opt['severity'] = 'Warn'
       local n = table.getn(vim.diagnostic.get(0, opt))
       if n == 0 then return '' end
       return string.format(' %s %d ', icons.warning, n)
     end,
-    highlight = {colors.bright_yellow, colors.bg1},
+    highlight = { colors.bright_yellow, colors.bg1 },
   }
 }
 gls.right[4] = {
   DiagnosticError = {
     provider = function()
-      local opt ={}
+      local opt = {}
       opt['severity'] = 'Error'
-      local n = table.getn(vim.diagnostic.get(0, opt)) 
+      local n = table.getn(vim.diagnostic.get(0, opt))
       if n == 0 then return '' end
       return string.format(' %s %d ', icons.error, n)
     end,
-    highlight = {colors.bright_red, colors.bg1},
+    highlight = { colors.bright_red, colors.bg1 },
   }
 }
 gls.right[5] = {
@@ -312,7 +312,7 @@ gls.right[8] = {
 }
 gls.right[9] = {
   PercentInfo = {
-    provider = function ()
+    provider = function()
       if not buffer_not_empty() or not wide_enough(65) then return '' end
       local percent = math.floor(100 * vim.fn.line('.') / vim.fn.line('$'))
       return string.format(' %s %s%s', icons.page, percent, '% ')
@@ -329,17 +329,17 @@ local short_map = {
   ['MundoDiff'] = 'Diff',
 }
 
-function has_file_type()
-    local f_type = vim.bo.filetype
-    if not f_type or f_type == '' then
-        return false
-    end
-    return true
+local function has_file_type()
+  local f_type = vim.bo.filetype
+  if not f_type or f_type == '' then
+    return false
+  end
+  return true
 end
 
 gls.short_line_left[1] = {
   BufferType = {
-    provider = function ()
+    provider = function()
       local label, fg, nested_fg = unpack(mode_hl())
       highlight('GalaxyViMode', colors.bg1, fg)
       highlight('GalaxyViModeInv', fg, nested_fg)

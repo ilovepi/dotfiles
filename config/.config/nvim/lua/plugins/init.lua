@@ -1,7 +1,25 @@
+local function bootstrap_pckr()
+    local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
+
+    if not vim.loop.fs_stat(pckr_path) then
+        vim.fn.system({
+            'git',
+            'clone',
+            "--filter=blob:none",
+            'https://github.com/lewis6991/pckr.nvim',
+            pckr_path
+        })
+    end
+
+    vim.opt.rtp:prepend(pckr_path)
+end
+
+bootstrap_pckr()
+
 local cmd = require('pckr.loader.cmd')
 local keys = require('pckr.loader.keys')
 
-require('pckr').add {
+require('pckr').add({
     --- Search & Navigation
     'brooth/far.vim',
     {
@@ -35,6 +53,9 @@ require('pckr').add {
     {
         'nvim-tree/nvim-tree.lua',
         requires = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require('nvim-tree').setup()
+        end,
     },
     'wincent/loupe',
 
@@ -59,7 +80,12 @@ require('pckr').add {
     'reedes/vim-wordy',
 
     ---  Git
-    "lewis6991/gitsigns.nvim",
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end,
+    },
     'jreybert/vimagit',
     'rhysd/committia.vim',
     'tpope/vim-fugitive',
@@ -70,9 +96,24 @@ require('pckr').add {
     --- Vim navigation & editing essentials
     'chrisbra/NrrwRgn',
     'christoomey/vim-tmux-navigator',
-    'ethanholz/nvim-lastplace',
     'godlygeek/tabular',
-    'windwp/nvim-autopairs',
+    {
+        'ethanholz/nvim-lastplace',
+        config = function()
+            require 'nvim-lastplace'.setup({
+                lastplace_ignore_buftype = { "quickfix", "nofile", "help" },
+                lastplace_ignore_filetype = { "gitcommit", "gitrebase" },
+                lastplace_open_folds = true,
+            })
+        end,
+
+    },
+    {
+        'windwp/nvim-autopairs',
+        config = function()
+            require('nvim-autopairs').setup({ check_line_pair = false })
+        end,
+    },
     {
         "jiaoshijie/undotree",
         config = function()
@@ -80,12 +121,31 @@ require('pckr').add {
         end,
         requires = "nvim-lua/plenary.nvim"
     },
-    "lukas-reineke/indent-blankline.nvim",
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        config = function()
+            require("ibl").setup()
+        end,
+    },
     'osyo-manga/vim-over',
     'tpope/vim-repeat',
     'tpope/vim-sleuth',
     'tpope/vim-surround',
-    'numToStr/Comment.nvim',
+    {
+        'numToStr/Comment.nvim',
+        config = function()
+            require('Comment').setup({
+                ---LHS of toggle mappings in NORMAL + VISUAL mode
+                ---@type table
+                toggler = {
+                    ---Line-comment toggle keymap
+                    line = 'gcc',
+                    ---Block-comment toggle keymap
+                    block = 'gbc',
+                },
+            })
+        end,
+    },
     -- 'folke/trouble.nvim',
     {
         "folke/todo-comments.nvim",
@@ -127,6 +187,14 @@ require('pckr').add {
     {
         'akinsho/bufferline.nvim',
         requires = 'kyazdani42/nvim-web-devicons',
+        config = function()
+            require('bufferline').setup({
+                options = {
+                    separator_style = "slant",
+                    show_buffer_close_icons = false
+                },
+            })
+        end,
     },
     {
         "ellisonleao/glow.nvim",
@@ -137,9 +205,7 @@ require('pckr').add {
         "j-hui/fidget.nvim",
         tag = 'legacy',
         config = function()
-            require("fidget").setup {
-                -- options
-            }
+            require("fidget").setup({})
         end,
     },
 
@@ -162,8 +228,25 @@ require('pckr').add {
 
     --- Debug Adapter Protocol
     "mfussenegger/nvim-dap",
-    { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
-
+    { "rcarriga/nvim-dap-ui",            requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     "theHamsta/nvim-dap-virtual-text",
-    "LunarVim/bigfile.nvim",
-}
+    {
+        "LunarVim/bigfile.nvim",
+        config = function()
+            require("bigfile").setup({
+                -- default config
+                filesize = 8, -- size of the file in MiB, the plugin round file sizes to the closest MiB
+                pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
+                features = { -- features to disable
+                    "indent_blankline",
+                    "lsp",
+                    "treesitter",
+                    "syntax",
+                    "matchparen",
+                    "vimopts",
+                    "filetype",
+                },
+            })
+        end,
+    },
+})
