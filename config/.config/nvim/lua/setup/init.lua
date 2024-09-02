@@ -1,6 +1,4 @@
--- Install plugins
-require('plugins')
-
+-- Setup plugins
 require('myline')
 require('bufferline').setup({ options = { separator_style = "slant", show_buffer_close_icons = false } })
 require('nvim-autopairs').setup({ check_line_pair = false })
