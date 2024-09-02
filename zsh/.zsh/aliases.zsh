@@ -16,15 +16,15 @@ alias sxhkdrc="$EDITOR ~/.config/bspwm/sxhkd/sxhkdrc"
 alias fim='$EDITOR $(fd | fzf)'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
-alias l='ls -lhF=auto'     #size,show type,human readable
-alias la='ls -lhAF=auto'   #long list,human readable,show almost all,show type
-alias lr='ls -thRF=auto'   #sorted by date,recursive,show type,human readable
-alias lt='ls -lthF=auto'   #long list,sorted by date,show type,human readable
+alias l='ls -lFh'     #size,show type,human readable
+alias la='ls -lAFh'   #long list,show almost all,show type,human readable
+alias lr='ls -tRFh'   #sorted by date,recursive,show type,human readable
+alias lt='ls -ltFh'   #long list,sorted by date,show type,human readable
 alias ll='ls -l'      #long list
 alias ldot='ls -ld .*'
-alias lS='ls -F=auto -1hSs=size'
-alias lart='ls -1cartF=auto'
-alias lrt='ls -1crtF=auto'
+alias lS='ls -1FSsh'
+alias lart='ls -1Fcart'
+alias lrt='ls -1Fcrt'
 alias lh='ls -ld .?*'
 
 # enable diff color if possible.
@@ -42,10 +42,13 @@ fi
 
 if type eza > /dev/null; then
     alias ls='eza --icons=auto'
-    alias la='ls -lahF=auto'   #long list,show almost all,show type,human readable
-    alias lt='ls -lF=auto -ht=modified'   #long list,sorted by date,show type,human readable
-    alias lart='ls -1F=auto -art=modified'
-    alias lrt='ls -1F=auto -rt=modified'
+    alias l='ls -lhF auto'
+    alias la='ls -lahF auto'
+    alias lS='ls -F auto -1hSs=size'
+    alias lt='ls -lF auto -ht=modified'
+    alias lr='ls -hRF auto -t=modified'
+    alias lrt='ls -1F auto -rt=modified'
+    alias lart='ls -1F auto -art=modified'
     alias tree='ls -T'
 fi
 
