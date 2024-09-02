@@ -209,12 +209,17 @@ cmp.setup.cmdline('/', {
     }
 })
 
--- Use cmdline & path source for ':'
+-- `:` cmdline setup.
 cmp.setup.cmdline(':', {
-    completion = { autocomplete = false },
+    mapping = cmp.mapping.preset.cmdline(),
     sources = cmp.config.sources({
         { name = 'path' }
     }, {
-        { name = 'cmdline' }
+        {
+            name = 'cmdline',
+            option = {
+                ignore_cmds = { 'Man', '!' }
+            }
+        }
     })
 })
