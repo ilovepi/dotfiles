@@ -86,6 +86,7 @@ require('pckr').add {
     'tpope/vim-sleuth',
     'tpope/vim-surround',
     'numToStr/Comment.nvim',
+    -- 'folke/trouble.nvim',
     {
         "folke/todo-comments.nvim",
         requires = "nvim-lua/plenary.nvim",
