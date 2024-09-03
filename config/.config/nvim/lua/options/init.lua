@@ -18,9 +18,7 @@ o.mouse            = 'a'  --- Automatically enable mouse usage
 o.mousehide        = true --- Hide the mouse cursor while typing
 o.clipboard        = 'unnamed,unnamedplus'
 
---- Always switch to the current file directory
-o.autochdir        = true
-
+o.autochdir        = true                              --- Always switch to the current file directory
 o.shortmess        = vim.o.shortmess .. 'filmnrxoOtT'  --- Abbrev. of messages (avoids 'hit enter')
 o.viewoptions      = 'folds,options,cursor,unix,slash' --- Better Unix / Windows compatibility
 o.virtualedit      = 'onemore'                         --- Allow for cursor beyond last character
