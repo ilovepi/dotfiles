@@ -18,7 +18,6 @@ cscope.files
 cscope.out
 cscope.in.out
 cscope.po.out
-zsh/.zsh/*.zwc
 vscode/.config/Code/User
 *.zwc
 packer_compiled.lua
