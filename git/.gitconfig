@@ -104,7 +104,7 @@
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
 [repo]
-	superprojectChoiceExpire = 1707778217
+	superprojectChoiceExpire = 1717612837
 	superprojectChoice = true
 [http]
 	cookiefile = /usr/local/google/home/paulkirth/.gitcookies
