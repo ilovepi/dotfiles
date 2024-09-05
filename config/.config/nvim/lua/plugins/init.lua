@@ -117,7 +117,7 @@ require('pckr').add({
     {
         "jiaoshijie/undotree",
         config = function()
-            require "undotree".setup {}
+            require("undotree").setup({})
         end,
         requires = "nvim-lua/plenary.nvim"
     },
@@ -180,7 +180,15 @@ require('pckr').add({
             { "nvim-treesitter/nvim-treesitter" },
         }
     },
-    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' },
+    {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    },
+    {
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    },
 
     --- UI
     'nvimdev/galaxyline.nvim',
