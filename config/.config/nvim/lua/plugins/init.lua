@@ -197,6 +197,7 @@ require('pckr').add({
     },
 
     --- UI
+    "rcarriga/nvim-notify",
     'nvimdev/galaxyline.nvim',
     {
         'akinsho/bufferline.nvim',
@@ -214,7 +215,6 @@ require('pckr').add({
         "ellisonleao/glow.nvim",
         config = function() require("glow").setup() end,
     },
-    "rcarriga/nvim-notify",
     {
         "j-hui/fidget.nvim",
         tag = 'legacy',
@@ -242,8 +242,16 @@ require('pckr').add({
 
     --- Debug Adapter Protocol
     "mfussenegger/nvim-dap",
-    { "rcarriga/nvim-dap-ui",            requires = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
     "theHamsta/nvim-dap-virtual-text",
+    {
+        "rcarriga/nvim-dap-ui",
+        requires = {
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio"
+        },
+    },
+
+    --- BigFile
     {
         "LunarVim/bigfile.nvim",
         config = function()
