@@ -80,15 +80,21 @@ require('pckr').add({
     'reedes/vim-wordy',
 
     ---  Git
+    'jreybert/vimagit',
+    'rhysd/committia.vim',
+    'tpope/vim-fugitive',
     {
         "lewis6991/gitsigns.nvim",
         config = function()
             require("gitsigns").setup()
         end,
     },
-    'jreybert/vimagit',
-    'rhysd/committia.vim',
-    'tpope/vim-fugitive',
+    {
+        'akinsho/git-conflict.nvim',
+        config = function()
+            require('git-conflict').setup()
+        end,
+    },
 
     --- Viewing
     --'greyblake/vim-preview'
