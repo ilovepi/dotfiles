@@ -10,7 +10,6 @@ vim.cmd(
 )
 
 vim.g.polyglot_disabled = { 'latex' }
-
 vim.g.vimtex_compiler_latexmk = [[ 'options' : [
                                         '-shell-escape',
                                         '-bibtex',
