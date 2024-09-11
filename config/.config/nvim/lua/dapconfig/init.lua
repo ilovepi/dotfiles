@@ -21,14 +21,6 @@ vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
 
 vim.keymap.set('n', '<leader>U', function() dapui.toggle() end)
 
--- vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
--- vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
--- dap.adapters.lldb ={
---   type = 'executable',
---   command = '/usr/sbin/lldb-vscode',
---   name = 'lldb',
--- }
-
 dap.adapters.codelldb = {
   type = 'server',
   port = "${port}",
