@@ -1,7 +1,9 @@
 require("after.fzf")
+require("after.gitsigns")
+require("after.gruvbox")
+require("after.myline")
 require("after.tabularize")
 require("after.undotree")
 require("after.vimtex")
-require("after.gruvbox")
-require("after.myline")
+
 vim.notify = require("notify")
