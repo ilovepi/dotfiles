@@ -50,7 +50,7 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "rust_analyzer", "clangd" }
+    ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls" }
 })
 
 local lspconfig = require("lspconfig")
@@ -78,6 +78,8 @@ lspconfig.lua_ls.setup {
     capabilities = capabilities,
     settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
 }
+
+require'lspconfig'.gopls.setup({})
 
 --vim.lsp.set_log_level("debug")
 
