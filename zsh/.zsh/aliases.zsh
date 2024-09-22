@@ -229,5 +229,5 @@ alias awa="arcolinux-welcome-app"
 alias rmgitcache="rm -r ~/.cache/git"
 
 # update a fork --- probably should have a better alias
-alias gpm="gcm && git pull upstream/main --ff-only"
+alias gpm="gcm && git pull upstream main --ff-only"
 alias gpmgp="gpm && gp"
