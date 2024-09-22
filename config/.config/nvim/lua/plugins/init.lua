@@ -26,6 +26,7 @@ require('pckr').add({
         "arsham/listish.nvim",
         requires = {
             "arsham/arshlib.nvim",
+            "MunifTanjim/nui.nvim",
             "nvim-treesitter/nvim-treesitter-textobjects"
         },
         config = function() require("listish").config({}) end,
