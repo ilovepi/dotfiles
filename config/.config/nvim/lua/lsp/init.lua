@@ -48,38 +48,53 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
-require("mason").setup()
-require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls" }
-})
-
 local lspconfig = require("lspconfig")
 
-lspconfig.clangd.setup {
-    cmd = {
-        "clangd",
-        "--background-index",
-        "--background-index-priority=background",
-        "--clang-tidy",
-        "--malloc-trim",
-        -- "-j", "8"
-    },
-    on_attach = on_attach,
-    capabilities = capabilities,
+local handlers = {
+    -- The first entry (without a key) will be the default handler
+    -- and will be called for each installed server that doesn't have
+    -- a dedicated handler.
+    function(server_name) -- default handler (optional)
+        lspconfig[server_name].setup {
+            on_attach = on_attach,
+            capabilities = capabilities
+        }
+    end,
+    -- Next, you can provide targeted overrides for specific servers.
+    ["clangd"] = function ()
+        lspconfig.clangd.setup {
+            cmd = {
+                "clangd",
+                "--background-index",
+                "--background-index-priority=background",
+                "--clang-tidy",
+                "--malloc-trim",
+                -- "-j=8",
+            },
+            on_attach = on_attach,
+            capabilities = capabilities,
+        }
+    end,
+    ["lua_ls"] = function()
+        lspconfig.lua_ls.setup {
+            on_attach = on_attach,
+            capabilities = capabilities,
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { "vim" }
+                    }
+                }
+            }
+        }
+    end,
 }
 
-lspconfig.rust_analyzer.setup {
-    on_attach = on_attach,
-    capabilities = capabilities
-}
-
-lspconfig.lua_ls.setup {
-    on_attach = on_attach,
-    capabilities = capabilities,
-    settings = { Lua = { diagnostics = { globals = { 'vim' } } } }
-}
-
-require'lspconfig'.gopls.setup({})
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "gopls", "pylsp", "bashls" },
+    handlers = handlers
+})
 
 --vim.lsp.set_log_level("debug")
 
