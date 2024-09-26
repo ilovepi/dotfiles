@@ -1,5 +1,4 @@
 require("after.fzf")
-require("after.gitsigns")
 require("after.gruvbox")
 require("after.myline")
 require("after.tabularize")
