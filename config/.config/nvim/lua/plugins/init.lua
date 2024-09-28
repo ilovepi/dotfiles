@@ -284,7 +284,11 @@ require('pckr').add({
     --- Snippets
     'honza/vim-snippets',
     'norcalli/snippets.nvim',
-    "L3MON4D3/LuaSnip",
+    {
+        "L3MON4D3/LuaSnip",
+        tag = "v2.*",
+        run = "make install_jsregexp"
+    },
 
     --- Debug Adapter Protocol
     "mfussenegger/nvim-dap",
