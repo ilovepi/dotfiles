@@ -48,6 +48,11 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
+require("mason").setup()
+require("mason-lspconfig").setup({
+    ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "bashls", "cmake", "ltex", "marksman", "pylsp" }
+})
+
 local lspconfig = require("lspconfig")
 
 local handlers = {
