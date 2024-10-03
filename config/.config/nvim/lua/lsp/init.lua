@@ -129,6 +129,7 @@ vim.fn.sign_define("LspDiagnosticsSignHint",
 
 require 'nvim-treesitter.configs'.setup {
     ensure_installed = {
+        "asm",
         "bash",
         "c",
         "cmake",
@@ -147,10 +148,13 @@ require 'nvim-treesitter.configs'.setup {
         "lua",
         "make",
         "markdown",
+        "markdown_inline",
+        "mlir",
         "ninja",
         "python",
         "rst",
         "rust",
+        "starlark",
         "toml",
         "vim",
         "yaml",
