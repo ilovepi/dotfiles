@@ -1,38 +1,30 @@
 # Set parts of path here ...
 
-#add local bin dir to PATH
-PATH=$HOME/bin:$PATH
-PATH=$HOME/.local/bin:$PATH
-
 # add Go directories to PATH
-export GOPATH=$HOME/workspace/go
+export GOPATH=${HOME}/workspace/go
 
-PATH=$GOPATH/bin:$PATH
+path+=$GOPATH/bin
 
 #add cargo directories to PATH
-PATH=$HOME/rust-install/bin:$PATH
-PATH=$HOME/.cargo/bin:$PATH
-
-PATH=$HOME/clang/bin:$PATH
+path=(${HOME}/.cargo/bin ${HOME}/rust-install/bin "$path[@]")
 
 FUCHSIA=${HOME}/fuchsia
-PATH="${FUCHSIA}/.jiri_root/bin:${PATH}"
+path+="${FUCHSIA}/.jiri_root/bin"
 
-if [ -z "${localpath}" ]; then
-  localpath="${localpath:=${HOME}/.local/bin}"
-  for dir in clang go qemu rust gn ninja cmake; do
-    localpath="$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64/bin:$localpath"
-  done
+for dir in clang go qemu rust gn ninja cmake; do
+  path=("$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64/bin" "$path[@]")
+done
 
-  for dir in ninja gn; do
-    localpath="$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64:$localpath"
-  done
+for dir in ninja gn; do
+  path=("$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64" "$path[@]")
+done
 
-  localpath="${HOME}/infra/fuchsia/prebuilt/tools:$localpath"
-  localpath="${HOME}/chromium/depot_tools:$localpath"
-  localpath="/usr/lib/google-golang/bin:$localpath"
-fi
+path=("${HOME}/infra/fuchsia/prebuilt/tools" "$path[@]")
+path=("${HOME}/chromium/depot_tools" "$path[@]")
+path=("/usr/lib/google-golang/bin" "$path[@]")
 
-PATH=${localpath}:$PATH
-
-export PATH
+#add local bin dir to PATH
+path=($HOME/bin "$path[@]")
+path=($HOME/.local/bin "$path[@]")
+typeset -U path PATH
+export -U PATH
