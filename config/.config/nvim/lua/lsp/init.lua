@@ -48,52 +48,38 @@ end
 local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
-local lspconfig = require("lspconfig")
-
-local handlers = {
-    -- The first entry (without a key) will be the default handler
-    -- and will be called for each installed server that doesn't have
-    -- a dedicated handler.
-    function(server_name) -- default handler (optional)
-        lspconfig[server_name].setup {
-            on_attach = on_attach,
-            capabilities = capabilities
-        }
-    end,
-    -- Next, you can provide targeted overrides for specific servers.
-    ["clangd"] = function ()
-        lspconfig.clangd.setup {
-            cmd = {
-                "clangd",
-                "--background-index",
-                "--background-index-priority=background",
-                "--clang-tidy",
-                "--malloc-trim",
-                -- "-j=8",
-            },
-            on_attach = on_attach,
-            capabilities = capabilities,
-        }
-    end,
-    ["lua_ls"] = function()
-        lspconfig.lua_ls.setup {
-            on_attach = on_attach,
-            capabilities = capabilities,
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { "vim" }
-                    }
-                }
-            }
-        }
-    end,
-}
 
 require("mason").setup()
 require("mason-lspconfig").setup({
     ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "bashls", "cmake", "marksman", "pylsp" },
-    handlers = handlers
+})
+
+vim.lsp.config("*",{
+    on_attach = on_attach,
+    capabilities = capabilities,
+})
+
+vim.lsp.config("lua_ls", {
+    settings = {
+        Lua = {
+            diagnostics = {
+                globals = { "vim" }
+            }
+        }
+    }
+})
+
+vim.lsp.config("clangd", {
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--background-index-priority=background",
+        "--clang-tidy",
+        "--malloc-trim",
+        -- "-j=8",
+    },
+    on_attach = on_attach,
+    capabilities = capabilities,
 })
 
 --vim.lsp.set_log_level("debug")
