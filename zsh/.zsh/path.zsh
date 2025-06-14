@@ -1,9 +1,13 @@
 # Set parts of path here ...
 
-# add Go directories to PATH
-export GOPATH=${HOME}/workspace/go
+#add local bin dir to PATH
+PATH=$HOME/bin:$PATH
+PATH=$HOME/.local/bin:$PATH
 
-path+=$GOPATH/bin
+# add Go directories to PATH
+export GOPATH=$HOME/workspace/go
+
+PATH=$GOPATH/bin:$PATH
 
 #add cargo directories to PATH
 path=(${HOME}/.cargo/bin ${HOME}/rust-install/bin "$path[@]")
