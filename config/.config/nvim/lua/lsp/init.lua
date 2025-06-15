@@ -71,7 +71,7 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.config("clangd", {
     cmd = {
-        "clangd",
+        "/usr/local/google/home/paulkirth/fuchsia/prebuilt/third_party/clang/linux-x64/bin/clangd",
         "--background-index",
         "--background-index-priority=background",
         "--clang-tidy",
@@ -124,13 +124,13 @@ require 'nvim-treesitter.configs'.setup {
         "html",
         "javascript",
         "json",
-        "latex",
+        -- "latex",
         "llvm",
         "lua",
         "make",
         "markdown",
         "markdown_inline",
-        "mlir",
+        -- "mlir",
         "ninja",
         "python",
         "rst",
