@@ -1,0 +1,6 @@
+---
+# group_vars/personal/packages.yml
+packages_to_install:
+  - name: steam
+    winget: steam.steam
+  - name: lutris

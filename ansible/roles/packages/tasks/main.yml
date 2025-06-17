@@ -1,0 +1,59 @@
+---
+# roles/packages/tasks/main.yml
+- name: Assemble package list
+  set_fact:
+    packages_to_install_final: >-
+      {{ base_packages | default([]) +
+         (packages_to_install if 'work' in group_names else []) +
+         (packages_to_install if 'personal' in group_names else []) +
+         (macos_packages if 'macos' in group_names else []) +
+         (arch_packages if 'arch' in group_names else []) }}
+
+- name: Install packages with apt
+  apt:
+    name: "{{ item.apt | default(item.name) }}"
+    state: present
+  loop: "{{ packages_to_install_final }}"
+  when: ansible_os_family == 'Debian'
+
+- name: Install packages with pacman
+  pacman:
+    name: "{{ item.pacman | default(item.name) }}"
+    state: present
+  loop: "{{ packages_to_install_final }}"
+  when: ansible_os_family == 'Archlinux'
+
+- name: Install packages with winget
+  win_winget:
+    name: "{{ item.winget | default(item.name) }}"
+    state: present
+  loop: "{{ packages_to_install_final }}"
+  when: ansible_os_family == 'Windows'
+
+- name: Install packages with homebrew (personal macs)
+  homebrew:
+    name: "{{ item.brew | default(item.name) }}"
+    state: present
+  loop: "{{ packages_to_install_final }}"
+  when:
+    - ansible_os_family == 'Darwin'
+    - "'personal' in group_names"
+    - not item.cask | default(false)
+
+- name: Install casks with homebrew (personal macs)
+  homebrew_cask:
+    name: "{{ item.brew | default(item.name) }}"
+    state: present
+  loop: "{{ packages_to_install_final }}"
+  when:
+    - ansible_os_family == 'Darwin'
+    - "'personal' in group_names"
+    - item.cask | default(false)
+
+- name: Placeholder for work mac software installation
+  debug:
+    msg: "WORK MAC: Manual installation required for {{ item.name }}"
+  loop: "{{ packages_to_install_final }}"
+  when:
+    - ansible_os_family == 'Darwin'
+    - "'work' in group_names"

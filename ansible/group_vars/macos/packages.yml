@@ -1,0 +1,5 @@
+---
+# group_vars/macos/packages.yml
+macos_packages:
+  - name: iterm2
+    cask: true

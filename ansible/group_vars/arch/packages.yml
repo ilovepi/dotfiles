@@ -1,0 +1,6 @@
+---
+# group_vars/arch/packages.yml
+arch_packages:
+  - name: paru
+  - name: hwinfo
+  - name: reflector

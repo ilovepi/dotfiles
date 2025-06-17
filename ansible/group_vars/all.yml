@@ -1,0 +1,68 @@
+---
+# group_vars/all.yml
+base_packages:
+  - name: git
+    apt: git
+    pacman: git
+    winget: Git.Git
+    brew: git
+  - name: zsh
+    apt: zsh
+    pacman: zsh
+    winget: "zsh" # This might not be available
+    brew: zsh
+  - name: neovim
+    apt: neovim
+    pacman: neovim
+    winget: Neovim.Neovim
+    brew: neovim
+  - name: kitty
+    apt: kitty
+    pacman: kitty
+    winget: "kitty" # This might not be available
+    brew: kitty
+  - name: font-awesome
+    apt: fonts-font-awesome
+    pacman: ttf-font-awesome
+    winget: "FontAwesome" # This might not be available
+    brew: font-awesome
+  - name: source-code-pro
+    apt: fonts-source-code-pro
+    pacman: adobe-source-code-pro-fonts
+    winget: "SourceCodePro" # This might not be available
+    brew: font-source-code-pro
+  - name: eza
+    apt: eza
+    pacman: eza
+    winget: "eza" # This might not be available
+    brew: eza
+  - name: ripgrep
+    apt: ripgrep
+    pacman: ripgrep
+    winget: BurntSushi.ripgrep.MSVC
+    brew: ripgrep
+  - name: fd
+    apt: fd-find
+    pacman: fd
+    winget: "fd" # This might not be available
+    brew: fd
+  - name: fzf
+    apt: fzf
+    pacman: fzf
+    winget: "fzf" # This might not be available
+    brew: fzf
+  - name: bat
+    apt: bat
+    pacman: bat
+    winget: "bat" # This might not be available
+    brew: bat
+  - name: unzip
+    apt: unzip
+    pacman: unzip
+    winget: "unzip" # This might not be available
+    brew: unzip
+  - name: p7zip
+    apt: p7zip-full
+    pacman: p7zip
+    winget: 7zip.7zip
+    brew: p7zip
