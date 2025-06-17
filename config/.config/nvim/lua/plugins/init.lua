@@ -231,7 +231,51 @@ require("lazy").setup({
 
     --- UI
     "rcarriga/nvim-notify",
-    'nvimdev/galaxyline.nvim',
+    {
+        'nvim-lualine/lualine.nvim',
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
+        config = function()
+            require('lualine').setup({
+                options = {
+                    theme = 'gruvbox-material',
+                    section_separators = { left = '', right = '' },
+                    component_separators = { left = '', right = '' },
+                    disabled_filetypes = { 'packer', 'NvimTree' },
+                    always_divide_middle = true,
+                },
+                sections = {
+                    lualine_a = { 'mode' },
+                    lualine_b = { 'branch' },
+                    lualine_c = {
+                        {
+                            'filename',
+                            file_status = true,
+                            path = 1,
+                        },
+                    },
+                    lualine_x = {
+                        'diff',
+                        {
+                            'diagnostics',
+                            symbols = { error = ' ', warn = ' ', info = ' ' },
+                        },
+                    },
+                    lualine_y = { 'filetype' },
+                    lualine_z = { 'progress', 'location' },
+                },
+                inactive_sections = {
+                    lualine_a = {},
+                    lualine_b = {},
+                    lualine_c = { 'filename' },
+                    lualine_x = { 'location' },
+                    lualine_y = {},
+                    lualine_z = {},
+                },
+                tabline = {},
+                extensions = { 'nvim-tree' },
+            })
+        end,
+    },
     {
         'akinsho/bufferline.nvim',
         dependencies = 'kyazdani42/nvim-web-devicons',
