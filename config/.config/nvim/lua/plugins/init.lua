@@ -47,16 +47,7 @@ require("lazy").setup({
     'wincent/loupe',
 
     --- Appearance
-    'connorholyday/vim-snazzy',
-    'flazz/vim-colorschemes',
-    'iCyMind/NeoSolarized',
-    'morhetz/gruvbox',
     'powerline/fonts',
-    'rakr/vim-one',
-    'sainnhe/edge',
-    'rakr/vim-two-firewatch',
-    'b4skyx/serenade',
-    'savq/melange',
     'sainnhe/gruvbox-material',
     'kyazdani42/nvim-web-devicons',
 
@@ -314,7 +305,7 @@ require("lazy").setup({
 
     --- Snippets
     'honza/vim-snippets',
-    'norcalli/snippets.nvim',
+    -- 'norcalli/snippets.nvim',
     {
         "L3MON4D3/LuaSnip",
         version = "v2.*",
