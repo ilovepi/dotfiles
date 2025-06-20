@@ -1,30 +1,17 @@
-local function bootstrap_pckr()
-    local pckr_path = vim.fn.stdpath("data") .. "/pckr/pckr.nvim"
-
-    if not vim.loop.fs_stat(pckr_path) then
-        vim.fn.system({
-            'git',
-            'clone',
-            "--filter=blob:none",
-            'https://github.com/lewis6991/pckr.nvim',
-            pckr_path
-        })
-    end
-
-    vim.opt.rtp:prepend(pckr_path)
+-- Bootstrap Lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+    vim.fn.system({ "git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git", lazypath })
 end
+vim.opt.rtp:prepend(lazypath)
 
-bootstrap_pckr()
-
-local cmd = require('pckr.loader.cmd')
-local keys = require('pckr.loader.keys')
-
-require('pckr').add({
+-- Configure Lazy.nvim
+require("lazy").setup({
     --- Search & Navigation
     'brooth/far.vim',
     {
         "arsham/listish.nvim",
-        requires = {
+        dependencies = {
             "arsham/arshlib.nvim",
             "MunifTanjim/nui.nvim",
             "nvim-treesitter/nvim-treesitter-textobjects"
@@ -33,17 +20,16 @@ require('pckr').add({
     },
     {
         "arsham/fzfmania.nvim",
-        requires = {
+        dependencies = {
             "arsham/arshlib.nvim",
             "junegunn/fzf.vim",
             "nvim-lua/plenary.nvim",
             "arsham/listish.nvim",
             {
                 "ibhagwan/fzf-lua",
-                requires = { "kyazdani42/nvim-web-devicons" },
+                dependencies = { "kyazdani42/nvim-web-devicons" },
             },
         },
-        after = { "arsham/listish.nvim", "ibhagwan/fzf-lua" },
         config = function()
             require("fzfmania").config({
                 frontend = "fzf-lua", -- uncomment if you want a better ui.
@@ -53,7 +39,7 @@ require('pckr').add({
     },
     {
         'nvim-tree/nvim-tree.lua',
-        requires = { 'nvim-tree/nvim-web-devicons' },
+        dependencies = { 'nvim-tree/nvim-web-devicons' },
         config = function()
             require('nvim-tree').setup()
         end,
@@ -171,7 +157,7 @@ require('pckr').add({
         config = function()
             require("undotree").setup({})
         end,
-        requires = "nvim-lua/plenary.nvim"
+        dependencies = "nvim-lua/plenary.nvim"
     },
     {
         "lukas-reineke/indent-blankline.nvim",
@@ -201,7 +187,7 @@ require('pckr').add({
     -- 'folke/trouble.nvim',
     {
         "folke/todo-comments.nvim",
-        requires = "nvim-lua/plenary.nvim",
+        dependencies = "nvim-lua/plenary.nvim",
         config = function()
             require("todo-comments").setup {
                 -- your configuration comes here
@@ -234,12 +220,13 @@ require('pckr').add({
     },
     {
         'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
+        branch = "master",
+        lazy = false,
+        build = ':TSUpdate'
     },
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
-        after = "nvim-treesitter",
-        requires = "nvim-treesitter/nvim-treesitter",
+        dependencies = "nvim-treesitter/nvim-treesitter",
     },
 
     --- UI
@@ -247,7 +234,7 @@ require('pckr').add({
     'nvimdev/galaxyline.nvim',
     {
         'akinsho/bufferline.nvim',
-        requires = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'kyazdani42/nvim-web-devicons',
         config = function()
             require('bufferline').setup({
                 options = {
@@ -286,8 +273,8 @@ require('pckr').add({
     'norcalli/snippets.nvim',
     {
         "L3MON4D3/LuaSnip",
-        tag = "v2.*",
-        run = "make install_jsregexp"
+        version = "v2.*",
+        build = "make install_jsregexp"
     },
 
     --- Debug Adapter Protocol
@@ -295,7 +282,7 @@ require('pckr').add({
     "theHamsta/nvim-dap-virtual-text",
     {
         "rcarriga/nvim-dap-ui",
-        requires = {
+        dependencies = {
             "mfussenegger/nvim-dap",
             "nvim-neotest/nvim-nio"
         },
