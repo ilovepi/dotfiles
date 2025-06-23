@@ -27,7 +27,7 @@ require("lazy").setup({
             "arsham/listish.nvim",
             {
                 "ibhagwan/fzf-lua",
-                dependencies = { "kyazdani42/nvim-web-devicons" },
+                dependencies = { "nvim-tree/nvim-web-devicons" },
             },
         },
         config = function()
@@ -49,7 +49,7 @@ require("lazy").setup({
     --- Appearance
     'powerline/fonts',
     'sainnhe/gruvbox-material',
-    'kyazdani42/nvim-web-devicons',
+    'nvim-tree/nvim-web-devicons',
 
     --- Writing
     'junegunn/goyo.vim',
@@ -269,7 +269,7 @@ require("lazy").setup({
     },
     {
         'akinsho/bufferline.nvim',
-        dependencies = 'kyazdani42/nvim-web-devicons',
+        dependencies = 'nvim-tree/nvim-web-devicons',
         config = function()
             require('bufferline').setup({
                 options = {
