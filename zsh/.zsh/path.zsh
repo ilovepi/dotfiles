@@ -1,13 +1,9 @@
 # Set parts of path here ...
 
-#add local bin dir to PATH
-PATH=$HOME/bin:$PATH
-PATH=$HOME/.local/bin:$PATH
-
 # add Go directories to PATH
-export GOPATH=$HOME/workspace/go
+export GOPATH=${HOME}/workspace/go
 
-PATH=$GOPATH/bin:$PATH
+path+=$GOPATH/bin
 
 #add cargo directories to PATH
 path=(${HOME}/.cargo/bin ${HOME}/rust-install/bin "$path[@]")
@@ -28,7 +24,7 @@ path=("${HOME}/chromium/depot_tools" "$path[@]")
 path=("/usr/lib/google-golang/bin" "$path[@]")
 
 #add local bin dir to PATH
-path=($HOME/bin "$path[@]")
-path=($HOME/.local/bin "$path[@]")
+path=(${HOME}/bin "$path[@]")
+path=(${HOME}/.local/bin "$path[@]")
 typeset -U path PATH
 export -U PATH
