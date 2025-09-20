@@ -10,32 +10,11 @@ require("lazy").setup({
     --- Search & Navigation
     'brooth/far.vim',
     {
-        "arsham/listish.nvim",
-        dependencies = {
-            "arsham/arshlib.nvim",
-            "MunifTanjim/nui.nvim",
-            "nvim-treesitter/nvim-treesitter-textobjects"
-        },
-        config = function() require("listish").config({}) end,
-    },
-    {
-        "arsham/fzfmania.nvim",
-        dependencies = {
-            "arsham/arshlib.nvim",
-            "junegunn/fzf.vim",
-            "nvim-lua/plenary.nvim",
-            "arsham/listish.nvim",
-            {
-                "ibhagwan/fzf-lua",
-                dependencies = { "nvim-tree/nvim-web-devicons" },
-            },
-        },
-        config = function()
-            require("fzfmania").config({
-                frontend = "fzf-lua", -- uncomment if you want a better ui.
-            })
+        "ibhagwan/fzf-lua",
+        config = function ()
+            require('fzf-lua').setup({{'fzf-native','telescope'}})
         end,
-        event = { "UIEnter" }, -- best way to lazy load this plugin
+        dependencies = { "nvim-tree/nvim-web-devicons" },
     },
     {
         'nvim-tree/nvim-tree.lua',

@@ -15,11 +15,11 @@ dapui.setup()
 
 -- require("dapui").float_element(<element ID>, <optional settings>)
 
-vim.keymap.set('n', '<leader>dk', function() dap.continue() end)
-vim.keymap.set('n', '<leader>dl', function() dap.run_last() end)
-vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end)
+vim.keymap.set('n', '<leader>dk', function() dap.continue() end, { desc = "DAP: Continue" })
+vim.keymap.set('n', '<leader>dl', function() dap.run_last() end, { desc = "DAP: Run Last" })
+vim.keymap.set('n', '<leader>db', function() dap.toggle_breakpoint() end, { desc = "DAP: Toggle Breakpoint" })
 
-vim.keymap.set('n', '<leader>U', function() dapui.toggle() end)
+vim.keymap.set('n', '<leader>U', function() dapui.toggle() end, { desc = "DAP: Toggle UI" })
 
 dap.adapters.codelldb = {
   type = 'server',

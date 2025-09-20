@@ -6,17 +6,17 @@ vim.g.maplocalleader = '_'
 
 --- Easier moving in tabs and windows
 --- The lines conflict with the default digraph mapping of <C-K>
-vim.keymap.set("n", "<C-J>", "<C-W>j<C-W>")
-vim.keymap.set("n", "<C-K>", "<C-W>k<C-W>")
-vim.keymap.set("n", "<C-L>", "<C-W>l<C-W>")
-vim.keymap.set("n", "<C-H>", "<C-W>h<C-W>")
+vim.keymap.set("n", "<C-J>", "<C-W>j<C-W>", { desc = "Window: Move Down" })
+vim.keymap.set("n", "<C-K>", "<C-W>k<C-W>", { desc = "Window: Move Up" })
+vim.keymap.set("n", "<C-L>", "<C-W>l<C-W>", { desc = "Window: Move Right" })
+vim.keymap.set("n", "<C-H>", "<C-W>h<C-W>", { desc = "Window: Move Left" })
 
 --- Make splits equal
-vim.keymap.set("n", "<leader>=", "<C-W>=")
+vim.keymap.set("n", "<leader>=", "<C-W>=", { desc = "Window: Equalize" })
 
 --- Bufferline config
-vim.keymap.set("n", "<S-H>", ":BufferLineCyclePrev<CR>")
-vim.keymap.set("n", "<S-L>", ":BufferLineCycleNext<CR>")
+vim.keymap.set("n", "<S-H>", ":BufferLineCyclePrev<CR>", { desc = "Buffer: Previous" })
+vim.keymap.set("n", "<S-L>", ":BufferLineCycleNext<CR>", { desc = "Buffer: Next" })
 
 --- Change Working Directory to that of the current file
 vim.keymap.set("c", "cwd", "lcd %:p:h")
@@ -31,7 +31,7 @@ vim.keymap.set("v", "<", "<gv", { noremap = true })
 vim.keymap.set("v", ">", ">gv", { noremap = true })
 
 --- Easier formatting
-vim.keymap.set("n", "<leader>q", "gwip", { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>q", "gwip", { noremap = true, silent = true, desc = "Format: Paragraph" })
 
 --- Toggle fold at current position.
 vim.keymap.set("n", "<Tab>", "za", { noremap = true })

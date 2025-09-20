@@ -7,28 +7,28 @@ local on_attach = function(client, bufnr)
 
     -- Mappings.
     local opts = { noremap = true, silent = true }
-    buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-    buf_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
-    buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-    buf_set_keymap('n', 'gd', '<cmd>Lspsaga goto_definition<CR>', opts)
-    buf_set_keymap('n', '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', opts)
-    buf_set_keymap('n', ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', opts)
-    buf_set_keymap('n', 'K', '<cmd>Lspsaga hover_doc<CR>', opts)
-    buf_set_keymap('n', '<leader>r', '<cmd>Lspsaga rename<CR>', opts)
-    buf_set_keymap('n', '<leader>f', '<cmd>Lspsaga finder<CR>', opts)
-    buf_set_keymap('n', '<leader>e', '<cmd>Lspsaga show_line_diagnostics<CR>', opts)
-    buf_set_keymap('n', '<leader>gd', '<cmd>Lspsaga peek_definition<CR>', opts)
-    buf_set_keymap('n', '<leader>la', '<cmd>Lspsaga code_action<CR>', opts)
-    buf_set_keymap('v', '<leader>la', '<cmd>Lspsaga code_action<CR>', opts)
-    buf_set_keymap('n', '<leader>lo', '<cmd>Lspsaga outline<CR>', opts)
+    buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true, desc = "LSP: Go to Type Definition" })
+    buf_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', { noremap = true, silent = true, desc = "LSP: Diagnostics Loclist" })
+    buf_set_keymap('n', '<leader>ls', '<cmd>lua vim.lsp.buf.signature_help()<CR>', { noremap = true, silent = true, desc = "LSP: Signature Help" })
+    buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', { noremap = true, silent = true, desc = "LSP: Go to Implementation" })
+    buf_set_keymap('n', 'gd', '<cmd>Lspsaga goto_definition<CR>', { noremap = true, silent = true, desc = "LSP: Go to Definition" })
+    buf_set_keymap('n', '[e', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { noremap = true, silent = true, desc = "LSP: Previous Diagnostic" })
+    buf_set_keymap('n', ']e', '<cmd>Lspsaga diagnostic_jump_next<CR>', { noremap = true, silent = true, desc = "LSP: Next Diagnostic" })
+    buf_set_keymap('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { noremap = true, silent = true, desc = "LSP: Hover Documentation" })
+    buf_set_keymap('n', '<leader>r', '<cmd>Lspsaga rename<CR>', { noremap = true, silent = true, desc = "LSP: Rename" })
+    buf_set_keymap('n', '<leader>f', '<cmd>Lspsaga finder<CR>', { noremap = true, silent = true, desc = "LSP: Finder" })
+    buf_set_keymap('n', '<leader>e', '<cmd>Lspsaga show_line_diagnostics<CR>', { noremap = true, silent = true, desc = "LSP: Show Line Diagnostics" })
+    buf_set_keymap('n', '<leader>gd', '<cmd>Lspsaga peek_definition<CR>', { noremap = true, silent = true, desc = "LSP: Peek Definition" })
+    buf_set_keymap('n', '<leader>la', '<cmd>Lspsaga code_action<CR>', { noremap = true, silent = true, desc = "LSP: Code Action" })
+    buf_set_keymap('v', '<leader>la', '<cmd>Lspsaga code_action<CR>', { noremap = true, silent = true, desc = "LSP: Code Action" })
+    buf_set_keymap('n', '<leader>lo', '<cmd>Lspsaga outline<CR>', { noremap = true, silent = true, desc = "LSP: Outline" })
     -- Call hierarchy
-    buf_set_keymap("n", "<Leader>ci", '<cmd>Lspsaga incoming_calls<CR>', opts)
-    buf_set_keymap("n", "<Leader>co", '<cmd>Lspsaga outgoing_calls<CR>', opts)
+    buf_set_keymap("n", "<Leader>ci", '<cmd>Lspsaga incoming_calls<CR>', { noremap = true, silent = true, desc = "LSP: Incoming Calls" })
+    buf_set_keymap("n", "<Leader>co", '<cmd>Lspsaga outgoing_calls<CR>', { noremap = true, silent = true, desc = "LSP: Outgoing Calls" })
 
     -- Set some keybinds conditional on server capabilities
-    buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
-    buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
+    buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true, desc = "LSP: Format" })
+    buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true, desc = "LSP: Format" })
 
     -- Set autocommands conditional on server_capabilities
     if client.server_capabilities.document_highlight then
