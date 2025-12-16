@@ -57,7 +57,6 @@ require("mason-lspconfig").setup({
 vim.lsp.config("*",{
     on_attach = on_attach,
     capabilities = capabilities,
-
 })
 
 vim.lsp.config("lua_ls", {
@@ -81,7 +80,11 @@ vim.lsp.config("clangd", {
     },
     on_attach = on_attach,
     capabilities = capabilities,
+})
 
+vim.lsp.config("rust_analyzer", {
+    on_attach = on_attach,
+    capabilities = capabilities,
 })
 
 --vim.lsp.set_log_level("debug")
@@ -138,6 +141,7 @@ require 'nvim-treesitter.configs'.setup {
         "rst",
         "rust",
         "starlark",
+        "tablegen",
         "toml",
         "vim",
         "yaml",
