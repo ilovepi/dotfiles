@@ -2,6 +2,9 @@
     name = Paul Kirth
     email = pk1574@gmail.com
 
+[init]
+    defaultBranch = main
+
 [includeIF "gitdir:/usr/local/google/"]
     path = .work.gitconfig
 
