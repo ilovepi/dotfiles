@@ -11,8 +11,8 @@ alias zoptions="$EDITOR ~/dotfiles/zsh/.zsh/options.zsh"
 alias zpath="$EDITOR ~/dotfiles/zsh/.zsh/path.zsh"
 alias nvimrc="$EDITOR ~/dotfiles/config/.config/nvim/init.lua"
 alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
-alias bspwmrc="$EDITOR ~/.config/bspwm/bspwmrc"
-alias sxhkdrc="$EDITOR ~/.config/bspwm/sxhkd/sxhkdrc"
+alias hyprrc="$EDITOR ~/.config/hypr/hyperland.conf"
+alias parurc="$EDITOR ~/.config/paru/paru.conf"
 alias fim='$EDITOR $(fd | fzf)'
 
 # ls, the common ones I use a lot shortened for rapid fire usage
@@ -77,9 +77,6 @@ alias df='df -h'
 alias unlock="sudo rm /var/lib/pacman/db.lck"
 alias rmpacmanlock="sudo rm /var/lib/pacman/db.lck"
 
-#arcolinux logout unlock
-alias rmlogoutlock="sudo rm /tmp/arcologout.lock"
-
 #free
 alias free="free -mt"
 
@@ -142,15 +139,9 @@ alias mirrora="sudo reflector --latest 30 --number 10 --sort age --save /etc/pac
 alias mirrorx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 5 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
 alias mirrorxx="sudo reflector --age 6 --latest 20  --fastest 20 --threads 20 --sort rate --protocol https --save /etc/pacman.d/mirrorlist"
 
-#mounting the folder Public for exchange between host and guest on virtualbox
-alias vbm="sudo /usr/local/bin/arcolinux-vbox-share"
-
 #Recent Installed Packages
 alias rip="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -200 | nl"
 alias riplong="expac --timefmt='%Y-%m-%d %T' '%l\t%n %v' | sort | tail -3000 | nl"
-
-#iso and version used to install ArcoLinux
-alias iso="cat /etc/dev-rel | awk -F '=' '/ISO/ {print $2}'"
 
 #Cleanup orphaned packages
 alias cleanup='sudo pacman -Rns $(pacman -Qtdq)'
