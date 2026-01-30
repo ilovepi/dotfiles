@@ -12,11 +12,11 @@ FUCHSIA=${HOME}/fuchsia
 path+="${FUCHSIA}/.jiri_root/bin"
 
 for dir in clang go qemu rust gn ninja cmake; do
-  path=("$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64/bin" "$path[@]")
+  path=("$HOME/fuchsia/prebuilt/third_party/$dir/mac-arm64/bin" "$path[@]")
 done
 
 for dir in ninja gn; do
-  path=("$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64" "$path[@]")
+  path=("$HOME/fuchsia/prebuilt/third_party/$dir/mac-arm64" "$path[@]")
 done
 
 path=("${HOME}/infra/fuchsia/prebuilt/tools" "$path[@]")
