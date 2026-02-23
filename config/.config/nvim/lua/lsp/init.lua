@@ -51,7 +51,8 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true;
 
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "bashls", "cmake", "marksman", "pylsp" },
+    --ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "bashls", "cmake", "marksman", "pylsp" },
+    ensure_installed = { "lua_ls", "rust_analyzer", "clangd", "cmake", "marksman", "pylsp" },
 })
 
 vim.lsp.config("*",{
