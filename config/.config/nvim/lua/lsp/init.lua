@@ -87,25 +87,25 @@ vim.lsp.config("clangd", {
 --vim.lsp.set_log_level("debug")
 
 vim.diagnostic.config({
-    virtual_text = true,
     signs = false,
+    virtual_text = true,
     update_in_insert = true,
+    -- old glyphs I may want to use someday.
+    --
+    --
+    --
+    --
+    -- signs = {
+    --     text = {
+    --         -- [vim.diagnostic.severity.ERROR] = '>>',
+    --         [vim.diagnostic.severity.ERROR] = '\u{fb8a}', -- ﮊ  (U+FB8A)
+    --         [vim.diagnostic.severity.WARN]  = '\u{f071}', --   (U+F071)
+    --         -- [vim.diagnostic.severity.WARN]  = '!!',
+    --         [vim.diagnostic.severity.INFO]  = '\u{f449}', --   (U+F449)
+    --         [vim.diagnostic.severity.HINT]  = '=>',
+    --     },
+    -- },
 })
-
---
---
---
---
-
---vim.fn.sign_define("LspDiagnosticsSignError", {text = "ﮊ", numhl = "LspDiagnosticsDefaultError"})
-vim.fn.sign_define("LspDiagnosticsSignError",
-    { text = ">>", numhl = "LspDiagnosticsDefaultSignError", texthl = "LspDiagnosticsDefaultSignError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { text = "", numhl = "LspDiagnosticsDefaultSignWarning" })
---vim.fn.sign_define("LspDiagnosticsSignWarning", {text = "!!", numhl = "LspDiagnosticsDefaultSignWarning", texthl = "LspDiagnosticsDefaultSignWarning"})
-vim.fn.sign_define("LspDiagnosticsSignInformation",
-    { text = "", numhl = "LspDiagnosticsDefaultSignInformation", texthl = "LspDiagnosticsDefaultSignInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint",
-    { text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl = "LspDiagnosticsDefaultSignHint", gui = "bold" })
 
 
 require("luasnip.loaders.from_vscode").lazy_load()
