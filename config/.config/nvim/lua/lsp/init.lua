@@ -68,7 +68,7 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.config("clangd", {
     cmd = {
-        "/usr/local/google/home/paulkirth/fuchsia/prebuilt/third_party/clang/linux-x64/bin/clangd",
+        "clangd",
         "--background-index",
         "--background-index-priority=background",
         "--clang-tidy",
