@@ -11,7 +11,7 @@ alias zoptions="$EDITOR ~/dotfiles/zsh/.zsh/options.zsh"
 alias zpath="$EDITOR ~/dotfiles/zsh/.zsh/path.zsh"
 alias nvimrc="$EDITOR ~/dotfiles/config/.config/nvim/init.lua"
 alias tmuxrc="$EDITOR ~/dotfiles/tmux/.tmux.conf.local"
-alias hyprrc="$EDITOR ~/.config/hypr/hyperland.conf"
+alias hyprrc="$EDITOR ~/.config/hypr/hyprland.conf"
 alias parurc="$EDITOR ~/.config/paru/paru.conf"
 alias fim='$EDITOR $(fd | fzf)'
 
