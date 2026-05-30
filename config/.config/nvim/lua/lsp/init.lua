@@ -86,13 +86,11 @@ vim.lsp.config("clangd", {
 
 --vim.lsp.set_log_level("debug")
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-    vim.lsp.diagnostic.on_publish_diagnostics, {
-        virtual_text = true,
-        signs = false,
-        update_in_insert = true,
-    }
-)
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = false,
+    update_in_insert = true,
+})
 
 --
 --
