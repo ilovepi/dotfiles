@@ -110,43 +110,6 @@ vim.fn.sign_define("LspDiagnosticsSignHint",
     { text = "=>", numhl = "LspDiagnosticsDefaultSignHint", texthl = "LspDiagnosticsDefaultSignHint", gui = "bold" })
 
 
-require 'nvim-treesitter.configs'.setup {
-    ensure_installed = {
-        "asm",
-        "bash",
-        "c",
-        "cmake",
-        "comment",
-        "cpp",
-        "css",
-        "dockerfile",
-        "dot",
-        "gn",
-        "go",
-        "html",
-        "javascript",
-        "json",
-        -- "latex",
-        "llvm",
-        "lua",
-        "make",
-        "markdown",
-        "markdown_inline",
-        -- "mlir",
-        "ninja",
-        "python",
-        "rst",
-        "rust",
-        "starlark",
-        "toml",
-        "vim",
-        "yaml",
-    }, -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-    highlight = {
-        enable = true,
-    },
-}
-
 require("luasnip.loaders.from_vscode").lazy_load()
 
 local luasnip = require("luasnip")
