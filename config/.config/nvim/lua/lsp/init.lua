@@ -26,18 +26,22 @@ local on_attach = function(client, bufnr)
     buf_set_keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true, desc = "LSP: Format" })
     buf_set_keymap("v", "<leader>lf", "<cmd>lua vim.lsp.buf.format()<CR>", { noremap = true, silent = true, desc = "LSP: Format" })
 
-    -- Set autocommands conditional on server_capabilities
-    if client.server_capabilities.document_highlight then
-        vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=darkred guibg=LightYellow
-      hi LspReferenceText cterm=bold ctermbg=darkred guibg=LightYellow
-      hi LspReferenceWrite cterm=bold ctermbg=darkred guibg=LightYellow
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
+    -- Set autocommands conditional on server_capabilities.
+    -- Highlight other references to the symbol under the cursor; let the
+    -- colorscheme style the LspReference* groups.
+    if client.server_capabilities.documentHighlightProvider then
+        local hl_group = vim.api.nvim_create_augroup('lsp_document_highlight', { clear = false })
+        vim.api.nvim_clear_autocmds({ group = hl_group, buffer = bufnr })
+        vim.api.nvim_create_autocmd('CursorHold', {
+            group = hl_group,
+            buffer = bufnr,
+            callback = vim.lsp.buf.document_highlight,
+        })
+        vim.api.nvim_create_autocmd('CursorMoved', {
+            group = hl_group,
+            buffer = bufnr,
+            callback = vim.lsp.buf.clear_references,
+        })
     end
 end
 
