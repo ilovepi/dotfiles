@@ -1,0 +1,137 @@
+{
+    "workbench.colorTheme": "Gruvbox Material Dark",
+    "workbench.iconTheme": "vscode-icons",
+    "gruvboxMaterial.darkContrast": "medium",
+
+    "chat.disableAIFeatures": true,
+
+    "editor.fontFamily": "SauceCodePro Nerd Font",
+    "editor.wordWrap": "wordWrapColumn",
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+
+    "vim.cmdLineInitialColon": true,
+    "vim.cursorStylePerMode": {},
+    "vim.easymotion": true,
+    "vim.enableNeovim": true,
+    "vim.hlsearch": true,
+    "vim.sneak": true,
+    "vim.leader": "space",
+
+    "vim.normalModeKeyBindings": [
+        { "before": ["j"], "after": ["g", "j"] },
+        { "before": ["k"], "after": ["g", "k"] }
+    ],
+    "vim.normalModeKeyBindingsNonRecursive": [
+        { "before": ["g", "d"], "commands": ["editor.action.revealDefinition"] },
+        { "before": ["g", "i"], "commands": ["editor.action.goToImplementation"] },
+        { "before": ["K"], "commands": ["editor.action.showHover"] },
+        { "before": ["[", "e"], "commands": ["editor.action.marker.prev"] },
+        { "before": ["]", "e"], "commands": ["editor.action.marker.next"] },
+        { "before": ["<leader>", "D"], "commands": ["editor.action.goToTypeDefinition"] },
+        { "before": ["<leader>", "r"], "commands": ["editor.action.rename"] },
+        { "before": ["<leader>", "f"], "commands": ["editor.action.goToReferences"] },
+        { "before": ["<leader>", "g", "d"], "commands": ["editor.action.peekDefinition"] },
+        { "before": ["<leader>", "e"], "commands": ["editor.action.showHover"] },
+        { "before": ["<leader>", "q"], "commands": ["workbench.actions.view.problems"] },
+        { "before": ["<leader>", "l", "a"], "commands": ["editor.action.quickFix"] },
+        { "before": ["<leader>", "l", "o"], "commands": ["outline.focus"] },
+        { "before": ["<leader>", "l", "s"], "commands": ["editor.action.triggerParameterHints"] },
+        { "before": ["<leader>", "l", "f"], "commands": ["editor.action.formatDocument"] },
+        { "before": ["<leader>", "c", "i"], "commands": ["editor.showCallHierarchy"] },
+        { "before": ["<leader>", "c", "o"], "commands": ["editor.showCallHierarchy"] },
+        { "before": ["<leader>", "="], "commands": ["workbench.action.evenEditorWidths"] },
+        { "before": ["<tab>"], "commands": ["editor.toggleFold"] },
+        { "before": ["H"], "commands": ["workbench.action.previousEditor"] },
+        { "before": ["L"], "commands": ["workbench.action.nextEditor"] },
+        { "before": ["<C-h>"], "commands": ["workbench.action.navigateLeft"] },
+        { "before": ["<C-j>"], "commands": ["workbench.action.navigateDown"] },
+        { "before": ["<C-k>"], "commands": ["workbench.action.navigateUp"] },
+        { "before": ["<C-l>"], "commands": ["workbench.action.navigateRight"] }
+    ],
+    "vim.visualModeKeyBindings": [
+        { "before": ["j"], "after": ["g", "j"] },
+        { "before": ["k"], "after": ["g", "k"] }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        { "before": ["<leader>", "l", "a"], "commands": ["editor.action.quickFix"] },
+        { "before": ["<leader>", "l", "f"], "commands": ["editor.action.formatSelection"] }
+    ],
+    "vim.insertModeKeyBindings": [
+        { "before": ["j", "k"], "after": ["<Esc>"] }
+    ],
+
+    "vim.statusBarColorControl": true,
+    "vim.statusBarColors": {
+        "normal": ["#7daea3", "#282828"],
+        "insert": ["#a9b665", "#282828"],
+        "visual": ["#d3869b", "#282828"],
+        "visualline": ["#d3869b", "#282828"],
+        "visualblock": ["#d3869b", "#282828"],
+        "replace": ["#e78a4e", "#282828"]
+    },
+    "workbench.colorCustomizations": {
+        "statusBar.background": "#7daea3",
+        "statusBar.noFolderBackground": "#7daea3",
+        "statusBar.debuggingBackground": "#7daea3",
+        "statusBar.foreground": "#282828",
+        "statusBar.debuggingForeground": "#282828"
+    },
+
+    "terminal.integrated.fontFamily": "SauceCodePro Nerd Font",
+
+    "rust-analyzer.cargo.features": "all",
+    "clangd.arguments": [
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=never"
+    ],
+    "basedpyright.analysis.typeCheckingMode": "standard",
+
+    "[rust]": {
+        "editor.defaultFormatter": "rust-lang.rust-analyzer",
+        "editor.formatOnSave": true
+    },
+    "[cpp]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true
+    },
+    "[c]": {
+        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd",
+        "editor.formatOnSave": true
+    },
+    "[python]": {
+        "editor.defaultFormatter": "charliermarsh.ruff",
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit",
+            "source.fixAll.ruff": "explicit"
+        }
+    },
+
+    "git.autofetch": true,
+    "gitlens.advanced.messages": {
+        "suppressCommitHasNoPreviousCommitWarning": false,
+        "suppressCommitNotFoundWarning": false,
+        "suppressFileNotUnderSourceControlWarning": false,
+        "suppressGitVersionWarning": false,
+        "suppressLineUncommittedWarning": false,
+        "suppressNoRepositoryWarning": false,
+        "suppressResultsExplorerNotice": false,
+        "suppressShowKeyBindingsNotice": true
+    },
+    "gitlens.historyExplorer.enabled": true,
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+
+    "latex-workshop.chktex.enabled": true,
+    "latex-workshop.latex.autoBuild.onTexChange.enabled": true,
+    "latex-workshop.view.pdf.viewer": "tab",
+    "latex-workshop.view.pdf.external.command": {
+        "command": "zathura",
+        "args": [
+            "%PDF%"
+        ]
+    },
+    "vsicons.dontShowNewVersionMessage": true
+}
