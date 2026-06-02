@@ -6,22 +6,28 @@ export GOPATH=${HOME}/workspace/go
 path+=$GOPATH/bin
 
 #add cargo directories to PATH
-path=(${HOME}/.cargo/bin ${HOME}/rust-install/bin "$path[@]")
+path=(${HOME}/.cargo/bin "$path[@]")
 
-FUCHSIA=${HOME}/fuchsia
-path+="${FUCHSIA}/.jiri_root/bin"
+# --- Work-specific paths (only added when the directory exists) ---
+# Fuchsia
+if [[ -d ${HOME}/fuchsia ]]; then
+  FUCHSIA=${HOME}/fuchsia
+  path+="${FUCHSIA}/.jiri_root/bin"
 
-for dir in clang go qemu rust gn ninja cmake; do
-  path=("$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64/bin" "$path[@]")
-done
+  for dir in clang go qemu rust gn ninja cmake; do
+    bindir="${FUCHSIA}/prebuilt/third_party/${dir}/linux-x64/bin"
+    [[ -d ${bindir} ]] && path=("${bindir}" "$path[@]")
+  done
 
-for dir in ninja gn; do
-  path=("$HOME/fuchsia/prebuilt/third_party/$dir/linux-x64" "$path[@]")
-done
+  for dir in ninja gn; do
+    bindir="${FUCHSIA}/prebuilt/third_party/${dir}/linux-x64"
+    [[ -d ${bindir} ]] && path=("${bindir}" "$path[@]")
+  done
+fi
 
-path=("${HOME}/infra/fuchsia/prebuilt/tools" "$path[@]")
-path=("${HOME}/chromium/depot_tools" "$path[@]")
-path=("/usr/lib/google-golang/bin" "$path[@]")
+[[ -d ${HOME}/infra/fuchsia/prebuilt/tools ]] && path=("${HOME}/infra/fuchsia/prebuilt/tools" "$path[@]")
+[[ -d ${HOME}/chromium/depot_tools ]] && path=("${HOME}/chromium/depot_tools" "$path[@]")
+[[ -d /usr/lib/google-golang/bin ]] && path=("/usr/lib/google-golang/bin" "$path[@]")
 
 #add local bin dir to PATH
 path=(${HOME}/bin "$path[@]")
