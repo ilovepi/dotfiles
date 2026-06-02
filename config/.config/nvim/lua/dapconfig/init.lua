@@ -26,7 +26,7 @@ dap.adapters.codelldb = {
   port = "${port}",
   executable = {
     -- CHANGE THIS to your path!
-    command = '/usr/sbin/codelldb',
+    command = '/usr/bin/codelldb',
     args = {"--port", "${port}"},
 
     -- On windows you may have to uncomment this:
