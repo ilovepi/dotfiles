@@ -1,13 +1,12 @@
-PeterJausovec.vscode-docker
 aaron-bond.better-comments
-bungcip.better-toml
 eamodio.gitlens
 formulahendry.code-runner
-mitaki28.vscode-clang
+ms-azuretools.vscode-docker
 ms-python.python
 ms-vscode.cpptools
 robertohuertasm.vscode-icons
-rust-lang.rust
+rust-lang.rust-analyzer
+tamasfe.even-better-toml
 vadimcn.vscode-lldb
 vscodevim.vim
 xaver.clang-format
