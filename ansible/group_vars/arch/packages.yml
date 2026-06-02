@@ -1,0 +1,11 @@
+---
+# group_vars/arch/packages.yml
+arch_packages:
+  - name: paru
+  - name: hwinfo
+  - name: reflector
+  - name: bspwm
+  - name: sxhkd
+  - name: polybar
+  - name: rofi
+  - name: picom

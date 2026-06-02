@@ -1,0 +1,16 @@
+---
+# roles/dotfiles/tasks/main.yml
+- name: Create symlinks for dotfiles
+  file:
+    src: "{{ ansible_env.HOME }}/dotfiles/{{ item.src }}"
+    dest: "{{ ansible_env.HOME }}/{{ item.dest }}"
+    state: link
+    force: true
+  loop: "{{ dotfiles_to_link }}"
+
+- name: Template weather script for personal profile
+  template:
+    src: weather.py.j2
+    dest: "{{ ansible_env.HOME }}/.config/polybar/scripts/weather.py"
+    mode: '0755'
+  when: personal_weather_api_key is defined

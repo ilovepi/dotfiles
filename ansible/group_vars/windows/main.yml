@@ -1,0 +1,6 @@
+---
+# group_vars/windows/main.yml
+packages_to_install:
+  - name: 7zip.7zip
+  - name: Microsoft.PowerToys
+  - name: Microsoft.WindowsTerminal

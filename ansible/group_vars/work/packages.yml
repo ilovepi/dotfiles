@@ -1,0 +1,6 @@
+---
+# group_vars/work/packages.yml
+packages_to_install:
+  - name: tmux
+  - name: clang
+  - name: starship

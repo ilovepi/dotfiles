@@ -1,0 +1,47 @@
+---
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# OpenWeatherMap API: https://openweathermap.org/api
+API_KEY = "{{ personal_weather_api_key }}"
+# City ID: https://openweathermap.org/find
+CITY = "New York"
+# Display language: https://openweathermap.org/current#multi
+LANG = "en"
+# Units: "metric" or "imperial"
+UNITS = "metric"
+
+import json
+import urllib
+import urllib2
+
+try:
+    # Python 2
+    from urllib2 import urlopen
+except ImportError:
+    # Python 3
+    from urllib.request import urlopen
+
+try:
+    # Create a web request for the API
+    req = urlopen("http://api.openweathermap.org/data/2.5/weather?id={}&lang={}&units={}&appid={}".format(CITY, LANG, UNITS, API_KEY))
+    # Read the request
+    response = req.read()
+    # Close the request
+    req.close()
+    # Parse the JSON data
+    data = json.loads(response)
+    # The weather description
+    desc = data["weather"][0]["description"]
+    # The weather icon
+    icon = data["weather"][0]["icon"]
+    # The temperature
+    temp = data["main"]["temp"]
+    # The output
+    output = u"{} {}°".format(icon, temp)
+    # Print the output
+    print(output)
+except (urllib2.HTTPError, urllib2.URLError) as e:
+    print("Error: {}".format(e))
+except Exception as e:
+    print("Error: {}".fomrat(e))

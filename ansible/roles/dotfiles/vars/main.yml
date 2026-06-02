@@ -1,0 +1,12 @@
+---
+# roles/dotfiles/vars/main.yml
+dotfiles_to_link:
+  - { src: 'zsh/.zshrc', dest: '.zshrc' }
+  - { src: 'git/.gitconfig', dest: '.gitconfig' }
+  - { src: 'config/.config/nvim', dest: '.config/nvim' }
+  - { src: 'byobu/.byobu', dest: '.byobu' }
+  - { src: 'clang/.clang-format', dest: '.clang-format' }
+  - { src: 'config/.config/kitty', dest: '.config/kitty' }
+  - { src: 'config/.config/starship.toml', dest: '.config/starship.toml' }
+  - { src: 'config/.config/polybar', dest: '.config/polybar' }
+  - { src: 'tmux/.tmux.conf', dest: '.tmux.conf' }
