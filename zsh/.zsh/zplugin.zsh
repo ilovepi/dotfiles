@@ -6,8 +6,8 @@ zinit ice as"completion" wait lucid
 zinit snippet OMZP::rust
 zinit ice wait'1' lucid
 zinit snippet OMZP::rsync
-zinit ice wait'1' lucid
-zinit snippet OMZP::tmux
+#zinit ice wait'1' lucid
+#zinit snippet OMZP::tmux
 zinit ice wait lucid
 zinit snippet OMZP::git
 zinit ice wait lucid
