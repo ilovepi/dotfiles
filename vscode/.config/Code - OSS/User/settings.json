@@ -133,5 +133,6 @@
             "%PDF%"
         ]
     },
-    "vsicons.dontShowNewVersionMessage": true
+    "vsicons.dontShowNewVersionMessage": true,
+    "claudeCode.preferredLocation": "panel"
 }
