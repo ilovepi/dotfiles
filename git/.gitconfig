@@ -106,35 +106,4 @@
 [credential "https://gist.github.com"]
 	helper = 
 	helper = !/usr/bin/gh auth git-credential
-[repo]
-	superprojectChoiceExpire = 1718734902
-	superprojectChoice = true
-[http]
-	cookiefile = /usr/local/google/home/paulkirth/.gitcookies
-[url "sso://android/"]
-	insteadOf = https://android.googlesource.com/
-	insteadOf = https://android-review.googlesource.com/
-	insteadOf = http://android.googlesource.com/
-	insteadOf = http://android-review.googlesource.com/
-[protocol "sso"]
-       allow = always
-[credential]
-       helper = corpsso
-[url "persistent-https://partner-android-review.googlesource.com/"]
-       insteadOf = https://partner-android-review.googlesource.com/
-[url "persistent-https://partner-android.googlesource.com/"]
-       insteadOf = https://partner-android.googlesource.com/
-[url "persistent-https://googleplex-android-review.googlesource.com/"]
-       insteadOf = https://googleplex-android-review.googlesource.com/
-[url "persistent-https://googleplex-android.googlesource.com/"]
-       insteadOf = https://googleplex-android.googlesource.com/
-[url "persistent-https://googleplex-polygon-android.googlesource.com/"]
-       insteadOf = https://googleplex-polygon-android.googlesource.com/
-[url "persistent-https://partner-polygon-android.googlesource.com/"]
-       insteadOf = https://partner-polygon-android.googlesource.com/
-[url "sso://pigweed"]
-	insteadof = https://pigweed.googlesource.com
-	insteadof = https://pigweed.git.corp.google.com
-[url "sso://pigweed-internal"]
-	insteadof = https://pigweed-internal.googlesource.com
-	insteadof = https://pigweed-internal.git.corp.google.com
+

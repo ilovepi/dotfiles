@@ -3,6 +3,7 @@
 dotfiles_to_link:
   - { src: 'zsh/.zshrc', dest: '.zshrc' }
   - { src: 'git/.gitconfig', dest: '.gitconfig' }
+  - { src: 'git/.work.gitconfig', dest: '.work.gitconfig' }
   - { src: 'config/.config/nvim', dest: '.config/nvim' }
   - { src: 'byobu/.byobu', dest: '.byobu' }
   - { src: 'clang/.clang-format', dest: '.clang-format' }

@@ -1,3 +1,39 @@
 [user]
     email = paulkirth@google.com
 
+[http]
+    cookiefile = /usr/local/google/home/paulkirth/.gitcookies
+
+[credential]
+    helper = corpsso
+
+[repo]
+    superprojectChoice = true
+
+[protocol "sso"]
+    allow = always
+
+[url "sso://android/"]
+    insteadOf = https://android.googlesource.com/
+    insteadOf = https://android-review.googlesource.com/
+    insteadOf = http://android.googlesource.com/
+    insteadOf = http://android-review.googlesource.com/
+[url "persistent-https://partner-android-review.googlesource.com/"]
+    insteadOf = https://partner-android-review.googlesource.com/
+[url "persistent-https://partner-android.googlesource.com/"]
+    insteadOf = https://partner-android.googlesource.com/
+[url "persistent-https://googleplex-android-review.googlesource.com/"]
+    insteadOf = https://googleplex-android-review.googlesource.com/
+[url "persistent-https://googleplex-android.googlesource.com/"]
+    insteadOf = https://googleplex-android.googlesource.com/
+[url "persistent-https://googleplex-polygon-android.googlesource.com/"]
+    insteadOf = https://googleplex-polygon-android.googlesource.com/
+[url "persistent-https://partner-polygon-android.googlesource.com/"]
+    insteadOf = https://partner-polygon-android.googlesource.com/
+
+[url "sso://pigweed"]
+    insteadOf = https://pigweed.googlesource.com
+    insteadOf = https://pigweed.git.corp.google.com
+[url "sso://pigweed-internal"]
+    insteadOf = https://pigweed-internal.googlesource.com
+    insteadOf = https://pigweed-internal.git.corp.google.com
