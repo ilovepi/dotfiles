@@ -56,15 +56,8 @@ zmodload zsh/mathfunc
 
 source ${HOME}/.zsh/aliases.zsh
 
-# Think about actually using vim to edit the command
-#autoload edit-command-line; zle -N edit-command-line
-#bindkey -M vicmd t edit-command-line
-
 #FZF stuff
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-#zstyle :omz:plugins:ssh-agent agent-forwarding on
-#zinit snippet OMZ::plugins/ssh-agent/ssh-agent.plugin.zsh
 
 zinit ice wait lucid
 zinit light  zsh-users/zsh-history-substring-search
