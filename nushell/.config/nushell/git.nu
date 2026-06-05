@@ -6,7 +6,7 @@
 #
 # Reviewing later: plain `alias name = git ...` lines map 1:1 to OMZ.
 # The `def`s at the bottom are the dynamic ones (main/develop/current branch).
-# `gd` is intentionally NOT here — it's the forgit fzf browser, see fzf.nu.
+# `gd` = `git diff` (OMZ default). The fzf diff browser is `gdf` in fzf.nu.
 # =============================================================================
 
 # --- helpers (OMZ git_* functions) -------------------------------------------
@@ -81,6 +81,7 @@ alias gcf = git config --list
 alias gcl = git clone --recurse-submodules
 alias gclean = git clean --interactive -d
 
+alias gd = git diff
 alias gdca = git diff --cached
 alias gdcw = git diff --cached --word-diff
 alias gds = git diff --staged
