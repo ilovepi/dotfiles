@@ -198,7 +198,7 @@ require("lazy").setup({
                 "asm", "bash", "c", "cmake", "comment", "cpp", "css",
                 "dockerfile", "dot", "gn", "go", "html", "javascript", "json",
                 "llvm", "lua", "make", "markdown", "markdown_inline", "ninja",
-                "python", "rst", "rust", "starlark", "toml", "vim", "yaml",
+                "nu", "python", "rst", "rust", "starlark", "toml", "vim", "yaml",
             })
             -- main branch has no highlight module; enable it per-buffer.
             vim.api.nvim_create_autocmd('FileType', {
