@@ -11,7 +11,7 @@ require("lazy").setup({
     'brooth/far.vim',
     {
         "ibhagwan/fzf-lua",
-        config = function ()
+        config = function()
             require('fzf-lua').setup({{'fzf-native','telescope'}})
         end,
         dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -139,21 +139,7 @@ require("lazy").setup({
     'tpope/vim-repeat',
     'tpope/vim-sleuth',
     'tpope/vim-surround',
-    {
-        'numToStr/Comment.nvim',
-        config = function()
-            require('Comment').setup({
-                ---LHS of toggle mappings in NORMAL + VISUAL mode
-                ---@type table
-                toggler = {
-                    ---Line-comment toggle keymap
-                    line = 'gcc',
-                    ---Block-comment toggle keymap
-                    block = 'gbc',
-                },
-            })
-        end,
-    },
+
     -- 'folke/trouble.nvim',
     {
         "folke/todo-comments.nvim",
