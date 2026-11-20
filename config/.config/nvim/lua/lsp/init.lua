@@ -1,6 +1,10 @@
 local on_attach = function(client, bufnr)
     local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
+    local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+
+    buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
+
     -- Mappings.
     local opts = { noremap = true, silent = true }
     buf_set_keymap('n', '<leader>D', '<cmd>lua vim.lsp.buf.type_definition()<CR>', { noremap = true, silent = true, desc = "LSP: Go to Type Definition" })
@@ -18,6 +22,13 @@ local on_attach = function(client, bufnr)
     buf_set_keymap('n', '<leader>la', '<cmd>Lspsaga code_action<CR>', { noremap = true, silent = true, desc = "LSP: Code Action" })
     buf_set_keymap('v', '<leader>la', '<cmd>Lspsaga code_action<CR>', { noremap = true, silent = true, desc = "LSP: Code Action" })
     buf_set_keymap('n', '<leader>lo', '<cmd>Lspsaga outline<CR>', { noremap = true, silent = true, desc = "LSP: Outline" })
+    buf_set_keymap("n", "[e","", { callback = function()
+        require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end})
+    buf_set_keymap("n", "]e","", { callback = function()
+        require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end})
+
     -- Call hierarchy
     buf_set_keymap("n", "<Leader>ci", '<cmd>Lspsaga incoming_calls<CR>', { noremap = true, silent = true, desc = "LSP: Incoming Calls" })
     buf_set_keymap("n", "<Leader>co", '<cmd>Lspsaga outgoing_calls<CR>', { noremap = true, silent = true, desc = "LSP: Outgoing Calls" })
@@ -57,7 +68,6 @@ require("mason-lspconfig").setup({
 vim.lsp.config("*",{
     on_attach = on_attach,
     capabilities = capabilities,
-
 })
 
 vim.lsp.config("lua_ls", {
@@ -81,7 +91,11 @@ vim.lsp.config("clangd", {
     },
     on_attach = on_attach,
     capabilities = capabilities,
+})
 
+vim.lsp.config("rust_analyzer", {
+    on_attach = on_attach,
+    capabilities = capabilities,
 })
 
 --vim.lsp.set_log_level("debug")
